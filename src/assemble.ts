@@ -53,7 +53,7 @@ export function assembleLists(output, definitionLevels, repetitionLevels, values
       if (repetitionPath[currentDepth] === 'REPEATED') currentRepLevel--
       currentDepth--
     }
-    // @ts-expect-error won't be empty
+
     currentContainer = containerStack.at(-1)
 
     // Go deeper to end of definition level

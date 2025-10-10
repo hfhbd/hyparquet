@@ -1,5 +1,5 @@
 /** @type {import('../src/types.d.ts').ParquetType[]} */
-export const ParquetType = [
+export const ParquetType: string[] = [
   'BOOLEAN',
   'INT32',
   'INT64',
@@ -11,7 +11,7 @@ export const ParquetType = [
 ]
 
 /** @type {import('../src/types.d.ts').Encoding[]} */
-export const Encoding = [
+export const Encoding: string[] = [
   'PLAIN',
   'GROUP_VAR_INT', // deprecated
   'PLAIN_DICTIONARY',
@@ -25,14 +25,14 @@ export const Encoding = [
 ]
 
 /** @type {import('../src/types.d.ts').FieldRepetitionType[]} */
-export const FieldRepetitionType = [
+export const FieldRepetitionType: string[] = [
   'REQUIRED',
   'OPTIONAL',
   'REPEATED',
 ]
 
 /** @type {import('../src/types.d.ts').ConvertedType[]} */
-export const ConvertedType = [
+export const ConvertedType: string[] = [
   'UTF8',
   'MAP',
   'MAP_KEY_VALUE',
@@ -58,7 +58,7 @@ export const ConvertedType = [
 ]
 
 /** @type {import('../src/types.d.ts').CompressionCodec[]} */
-export const CompressionCodec = [
+export const CompressionCodec: string[] = [
   'UNCOMPRESSED',
   'SNAPPY',
   'GZIP',
@@ -70,7 +70,7 @@ export const CompressionCodec = [
 ]
 
 /** @type {import('../src/types.d.ts').PageType[]} */
-export const PageType = [
+export const PageType: string[] = [
   'DATA_PAGE',
   'INDEX_PAGE',
   'DICTIONARY_PAGE',
@@ -78,14 +78,14 @@ export const PageType = [
 ]
 
 /** @type {import('../src/types.d.ts').BoundaryOrder[]} */
-export const BoundaryOrder = [
+export const BoundaryOrder: string[] = [
   'UNORDERED',
   'ASCENDING',
   'DESCENDING',
 ]
 
 /** @type {import('../src/types.d.ts').EdgeInterpolationAlgorithm[]} */
-export const EdgeInterpolationAlgorithm = [
+export const EdgeInterpolationAlgorithm: string[] = [
   'SPHERICAL',
   'VINCENTY',
   'THOMAS',

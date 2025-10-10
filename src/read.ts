@@ -2,6 +2,7 @@ import { parquetMetadataAsync, parquetSchema } from './metadata.js'
 import { parquetPlan, prefetchAsyncBuffer } from './plan.js'
 import { assembleAsync, asyncGroupToRows, readRowGroup } from './rowgroup.js'
 import { concat, flatten } from './utils.js'
+import {ParquetReadOptions} from "./types.js";
 
 /**
  * @import {AsyncRowGroup, DecodedArray, ParquetReadOptions, BaseParquetReadOptions} from '../src/types.js'
@@ -131,7 +132,7 @@ export async function parquetReadColumn(options) {
  * @param {Omit<ParquetReadOptions, 'onComplete'>} options
  * @returns {Promise<Record<string, any>[]>} resolves when all requested rows and columns are parsed
  */
-export function parquetReadObjects(options) {
+export function parquetReadObjects(options: Omit<ParquetReadOptions, 'onComplete'>): Promise<Record<string, any>[]> {
   return new Promise((onComplete, reject) => {
     parquetRead({
       ...options,

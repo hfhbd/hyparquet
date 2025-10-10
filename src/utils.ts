@@ -1,4 +1,5 @@
 import { defaultInitialFetchSize } from './metadata.js'
+import {DecodedArray} from "./types.js";
 
 /**
  * Replace bigint, date, etc with legal JSON types.
@@ -30,7 +31,7 @@ export function toJson(obj) {
  * @param {any[]} aaa first array
  * @param {DecodedArray} bbb second array
  */
-export function concat(aaa, bbb) {
+export function concat(aaa: any[], bbb: DecodedArray) {
   const chunk = 10000
   for (let i = 0; i < bbb.length; i += chunk) {
     aaa.push(...bbb.slice(i, i + chunk))
@@ -198,11 +199,10 @@ function cacheKey(start, end, size) {
  * @param {DecodedArray[]} [chunks]
  * @returns {DecodedArray}
  */
-export function flatten(chunks) {
+export function flatten(chunks: DecodedArray[]): DecodedArray {
   if (!chunks) return []
   if (chunks.length === 1) return chunks[0]
-  /** @type {any[]} */
-  const output = []
+  const output: any[] = []
   for (const chunk of chunks) {
     concat(output, chunk)
   }

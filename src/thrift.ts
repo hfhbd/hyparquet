@@ -1,4 +1,6 @@
 // TCompactProtocol types
+import {DataReader, ThriftObject, ThriftType} from "./types.js";
+
 export const CompactType = {
   STOP: 0,
   TRUE: 1,
@@ -22,10 +24,9 @@ export const CompactType = {
  * @param {DataReader} reader
  * @returns {{ [key: `field_${number}`]: any }}
  */
-export function deserializeTCompactProtocol(reader) {
+export function deserializeTCompactProtocol(reader: DataReader): { [key: `field_${number}`]: any } {
   let lastFid = 0
-  /** @type {ThriftObject} */
-  const value = {}
+  const value: ThriftObject = {}
 
   while (reader.offset < reader.view.byteLength) {
     // Parse each field based on its type and add to the result object
@@ -47,11 +48,8 @@ export function deserializeTCompactProtocol(reader) {
  * Read a single element based on its type
  *
  * @import {DataReader, ThriftObject, ThriftType} from '../src/types.d.ts'
- * @param {DataReader} reader
- * @param {number} type
- * @returns {ThriftType}
  */
-function readElement(reader, type) {
+function readElement(reader: DataReader, type: number) : ThriftType {
   switch (type) {
   case CompactType.TRUE:
     return true

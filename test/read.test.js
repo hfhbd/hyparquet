@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { convertWithDictionary } from '../src/convert.js'
-import { parquetMetadataAsync, parquetRead, parquetReadObjects } from '../src/index.js'
+import { parquetMetadataAsync } from '../src/metadata.js'
+import {parquetRead, parquetReadObjects} from "../src/read.js";
 import { asyncBufferFromFile } from '../src/node.js'
 import { countingBuffer } from './helpers.js'
 
@@ -8,14 +9,12 @@ vi.mock('../src/convert.js', { spy: true })
 
 describe('parquetRead', () => {
   it('throws error for undefined file', async () => {
-    // @ts-expect-error testing invalid input
     await expect(parquetRead({ file: undefined }))
       .rejects.toThrow('parquet expected AsyncBuffer')
   })
 
   it('throws error for undefined byteLength', async () => {
     const file = { byteLength: undefined, slice: () => new ArrayBuffer(0) }
-    // @ts-expect-error testing invalid input
     await expect(parquetRead({ file }))
       .rejects.toThrow('parquet expected AsyncBuffer')
   })

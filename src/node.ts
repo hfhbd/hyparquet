@@ -1,6 +1,5 @@
 import { createReadStream, promises as fs } from 'fs'
-
-export * from './index.js'
+import {AsyncBuffer} from "./types.js";
 
 /**
  * @import {AsyncBuffer} from '../src/types.js'
@@ -11,7 +10,7 @@ export * from './index.js'
  * @param {string} filename
  * @returns {Promise<AsyncBuffer>}
  */
-export async function asyncBufferFromFile(filename) {
+export async function asyncBufferFromFile(filename: string): Promise<AsyncBuffer> {
   const { size } = await fs.stat(filename)
   return {
     byteLength: size,

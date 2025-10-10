@@ -1,6 +1,7 @@
 import fs from 'fs'
 import { describe, expect, it } from 'vitest'
-import { parquetMetadata, parquetMetadataAsync, toJson } from '../src/index.js'
+import {parquetMetadata, parquetMetadataAsync} from '../src/metadata.js'
+import {toJson} from "../src/utils.js";
 import { asyncBufferFromFile } from '../src/node.js'
 import { fileToJson } from './helpers.js'
 
@@ -19,7 +20,6 @@ describe('parquetMetadata', () => {
   })
 
   it('throws for arrayBuffer undefined', () => {
-    // @ts-expect-error testing invalid input
     expect(() => parquetMetadata(undefined)).toThrow('parquet expected ArrayBuffer')
   })
 
@@ -64,7 +64,6 @@ describe('parquetMetadataAsync', () => {
 
   it('throws for asyncBuffer undefined', async () => {
     const arrayBuffer = undefined
-    // @ts-expect-error testing invalid input
     await expect(parquetMetadataAsync(arrayBuffer)).rejects
       .toThrow('parquet expected AsyncBuffer')
   })
