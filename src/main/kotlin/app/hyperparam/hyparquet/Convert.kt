@@ -202,7 +202,11 @@ fun convert(data: List<Any>, columnDecoder: ColumnDecoder): List<Any> {
         "UINT_64" -> {
             return data.map { value ->
                 when (value) {
-                    is Number -> value.toLong().toULong()
+                    is Number -> {
+                        val longValue = value.toLong()
+                        if (longValue < 0) throw IllegalArgumentException("Cannot convert negative number to ULong: $value")
+                        longValue.toULong()
+                    }
                     else -> throw IllegalArgumentException("Invalid uint64 value: $value")
                 }
             }
@@ -210,7 +214,13 @@ fun convert(data: List<Any>, columnDecoder: ColumnDecoder): List<Any> {
         "UINT_32" -> {
             return data.map { value ->
                 when (value) {
-                    is Number -> value.toLong().toUInt()
+                    is Number -> {
+                        val longValue = value.toLong()
+                        if (longValue < 0 || longValue > UInt.MAX_VALUE.toLong()) {
+                            throw IllegalArgumentException("Value out of range for UInt: $value")
+                        }
+                        longValue.toUInt()
+                    }
                     else -> throw IllegalArgumentException("Invalid uint32 value: $value")
                 }
             }
@@ -248,7 +258,11 @@ fun convert(data: List<Any>, columnDecoder: ColumnDecoder): List<Any> {
                 ltype.bitWidth == 64 && ltype.isSigned == false -> {
                     return data.map { value ->
                         when (value) {
-                            is Number -> value.toLong().toULong()
+                            is Number -> {
+                                val longValue = value.toLong()
+                                if (longValue < 0) throw IllegalArgumentException("Cannot convert negative number to ULong: $value")
+                                longValue.toULong()
+                            }
                             else -> throw IllegalArgumentException("Invalid uint64 value: $value")
                         }
                     }
@@ -256,7 +270,13 @@ fun convert(data: List<Any>, columnDecoder: ColumnDecoder): List<Any> {
                 ltype.bitWidth == 32 && ltype.isSigned == false -> {
                     return data.map { value ->
                         when (value) {
-                            is Number -> value.toLong().toUInt()
+                            is Number -> {
+                                val longValue = value.toLong()
+                                if (longValue < 0 || longValue > UInt.MAX_VALUE.toLong()) {
+                                    throw IllegalArgumentException("Value out of range for UInt: $value")
+                                }
+                                longValue.toUInt()
+                            }
                             else -> throw IllegalArgumentException("Invalid uint32 value: $value")
                         }
                     }
@@ -344,7 +364,7 @@ fun parseInt96Nanos(value: BigInteger): BigInteger {
 fun parseFloat16(bytes: ByteArray?): Double? {
     if (bytes == null || bytes.size < 2) return null
     
-    val int16 = (bytes[1].toInt() and 0xFF shl 8) or (bytes[0].toInt() and 0xFF)
+    val int16 = ((bytes[1].toInt() and 0xFF) shl 8) or (bytes[0].toInt() and 0xFF)
     val sign = if (int16 shr 15 != 0) -1.0 else 1.0
     val exp = (int16 shr 10) and 0x1f
     val frac = int16 and 0x3ff

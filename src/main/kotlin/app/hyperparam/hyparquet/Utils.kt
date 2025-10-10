@@ -14,7 +14,11 @@ fun toJson(obj: Any?): JsonElement {
         null, Unit -> JsonNull
         is Boolean -> JsonPrimitive(obj)
         is Number -> JsonPrimitive(obj)
-        is BigInteger -> JsonPrimitive(obj.toLong())
+        is BigInteger -> if (obj <= BigInteger.valueOf(Long.MAX_VALUE) && obj >= BigInteger.valueOf(Long.MIN_VALUE)) {
+            JsonPrimitive(obj.toLong())
+        } else {
+            JsonPrimitive(obj.toString())
+        }
         is String -> JsonPrimitive(obj)
         is Instant -> JsonPrimitive(obj.toString())
         is ByteArray -> JsonArray(obj.map { JsonPrimitive(it.toInt() and 0xFF) })
