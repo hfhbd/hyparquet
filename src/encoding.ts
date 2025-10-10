@@ -20,7 +20,7 @@ export function bitWidth(value) {
  * @param {DecodedArray} output
  * @param {number} [length] - length of the encoded data
  */
-export function readRleBitPackedHybrid(reader, width, output, length) {
+export function readRleBitPackedHybrid(reader, width, output, length?: number) {
   if (length === undefined) {
     length = reader.view.getUint32(reader.offset, true)
     reader.offset += 4

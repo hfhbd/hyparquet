@@ -1,17 +1,11 @@
 import { getMaxDefinitionLevel, isListLike, isMapLike } from './schema.js'
+import {DecodedArray, SchemaTree} from "./types.js";
 
 /**
  * Reconstructs a complex nested structure from flat arrays of values and
  * definition and repetition levels, according to Dremel encoding.
- *
- * @param {any[]} output
- * @param {number[] | undefined} definitionLevels
- * @param {number[]} repetitionLevels
- * @param {DecodedArray} values
- * @param {SchemaTree[]} schemaPath
- * @returns {DecodedArray}
  */
-export function assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath) {
+export function assembleLists(output: any[], definitionLevels: number[] | undefined, repetitionLevels: number[], values: DecodedArray, schemaPath: SchemaTree[]): DecodedArray {
   const n = definitionLevels?.length || repetitionLevels.length
   if (!n) return values
   const maxDefinitionLevel = getMaxDefinitionLevel(schemaPath)
@@ -63,8 +57,7 @@ export function assembleLists(output, definitionLevels, repetitionLevels, values
     ) {
       currentDepth++
       if (repetitionPath[currentDepth] !== 'REQUIRED') {
-        /** @type {any[]} */
-        const newList = []
+        const newList: any[] = []
         currentContainer.push(newList)
         currentContainer = newList
         containerStack.push(newList)
@@ -88,8 +81,7 @@ export function assembleLists(output, definitionLevels, repetitionLevels, values
   if (!output.length) {
     // return max definition level of nested lists
     for (let i = 0; i < maxDefinitionLevel; i++) {
-      /** @type {any[]} */
-      const newList = []
+      const newList: any[] = []
       currentContainer.push(newList)
       currentContainer = newList
     }
@@ -102,11 +94,11 @@ export function assembleLists(output, definitionLevels, repetitionLevels, values
  * Assemble a nested structure from subcolumn data.
  * https://github.com/apache/parquet-format/blob/apache-parquet-format-2.10.0/LogicalTypes.md#nested-types
  *
- * @param {Map<string, DecodedArray>} subcolumnData
- * @param {SchemaTree} schema top-level schema element
- * @param {number} [depth] depth of nested structure
+ * @param subcolumnData
+ * @param schema top-level schema element
+ * @param [depth] depth of nested structure
  */
-export function assembleNested(subcolumnData, schema, depth = 0) {
+export function assembleNested(subcolumnData: Map<string, DecodedArray>, schema: SchemaTree, depth: number = 0) {
   const path = schema.path.join('.')
   const optional = schema.element.repetition_type === 'OPTIONAL'
   const nextDepth = optional ? depth + 1 : depth
@@ -145,7 +137,7 @@ export function assembleNested(subcolumnData, schema, depth = 0) {
       throw new Error('parquet map column key/value length mismatch')
     }
 
-    const out = assembleMaps(keys, values, nextDepth)
+    const out: any[] = assembleMaps(keys, values, nextDepth)
     if (optional) flattenAtDepth(out, depth)
 
     subcolumnData.delete(`${path}.${mapName}.key`)
@@ -158,8 +150,7 @@ export function assembleNested(subcolumnData, schema, depth = 0) {
   if (schema.children.length) {
     // construct a meta struct and then invert
     const invertDepth = schema.element.repetition_type === 'REQUIRED' ? depth : depth + 1
-    /** @type {Record<string, any>} */
-    const struct = {}
+    const struct: Record<string, any> = {}
     for (const child of schema.children) {
       assembleNested(subcolumnData, child, invertDepth)
       const childData = subcolumnData.get(child.path.join('.'))
@@ -177,12 +168,7 @@ export function assembleNested(subcolumnData, schema, depth = 0) {
   }
 }
 
-/**
- * @import {DecodedArray, SchemaTree} from '../src/types.d.ts'
- * @param {DecodedArray} arr
- * @param {number} depth
- */
-function flattenAtDepth(arr, depth) {
+function flattenAtDepth(arr: DecodedArray, depth: number) {
   for (let i = 0; i < arr.length; i++) {
     if (depth) {
       flattenAtDepth(arr[i], depth - 1)
@@ -192,21 +178,14 @@ function flattenAtDepth(arr, depth) {
   }
 }
 
-/**
- * @param {DecodedArray} keys
- * @param {DecodedArray} values
- * @param {number} depth
- * @returns {any[]}
- */
-function assembleMaps(keys, values, depth) {
+function assembleMaps(keys: DecodedArray, values: DecodedArray, depth: number): any[] {
   const out = []
   for (let i = 0; i < keys.length; i++) {
     if (depth) {
       out.push(assembleMaps(keys[i], values[i], depth - 1)) // go deeper
     } else {
       if (keys[i]) {
-        /** @type {Record<string, any>} */
-        const obj = {}
+        const obj: Record<string, any> = {}
         for (let j = 0; j < keys[i].length; j++) {
           const value = values[i][j]
           obj[keys[i][j]] = value === undefined ? null : value
@@ -222,18 +201,13 @@ function assembleMaps(keys, values, depth) {
 
 /**
  * Invert a struct-like object by depth.
- *
- * @param {Record<string, any[]>} struct
- * @param {number} depth
- * @returns {any[]}
  */
-function invertStruct(struct, depth) {
+function invertStruct(struct: Record<string, any[]>, depth: number): any[] {
   const keys = Object.keys(struct)
   const length = struct[keys[0]]?.length
   const out = []
   for (let i = 0; i < length; i++) {
-    /** @type {Record<string, any>} */
-    const obj = {}
+    const obj: Record<string, any> = {}
     for (const key of keys) {
       if (struct[key].length !== length) throw new Error('parquet struct parsing error')
       obj[key] = struct[key][i]

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { describe, expect, it } from 'vitest'
-import {parquetMetadata, parquetMetadataAsync} from '../src/metadata.js'
-import {toJson} from "../src/utils.js";
+import { parquetMetadata, parquetMetadataAsync } from '../src/metadata.js'
+import { toJson } from '../src/utils.js'
 import { asyncBufferFromFile } from '../src/node.js'
 import { fileToJson } from './helpers.js'
 
