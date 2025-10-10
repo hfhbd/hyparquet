@@ -54,10 +54,7 @@ describe('readOffsetIndex', () => {
   })
 })
 
-/**
- * @param {string} filename
- * @returns {Promise<ArrayBuffer>}
- */
-function readFileToArrayBuffer(filename) {
-  return asyncBufferFromFile(filename).then((buffer) => buffer.slice(0))
+async function readFileToArrayBuffer(filename: string): Promise<ArrayBuffer> {
+  const buffer = await asyncBufferFromFile(filename)
+  return buffer.slice(0)
 }

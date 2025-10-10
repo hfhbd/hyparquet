@@ -2,13 +2,7 @@ import { createReadStream, promises as fs } from 'fs'
 import {AsyncBuffer} from "./types.js";
 
 /**
- * @import {AsyncBuffer} from '../src/types.js'
- */
-/**
  * Construct an AsyncBuffer for a local file using node fs package.
- *
- * @param {string} filename
- * @returns {Promise<AsyncBuffer>}
  */
 export async function asyncBufferFromFile(filename: string): Promise<AsyncBuffer> {
   const { size } = await fs.stat(filename)
@@ -18,8 +12,7 @@ export async function asyncBufferFromFile(filename: string): Promise<AsyncBuffer
       // read file slice
       const reader = createReadStream(filename, { start, end })
       return new Promise((resolve, reject) => {
-        /** @type {any[]} */
-        const chunks = []
+        const chunks: any[] = []
         reader.on('data', chunk => chunks.push(chunk))
         reader.on('error', reject)
         reader.on('end', () => {

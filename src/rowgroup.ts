@@ -3,6 +3,15 @@ import { readColumn } from './column.js'
 import { DEFAULT_PARSERS } from './convert.js'
 import { getColumnRange } from './plan.js'
 import { getSchemaPath } from './schema.js'
+import {
+  AsyncColumn,
+  AsyncRowGroup, DecodedArray,
+  GroupPlan,
+  ParquetParsers,
+  ParquetReadOptions,
+  QueryPlan,
+  SchemaTree
+} from "./types.js"
 import { flatten } from './utils.js'
 
 /**
@@ -16,13 +25,11 @@ import { flatten } from './utils.js'
  * @param {GroupPlan} groupPlan
  * @returns {AsyncRowGroup} resolves to column data
  */
-export function readRowGroup(options, { metadata, columns }, groupPlan) {
+export function readRowGroup(options: ParquetReadOptions, {metadata, columns}: QueryPlan, groupPlan: GroupPlan): AsyncRowGroup {
   const { file, compressors, utf8 } = options
 
-  /** @type {AsyncColumn[]} */
-  const asyncColumns = []
-  /** @type {ParquetParsers} */
-  const parsers = { ...DEFAULT_PARSERS, ...options.parsers }
+  const asyncColumns: AsyncColumn[] = []
+  const parsers: ParquetParsers = { ...DEFAULT_PARSERS, ...options.parsers }
 
   // read column data
   for (const { file_path, meta_data } of groupPlan.rowGroup.columns) {
@@ -45,8 +52,7 @@ export function readRowGroup(options, { metadata, columns }, groupPlan) {
     }
 
     // wrap awaitable to ensure it's a promise
-    /** @type {Promise<ArrayBuffer>} */
-    const buffer = Promise.resolve(file.slice(startByte, endByte))
+    const buffer: Promise<ArrayBuffer> = Promise.resolve(file.slice(startByte, endByte))
 
     // read column data async
     asyncColumns.push({
@@ -99,7 +105,7 @@ export function readRowGroup(options, { metadata, columns }, groupPlan) {
  * @param {'object' | 'array'} [rowFormat]
  * @returns {Promise<Record<string, any>[] | any[][]>} resolves to row data
  */
-export async function asyncGroupToRows({ asyncColumns }, selectStart, selectEnd, columns, rowFormat) {
+export async function asyncGroupToRows({ asyncColumns }: AsyncRowGroup, selectStart: number, selectEnd: number, columns: string[] | undefined, rowFormat: 'object' | 'array'): Promise<Record<string, any>[] | any[][]> {
   // columnData[i] for asyncColumns[i]
   // TODO: do it without flatten
   const columnDatas = await Promise.all(asyncColumns.map(({ data }) => data.then(flatten)))
@@ -114,13 +120,11 @@ export async function asyncGroupToRows({ asyncColumns }, selectStart, selectEnd,
   // transpose columns into rows
   const selectCount = selectEnd - selectStart
   if (rowFormat === 'object') {
-    /** @type {Record<string, any>[]} */
-    const groupData = new Array(selectCount)
+    const groupData: Record<string, any>[] = new Array(selectCount)
     for (let selectRow = 0; selectRow < selectCount; selectRow++) {
       const row = selectStart + selectRow
       // return each row as an object
-      /** @type {Record<string, any>} */
-      const rowData = {}
+      const rowData: Record<string, any> = {}
       for (let i = 0; i < asyncColumns.length; i++) {
         rowData[asyncColumns[i].pathInSchema[0]] = columnDatas[i][row]
       }
@@ -129,8 +133,7 @@ export async function asyncGroupToRows({ asyncColumns }, selectStart, selectEnd,
     return groupData
   }
 
-  /** @type {any[][]} */
-  const groupData = new Array(selectCount)
+  const groupData: any[][] = new Array(selectCount)
   for (let selectRow = 0; selectRow < selectCount; selectRow++) {
     const row = selectStart + selectRow
     // return each row as an array
@@ -147,27 +150,21 @@ export async function asyncGroupToRows({ asyncColumns }, selectStart, selectEnd,
 
 /**
  * Assemble physical columns into top-level columns asynchronously.
- *
- * @param {AsyncRowGroup} asyncRowGroup
- * @param {SchemaTree} schemaTree
- * @returns {AsyncRowGroup}
  */
-export function assembleAsync(asyncRowGroup, schemaTree) {
+export function assembleAsync(asyncRowGroup: AsyncRowGroup, schemaTree: SchemaTree): AsyncRowGroup {
   const { asyncColumns } = asyncRowGroup
-  /** @type {AsyncColumn[]} */
-  const assembled = []
+  const assembled: AsyncColumn[] = []
   for (const child of schemaTree.children) {
     if (child.children.length) {
       const childColumns = asyncColumns.filter(column => column.pathInSchema[0] === child.element.name)
       if (!childColumns.length) continue
 
       // wait for all child columns to be read
-      /** @type {Map<string, DecodedArray>} */
-      const flatData = new Map()
-      const data = Promise.all(childColumns.map(column => {
-        return column.data.then(columnData => {
-          flatData.set(column.pathInSchema.join('.'), flatten(columnData))
-        })
+      const flatData: Map<string, DecodedArray> = new Map()
+      const data: Promise<[any]> = Promise.all(childColumns.map(async column => {
+        let columnData = await column.data;
+        flatData.set(column.pathInSchema.join('.'), flatten(columnData))
+        ;
       })).then(() => {
         // assemble the column
         assembleNested(flatData, child)

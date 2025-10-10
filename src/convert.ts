@@ -1,14 +1,14 @@
 /**
  * @import {ColumnDecoder, DecodedArray, Encoding, ParquetParsers} from '../src/types.js'
  */
+import {ColumnDecoder, ConvertedType, DecodedArray, Encoding, ParquetParsers, ParquetType, TimeUnit} from "./types.js";
 
 const decoder = new TextDecoder()
 
 /**
  * Default type parsers when no custom ones are given
- * @type ParquetParsers
  */
-export const DEFAULT_PARSERS = {
+export const DEFAULT_PARSERS: ParquetParsers = {
   timestampFromMilliseconds(millis) {
     return new Date(Number(millis))
   },
@@ -35,8 +35,8 @@ export const DEFAULT_PARSERS = {
  * @param {ColumnDecoder} columnDecoder
  * @returns {DecodedArray} series of rich types
  */
-export function convertWithDictionary(data, dictionary, encoding, columnDecoder) {
-  if (dictionary && encoding.endsWith('_DICTIONARY')) {
+export function convertWithDictionary(data: DecodedArray, dictionary: DecodedArray | undefined, encoding: Encoding, columnDecoder: ColumnDecoder): DecodedArray {
+  if (dictionary && (encoding === Encoding.PLAIN_DICTIONARY || Encoding.RLE_DICTIONARY)) {
     let output = data
     if (data instanceof Uint8Array && !(dictionary instanceof Uint8Array)) {
       // @ts-expect-error upgrade data to match dictionary type with fancy constructor
@@ -58,10 +58,10 @@ export function convertWithDictionary(data, dictionary, encoding, columnDecoder)
  * @param {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} columnDecoder
  * @returns {DecodedArray} series of rich types
  */
-export function convert(data, columnDecoder) {
+export function convert(data: DecodedArray, columnDecoder: Pick<ColumnDecoder, "element" | "utf8" | "parsers">): DecodedArray {
   const { element, parsers, utf8 = true } = columnDecoder
   const { type, converted_type: ctype, logical_type: ltype } = element
-  if (ctype === 'DECIMAL') {
+  if (ctype === ConvertedType.DECIMAL) {
     const scale = element.scale || 0
     const factor = 10 ** -scale
     const arr = new Array(data.length)
@@ -74,31 +74,31 @@ export function convert(data, columnDecoder) {
     }
     return arr
   }
-  if (!ctype && type === 'INT96') {
+  if (!ctype && type === ParquetType.INT96) {
     return Array.from(data).map(v => parsers.timestampFromNanoseconds(parseInt96Nanos(v)))
   }
-  if (ctype === 'DATE') {
+  if (ctype === ConvertedType.DATE) {
     return Array.from(data).map(v => parsers.dateFromDays(v))
   }
-  if (ctype === 'TIMESTAMP_MILLIS') {
+  if (ctype === ConvertedType.TIMESTAMP_MILLIS) {
     return Array.from(data).map(v => parsers.timestampFromMilliseconds(v))
   }
-  if (ctype === 'TIMESTAMP_MICROS') {
+  if (ctype === ConvertedType.TIMESTAMP_MICROS) {
     return Array.from(data).map(v => parsers.timestampFromMicroseconds(v))
   }
-  if (ctype === 'JSON') {
+  if (ctype === ConvertedType.JSON) {
     return data.map(v => JSON.parse(decoder.decode(v)))
   }
-  if (ctype === 'BSON') {
+  if (ctype === ConvertedType.BSON) {
     throw new Error('parquet bson not supported')
   }
-  if (ctype === 'INTERVAL') {
+  if (ctype === ConvertedType.INTERVAL) {
     throw new Error('parquet interval not supported')
   }
-  if (ctype === 'UTF8' || ltype?.type === 'STRING' || utf8 && type === 'BYTE_ARRAY') {
+  if (ctype === ConvertedType.UTF8 || ltype?.type === 'STRING' || utf8 && type === ParquetType.BYTE_ARRAY) {
     return data.map(v => parsers.stringFromBytes(v))
   }
-  if (ctype === 'UINT_64' || ltype?.type === 'INTEGER' && ltype.bitWidth === 64 && !ltype.isSigned) {
+  if (ctype === ConvertedType.UINT_64 || ltype?.type === 'INTEGER' && ltype.bitWidth === 64 && !ltype.isSigned) {
     if (data instanceof BigInt64Array) {
       return new BigUint64Array(data.buffer, data.byteOffset, data.length)
     }
@@ -106,7 +106,7 @@ export function convert(data, columnDecoder) {
     for (let i = 0; i < arr.length; i++) arr[i] = BigInt(data[i])
     return arr
   }
-  if (ctype === 'UINT_32' || ltype?.type === 'INTEGER' && ltype.bitWidth === 32 && !ltype.isSigned) {
+  if (ctype === ConvertedType.UINT_32 || ltype?.type === 'INTEGER' && ltype.bitWidth === 32 && !ltype.isSigned) {
     if (data instanceof Int32Array) {
       return new Uint32Array(data.buffer, data.byteOffset, data.length)
     }
@@ -119,10 +119,9 @@ export function convert(data, columnDecoder) {
   }
   if (ltype?.type === 'TIMESTAMP') {
     const { unit } = ltype
-    /** @type {ParquetParsers[keyof ParquetParsers]} */
-    let parser = parsers.timestampFromMilliseconds
-    if (unit === 'MICROS') parser = parsers.timestampFromMicroseconds
-    if (unit === 'NANOS') parser = parsers.timestampFromNanoseconds
+    let parser: ParquetParsers[keyof ParquetParsers] = parsers.timestampFromMilliseconds
+    if (unit === TimeUnit.MICROS) parser = parsers.timestampFromMicroseconds
+    if (unit === TimeUnit.NANOS) parser = parsers.timestampFromNanoseconds
     const arr = new Array(data.length)
     for (let i = 0; i < arr.length; i++) {
       arr[i] = parser(data[i])
@@ -136,7 +135,7 @@ export function convert(data, columnDecoder) {
  * @param {Uint8Array} bytes
  * @returns {number}
  */
-export function parseDecimal(bytes) {
+export function parseDecimal(bytes: Uint8Array): number {
   if (!bytes.length) return 0
 
   let value = 0n
@@ -158,7 +157,7 @@ export function parseDecimal(bytes) {
  * @param {bigint} value
  * @returns {bigint}
  */
-function parseInt96Nanos(value) {
+function parseInt96Nanos(value: bigint): bigint {
   const days = (value >> 64n) - 2440588n
   const nano = value & 0xffffffffffffffffn
   return days * 86400000000000n + nano
@@ -168,7 +167,7 @@ function parseInt96Nanos(value) {
  * @param {Uint8Array | undefined} bytes
  * @returns {number | undefined}
  */
-export function parseFloat16(bytes) {
+export function parseFloat16(bytes: Uint8Array | undefined): number | undefined {
   if (!bytes) return undefined
   const int16 = bytes[1] << 8 | bytes[0]
   const sign = int16 >> 15 ? -1 : 1

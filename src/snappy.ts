@@ -15,7 +15,7 @@ const WORD_MASK = [0, 0xff, 0xffff, 0xffffff, 0xffffffff]
  * @param {number} toPos destination position
  * @param {number} length number of bytes to copy
  */
-function copyBytes(fromArray, fromPos, toArray, toPos, length) {
+function copyBytes(fromArray: Uint8Array, fromPos: number, toArray: Uint8Array, toPos: number, length: number) {
   for (let i = 0; i < length; i++) {
     toArray[toPos + i] = fromArray[fromPos + i]
   }
@@ -28,7 +28,7 @@ function copyBytes(fromArray, fromPos, toArray, toPos, length) {
  * @param {Uint8Array} input compressed data
  * @param {Uint8Array} output output buffer
  */
-export function snappyUncompress(input, output) {
+export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
   const inputLength = input.byteLength
   const outputLength = output.byteLength
   let pos = 0

@@ -46,8 +46,6 @@ export function deserializeTCompactProtocol(reader: DataReader): { [key: `field_
 
 /**
  * Read a single element based on its type
- *
- * @import {DataReader, ThriftObject, ThriftType} from '../src/types.d.ts'
  */
 function readElement(reader: DataReader, type: number) : ThriftType {
   switch (type) {
@@ -89,8 +87,7 @@ function readElement(reader: DataReader, type: number) : ThriftType {
     return values
   }
   case CompactType.STRUCT: {
-    /** @type {ThriftObject} */
-    const structValues = {}
+    const structValues: ThriftObject = {}
     let lastFid = 0
     while (true) {
       const [fieldType, fid, newLastFid] = readFieldBegin(reader, lastFid)
@@ -111,11 +108,8 @@ function readElement(reader: DataReader, type: number) : ThriftType {
 /**
  * Var int aka Unsigned LEB128.
  * Reads groups of 7 low bits until high bit is 0.
- *
- * @param {DataReader} reader
- * @returns {number}
  */
-export function readVarInt(reader) {
+export function readVarInt(reader: DataReader): number {
   let result = 0
   let shift = 0
   while (true) {
@@ -130,11 +124,8 @@ export function readVarInt(reader) {
 
 /**
  * Read a varint as a bigint.
- *
- * @param {DataReader} reader
- * @returns {bigint}
  */
-function readVarBigInt(reader) {
+function readVarBigInt(reader: DataReader): bigint {
   let result = 0n
   let shift = 0n
   while (true) {
@@ -150,11 +141,8 @@ function readVarBigInt(reader) {
 /**
  * Values of type int32 and int64 are transformed to a zigzag int.
  * A zigzag int folds positive and negative numbers into the positive number space.
- *
- * @param {DataReader} reader
- * @returns {number}
  */
-export function readZigZag(reader) {
+export function readZigZag(reader: DataReader): number {
   const zigzag = readVarInt(reader)
   // convert zigzag to int
   return zigzag >>> 1 ^ -(zigzag & 1)
@@ -163,11 +151,8 @@ export function readZigZag(reader) {
 /**
  * A zigzag int folds positive and negative numbers into the positive number space.
  * This version returns a BigInt.
- *
- * @param {DataReader} reader
- * @returns {bigint}
  */
-export function readZigZagBigInt(reader) {
+export function readZigZagBigInt(reader: DataReader): bigint {
   const zigzag = readVarBigInt(reader)
   // convert zigzag to int
   return zigzag >> 1n ^ -(zigzag & 1n)
@@ -176,11 +161,9 @@ export function readZigZagBigInt(reader) {
 /**
  * Read field type and field id
  *
- * @param {DataReader} reader
- * @param {number} lastFid
- * @returns {[number, number, number]} [type, fid, newLastFid]
+ * @returns [type, fid, newLastFid]
  */
-function readFieldBegin(reader, lastFid) {
+function readFieldBegin(reader: DataReader, lastFid: number): [number, number, number] {
   const byte = reader.view.getUint8(reader.offset++)
   const type = byte & 0x0f
   if (type === CompactType.STOP) {

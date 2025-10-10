@@ -1,5 +1,5 @@
-import { getMaxDefinitionLevel, isListLike, isMapLike } from './schema.js'
-import {DecodedArray, SchemaTree} from "./types.js";
+import {getMaxDefinitionLevel, isListLike, isMapLike} from './schema.js'
+import {DecodedArray, FieldRepetitionType, SchemaTree} from "./types.js";
 
 /**
  * Reconstructs a complex nested structure from flat arrays of values and
@@ -9,12 +9,12 @@ export function assembleLists(output: any[], definitionLevels: number[] | undefi
   const n = definitionLevels?.length || repetitionLevels.length
   if (!n) return values
   const maxDefinitionLevel = getMaxDefinitionLevel(schemaPath)
-  const repetitionPath = schemaPath.map(({ element }) => element.repetition_type)
+  const repetitionPath: (FieldRepetitionType | undefined)[] = schemaPath.map(({ element }) => element.repetition_type)
   let valueIndex = 0
 
   // Track state of nested structures
   const containerStack = [output]
-  let currentContainer = output
+  let currentContainer: any[] = output
   let currentDepth = 0 // schema depth
   let currentDefLevel = 0 // list depth
   let currentRepLevel = 0
@@ -23,13 +23,13 @@ export function assembleLists(output: any[], definitionLevels: number[] | undefi
     // continue previous row
     while (currentDepth < repetitionPath.length - 2 && currentRepLevel < repetitionLevels[0]) {
       currentDepth++
-      if (repetitionPath[currentDepth] !== 'REQUIRED') {
+      if (repetitionPath[currentDepth] !== FieldRepetitionType.REQUIRED) {
         // go into last list
         currentContainer = currentContainer.at(-1)
         containerStack.push(currentContainer)
         currentDefLevel++
       }
-      if (repetitionPath[currentDepth] === 'REPEATED') currentRepLevel++
+      if (repetitionPath[currentDepth] === FieldRepetitionType.REPEATED) currentRepLevel++
     }
   }
 
@@ -39,31 +39,32 @@ export function assembleLists(output: any[], definitionLevels: number[] | undefi
     const rep = repetitionLevels[i]
 
     // Pop up to start of rep level
-    while (currentDepth && (rep < currentRepLevel || repetitionPath[currentDepth] !== 'REPEATED')) {
-      if (repetitionPath[currentDepth] !== 'REQUIRED') {
+    while (currentDepth && (rep < currentRepLevel || repetitionPath[currentDepth] !== FieldRepetitionType.REPEATED)) {
+      if (repetitionPath[currentDepth] !== FieldRepetitionType.REQUIRED) {
         containerStack.pop()
         currentDefLevel--
       }
-      if (repetitionPath[currentDepth] === 'REPEATED') currentRepLevel--
+      if (repetitionPath[currentDepth] === FieldRepetitionType.REPEATED) currentRepLevel--
       currentDepth--
     }
 
+    // @ts-ignore
     currentContainer = containerStack.at(-1)
 
     // Go deeper to end of definition level
     while (
-      (currentDepth < repetitionPath.length - 2 || repetitionPath[currentDepth + 1] === 'REPEATED') &&
-      (currentDefLevel < def || repetitionPath[currentDepth + 1] === 'REQUIRED')
+      (currentDepth < repetitionPath.length - 2 || repetitionPath[currentDepth + 1] === FieldRepetitionType.REPEATED) &&
+      (currentDefLevel < def || repetitionPath[currentDepth + 1] === FieldRepetitionType.REQUIRED)
     ) {
       currentDepth++
-      if (repetitionPath[currentDepth] !== 'REQUIRED') {
+      if (repetitionPath[currentDepth] !== FieldRepetitionType.REQUIRED) {
         const newList: any[] = []
         currentContainer.push(newList)
         currentContainer = newList
         containerStack.push(newList)
         currentDefLevel++
       }
-      if (repetitionPath[currentDepth] === 'REPEATED') currentRepLevel++
+      if (repetitionPath[currentDepth] === FieldRepetitionType.REPEATED) currentRepLevel++
     }
 
     // Add value or null based on definition level
@@ -100,7 +101,7 @@ export function assembleLists(output: any[], definitionLevels: number[] | undefi
  */
 export function assembleNested(subcolumnData: Map<string, DecodedArray>, schema: SchemaTree, depth: number = 0) {
   const path = schema.path.join('.')
-  const optional = schema.element.repetition_type === 'OPTIONAL'
+  const optional = schema.element.repetition_type === FieldRepetitionType.OPTIONAL
   const nextDepth = optional ? depth + 1 : depth
 
   if (isListLike(schema)) {
@@ -149,7 +150,7 @@ export function assembleNested(subcolumnData: Map<string, DecodedArray>, schema:
   // Struct-like column
   if (schema.children.length) {
     // construct a meta struct and then invert
-    const invertDepth = schema.element.repetition_type === 'REQUIRED' ? depth : depth + 1
+    const invertDepth = schema.element.repetition_type === FieldRepetitionType.REQUIRED ? depth : depth + 1
     const struct: Record<string, any> = {}
     for (const child of schema.children) {
       assembleNested(subcolumnData, child, invertDepth)

@@ -1,21 +1,21 @@
 import { readVarInt, readZigZagBigInt } from './thrift.js'
+import {DataReader} from "./types.js";
 
 /**
- * @import {DataReader} from '../src/types.d.ts'
- * @param {DataReader} reader
- * @param {number} count number of values to read
- * @param {Int32Array | BigInt64Array} output
+ * @param reader
+ * @param count number of values to read
+ * @param output
  */
-export function deltaBinaryUnpack(reader, count, output) {
-  const int32 = output instanceof Int32Array
-  const blockSize = readVarInt(reader)
-  const miniblockPerBlock = readVarInt(reader)
+export function deltaBinaryUnpack(reader: DataReader, count: number, output: Int32Array | BigInt64Array) {
+  const int32: boolean = output instanceof Int32Array
+  const blockSize: number = readVarInt(reader)
+  const miniblockPerBlock: number = readVarInt(reader)
   readVarInt(reader) // assert(=== count)
-  let value = readZigZagBigInt(reader) // first value
-  let outputIndex = 0
+  let value: bigint = readZigZagBigInt(reader) // first value
+  let outputIndex: number = 0
   output[outputIndex++] = int32 ? Number(value) : value
 
-  const valuesPerMiniblock = blockSize / miniblockPerBlock
+  const valuesPerMiniblock: number = blockSize / miniblockPerBlock
 
   while (outputIndex < count) {
     // new block
@@ -66,7 +66,7 @@ export function deltaBinaryUnpack(reader, count, output) {
  * @param {number} count
  * @param {Uint8Array[]} output
  */
-export function deltaLengthByteArray(reader, count, output) {
+export function deltaLengthByteArray(reader: DataReader, count: number, output: Uint8Array[]) {
   const lengths = new Int32Array(count)
   deltaBinaryUnpack(reader, count, lengths)
   for (let i = 0; i < count; i++) {
@@ -75,12 +75,7 @@ export function deltaLengthByteArray(reader, count, output) {
   }
 }
 
-/**
- * @param {DataReader} reader
- * @param {number} count
- * @param {Uint8Array[]} output
- */
-export function deltaByteArray(reader, count, output) {
+export function deltaByteArray(reader: DataReader, count: number, output: Uint8Array[]) {
   const prefixData = new Int32Array(count)
   deltaBinaryUnpack(reader, count, prefixData)
   const suffixData = new Int32Array(count)

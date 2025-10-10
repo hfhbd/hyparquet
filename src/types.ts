@@ -127,48 +127,49 @@ export interface SchemaElement {
   logical_type?: LogicalType
 }
 
-export type ParquetType =
-  | 'BOOLEAN'
-  | 'INT32'
-  | 'INT64'
-  | 'INT96' // deprecated
-  | 'FLOAT'
-  | 'DOUBLE'
-  | 'BYTE_ARRAY'
-  | 'FIXED_LEN_BYTE_ARRAY'
+export enum ParquetType {
+    BOOLEAN,
+    INT32,
+    INT64,
+    INT96, // deprecated
+    FLOAT,
+    DOUBLE,
+    BYTE_ARRAY,
+    FIXED_LEN_BYTE_ARRAY,
+}
 
-export type FieldRepetitionType =
-  | 'REQUIRED'
-  | 'OPTIONAL'
-  | 'REPEATED'
+export enum FieldRepetitionType {
+    REQUIRED,
+    OPTIONAL,
+    REPEATED
+}
 
-export type ConvertedType =
-  | 'UTF8'
-  | 'MAP'
-  | 'MAP_KEY_VALUE'
-  | 'LIST'
-  | 'ENUM'
-  | 'DECIMAL'
-  | 'DATE'
-  | 'TIME_MILLIS'
-  | 'TIME_MICROS'
-  | 'TIMESTAMP_MILLIS'
-  | 'TIMESTAMP_MICROS'
-  | 'UINT_8'
-  | 'UINT_16'
-  | 'UINT_32'
-  | 'UINT_64'
-  | 'INT_8'
-  | 'INT_16'
-  | 'INT_32'
-  | 'INT_64'
-  | 'JSON'
-  | 'BSON'
-  | 'INTERVAL'
+export enum ConvertedType {
+    UTF8,
+    MAP,
+    MAP_KEY_VALUE,
+    LIST,
+    ENUM,
+    DECIMAL,
+    DATE,
+    TIME_MILLIS,
+    TIME_MICROS,
+    TIMESTAMP_MILLIS,
+    TIMESTAMP_MICROS,
+    UINT_8,
+    UINT_16,
+    UINT_32,
+    UINT_64,
+    INT_8,
+    INT_16,
+    INT_32,
+    INT_64,
+    JSON,
+    BSON,
+    INTERVAL
+}
 
-export type TimeUnit = 'MILLIS' | 'MICROS' | 'NANOS'
-
-type EdgeInterpolationAlgorithm = 'SPHERICAL' | 'VINCENTY' | 'THOMAS' | 'ANDOYER' | 'KARNEY'
+export enum TimeUnit { MILLIS, MICROS, NANOS }
 
 export type LogicalType =
   | { type: 'STRING' }
@@ -187,8 +188,6 @@ export type LogicalType =
   | { type: 'TIME', isAdjustedToUTC: boolean, unit: TimeUnit }
   | { type: 'TIMESTAMP', isAdjustedToUTC: boolean, unit: TimeUnit }
   | { type: 'INTEGER', bitWidth: number, isSigned: boolean }
-  | { type: 'GEOMETRY', crs?: string }
-  | { type: 'GEOGRAPHY', crs?: string, algorithm?: EdgeInterpolationAlgorithm }
 
 export type LogicalTypeType = LogicalType['type']
 
@@ -235,28 +234,29 @@ export interface ColumnMetaData {
 
 type ColumnCryptoMetaData = Record<string, never>
 
-export type Encoding =
-  | 'PLAIN'
-  | 'GROUP_VAR_INT' // deprecated
-  | 'PLAIN_DICTIONARY'
-  | 'RLE'
-  | 'BIT_PACKED' // deprecated
-  | 'DELTA_BINARY_PACKED'
-  | 'DELTA_LENGTH_BYTE_ARRAY'
-  | 'DELTA_BYTE_ARRAY'
-  | 'RLE_DICTIONARY'
-  | 'BYTE_STREAM_SPLIT'
+export enum Encoding {
+    PLAIN,
+    GROUP_VAR_INT, // deprecated
+    PLAIN_DICTIONARY,
+    RLE,
+    BIT_PACKED, // deprecated
+    DELTA_BINARY_PACKED,
+    DELTA_LENGTH_BYTE_ARRAY,
+    DELTA_BYTE_ARRAY,
+    RLE_DICTIONARY,
+    BYTE_STREAM_SPLIT
+}
 
-export type CompressionCodec =
-  | 'UNCOMPRESSED'
-  | 'SNAPPY'
-  | 'GZIP'
-  | 'LZO'
-  | 'BROTLI'
-  | 'LZ4'
-  | 'ZSTD'
-  | 'LZ4_RAW'
-
+export enum CompressionCodec {
+    UNCOMPRESSED,
+    SNAPPY,
+    GZIP,
+    LZO,
+    BROTLI,
+    LZ4,
+    ZSTD,
+    LZ4_RAW
+}
 export type Compressors = {
   [K in CompressionCodec]?: (input: Uint8Array, outputLength: number) => Uint8Array
 }
@@ -291,11 +291,12 @@ interface PageEncodingStats {
   count: number
 }
 
-export type PageType =
-  'DATA_PAGE' |
-  'INDEX_PAGE' |
-  'DICTIONARY_PAGE' |
-  'DATA_PAGE_V2'
+export enum PageType {
+  DATA_PAGE,
+  INDEX_PAGE,
+  DICTIONARY_PAGE,
+  DATA_PAGE_V2
+}
 
 interface SortingColumn {
   column_idx: number
@@ -342,7 +343,7 @@ export interface DataPageHeaderV2 {
   statistics?: Statistics
 }
 
-interface DataPage {
+export interface DataPage {
   definitionLevels: number[] | undefined
   repetitionLevels: number[]
   dataPage: DecodedArray
@@ -363,7 +364,7 @@ export interface OffsetIndex {
   unencoded_byte_array_data_bytes?: bigint[]
 }
 
-interface PageLocation {
+export interface PageLocation {
   offset: bigint
   compressed_page_size: number
   first_row_index: bigint
@@ -379,7 +380,7 @@ export interface ColumnIndex {
   definition_level_histograms?: bigint[]
 }
 
-export type BoundaryOrder = 'UNORDERED' | 'ASCENDING' | 'DESCENDING'
+export enum BoundaryOrder { UNORDERED, ASCENDING, DESCENDING }
 
 export type ThriftObject = { [ key: `field_${number}` ]: ThriftType }
 export type ThriftType = boolean | number | bigint | Uint8Array | ThriftType[] | ThriftObject
@@ -396,7 +397,7 @@ export interface QueryPlan {
   groups: GroupPlan[] // byte ranges by row group
 }
 // Plan for one group
-interface GroupPlan {
+export interface GroupPlan {
   ranges: ByteRange[]
   rowGroup: RowGroup // row group metadata
   groupStart: number // row index of the first row in the group
@@ -431,66 +432,4 @@ export interface AsyncRowGroup {
   groupStart: number
   groupRows: number
   asyncColumns: AsyncColumn[]
-}
-
-/**
- * Geometry types based on the GeoJSON specification (RFC 7946)
- */
-export type Geometry =
-  | Point
-  | MultiPoint
-  | LineString
-  | MultiLineString
-  | Polygon
-  | MultiPolygon
-  | GeometryCollection
-
-/**
- * Position is an array of at least two numbers.
- * The order should be [longitude, latitude] with optional properties (eg- altitude).
- */
-export type Position = number[]
-
-export interface Point {
-  type: 'Point'
-  coordinates: Position
-}
-
-export interface MultiPoint {
-  type: 'MultiPoint'
-  coordinates: Position[]
-}
-
-export interface LineString {
-  type: 'LineString'
-  coordinates: Position[]
-}
-
-/**
- * Each element is one LineString.
- */
-export interface MultiLineString {
-  type: 'MultiLineString'
-  coordinates: Position[][]
-}
-
-/**
- * Each element is a linear ring.
- */
-export interface Polygon {
-  type: 'Polygon'
-  coordinates: Position[][]
-}
-
-/**
- * Each element is one Polygon.
- */
-export interface MultiPolygon {
-  type: 'MultiPolygon'
-  coordinates: Position[][][]
-}
-
-export interface GeometryCollection {
-  type: 'GeometryCollection'
-  geometries: Geometry[]
 }

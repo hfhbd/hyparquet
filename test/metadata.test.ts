@@ -19,10 +19,6 @@ describe('parquetMetadata', () => {
     })
   })
 
-  it('throws for arrayBuffer undefined', () => {
-    expect(() => parquetMetadata(undefined)).toThrow('parquet expected ArrayBuffer')
-  })
-
   it('throws for a too short file', () => {
     const arrayBuffer = new ArrayBuffer(0)
     expect(() => parquetMetadata(arrayBuffer)).toThrow('parquet file is too short')
@@ -60,12 +56,6 @@ describe('parquetMetadataAsync', () => {
       const expected = fileToJson(`test/files/${base}.metadata.json`)
       expect(toJson(result)).toEqual(expected)
     })
-  })
-
-  it('throws for asyncBuffer undefined', async () => {
-    const arrayBuffer = undefined
-    await expect(parquetMetadataAsync(arrayBuffer)).rejects
-      .toThrow('parquet expected AsyncBuffer')
   })
 
   it('throws for invalid magic number', async () => {

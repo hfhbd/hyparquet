@@ -2,7 +2,7 @@ import { parquetMetadataAsync, parquetSchema } from './metadata.js'
 import { parquetPlan, prefetchAsyncBuffer } from './plan.js'
 import { assembleAsync, asyncGroupToRows, readRowGroup } from './rowgroup.js'
 import { concat, flatten } from './utils.js'
-import {ParquetReadOptions} from "./types.js";
+import {AsyncRowGroup, BaseParquetReadOptions, DecodedArray, ParquetReadOptions, QueryPlan} from "./types.js";
 
 /**
  * @import {AsyncRowGroup, DecodedArray, ParquetReadOptions, BaseParquetReadOptions} from '../src/types.js'
@@ -19,7 +19,7 @@ import {ParquetReadOptions} from "./types.js";
  * @param {ParquetReadOptions} options read options
  * @returns {Promise<void>} resolves when all requested rows and columns are parsed, all errors are thrown here
  */
-export async function parquetRead(options) {
+export async function parquetRead(options: ParquetReadOptions): Promise<void> {
   // load metadata if not provided
   options.metadata ??= await parquetMetadataAsync(options.file)
 
@@ -63,8 +63,7 @@ export async function parquetRead(options) {
   // onComplete transpose column chunks to rows
   if (onComplete) {
     // loosen the types to avoid duplicate code
-    /** @type {any[]} */
-    const rows = []
+    const rows: any[] = []
     for (const asyncGroup of assembled) {
       // filter to rows in range
       const selectStart = Math.max(rowStart - asyncGroup.groupStart, 0)
@@ -84,16 +83,12 @@ export async function parquetRead(options) {
   }
 }
 
-/**
- * @param {ParquetReadOptions} options read options
- * @returns {AsyncRowGroup[]}
- */
-export function parquetReadAsync(options) {
+export function parquetReadAsync(options: ParquetReadOptions): AsyncRowGroup[] {
   if (!options.metadata) throw new Error('parquet requires metadata')
   // TODO: validate options (start, end, columns, etc)
 
   // prefetch byte ranges
-  const plan = parquetPlan(options)
+  const plan: QueryPlan = parquetPlan(options)
   options.file = prefetchAsyncBuffer(options.file, plan)
 
   // read row groups
@@ -102,11 +97,8 @@ export function parquetReadAsync(options) {
 
 /**
  * Reads a single column from a parquet file.
- *
- * @param {BaseParquetReadOptions} options
- * @returns {Promise<DecodedArray>}
  */
-export async function parquetReadColumn(options) {
+export async function parquetReadColumn(options: BaseParquetReadOptions): Promise<DecodedArray> {
   if (options.columns?.length !== 1) {
     throw new Error('parquetReadColumn expected columns: [columnName]')
   }
@@ -117,8 +109,7 @@ export async function parquetReadColumn(options) {
   const schemaTree = parquetSchema(options.metadata)
   const assembled = asyncGroups.map(arg => assembleAsync(arg, schemaTree))
 
-  /** @type {DecodedArray[]} */
-  const columnData = []
+  const columnData: DecodedArray[] = []
   for (const rg of assembled) {
     columnData.push(flatten(await rg.asyncColumns[0].data))
   }

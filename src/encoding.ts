@@ -1,12 +1,10 @@
 import { readVarInt } from './thrift.js'
+import {DataReader, DecodedArray, ParquetType} from "./types.js";
 
 /**
  * Minimum bits needed to store value.
- *
- * @param {number} value
- * @returns {number}
  */
-export function bitWidth(value) {
+export function bitWidth(value: number): number {
   return 32 - Math.clz32(value)
 }
 
@@ -20,7 +18,7 @@ export function bitWidth(value) {
  * @param {DecodedArray} output
  * @param {number} [length] - length of the encoded data
  */
-export function readRleBitPackedHybrid(reader, width, output, length?: number) {
+export function readRleBitPackedHybrid(reader: DataReader, width: number, output: DecodedArray, length?: number) {
   if (length === undefined) {
     length = reader.view.getUint32(reader.offset, true)
     reader.offset += 4
@@ -51,7 +49,7 @@ export function readRleBitPackedHybrid(reader, width, output, length?: number) {
  * @param {DecodedArray} output
  * @param {number} seen
  */
-function readRle(reader, count, bitWidth, output, seen) {
+function readRle(reader: DataReader, count: number, bitWidth: number, output: DecodedArray, seen: number) {
   const width = bitWidth + 7 >> 3
   let value = 0
   for (let i = 0; i < width; i++) {
@@ -76,11 +74,11 @@ function readRle(reader, count, bitWidth, output, seen) {
  * @param {number} seen
  * @returns {number} total output values so far
  */
-function readBitPacked(reader, header, bitWidth, output, seen) {
+function readBitPacked(reader: DataReader, header: number, bitWidth: number, output: DecodedArray, seen: number): number {
   let count = header >> 1 << 3 // values to read
   const mask = (1 << bitWidth) - 1
 
-  let data = 0
+  let data: number = 0
   if (reader.offset < reader.view.byteLength) {
     data = reader.view.getUint8(reader.offset++)
   } else if (mask) {
@@ -122,7 +120,7 @@ function readBitPacked(reader, header, bitWidth, output, seen) {
  * @param {number | undefined} typeLength
  * @returns {DecodedArray}
  */
-export function byteStreamSplit(reader, count, type, typeLength) {
+export function byteStreamSplit(reader: DataReader, count: number, type: ParquetType, typeLength: number | undefined): DecodedArray {
   const width = byteWidth(type, typeLength)
   const bytes = new Uint8Array(count * width)
   for (let b = 0; b < width; b++) {
@@ -131,11 +129,11 @@ export function byteStreamSplit(reader, count, type, typeLength) {
     }
   }
   // interpret bytes as typed array
-  if (type === 'FLOAT') return new Float32Array(bytes.buffer)
-  else if (type === 'DOUBLE') return new Float64Array(bytes.buffer)
-  else if (type === 'INT32') return new Int32Array(bytes.buffer)
-  else if (type === 'INT64') return new BigInt64Array(bytes.buffer)
-  else if (type === 'FIXED_LEN_BYTE_ARRAY') {
+  if (type === ParquetType.FLOAT) return new Float32Array(bytes.buffer)
+  else if (type === ParquetType.DOUBLE) return new Float64Array(bytes.buffer)
+  else if (type === ParquetType.INT32) return new Int32Array(bytes.buffer)
+  else if (type === ParquetType.INT64) return new BigInt64Array(bytes.buffer)
+  else if (type === ParquetType.FIXED_LEN_BYTE_ARRAY) {
     // split into arrays of typeLength
     const split = new Array(count)
     for (let i = 0; i < count; i++) {
@@ -152,15 +150,15 @@ export function byteStreamSplit(reader, count, type, typeLength) {
  * @param {number | undefined} typeLength
  * @returns {number}
  */
-function byteWidth(type, typeLength) {
+function byteWidth(type: ParquetType, typeLength: number | undefined): number {
   switch (type) {
-  case 'INT32':
-  case 'FLOAT':
+  case ParquetType.INT32:
+  case ParquetType.FLOAT:
     return 4
-  case 'INT64':
-  case 'DOUBLE':
+  case ParquetType.INT64:
+  case ParquetType.DOUBLE:
     return 8
-  case 'FIXED_LEN_BYTE_ARRAY':
+  case ParquetType.FIXED_LEN_BYTE_ARRAY:
     if (!typeLength) throw new Error('parquet byteWidth missing type_length')
     return typeLength
   default:

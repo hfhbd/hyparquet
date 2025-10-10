@@ -116,11 +116,8 @@ describe('readVarInt', () => {
 
 /**
  * Convert int to varint. Outputs 1-5 bytes for int32.
- *
- * @param {number} n
- * @returns {number[]}
  */
-function toVarInt(n) {
+function toVarInt(n: number): number[] {
   let idx = 0
   const varInt = []
   while (true) {

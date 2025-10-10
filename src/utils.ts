@@ -1,21 +1,20 @@
 import { defaultInitialFetchSize } from './metadata.js'
-import {DecodedArray} from "./types.js";
+import {AsyncBuffer, Awaitable, DecodedArray} from "./types.js";
 
 /**
- * Replace bigint, date, etc with legal JSON types.
+ * Replace bigint, date, etc. with legal JSON types.
  *
- * @param {any} obj object to convert
- * @returns {unknown} converted object
+ * @param obj object to convert
+ * @returns converted object
  */
-export function toJson(obj) {
+export function toJson(obj: any): unknown {
   if (obj === undefined) return null
   if (typeof obj === 'bigint') return Number(obj)
   if (Array.isArray(obj)) return obj.map(toJson)
   if (obj instanceof Uint8Array) return Array.from(obj)
   if (obj instanceof Date) return obj.toISOString()
   if (obj instanceof Object) {
-    /** @type {Record<string, unknown>} */
-    const newObj = {}
+    const newObj: Record<string, unknown> = {}
     for (const key of Object.keys(obj)) {
       if (obj[key] === undefined) continue
       newObj[key] = toJson(obj[key])
@@ -27,9 +26,6 @@ export function toJson(obj) {
 
 /**
  * Concatenate two arrays fast.
- *
- * @param {any[]} aaa first array
- * @param {DecodedArray} bbb second array
  */
 export function concat(aaa: any[], bbb: DecodedArray) {
   const chunk = 10000
@@ -41,11 +37,11 @@ export function concat(aaa: any[], bbb: DecodedArray) {
 /**
  * Deep equality comparison
  *
- * @param {any} a First object to compare
- * @param {any} b Second object to compare
- * @returns {boolean} true if objects are equal
+ * @param a First object to compare
+ * @param b Second object to compare
+ * @returns true if objects are equal
  */
-export function equals(a, b) {
+export function equals(a: any, b: any): boolean {
   if (a === b) return true
   if (a instanceof Uint8Array && b instanceof Uint8Array) return equals(Array.from(a), Array.from(b))
   if (!a || !b || typeof a !== typeof b) return false
@@ -57,13 +53,8 @@ export function equals(a, b) {
 /**
  * Get the byte length of a URL using a HEAD request.
  * If requestInit is provided, it will be passed to fetch.
- *
- * @param {string} url
- * @param {RequestInit} [requestInit] fetch options
- * @param {typeof globalThis.fetch} [customFetch] fetch function to use
- * @returns {Promise<number>}
  */
-export async function byteLengthFromUrl(url, requestInit, customFetch) {
+export async function byteLengthFromUrl(url: string, requestInit?: RequestInit, customFetch?: typeof globalThis.fetch): Promise<number> {
   const fetch = customFetch ?? globalThis.fetch
   return await fetch(url, { ...requestInit, method: 'HEAD' })
     .then(res => {
@@ -79,15 +70,8 @@ export async function byteLengthFromUrl(url, requestInit, customFetch) {
  * If byteLength is not provided, will make a HEAD request to get the file size.
  * If fetch is provided, it will be used instead of the global fetch.
  * If requestInit is provided, it will be passed to fetch.
- *
- * @param {object} options
- * @param {string} options.url
- * @param {number} [options.byteLength]
- * @param {typeof globalThis.fetch} [options.fetch] fetch function to use
- * @param {RequestInit} [options.requestInit]
- * @returns {Promise<AsyncBuffer>}
  */
-export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: customFetch }) {
+export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: customFetch }: { url: string; byteLength?: number; fetch?: typeof globalThis.fetch; requestInit?: RequestInit; }): Promise<AsyncBuffer> {
   if (!url) throw new Error('missing url')
   const fetch = customFetch ?? globalThis.fetch
   // byte length from HEAD request
@@ -95,9 +79,8 @@ export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: 
 
   /**
    * A promise for the whole buffer, if range requests are not supported.
-   * @type {Promise<ArrayBuffer>|undefined}
    */
-  let buffer = undefined
+  let buffer: Promise<ArrayBuffer> | undefined = undefined
   const init = requestInit || {}
 
   return {
@@ -132,11 +115,13 @@ export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: 
  * Returns a cached layer on top of an AsyncBuffer. For caching slices of a file
  * that are read multiple times, possibly over a network.
  *
- * @param {AsyncBuffer} file file-like object to cache
+ * @param file file-like object to cache
  * @param {{ minSize?: number }} [options]
- * @returns {AsyncBuffer} cached file-like object
+ * @returns cached file-like object
  */
-export function cachedAsyncBuffer({ byteLength, slice }, { minSize = defaultInitialFetchSize } = {}) {
+export function cachedAsyncBuffer({ byteLength, slice }: AsyncBuffer, {minSize = defaultInitialFetchSize}: {
+  minSize?: number;
+} = {}): AsyncBuffer {
   if (byteLength < minSize) {
     // Cache whole file if it's small
     const buffer = slice(0, byteLength)
@@ -155,7 +140,7 @@ export function cachedAsyncBuffer({ byteLength, slice }, { minSize = defaultInit
      * @param {number} [end]
      * @returns {Awaitable<ArrayBuffer>}
      */
-    slice(start, end) {
+    slice(start: number, end: number): Awaitable<ArrayBuffer> {
       const key = cacheKey(start, end, byteLength)
       const cached = cache.get(key)
       if (cached) return cached
@@ -172,13 +157,11 @@ export function cachedAsyncBuffer({ byteLength, slice }, { minSize = defaultInit
  * Returns canonical cache key for a byte range 'start,end'.
  * Normalize int-range and suffix-range requests to the same key.
  *
- * @import {AsyncBuffer, Awaitable, DecodedArray} from '../src/types.d.ts'
- * @param {number} start start byte of range
- * @param {number} [end] end byte of range, or undefined for suffix range
- * @param {number} [size] size of file, or undefined for suffix range
- * @returns {string}
+ * @param start start byte of range
+ * @param [end] end byte of range, or undefined for suffix range
+ * @param [size] size of file, or undefined for suffix range
  */
-function cacheKey(start, end, size) {
+function cacheKey(start: number, end: number, size: number): string {
   if (start < 0) {
     if (end !== undefined) throw new Error(`invalid suffix range [${start}, ${end}]`)
     if (size === undefined) return `${start},`
@@ -195,9 +178,6 @@ function cacheKey(start, end, size) {
 
 /**
  * Flatten a list of lists into a single list.
- *
- * @param {DecodedArray[]} [chunks]
- * @returns {DecodedArray}
  */
 export function flatten(chunks: DecodedArray[]): DecodedArray {
   if (!chunks) return []

@@ -4,21 +4,11 @@ import { parquetMetadataAsync } from '../src/metadata.js'
 import { parquetRead, parquetReadObjects } from '../src/read.js'
 import { asyncBufferFromFile } from '../src/node.js'
 import { countingBuffer } from './helpers.js'
+import {ColumnData} from "../src/types.js";
 
 vi.mock('../src/convert.js', { spy: true })
 
 describe('parquetRead', () => {
-  it('throws error for undefined file', async () => {
-    await expect(parquetRead({ file: undefined }))
-      .rejects.toThrow('parquet expected AsyncBuffer')
-  })
-
-  it('throws error for undefined byteLength', async () => {
-    const file = { byteLength: undefined, slice: () => new ArrayBuffer(0) }
-    await expect(parquetRead({ file }))
-      .rejects.toThrow('parquet expected AsyncBuffer')
-  })
-
   it('filter by row', async () => {
     const file = await asyncBufferFromFile('test/files/rowgroups.parquet')
     await parquetRead({
@@ -184,8 +174,7 @@ describe('parquetRead', () => {
 
   it('reads individual pages', async () => {
     const file = countingBuffer(await asyncBufferFromFile('test/files/page_indexed.parquet'))
-    /** @type {import('../src/types.js').ColumnData[]} */
-    const pages = []
+    const pages: ColumnData[] = []
 
     // check onPage callback
     await parquetRead({

@@ -1,40 +1,31 @@
-import { describe, expect, it } from 'vitest'
-import {
-  getMaxDefinitionLevel,
-  getMaxRepetitionLevel,
-  getSchemaPath,
-  isListLike,
-  isMapLike,
-} from '../src/schema.js'
+import {describe, expect, it} from 'vitest'
+import {getMaxDefinitionLevel, getMaxRepetitionLevel, getSchemaPath, isListLike, isMapLike,} from '../src/schema.js'
+import {ConvertedType, FieldRepetitionType, SchemaElement} from "../src/types.js";
 
 describe('Parquet schema utils', () => {
-  /**
-   * @import {SchemaElement} from '../src/types.js'
-   * @type {SchemaElement[]}
-   */
-  const schema = [
+  const schema: SchemaElement[] = [
     { name: 'root', num_children: 7 },
-    { name: 'flat', repetition_type: 'OPTIONAL' },
-    { name: 'listy', repetition_type: 'OPTIONAL', num_children: 1, converted_type: 'LIST' },
-    { name: 'list', repetition_type: 'REPEATED', num_children: 1 },
-    { name: 'element', repetition_type: 'REQUIRED' },
-    { name: 'mappy', repetition_type: 'OPTIONAL', num_children: 1, converted_type: 'MAP' },
-    { name: 'map', repetition_type: 'REPEATED', num_children: 2 },
-    { name: 'key', repetition_type: 'REQUIRED' },
-    { name: 'value', repetition_type: 'OPTIONAL' },
-    { name: 'invalid_list', repetition_type: 'OPTIONAL', num_children: 2, converted_type: 'LIST' },
-    { name: 'list1', repetition_type: 'REPEATED' },
-    { name: 'list2', repetition_type: 'REPEATED' },
-    { name: 'structy', repetition_type: 'OPTIONAL', num_children: 2, converted_type: 'LIST' },
-    { name: 'element1', repetition_type: 'REQUIRED' },
-    { name: 'element2', repetition_type: 'REQUIRED' },
-    { name: 'list_structy', repetition_type: 'OPTIONAL', num_children: 1, converted_type: 'LIST' },
-    { name: 'list', repetition_type: 'REPEATED', num_children: 2 },
-    { name: 'element1', repetition_type: 'REQUIRED' },
-    { name: 'element2', repetition_type: 'REQUIRED' },
-    { name: 'invalid_list', repetition_type: 'OPTIONAL', num_children: 1, converted_type: 'LIST' },
-    { name: 'list', repetition_type: 'OPTIONAL', num_children: 1 },
-    { name: 'element', repetition_type: 'OPTIONAL' },
+    { name: 'flat', repetition_type: FieldRepetitionType.OPTIONAL },
+    { name: 'listy', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 1, converted_type: ConvertedType.LIST },
+    { name: 'list', repetition_type: FieldRepetitionType.REPEATED, num_children: 1 },
+    { name: 'element', repetition_type: FieldRepetitionType.REQUIRED },
+    { name: 'mappy', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 1, converted_type: ConvertedType.MAP },
+    { name: 'map', repetition_type: FieldRepetitionType.REPEATED, num_children: 2 },
+    { name: 'key', repetition_type: FieldRepetitionType.REQUIRED },
+    { name: 'value', repetition_type: FieldRepetitionType.OPTIONAL },
+    { name: 'invalid_list', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 2, converted_type: ConvertedType.LIST },
+    { name: 'list1', repetition_type: FieldRepetitionType.REPEATED },
+    { name: 'list2', repetition_type: FieldRepetitionType.REPEATED },
+    { name: 'structy', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 2, converted_type: ConvertedType.LIST },
+    { name: 'element1', repetition_type: FieldRepetitionType.REQUIRED },
+    { name: 'element2', repetition_type: FieldRepetitionType.REQUIRED },
+    { name: 'list_structy', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 1, converted_type: ConvertedType.LIST },
+    { name: 'list', repetition_type: FieldRepetitionType.REPEATED, num_children: 2 },
+    { name: 'element1', repetition_type: FieldRepetitionType.REQUIRED },
+    { name: 'element2', repetition_type: FieldRepetitionType.REQUIRED },
+    { name: 'invalid_list', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 1, converted_type: ConvertedType.LIST },
+    { name: 'list', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 1 },
+    { name: 'element', repetition_type: FieldRepetitionType.OPTIONAL },
   ]
 
   describe('getSchemaPath', () => {
@@ -52,7 +43,7 @@ describe('Parquet schema utils', () => {
       expect(getSchemaPath(schema, ['flat']).at(-1)).toEqual({
         children: [],
         count: 1,
-        element: { name: 'flat', repetition_type: 'OPTIONAL' },
+        element: { name: 'flat', repetition_type: 1 },
         path: ['flat'],
       })
     })

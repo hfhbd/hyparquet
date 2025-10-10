@@ -1,10 +1,19 @@
-import { assembleLists } from './assemble.js'
-import { Encoding, PageType } from './constants.js'
-import { convert, convertWithDictionary } from './convert.js'
-import { decompressPage, readDataPage, readDataPageV2 } from './datapage.js'
-import { readPlain } from './plain.js'
-import { isFlatColumn } from './schema.js'
-import { deserializeTCompactProtocol } from './thrift.js'
+import {assembleLists} from './assemble.js'
+import {
+  ColumnData,
+  ColumnDecoder, DataPageHeader, DataPageHeaderV2,
+  DataReader,
+  DecodedArray, DictionaryPageHeader,
+  FieldRepetitionType,
+  PageHeader,
+  PageType,
+  RowGroupSelect
+} from './types.js'
+import {convert, convertWithDictionary} from './convert.js'
+import {decompressPage, readDataPage, readDataPageV2} from './datapage.js'
+import {readPlain} from './plain.js'
+import {isFlatColumn} from './schema.js'
+import {deserializeTCompactProtocol} from './thrift.js'
 
 /**
  * Parse column data from a buffer.
@@ -15,15 +24,16 @@ import { deserializeTCompactProtocol } from './thrift.js'
  * @param {(chunk: ColumnData) => void} [onPage] callback for each page
  * @returns {DecodedArray[]}
  */
-export function readColumn(reader, { groupStart, selectStart, selectEnd }, columnDecoder, onPage) {
+export function readColumn(reader: DataReader, {
+  groupStart,
+  selectStart,
+  selectEnd
+}: RowGroupSelect, columnDecoder: ColumnDecoder, onPage: (chunk: ColumnData) => void =  _ => {}): DecodedArray[] {
   const { columnName, schemaPath } = columnDecoder
   const isFlat = isFlatColumn(schemaPath)
-  /** @type {DecodedArray[]} */
-  const chunks = []
-  /** @type {DecodedArray | undefined} */
-  let dictionary = undefined
-  /** @type {DecodedArray | undefined} */
-  let lastChunk = undefined
+  const chunks: DecodedArray[] = []
+  let dictionary: DecodedArray | undefined = undefined
+  let lastChunk: DecodedArray | undefined = undefined
   let rowCount = 0
 
   const emitLastChunk = onPage && (() => {
@@ -40,7 +50,7 @@ export function readColumn(reader, { groupStart, selectStart, selectEnd }, colum
 
     // read page header
     const header = parquetHeader(reader)
-    if (header.type === 'DICTIONARY_PAGE') {
+    if (header.type === PageType.DICTIONARY_PAGE) {
       // assert(!dictionary)
       dictionary = readPage(reader, header, columnDecoder, dictionary, undefined, 0)
       dictionary = convert(dictionary, columnDecoder)
@@ -78,7 +88,7 @@ export function readColumn(reader, { groupStart, selectStart, selectEnd }, colum
  * @param {number} pageStart skip this many rows in the page
  * @returns {DecodedArray}
  */
-export function readPage(reader, header, columnDecoder, dictionary, previousChunk, pageStart) {
+export function readPage(reader: DataReader, header: PageHeader, columnDecoder: ColumnDecoder, dictionary: DecodedArray | undefined, previousChunk: DecodedArray | undefined, pageStart: number): DecodedArray {
   const { type, element, schemaPath, codec, compressors } = columnDecoder
   // read compressed_page_size bytes
   const compressedBytes = new Uint8Array(
@@ -87,7 +97,7 @@ export function readPage(reader, header, columnDecoder, dictionary, previousChun
   reader.offset += header.compressed_page_size
 
   // parse page data by type
-  if (header.type === 'DATA_PAGE') {
+  if (header.type === PageType.DATA_PAGE.valueOf()) {
     const daph = header.data_page_header
     if (!daph) throw new Error('parquet data page header is undefined')
 
@@ -108,13 +118,13 @@ export function readPage(reader, header, columnDecoder, dictionary, previousChun
     } else {
       // wrap nested flat data by depth
       for (let i = 2; i < schemaPath.length; i++) {
-        if (schemaPath[i].element.repetition_type !== 'REQUIRED') {
+        if (schemaPath[i].element.repetition_type !== FieldRepetitionType.REQUIRED) {
           values = Array.from(values, e => [e])
         }
       }
       return values
     }
-  } else if (header.type === 'DATA_PAGE_V2') {
+  } else if (header.type === PageType.DATA_PAGE_V2) {
     const daph2 = header.data_page_header_v2
     if (!daph2) throw new Error('parquet data page header v2 is undefined')
 
@@ -130,7 +140,7 @@ export function readPage(reader, header, columnDecoder, dictionary, previousChun
     const values = convertWithDictionary(dataPage, dictionary, daph2.encoding, columnDecoder)
     const output = Array.isArray(previousChunk) ? previousChunk : []
     return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath)
-  } else if (header.type === 'DICTIONARY_PAGE') {
+  } else if (header.type === PageType.DICTIONARY_PAGE) {
     const diph = header.dictionary_page_header
     if (!diph) throw new Error('parquet dictionary page header is undefined')
 
@@ -147,24 +157,20 @@ export function readPage(reader, header, columnDecoder, dictionary, previousChun
 
 /**
  * Read parquet header from a buffer.
- *
- * @import {ColumnData, ColumnDecoder, DataReader, DecodedArray, PageHeader, RowGroupSelect} from '../src/types.d.ts'
- * @param {DataReader} reader
- * @returns {PageHeader}
  */
-function parquetHeader(reader) {
+function parquetHeader(reader: DataReader): PageHeader {
   const header = deserializeTCompactProtocol(reader)
 
   // Parse parquet header from thrift data
-  const type = PageType[header.field_1]
+  const type: PageType = header.field_1
   const uncompressed_page_size = header.field_2
   const compressed_page_size = header.field_3
   const crc = header.field_4
-  const data_page_header = header.field_5 && {
+  const data_page_header: DataPageHeader = header.field_5 && {
     num_values: header.field_5.field_1,
-    encoding: Encoding[header.field_5.field_2],
-    definition_level_encoding: Encoding[header.field_5.field_3],
-    repetition_level_encoding: Encoding[header.field_5.field_4],
+    encoding: header.field_5.field_2,
+    definition_level_encoding: header.field_5.field_3,
+    repetition_level_encoding: header.field_5.field_4,
     statistics: header.field_5.field_5 && {
       max: header.field_5.field_5.field_1,
       min: header.field_5.field_5.field_2,
@@ -175,16 +181,16 @@ function parquetHeader(reader) {
     },
   }
   const index_page_header = header.field_6
-  const dictionary_page_header = header.field_7 && {
+  const dictionary_page_header: DictionaryPageHeader = header.field_7 && {
     num_values: header.field_7.field_1,
-    encoding: Encoding[header.field_7.field_2],
+    encoding: header.field_7.field_2,
     is_sorted: header.field_7.field_3,
   }
-  const data_page_header_v2 = header.field_8 && {
+  const data_page_header_v2: DataPageHeaderV2 = header.field_8 && {
     num_values: header.field_8.field_1,
     num_nulls: header.field_8.field_2,
     num_rows: header.field_8.field_3,
-    encoding: Encoding[header.field_8.field_4],
+    encoding: header.field_8.field_4,
     definition_levels_byte_length: header.field_8.field_5,
     repetition_levels_byte_length: header.field_8.field_6,
     is_compressed: header.field_8.field_7 === undefined ? true : header.field_8.field_7, // default true

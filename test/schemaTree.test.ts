@@ -19,8 +19,8 @@ const rowgroupsSchema = {
       count: 1,
       element: {
         name: 'numbers',
-        repetition_type: 'OPTIONAL',
-        type: 'INT64',
+        repetition_type: 1,
+        type: 2,
       },
       path: ['numbers'],
     },
@@ -29,7 +29,7 @@ const rowgroupsSchema = {
   element: {
     name: 'schema',
     num_children: 1,
-    repetition_type: 'REQUIRED',
+    repetition_type: 0,
   },
   path: [],
 }

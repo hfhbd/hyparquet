@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { compressors } from 'hyparquet-compressors'
+import { compressors } from './helpers.ts'
 import { describe, expect, it } from 'vitest'
 import { parquetMetadataAsync } from '../src/metadata.js'
 import { parquetRead } from '../src/read.js'

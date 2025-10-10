@@ -1,13 +1,14 @@
+import {ConvertedType, FieldRepetitionType, SchemaElement, SchemaTree} from "./types.js";
+
 /**
  * Build a tree from the schema elements.
  *
- * @import {SchemaElement, SchemaTree} from '../src/types.d.ts'
  * @param {SchemaElement[]} schema
  * @param {number} rootIndex index of the root element
  * @param {string[]} path path to the element
  * @returns {SchemaTree} tree of schema elements
  */
-function schemaTree(schema, rootIndex, path) {
+function schemaTree(schema: SchemaElement[], rootIndex: number, path: string[]): SchemaTree {
   const element = schema[rootIndex]
   const children = []
   let count = 1
@@ -32,7 +33,7 @@ function schemaTree(schema, rootIndex, path) {
  * @param {string[]} name path to the element
  * @returns {SchemaTree[]} list of schema elements
  */
-export function getSchemaPath(schema, name) {
+export function getSchemaPath(schema: SchemaElement[], name: string[]): SchemaTree[] {
   let tree = schemaTree(schema, 0, [])
   const path = [tree]
   for (const part of name) {
@@ -50,10 +51,10 @@ export function getSchemaPath(schema, name) {
  * @param {SchemaTree[]} schemaPath
  * @returns {number} max repetition level
  */
-export function getMaxRepetitionLevel(schemaPath) {
+export function getMaxRepetitionLevel(schemaPath: SchemaTree[]): number {
   let maxLevel = 0
   for (const { element } of schemaPath) {
-    if (element.repetition_type === 'REPEATED') {
+    if (element.repetition_type === FieldRepetitionType.REPEATED) {
       maxLevel++
     }
   }
@@ -66,10 +67,10 @@ export function getMaxRepetitionLevel(schemaPath) {
  * @param {SchemaTree[]} schemaPath
  * @returns {number} max definition level
  */
-export function getMaxDefinitionLevel(schemaPath) {
+export function getMaxDefinitionLevel(schemaPath: SchemaTree[]): number {
   let maxLevel = 0
   for (const { element } of schemaPath.slice(1)) {
-    if (element.repetition_type !== 'REQUIRED') {
+    if (element.repetition_type !== FieldRepetitionType.REQUIRED) {
       maxLevel++
     }
   }
@@ -82,14 +83,14 @@ export function getMaxDefinitionLevel(schemaPath) {
  * @param {SchemaTree} schema
  * @returns {boolean} true if list-like
  */
-export function isListLike(schema) {
+export function isListLike(schema: SchemaTree): boolean {
   if (!schema) return false
-  if (schema.element.converted_type !== 'LIST') return false
+  if (schema.element.converted_type !== ConvertedType.LIST) return false
   if (schema.children.length > 1) return false
 
   const firstChild = schema.children[0]
   if (firstChild.children.length > 1) return false
-  if (firstChild.element.repetition_type !== 'REPEATED') return false
+  if (firstChild.element.repetition_type !== FieldRepetitionType.REPEATED) return false
 
   return true
 }
@@ -100,20 +101,20 @@ export function isListLike(schema) {
  * @param {SchemaTree} schema
  * @returns {boolean} true if map-like
  */
-export function isMapLike(schema) {
+export function isMapLike(schema: SchemaTree): boolean {
   if (!schema) return false
-  if (schema.element.converted_type !== 'MAP') return false
+  if (schema.element.converted_type !== ConvertedType.MAP) return false
   if (schema.children.length > 1) return false
 
   const firstChild = schema.children[0]
   if (firstChild.children.length !== 2) return false
-  if (firstChild.element.repetition_type !== 'REPEATED') return false
+  if (firstChild.element.repetition_type !== FieldRepetitionType.REPEATED) return false
 
   const keyChild = firstChild.children.find(child => child.element.name === 'key')
-  if (keyChild?.element.repetition_type === 'REPEATED') return false
+  if (keyChild?.element.repetition_type === FieldRepetitionType.REPEATED) return false
 
   const valueChild = firstChild.children.find(child => child.element.name === 'value')
-  if (valueChild?.element.repetition_type === 'REPEATED') return false
+  if (valueChild?.element.repetition_type === FieldRepetitionType.REPEATED) return false
 
   return true
 }
@@ -124,10 +125,10 @@ export function isMapLike(schema) {
  * @param {SchemaTree[]} schemaPath
  * @returns {boolean}
  */
-export function isFlatColumn(schemaPath) {
+export function isFlatColumn(schemaPath: SchemaTree[]): boolean {
   if (schemaPath.length !== 2) return false
   const [, column] = schemaPath
-  if (column.element.repetition_type === 'REPEATED') return false
+  if (column.element.repetition_type === FieldRepetitionType.REPEATED) return false
   if (column.children.length) return false
   return true
 }

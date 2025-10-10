@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest'
-import { DEFAULT_PARSERS, convert, parseDecimal, parseFloat16 } from '../src/convert.js'
+import {describe, expect, it} from 'vitest'
+import {convert, DEFAULT_PARSERS, parseDecimal, parseFloat16} from '../src/convert.js'
+import {ColumnDecoder, ConvertedType, ParquetType, SchemaElement, TimeUnit} from "../src/types.js";
 
 /**
  * @import {ColumnDecoder, SchemaElement} from '../src/types.js'
@@ -17,22 +18,19 @@ describe('convert function', () => {
 
   it('converts byte arrays to utf8', () => {
     const data = [new TextEncoder().encode('foo'), new TextEncoder().encode('bar')]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'UTF8' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.UTF8 }
     expect(convert(data, { element, parsers })).toEqual(['foo', 'bar'])
   })
 
   it('converts byte arrays to utf8 default true', () => {
     const data = [new TextEncoder().encode('foo'), new TextEncoder().encode('bar')]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'BYTE_ARRAY' }
+    const element: SchemaElement = { name, type: ParquetType.BYTE_ARRAY }
     expect(convert(data, { element, parsers })).toEqual(['foo', 'bar'])
   })
 
   it('preserves byte arrays utf8=false', () => {
     const data = [new TextEncoder().encode('foo'), new TextEncoder().encode('bar')]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'BYTE_ARRAY' }
+    const element: SchemaElement = { name, type: ParquetType.BYTE_ARRAY }
     expect(convert(data, { element, parsers, utf8: false })).toEqual([
       new Uint8Array([102, 111, 111]), new Uint8Array([98, 97, 114]),
     ])
@@ -40,65 +38,56 @@ describe('convert function', () => {
 
   it('converts numbers to DECIMAL', () => {
     const data = [100, 200]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DECIMAL' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.DECIMAL }
     expect(convert(data, { element, parsers })).toEqual([100, 200])
   })
 
   it('converts numbers to DECIMAL with scale', () => {
     const data = [100, 200]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DECIMAL', scale: 2 }
+    const element: SchemaElement = { name, converted_type: ConvertedType.DECIMAL, scale: 2 }
     expect(convert(data, { element, parsers })).toEqual([1, 2])
   })
 
   it('converts bigint to DECIMAL', () => {
     const data = [1000n, 2000n]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DECIMAL' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.DECIMAL }
     expect(convert(data, { element, parsers })).toEqual([1000, 2000])
   })
 
   it('converts bigint to DECIMAL with scale', () => {
     const data = [10n, 20n]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DECIMAL', scale: 2 }
+    const element: SchemaElement = { name, converted_type: ConvertedType.DECIMAL, scale: 2 }
     expect(convert(data, { element, parsers })).toEqual([0.1, 0.2])
   })
 
   it('converts byte arrays to DECIMAL', () => {
     const data = [new Uint8Array([0, 0, 0, 100]), new Uint8Array([0, 0, 0, 200])]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DECIMAL', scale: 0 }
+    const element: SchemaElement = { name, converted_type: ConvertedType.DECIMAL, scale: 0 }
     expect(convert(data, { element, parsers })).toEqual([100, 200])
   })
 
   it('converts byte array from issue #59 to DECIMAL', () => {
     const data = [new Uint8Array([18, 83, 137, 151, 156, 0])]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DECIMAL', scale: 10, precision: 14 }
+    const element: SchemaElement = { name, converted_type: ConvertedType.DECIMAL, scale: 10, precision: 14 }
     expect(convert(data, { element, parsers })).toEqual([2015])
   })
 
   it('converts epoch time to DATE', () => {
     const data = [1, 2] // days since epoch
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DATE' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.DATE }
     expect(convert(data, { element, parsers })).toEqual([new Date(86400000), new Date(86400000 * 2)])
   })
 
   it('converts INT96 to DATE', () => {
     // from alltypes_plain.parquet
     const data = [45284764452596988585705472n, 45284764452597048585705472n]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'INT96' }
+    const element: SchemaElement = { name, type: ParquetType.INT96 }
     expect(convert(data, { element, parsers })).toEqual([new Date('2009-03-01T00:00:00.000Z'), new Date('2009-03-01T00:01:00.000Z')])
   })
 
   it('converts epoch time to TIMESTAMP_MILLIS', () => {
     const data = [1716506900000n, 1716507000000n]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'TIMESTAMP_MILLIS' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.TIMESTAMP_MILLIS }
     expect(convert(data, { element, parsers })).toEqual([
       new Date('2024-05-23T23:28:20.000Z'), new Date('2024-05-23T23:30:00.000Z'),
     ])
@@ -106,8 +95,7 @@ describe('convert function', () => {
 
   it('converts epoch time to TIMESTAMP_MICROS', () => {
     const data = [1716506900000000n, 1716507000000000n]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'TIMESTAMP_MICROS' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.TIMESTAMP_MICROS }
     expect(convert(data, { element, parsers })).toEqual([
       new Date('2024-05-23T23:28:20.000Z'), new Date('2024-05-23T23:30:00.000Z'),
     ])
@@ -117,29 +105,25 @@ describe('convert function', () => {
     const encoder = new TextEncoder()
     const data = ['{"key": true}', '{"quay": 314}']
       .map(str => encoder.encode(str))
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'JSON' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.JSON }
     expect(convert(data, { element, parsers })).toEqual([{ key: true }, { quay: 314 }])
   })
 
   it('converts uint64', () => {
     const data = [100n, -100n]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'UINT_64' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.UINT_64 }
     expect(convert(data, { element, parsers })).toEqual(new BigUint64Array([100n, 18446744073709551516n]))
   })
 
   it('converts to float16', () => {
     const data = [new Uint8Array([0x00, 0x3c]), new Uint8Array([0x00, 0x40])]
-    /** @type {SchemaElement} */
-    const element = { name, logical_type: { type: 'FLOAT16' } }
+    const element: SchemaElement = { name, logical_type: { type: 'FLOAT16' } }
     expect(convert(data, { element, parsers })).toEqual([1, 2])
   })
 
   it('converts timestamp with units', () => {
     const data = [1716506900000000n, 1716507000000000n]
-    /** @type {SchemaElement} */
-    const element = { name, logical_type: { type: 'TIMESTAMP', isAdjustedToUTC: true, unit: 'MICROS' } }
+    const element: SchemaElement = { name, logical_type: { type: 'TIMESTAMP', isAdjustedToUTC: true, unit: TimeUnit.MICROS } }
     expect(convert(data, { element, parsers })).toEqual([
       new Date('2024-05-23T23:28:20.000Z'), new Date('2024-05-23T23:30:00.000Z'),
     ])
@@ -147,26 +131,22 @@ describe('convert function', () => {
 
   it('throws error for BSON conversion', () => {
     const data = [{}]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'BSON' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.BSON }
     expect(() => convert(data, { element, parsers }))
       .toThrow('parquet bson not supported')
   })
 
   it('throws error for INTERVAL conversion', () => {
     const data = [{}]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'INTERVAL' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.INTERVAL }
     expect(() => convert(data, { element, parsers }))
       .toThrow('parquet interval not supported')
   })
 
   it('respects custom parsers - dateFromDays', () => {
     const data = [1, 2] // days since epoch
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'DATE' }
-    /** @type {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} */
-    const columnParser = {
+    const element: SchemaElement = { name, converted_type: ConvertedType.DATE }
+    const columnParser: Pick<ColumnDecoder, "element" | "utf8" | "parsers"> = {
       element,
       parsers: {
         ...parsers,
@@ -179,10 +159,8 @@ describe('convert function', () => {
 
   it('respects custom parsers - timestampFromMilliseconds', () => {
     const data = [1716506900000n, 1716507000000n]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'TIMESTAMP_MILLIS' }
-    /** @type {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} */
-    const columnParser = {
+    const element: SchemaElement = { name, converted_type: ConvertedType.TIMESTAMP_MILLIS }
+    const columnParser: Pick<ColumnDecoder, "element" | "utf8" | "parsers"> = {
       element,
       parsers: {
         ...parsers,
@@ -195,10 +173,8 @@ describe('convert function', () => {
 
   it('respects custom parsers - timestampFromMicroseconds', () => {
     const data = [1716506900000000n, 1716507000000000n]
-    /** @type {SchemaElement} */
-    const element = { name, logical_type: { type: 'TIMESTAMP', isAdjustedToUTC: true, unit: 'MICROS' } }
-    /** @type {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} */
-    const columnParser = {
+    const element: SchemaElement = { name, logical_type: { type: 'TIMESTAMP', isAdjustedToUTC: true, unit: TimeUnit.MICROS } }
+    const columnParser: Pick<ColumnDecoder, "element" | "utf8" | "parsers"> = {
       element,
       parsers: {
         ...parsers,
@@ -212,10 +188,8 @@ describe('convert function', () => {
   it('respects custom parsers - timestampFromNanoseconds', () => {
     // from alltypes_plain.parquet
     const data = [45284764452596988585705472n, 45284764452597048585705472n]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'INT96' }
-    /** @type {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} */
-    const columnParser = {
+    const element: SchemaElement = { name, type: ParquetType.INT96 }
+    const columnParser: Pick<ColumnDecoder, "element" | "utf8" | "parsers"> = {
       element,
       parsers: {
         ...parsers,
@@ -229,13 +203,12 @@ describe('convert function', () => {
   it('respects custom parsers - stringFromBytes', () => {
     const encoder = new TextEncoder()
     const data = [encoder.encode('foo'), undefined]
-    /** @type {SchemaElement} */
-    const element = { name, converted_type: 'UTF8' }
+    const element: SchemaElement = { name, converted_type: ConvertedType.UTF8 }
     const columnParser = {
       element,
       parsers: {
         ...parsers,
-        stringFromBytes(/** @type {Uint8Array} */ bytes) {
+        stringFromBytes(bytes: Uint8Array) {
           return bytes && `custom-${new TextDecoder().decode(bytes)}`
         },
       },

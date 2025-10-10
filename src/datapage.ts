@@ -1,8 +1,22 @@
-import { deltaBinaryUnpack, deltaByteArray, deltaLengthByteArray } from './delta.js'
-import { bitWidth, byteStreamSplit, readRleBitPackedHybrid } from './encoding.js'
-import { readPlain } from './plain.js'
-import { getMaxDefinitionLevel, getMaxRepetitionLevel } from './schema.js'
-import { snappyUncompress } from './snappy.js'
+import {deltaBinaryUnpack, deltaByteArray, deltaLengthByteArray} from './delta.js'
+import {bitWidth, byteStreamSplit, readRleBitPackedHybrid} from './encoding.js'
+import {readPlain} from './plain.js'
+import {getMaxDefinitionLevel, getMaxRepetitionLevel} from './schema.js'
+import {snappyUncompress} from './snappy.js'
+import {
+  ColumnDecoder,
+  CompressionCodec,
+  Compressors,
+  DataPage,
+  DataPageHeader,
+  DataPageHeaderV2,
+  DataReader,
+  DecodedArray,
+  Encoding,
+  PageHeader,
+  ParquetType,
+  SchemaTree
+} from "./types.js";
 
 /**
  * Read a data page from uncompressed reader.
@@ -12,11 +26,10 @@ import { snappyUncompress } from './snappy.js'
  * @param {ColumnDecoder} columnDecoder
  * @returns {DataPage} definition levels, repetition levels, and array of values
  */
-export function readDataPage(bytes, daph, { type, element, schemaPath }) {
+export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, {type, element, schemaPath}: ColumnDecoder): DataPage {
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
   const reader = { view, offset: 0 }
-  /** @type {DecodedArray} */
-  let dataPage
+  let dataPage: DecodedArray
 
   // repetition and definition levels
   const repetitionLevels = readRepetitionLevels(reader, daph, schemaPath)
@@ -26,17 +39,17 @@ export function readDataPage(bytes, daph, { type, element, schemaPath }) {
 
   // read values based on encoding
   const nValues = daph.num_values - numNulls
-  if (daph.encoding === 'PLAIN') {
+  if (daph.encoding === Encoding.PLAIN) {
     dataPage = readPlain(reader, type, nValues, element.type_length)
   } else if (
-    daph.encoding === 'PLAIN_DICTIONARY' ||
-    daph.encoding === 'RLE_DICTIONARY' ||
-    daph.encoding === 'RLE'
+    daph.encoding === Encoding.PLAIN_DICTIONARY ||
+    daph.encoding === Encoding.RLE_DICTIONARY ||
+    daph.encoding === Encoding.RLE
   ) {
-    const bitWidth = type === 'BOOLEAN' ? 1 : view.getUint8(reader.offset++)
+    const bitWidth = type === ParquetType.BOOLEAN ? 1 : view.getUint8(reader.offset++)
     if (bitWidth) {
       dataPage = new Array(nValues)
-      if (type === 'BOOLEAN') {
+      if (type === ParquetType.BOOLEAN) {
         readRleBitPackedHybrid(reader, bitWidth, dataPage)
         dataPage = dataPage.map(x => !!x) // convert to boolean
       } else {
@@ -46,13 +59,13 @@ export function readDataPage(bytes, daph, { type, element, schemaPath }) {
     } else {
       dataPage = new Uint8Array(nValues) // nValue zeroes
     }
-  } else if (daph.encoding === 'BYTE_STREAM_SPLIT') {
+  } else if (daph.encoding === Encoding.BYTE_STREAM_SPLIT) {
     dataPage = byteStreamSplit(reader, nValues, type, element.type_length)
-  } else if (daph.encoding === 'DELTA_BINARY_PACKED') {
-    const int32 = type === 'INT32'
+  } else if (daph.encoding === Encoding.DELTA_BINARY_PACKED) {
+    const int32 = type === ParquetType.INT32
     dataPage = int32 ? new Int32Array(nValues) : new BigInt64Array(nValues)
     deltaBinaryUnpack(reader, nValues, dataPage)
-  } else if (daph.encoding === 'DELTA_LENGTH_BYTE_ARRAY') {
+  } else if (daph.encoding === Encoding.DELTA_LENGTH_BYTE_ARRAY) {
     dataPage = new Array(nValues)
     deltaLengthByteArray(reader, nValues, dataPage)
   } else {
@@ -69,7 +82,7 @@ export function readDataPage(bytes, daph, { type, element, schemaPath }) {
  * @param {SchemaTree[]} schemaPath
  * @returns {any[]} repetition levels and number of bytes read
  */
-function readRepetitionLevels(reader, daph, schemaPath) {
+function readRepetitionLevels(reader: DataReader, daph: DataPageHeader, schemaPath: SchemaTree[]): any[] {
   if (schemaPath.length > 1) {
     const maxRepetitionLevel = getMaxRepetitionLevel(schemaPath)
     if (maxRepetitionLevel) {
@@ -87,7 +100,7 @@ function readRepetitionLevels(reader, daph, schemaPath) {
  * @param {SchemaTree[]} schemaPath
  * @returns {{ definitionLevels: number[], numNulls: number }} definition levels
  */
-function readDefinitionLevels(reader, daph, schemaPath) {
+function readDefinitionLevels(reader: DataReader, daph: DataPageHeader, schemaPath: SchemaTree[]): { definitionLevels: number[]; numNulls: number } {
   const maxDefinitionLevel = getMaxDefinitionLevel(schemaPath)
   if (!maxDefinitionLevel) return { definitionLevels: [], numNulls: 0 }
 
@@ -111,15 +124,14 @@ function readDefinitionLevels(reader, daph, schemaPath) {
  * @param {Compressors | undefined} compressors
  * @returns {Uint8Array}
  */
-export function decompressPage(compressedBytes, uncompressed_page_size, codec, compressors) {
-  /** @type {Uint8Array} */
-  let page
+export function decompressPage(compressedBytes: Uint8Array, uncompressed_page_size: number, codec: CompressionCodec, compressors: Compressors | undefined): Uint8Array {
+  let page: Uint8Array
   const customDecompressor = compressors?.[codec]
-  if (codec === 'UNCOMPRESSED') {
+  if (codec === CompressionCodec.UNCOMPRESSED) {
     page = compressedBytes
   } else if (customDecompressor) {
     page = customDecompressor(compressedBytes, uncompressed_page_size)
-  } else if (codec === 'SNAPPY') {
+  } else if (codec === CompressionCodec.SNAPPY) {
     page = new Uint8Array(uncompressed_page_size)
     snappyUncompress(compressedBytes, page)
   } else {
@@ -140,7 +152,7 @@ export function decompressPage(compressedBytes, uncompressed_page_size, codec, c
  * @param {ColumnDecoder} columnDecoder
  * @returns {DataPage} definition levels, repetition levels, and array of values
  */
-export function readDataPageV2(compressedBytes, ph, columnDecoder) {
+export function readDataPageV2(compressedBytes: Uint8Array, ph: PageHeader, columnDecoder: ColumnDecoder): DataPage {
   const view = new DataView(compressedBytes.buffer, compressedBytes.byteOffset, compressedBytes.byteLength)
   const reader = { view, offset: 0 }
   const { type, element, schemaPath, codec, compressors } = columnDecoder
@@ -165,34 +177,33 @@ export function readDataPageV2(compressedBytes, ph, columnDecoder) {
   const pageReader = { view: pageView, offset: 0 }
 
   // read values based on encoding
-  /** @type {DecodedArray} */
-  let dataPage
+  let dataPage: DecodedArray
   const nValues = daph2.num_values - daph2.num_nulls
-  if (daph2.encoding === 'PLAIN') {
+  if (daph2.encoding === Encoding.PLAIN) {
     dataPage = readPlain(pageReader, type, nValues, element.type_length)
-  } else if (daph2.encoding === 'RLE') {
+  } else if (daph2.encoding === Encoding.RLE) {
     // assert(type === 'BOOLEAN')
     dataPage = new Array(nValues)
     readRleBitPackedHybrid(pageReader, 1, dataPage)
     dataPage = dataPage.map(x => !!x)
   } else if (
-    daph2.encoding === 'PLAIN_DICTIONARY' ||
-    daph2.encoding === 'RLE_DICTIONARY'
+    daph2.encoding === Encoding.PLAIN_DICTIONARY ||
+    daph2.encoding === Encoding.RLE_DICTIONARY
   ) {
     const bitWidth = pageView.getUint8(pageReader.offset++)
     dataPage = new Array(nValues)
     readRleBitPackedHybrid(pageReader, bitWidth, dataPage, uncompressedPageSize - 1)
-  } else if (daph2.encoding === 'DELTA_BINARY_PACKED') {
-    const int32 = type === 'INT32'
+  } else if (daph2.encoding === Encoding.DELTA_BINARY_PACKED) {
+    const int32 = type === ParquetType.INT32
     dataPage = int32 ? new Int32Array(nValues) : new BigInt64Array(nValues)
     deltaBinaryUnpack(pageReader, nValues, dataPage)
-  } else if (daph2.encoding === 'DELTA_LENGTH_BYTE_ARRAY') {
+  } else if (daph2.encoding === Encoding.DELTA_LENGTH_BYTE_ARRAY) {
     dataPage = new Array(nValues)
     deltaLengthByteArray(pageReader, nValues, dataPage)
-  } else if (daph2.encoding === 'DELTA_BYTE_ARRAY') {
+  } else if (daph2.encoding === Encoding.DELTA_BYTE_ARRAY) {
     dataPage = new Array(nValues)
     deltaByteArray(pageReader, nValues, dataPage)
-  } else if (daph2.encoding === 'BYTE_STREAM_SPLIT') {
+  } else if (daph2.encoding === Encoding.BYTE_STREAM_SPLIT) {
     dataPage = byteStreamSplit(reader, nValues, type, element.type_length)
   } else {
     throw new Error(`parquet unsupported encoding: ${daph2.encoding}`)
@@ -207,7 +218,7 @@ export function readDataPageV2(compressedBytes, ph, columnDecoder) {
  * @param {SchemaTree[]} schemaPath
  * @returns {any[]} repetition levels
  */
-function readRepetitionLevelsV2(reader, daph2, schemaPath) {
+function readRepetitionLevelsV2(reader: DataReader, daph2: DataPageHeaderV2, schemaPath: SchemaTree[]): any[] {
   const maxRepetitionLevel = getMaxRepetitionLevel(schemaPath)
   if (!maxRepetitionLevel) return []
 
@@ -222,7 +233,7 @@ function readRepetitionLevelsV2(reader, daph2, schemaPath) {
  * @param {SchemaTree[]} schemaPath
  * @returns {number[] | undefined} definition levels
  */
-function readDefinitionLevelsV2(reader, daph2, schemaPath) {
+function readDefinitionLevelsV2(reader: DataReader, daph2: DataPageHeaderV2, schemaPath: SchemaTree[]): number[] | undefined {
   const maxDefinitionLevel = getMaxDefinitionLevel(schemaPath)
   if (maxDefinitionLevel) {
     // V2 we know the length

@@ -1,5 +1,5 @@
-import { describe, expect, it, vi } from 'vitest'
-import { cachedAsyncBuffer } from '../src/utils.js'
+import {describe, expect, it, vi} from 'vitest'
+import {cachedAsyncBuffer} from '../src/utils.js'
 
 describe('cachedAsyncBuffer', () => {
   it('caches slices of a file to avoid multiple reads', async () => {
@@ -8,8 +8,7 @@ describe('cachedAsyncBuffer', () => {
       await new Promise(resolve => setTimeout(resolve, 10))
       if (end === undefined) end = 1000
       if (start < 0) start = Math.max(0, 1000 + start)
-      const buffer = new ArrayBuffer(end - start)
-      return buffer
+      return new ArrayBuffer(end - start)
     })
     const cachedFile = cachedAsyncBuffer(
       { byteLength: 1000, slice },
@@ -48,8 +47,7 @@ describe('cachedAsyncBuffer', () => {
       await new Promise(resolve => setTimeout(resolve, 10))
       if (end === undefined) end = 1000
       if (start < 0) start = Math.max(0, 1000 + start)
-      const buffer = new ArrayBuffer(end - start)
-      return buffer
+      return new ArrayBuffer(end - start)
     })
     const cachedFile = cachedAsyncBuffer({ byteLength: 1000, slice })
 

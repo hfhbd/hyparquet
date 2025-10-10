@@ -53,7 +53,7 @@ describe('snappy uncompress', () => {
     const compressed = fs.readFileSync('test/files/hyparquet.jpg.snappy')
     const expected = fs.readFileSync('hyparquet.jpg')
     const output = new Uint8Array(expected.length)
-    await snappyUncompress(compressed, output)
+    snappyUncompress(compressed, output)
     expect(Array.from(output)).toEqual(Array.from(expected))
   })
 

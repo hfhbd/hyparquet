@@ -1,18 +1,19 @@
-import { describe, expect, it } from 'vitest'
-import { assembleLists } from '../src/assemble.js'
+import {describe, expect, it} from 'vitest'
+import {assembleLists} from "../src/assemble.ts";
+import {FieldRepetitionType, SchemaTree} from "../src/types.js";
 
 describe('assembleLists', () => {
-  const nonnullable = toSchemaPath([undefined, 'REQUIRED', 'REPEATED', 'REQUIRED'])
-  const nullable = toSchemaPath([undefined, 'OPTIONAL', 'REPEATED', 'OPTIONAL'])
-  const nestedRequired = toSchemaPath([undefined, 'REQUIRED', 'REPEATED', 'REQUIRED', 'REPEATED', 'REQUIRED'])
-  const nestedOptional = toSchemaPath([undefined, 'OPTIONAL', 'REPEATED', 'OPTIONAL', 'REPEATED', 'OPTIONAL'])
+  const nonnullable = toSchemaPath([undefined, FieldRepetitionType.REQUIRED, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED])
+  const nullable = toSchemaPath([undefined, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.OPTIONAL])
+  const nestedRequired = toSchemaPath([undefined, FieldRepetitionType.REQUIRED, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED])
+  const nestedOptional = toSchemaPath([undefined, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.OPTIONAL])
 
   /**
    * @import {FieldRepetitionType, SchemaTree} from '../src/types.js'
    * @param {(FieldRepetitionType | undefined)[]} repetitionPath
    * @returns {SchemaTree[]}
    */
-  function toSchemaPath(repetitionPath) {
+  function toSchemaPath(repetitionPath: (FieldRepetitionType | undefined)[]): SchemaTree[] {
     return repetitionPath.map(repetition_type => ({
       element: {
         name: 'name',
@@ -96,7 +97,7 @@ describe('assembleLists', () => {
     const definitionLevels = [2, 2, 2, 2, 1, 1, 1, 0, 2, 2]
     const repetitionLevels = [0, 1, 0, 1, 0, 0, 0, 0, 0, 1]
     const values = ['k1', 'k2', 'k1', 'k2', 'k1', 'k3']
-    const schemaPath = toSchemaPath(['REQUIRED', 'OPTIONAL', 'REPEATED', 'REQUIRED'])
+    const schemaPath = toSchemaPath([FieldRepetitionType.REQUIRED, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED])
     const result = assembleLists([], definitionLevels, repetitionLevels, values, schemaPath)
     expect(result).toEqual([
       [['k1', 'k2']],
@@ -157,7 +158,7 @@ describe('assembleLists', () => {
     const definitionLevels = [3, 4, 3, 3]
     const repetitionLevels = [0, 1, 1, 1]
     const values = ['k1']
-    const schemaPath = toSchemaPath([undefined, 'OPTIONAL', 'REPEATED', 'OPTIONAL', 'REPEATED', 'REQUIRED'])
+    const schemaPath = toSchemaPath([undefined, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED])
     const result = assembleLists([], definitionLevels, repetitionLevels, values, schemaPath)
     expect(result).toEqual([[[[[]], [['k1']], [[]], [[]]]]])
   })
@@ -166,7 +167,7 @@ describe('assembleLists', () => {
     const definitionLevels = [3, 5, 3, 3]
     const repetitionLevels = [0, 1, 1, 1]
     const values = [1]
-    const schemaPath = toSchemaPath([undefined, 'OPTIONAL', 'REPEATED', 'OPTIONAL', 'REPEATED', 'OPTIONAL'])
+    const schemaPath = toSchemaPath([undefined, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.OPTIONAL])
     const result = assembleLists([], definitionLevels, repetitionLevels, values, schemaPath)
     expect(result).toEqual([[[[[]], [[1]], [[]], [[]]]]])
   })
@@ -176,7 +177,7 @@ describe('assembleLists', () => {
     const definitionLevels = [2, 2, 2, 0, 0, 2, 2, 2, 2, 2]
     const repetitionLevels = [0, 1, 1, 0, 0, 0, 1, 1, 0, 1]
     const values = [1, 2, 3, 1, 2, 3, 1, 2]
-    const schemaPath = toSchemaPath([undefined, 'OPTIONAL', 'REPEATED', 'REQUIRED'])
+    const schemaPath = toSchemaPath([undefined, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED])
     const result = assembleLists([], definitionLevels, repetitionLevels, values, schemaPath)
     expect(result).toEqual([[[1, 2, 3]], [], [], [[1, 2, 3]], [[1, 2]]])
   })
@@ -186,7 +187,7 @@ describe('assembleLists', () => {
     const definitionLevels = [0]
     const repetitionLevels = [0]
     const schemaPath = toSchemaPath([
-      undefined, 'REQUIRED', 'REQUIRED', 'REPEATED', 'REQUIRED', 'REQUIRED', 'REPEATED', 'REQUIRED',
+      undefined, FieldRepetitionType.REQUIRED, FieldRepetitionType.REQUIRED, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED, FieldRepetitionType.REQUIRED, FieldRepetitionType.REPEATED, FieldRepetitionType.REQUIRED,
     ])
     const result = assembleLists([], definitionLevels, repetitionLevels, [], schemaPath)
     expect(result).toEqual([[]])
@@ -202,7 +203,7 @@ describe('assembleLists', () => {
   it('handle complex.parquet with nested require', () => {
     const definitionLevels = [1, 1]
     const values = ['a', 'b']
-    const schemaPath = toSchemaPath([undefined, 'OPTIONAL', 'REQUIRED', 'REQUIRED'])
+    const schemaPath = toSchemaPath([undefined, FieldRepetitionType.OPTIONAL, FieldRepetitionType.REQUIRED, FieldRepetitionType.REQUIRED])
     const result = assembleLists([], definitionLevels, [], values, schemaPath)
     expect(result).toEqual([['a'], ['b']])
   })
