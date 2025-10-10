@@ -1,4 +1,29 @@
-node_modules
+# Gradle
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.settings/
+bin/
+.buildpath
+.classpath
+.project
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.dbnode_modules
 package-lock.json
 coverage
 *.tgz
