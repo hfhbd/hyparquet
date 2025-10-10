@@ -38,32 +38,6 @@ describe('convert function', () => {
     ])
   })
 
-  it('decodes geometry logical type with default parser', () => {
-    const pointWkb = new Uint8Array([
-      1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 128, 89, 64, 0, 0, 0, 0, 0, 0, 224,
-      63,
-    ])
-    const data = [pointWkb]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'BYTE_ARRAY', logical_type: { type: 'GEOMETRY' } }
-    expect(convert(data, { element, parsers })).toEqual([
-      { type: 'Point', coordinates: [102, 0.5] },
-    ])
-  })
-
-  it('decodes geography logical type with default parser', () => {
-    const pointWkb = new Uint8Array([
-      1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 128, 89, 64, 0, 0, 0, 0, 0, 0, 224,
-      63,
-    ])
-    const data = [pointWkb]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'BYTE_ARRAY', logical_type: { type: 'GEOGRAPHY' } }
-    expect(convert(data, { element, parsers })).toEqual([
-      { type: 'Point', coordinates: [102, 0.5] },
-    ])
-  })
-
   it('converts numbers to DECIMAL', () => {
     const data = [100, 200]
     /** @type {SchemaElement} */
@@ -268,46 +242,6 @@ describe('convert function', () => {
     }
 
     expect(convert(data, columnParser)).toEqual(['custom-foo', undefined])
-  })
-
-  it('respects custom parsers - geometryFromBytes', () => {
-    const pointWkb = new Uint8Array([
-      1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 128, 89, 64, 0, 0, 0, 0, 0, 0, 224,
-      63,
-    ])
-    const data = [pointWkb]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'BYTE_ARRAY', logical_type: { type: 'GEOMETRY' } }
-    /** @type {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} */
-    const columnParser = {
-      element,
-      parsers: {
-        ...parsers,
-        geometryFromBytes: () => 'custom-geometry',
-      },
-    }
-
-    expect(convert(data, columnParser)).toEqual(['custom-geometry'])
-  })
-
-  it('respects custom parsers - geographyFromBytes', () => {
-    const pointWkb = new Uint8Array([
-      1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 128, 89, 64, 0, 0, 0, 0, 0, 0, 224,
-      63,
-    ])
-    const data = [pointWkb]
-    /** @type {SchemaElement} */
-    const element = { name, type: 'BYTE_ARRAY', logical_type: { type: 'GEOGRAPHY' } }
-    /** @type {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} */
-    const columnParser = {
-      element,
-      parsers: {
-        ...parsers,
-        geographyFromBytes: () => 'custom-geojson',
-      },
-    }
-
-    expect(convert(data, columnParser)).toEqual(['custom-geojson'])
   })
 })
 

@@ -1,5 +1,3 @@
-import { wkbToGeojson } from './wkb.js'
-
 /**
  * @import {ColumnDecoder, DecodedArray, Encoding, ParquetParsers} from '../src/types.js'
  */
@@ -25,12 +23,6 @@ export const DEFAULT_PARSERS = {
   },
   stringFromBytes(bytes) {
     return bytes && decoder.decode(bytes)
-  },
-  geometryFromBytes(bytes) {
-    return bytes && wkbToGeojson({ view: new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength), offset: 0 })
-  },
-  geographyFromBytes(bytes) {
-    return bytes && wkbToGeojson({ view: new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength), offset: 0 })
   },
 }
 
@@ -102,12 +94,6 @@ export function convert(data, columnDecoder) {
   }
   if (ctype === 'INTERVAL') {
     throw new Error('parquet interval not supported')
-  }
-  if (ltype?.type === 'GEOMETRY') {
-    return data.map(v => parsers.geometryFromBytes(v))
-  }
-  if (ltype?.type === 'GEOGRAPHY') {
-    return data.map(v => parsers.geographyFromBytes(v))
   }
   if (ctype === 'UTF8' || ltype?.type === 'STRING' || utf8 && type === 'BYTE_ARRAY') {
     return data.map(v => parsers.stringFromBytes(v))
