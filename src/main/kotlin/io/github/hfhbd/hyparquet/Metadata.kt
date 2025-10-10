@@ -2,6 +2,7 @@ package io.github.hfhbd.hyparquet
 
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import kotlin.math.pow
 
 const val DEFAULT_INITIAL_FETCH_SIZE = 1 shl 19 // 512kb
 
@@ -148,7 +149,7 @@ fun convertMetadata(
             // Handle other cases
             when (convertedType) {
                 ConvertedType.DECIMAL -> {
-                    return parseDecimal(value) * kotlin.math.pow(10.0, -(schema.scale ?: 0).toDouble())
+                    return parseDecimal(value) * 10.0.pow(-(schema.scale ?: 0).toDouble())
                 }
                 else -> {
                     if (logicalType is LogicalType.FLOAT16) {

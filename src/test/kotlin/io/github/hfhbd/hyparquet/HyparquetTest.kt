@@ -12,7 +12,7 @@ class UtilsTest {
         assertEquals(null, toJson(null))
         assertEquals(42L, toJson(42L))
         assertEquals(listOf(1, 2, 3), toJson(listOf(1, 2, 3)))
-        assertEquals(listOf(1, 2, 3), toJson(byteArrayOf(1, 2, 3)))
+        assertEquals(listOf<Byte>(1, 2, 3), toJson(byteArrayOf(1, 2, 3)))
         
         val map = mapOf("key" to "value", "null_key" to null)
         val result = toJson(map) as Map<*, *>
