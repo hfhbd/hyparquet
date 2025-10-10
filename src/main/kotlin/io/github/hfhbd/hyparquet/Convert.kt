@@ -50,10 +50,10 @@ fun convertWithDictionary(
     return if (dictionary != null && encoding.name.endsWith("_DICTIONARY")) {
         data.map { index ->
             when (index) {
-                is Int -> dictionary.getOrNull(index)
-                is Long -> dictionary.getOrNull(index.toInt())
-                else -> dictionary.getOrNull(index.toString().toIntOrNull() ?: 0)
-            } ?: index
+                is Int -> dictionary.getOrNull(index) ?: index
+                is Long -> dictionary.getOrNull(index.toInt()) ?: index
+                else -> dictionary.getOrNull(index.toString().toIntOrNull() ?: 0) ?: index
+            }
         }
     } else {
         convert(data, columnDecoder)
@@ -170,7 +170,7 @@ fun convert(data: List<Any>, columnDecoder: ColumnDecoder): List<Any> {
                 logicalType is LogicalType.FLOAT16 -> {
                     return data.map { value ->
                         when (value) {
-                            is ByteArray -> parseFloat16(value)
+                            is ByteArray -> parseFloat16(value) ?: value
                             else -> value
                         }
                     }

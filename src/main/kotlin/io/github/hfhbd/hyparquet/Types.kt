@@ -208,6 +208,7 @@ enum class PageType {
     DATA_PAGE_V2
 }
 
+@Serializable
 data class KeyValue(
     val key: String,
     val value: String? = null
@@ -323,7 +324,22 @@ data class ColumnMetaData(
     val sizeStatistics: SizeStatistics? = null
 )
 
-typealias MinMaxType = Any // bigint | boolean | number | string | Date | ByteArray
+// MinMaxType represented as a sealed class for better type safety
+@Serializable
+sealed class MinMaxType {
+    @Serializable
+    data class LongValue(val value: Long) : MinMaxType()
+    @Serializable  
+    data class BooleanValue(val value: Boolean) : MinMaxType()
+    @Serializable
+    data class IntValue(val value: Int) : MinMaxType()
+    @Serializable
+    data class StringValue(val value: String) : MinMaxType()
+    @Serializable
+    data class DateValue(val value: String) : MinMaxType() // ISO date string
+    @Serializable
+    data class BytesValue(val value: List<Byte>) : MinMaxType() // ByteArray as List<Byte>
+}
 
 @Serializable
 data class Statistics(

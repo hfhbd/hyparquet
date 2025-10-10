@@ -1,5 +1,6 @@
 package io.github.hfhbd.hyparquet
 
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -150,8 +151,8 @@ fun cachedAsyncBuffer(
 ): AsyncBuffer {
     if (file.byteLength < minSize) {
         // Cache whole file if it's small
-        val cachedBuffer = lazy {
-            kotlinx.coroutines.runBlocking {
+        val cachedBuffer: ByteArray by lazy {
+            runBlocking {
                 file.slice(0, file.byteLength)
             }
         }
@@ -160,9 +161,8 @@ fun cachedAsyncBuffer(
             override val byteLength: Int = file.byteLength
 
             override suspend fun slice(start: Int, end: Int?): ByteArray {
-                val buffer = cachedBuffer.value
-                val actualEnd = end ?: buffer.size
-                return buffer.sliceArray(start until actualEnd)
+                val actualEnd = end ?: cachedBuffer.size
+                return cachedBuffer.sliceArray(start until actualEnd)
             }
         }
     }
