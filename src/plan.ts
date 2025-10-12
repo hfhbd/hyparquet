@@ -80,11 +80,7 @@ export function prefetchAsyncBuffer(file: AsyncBuffer, {fetches}: QueryPlan): As
         // slice a subrange of the prefetch
         const startOffset = start - fetches[index].startByte
         const endOffset = end - fetches[index].startByte
-        if (promises[index] instanceof Promise) {
-          return promises[index].then(buffer => buffer.slice(startOffset, endOffset))
-        } else {
-          return promises[index].slice(startOffset, endOffset)
-        }
+        return promises[index].then(buffer => buffer.slice(startOffset, endOffset))
       } else {
         return promises[index]
       }

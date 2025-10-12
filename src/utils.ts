@@ -138,12 +138,12 @@ export function cachedAsyncBuffer({ byteLength, slice }: AsyncBuffer, {minSize =
     /**
      * @param {number} start
      * @param {number} [end]
-     * @returns {Awaitable<ArrayBuffer>}
+     * @returns {Promise<ArrayBuffer>}
      */
-    slice(start: number, end: number): Awaitable<ArrayBuffer> {
+    slice(start: number, end: number): Promise<ArrayBuffer> {
       const key = cacheKey(start, end, byteLength)
       const cached = cache.get(key)
-      if (cached) return cached
+      if (cached) return Promise.resolve(cached)
       // cache miss, read from file
       const promise = slice(start, end)
       cache.set(key, promise)

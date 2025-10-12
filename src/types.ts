@@ -33,26 +33,22 @@ export interface BaseParquetReadOptions {
   parsers?: ParquetParsers // custom parsers to decode advanced types
 }
 
-interface ArrayRowFormat {
-  rowFormat?: 'array' // format of each row passed to the onComplete function. Can be omitted, as it's the default.
-  onComplete?: (rows: any[][]) => void // called when all requested rows and columns are parsed
+export interface ParquetReadOptions extends BaseParquetReadOptions {
+  rowFormat?: 'array' | 'object' // format of each row passed to the onComplete function. Can be omitted, as 'array' is the default.
+  onComplete?: ((rows: any[][]) => void) | ((rows: Record<string, any>[]) => void) // called when all requested rows and columns are parsed
 }
-interface ObjectRowFormat {
-  rowFormat: 'object' // format of each row passed to the onComplete function
-  onComplete?: (rows: Record<string, any>[]) => void // called when all requested rows and columns are parsed
-}
-export type ParquetReadOptions = BaseParquetReadOptions & (ArrayRowFormat | ObjectRowFormat)
 
 /**
  * Parquet query options for filtering data
  */
-export type ParquetQueryFilter =
-  | ParquetQueryColumnsFilter
-  | { $and: ParquetQueryFilter[] }
-  | { $or: ParquetQueryFilter[] }
-  | { $nor: ParquetQueryFilter[] }
-type ParquetQueryColumnsFilter = { [key: string]: ParquetQueryOperator }
-export type ParquetQueryValue = string | number | boolean | object | null | undefined
+export interface ParquetQueryFilter {
+  $and?: ParquetQueryFilter[]
+  $or?: ParquetQueryFilter[]
+  $nor?: ParquetQueryFilter[]
+  [key: string]: ParquetQueryOperator | ParquetQueryFilter[] | undefined
+}
+
+export type ParquetQueryValue = any
 export type ParquetQueryOperator = {
   $gt?: ParquetQueryValue
   $gte?: ParquetQueryValue
@@ -80,9 +76,9 @@ export interface ColumnData {
  */
 export interface AsyncBuffer {
   byteLength: number
-  slice(start: number, end?: number): Awaitable<ArrayBuffer>
+  slice(start: number, end?: number): Promise<ArrayBuffer>
 }
-export type Awaitable<T> = T | Promise<T>
+export type Awaitable<T> = Promise<T>
 export interface ByteRange {
   startByte: number
   endByte: number // exclusive
@@ -171,23 +167,15 @@ export enum ConvertedType {
 
 export enum TimeUnit { MILLIS, MICROS, NANOS }
 
-export type LogicalType =
-  | { type: 'STRING' }
-  | { type: 'MAP' }
-  | { type: 'LIST' }
-  | { type: 'ENUM' }
-  | { type: 'DATE' }
-  | { type: 'INTERVAL' }
-  | { type: 'NULL' }
-  | { type: 'JSON' }
-  | { type: 'BSON' }
-  | { type: 'UUID' }
-  | { type: 'FLOAT16' }
-  | { type: 'VARIANT' }
-  | { type: 'DECIMAL', precision: number, scale: number }
-  | { type: 'TIME', isAdjustedToUTC: boolean, unit: TimeUnit }
-  | { type: 'TIMESTAMP', isAdjustedToUTC: boolean, unit: TimeUnit }
-  | { type: 'INTEGER', bitWidth: number, isSigned: boolean }
+export interface LogicalType {
+  type: string
+  precision?: number
+  scale?: number
+  isAdjustedToUTC?: boolean
+  unit?: TimeUnit
+  bitWidth?: number
+  isSigned?: boolean
+}
 
 export type LogicalTypeType = LogicalType['type']
 
@@ -266,7 +254,7 @@ export interface KeyValue {
   value?: string
 }
 
-export type MinMaxType = bigint | boolean | number | string | Date | Uint8Array
+export type MinMaxType = any
 
 export interface Statistics {
   max?: MinMaxType
@@ -349,15 +337,7 @@ export interface DataPage {
   dataPage: DecodedArray
 }
 
-export type DecodedArray =
-  | Uint8Array
-  | Uint32Array
-  | Int32Array
-  | BigInt64Array
-  | BigUint64Array
-  | Float32Array
-  | Float64Array
-  | any[]
+export type DecodedArray = any
 
 export interface OffsetIndex {
   page_locations: PageLocation[]
@@ -382,8 +362,8 @@ export interface ColumnIndex {
 
 export enum BoundaryOrder { UNORDERED, ASCENDING, DESCENDING }
 
-export type ThriftObject = { [ key: `field_${number}` ]: ThriftType }
-export type ThriftType = boolean | number | bigint | Uint8Array | ThriftType[] | ThriftObject
+export type ThriftObject = { [ key: `field_${number}` ]: any }
+export type ThriftType = any
 
 /**
  * Query plan for which byte ranges to read.

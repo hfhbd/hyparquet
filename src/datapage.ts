@@ -51,7 +51,7 @@ export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, {type, ele
       dataPage = new Array(nValues)
       if (type === ParquetType.BOOLEAN) {
         readRleBitPackedHybrid(reader, bitWidth, dataPage)
-        dataPage = dataPage.map(x => !!x) // convert to boolean
+        dataPage = dataPage.map((x: any) => !!x) // convert to boolean
       } else {
         // assert(daph.encoding.endsWith('_DICTIONARY'))
         readRleBitPackedHybrid(reader, bitWidth, dataPage, view.byteLength - reader.offset)
@@ -185,7 +185,7 @@ export function readDataPageV2(compressedBytes: Uint8Array, ph: PageHeader, colu
     // assert(type === 'BOOLEAN')
     dataPage = new Array(nValues)
     readRleBitPackedHybrid(pageReader, 1, dataPage)
-    dataPage = dataPage.map(x => !!x)
+    dataPage = dataPage.map((x: any) => !!x)
   } else if (
     daph2.encoding === Encoding.PLAIN_DICTIONARY ||
     daph2.encoding === Encoding.RLE_DICTIONARY

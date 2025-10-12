@@ -39,8 +39,7 @@ export function convertWithDictionary(data: DecodedArray, dictionary: DecodedArr
   if (dictionary && (encoding === Encoding.PLAIN_DICTIONARY || Encoding.RLE_DICTIONARY)) {
     let output = data
     if (data instanceof Uint8Array && !(dictionary instanceof Uint8Array)) {
-      // @ts-expect-error upgrade data to match dictionary type with fancy constructor
-      output = new dictionary.constructor(data.length)
+      output = new (dictionary as any).constructor(data.length)
     }
     for (let i = 0; i < data.length; i++) {
       output[i] = dictionary[data[i]]
@@ -75,19 +74,19 @@ export function convert(data: DecodedArray, columnDecoder: Pick<ColumnDecoder, "
     return arr
   }
   if (!ctype && type === ParquetType.INT96) {
-    return Array.from(data).map(v => parsers.timestampFromNanoseconds(parseInt96Nanos(v)))
+    return Array.from(data).map((v: any) => parsers.timestampFromNanoseconds(parseInt96Nanos(v)))
   }
   if (ctype === ConvertedType.DATE) {
-    return Array.from(data).map(v => parsers.dateFromDays(v))
+    return Array.from(data).map((v: any) => parsers.dateFromDays(v))
   }
   if (ctype === ConvertedType.TIMESTAMP_MILLIS) {
-    return Array.from(data).map(v => parsers.timestampFromMilliseconds(v))
+    return Array.from(data).map((v: any) => parsers.timestampFromMilliseconds(v))
   }
   if (ctype === ConvertedType.TIMESTAMP_MICROS) {
-    return Array.from(data).map(v => parsers.timestampFromMicroseconds(v))
+    return Array.from(data).map((v: any) => parsers.timestampFromMicroseconds(v))
   }
   if (ctype === ConvertedType.JSON) {
-    return data.map(v => JSON.parse(decoder.decode(v)))
+    return data.map((v: any) => JSON.parse(decoder.decode(v)))
   }
   if (ctype === ConvertedType.BSON) {
     throw new Error('parquet bson not supported')
@@ -96,7 +95,7 @@ export function convert(data: DecodedArray, columnDecoder: Pick<ColumnDecoder, "
     throw new Error('parquet interval not supported')
   }
   if (ctype === ConvertedType.UTF8 || ltype?.type === 'STRING' || utf8 && type === ParquetType.BYTE_ARRAY) {
-    return data.map(v => parsers.stringFromBytes(v))
+    return data.map((v: any) => parsers.stringFromBytes(v))
   }
   if (ctype === ConvertedType.UINT_64 || ltype?.type === 'INTEGER' && ltype.bitWidth === 64 && !ltype.isSigned) {
     if (data instanceof BigInt64Array) {
@@ -115,7 +114,7 @@ export function convert(data: DecodedArray, columnDecoder: Pick<ColumnDecoder, "
     return arr
   }
   if (ltype?.type === 'FLOAT16') {
-    return Array.from(data).map(parseFloat16)
+    return Array.from(data).map((bytes: any) => parseFloat16(bytes))
   }
   if (ltype?.type === 'TIMESTAMP') {
     const { unit } = ltype
