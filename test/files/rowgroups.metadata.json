@@ -4,13 +4,13 @@
   "metadata_length": 1602,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "schema",
       "num_children": 1
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "numbers"
     }
   ],
@@ -21,14 +21,14 @@
         {
           "file_offset": 150,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 71,
             "dictionary_page_offset": 4,
             "encoding_stats": [
-              { "count": 1, "encoding": "PLAIN", "page_type": "DICTIONARY_PAGE" },
-              { "count": 1, "encoding": "RLE_DICTIONARY", "page_type": "DATA_PAGE" }
+              { "count": 1, "encoding": 0, "page_type": 2 },
+              { "count": 1, "encoding": 8, "page_type": 0 }
             ],
-            "encodings": ["PLAIN", "RLE", "RLE_DICTIONARY"],
+            "encodings": [0, 3, 8],
             "num_values": 10,
             "path_in_schema": ["numbers"],
             "statistics": {
@@ -40,7 +40,7 @@
             },
             "total_compressed_size": 146,
             "total_uncompressed_size": 172,
-            "type": "INT64"
+            "type": 2
           }
         }
       ],
@@ -55,14 +55,14 @@
         {
           "file_offset": 368,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 294,
             "dictionary_page_offset": 248,
             "encoding_stats": [
-              { "count": 1, "encoding": "PLAIN", "page_type": "DICTIONARY_PAGE" },
-              { "count": 1, "encoding": "RLE_DICTIONARY", "page_type": "DATA_PAGE" }
+              { "count": 1, "encoding": 0, "page_type": 2 },
+              { "count": 1, "encoding": 8, "page_type": 0 }
             ],
-            "encodings": ["PLAIN", "RLE", "RLE_DICTIONARY"],
+            "encodings": [0, 3, 8],
             "num_values": 5,
             "path_in_schema": ["numbers"],
             "statistics": {
@@ -74,7 +74,7 @@
             },
             "total_compressed_size": 120,
             "total_uncompressed_size": 126,
-            "type": "INT64"
+            "type": 2
           }
         }
       ],

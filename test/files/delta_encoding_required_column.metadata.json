@@ -6,118 +6,118 @@
       "num_children": 17
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_customer_sk:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_current_cdemo_sk:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_current_hdemo_sk:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_current_addr_sk:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_first_shipto_date_sk:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_first_sales_date_sk:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_birth_day:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_birth_month:"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "c_birth_year:"
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_customer_id:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_salutation:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_first_name:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_last_name:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_preferred_cust_flag:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_birth_country:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_email_address:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "c_last_review_date:",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
@@ -130,14 +130,14 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_customer_sk:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 50,
             "total_compressed_size": 50,
@@ -151,8 +151,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -165,14 +165,14 @@
         {
           "file_offset": 54,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_current_cdemo_sk:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 388,
             "total_compressed_size": 388,
@@ -186,8 +186,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -200,14 +200,14 @@
         {
           "file_offset": 442,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_current_hdemo_sk:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 261,
             "total_compressed_size": 261,
@@ -221,8 +221,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -235,14 +235,14 @@
         {
           "file_offset": 703,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_current_addr_sk:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 307,
             "total_compressed_size": 307,
@@ -256,8 +256,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -270,14 +270,14 @@
         {
           "file_offset": 1010,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_first_shipto_date_sk:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 247,
             "total_compressed_size": 247,
@@ -291,8 +291,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -305,14 +305,14 @@
         {
           "file_offset": 1257,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_first_sales_date_sk:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 247,
             "total_compressed_size": 247,
@@ -326,8 +326,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -340,14 +340,14 @@
         {
           "file_offset": 1504,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_birth_day:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 131,
             "total_compressed_size": 131,
@@ -361,8 +361,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -375,14 +375,14 @@
         {
           "file_offset": 1635,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_birth_month:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 115,
             "total_compressed_size": 115,
@@ -396,8 +396,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -410,14 +410,14 @@
         {
           "file_offset": 1750,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "DELTA_BINARY_PACKED"
+              5
             ],
             "path_in_schema": [
               "c_birth_year:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 144,
             "total_compressed_size": 144,
@@ -431,8 +431,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BINARY_PACKED",
+                "page_type": 3,
+                "encoding": 5,
                 "count": 1
               }
             ]
@@ -445,14 +445,14 @@
         {
           "file_offset": 1894,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_customer_id:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 933,
             "total_compressed_size": 933,
@@ -464,8 +464,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]
@@ -478,14 +478,14 @@
         {
           "file_offset": 2827,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_salutation:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 378,
             "total_compressed_size": 378,
@@ -497,8 +497,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]
@@ -511,14 +511,14 @@
         {
           "file_offset": 3205,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_first_name:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 707,
             "total_compressed_size": 707,
@@ -530,8 +530,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]
@@ -544,14 +544,14 @@
         {
           "file_offset": 3912,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_last_name:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 751,
             "total_compressed_size": 751,
@@ -563,8 +563,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]
@@ -577,14 +577,14 @@
         {
           "file_offset": 4663,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_preferred_cust_flag:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 154,
             "total_compressed_size": 154,
@@ -596,8 +596,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]
@@ -610,14 +610,14 @@
         {
           "file_offset": 4817,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_birth_country:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 1154,
             "total_compressed_size": 1154,
@@ -629,8 +629,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]
@@ -643,14 +643,14 @@
         {
           "file_offset": 5971,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_email_address:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 2857,
             "total_compressed_size": 2857,
@@ -662,8 +662,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]
@@ -676,14 +676,14 @@
         {
           "file_offset": 8828,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "DELTA_BYTE_ARRAY"
+              7
             ],
             "path_in_schema": [
               "c_last_review_date:"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 100,
             "total_uncompressed_size": 405,
             "total_compressed_size": 405,
@@ -695,8 +695,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE_V2",
-                "encoding": "DELTA_BYTE_ARRAY",
+                "page_type": 3,
+                "encoding": 7,
                 "count": 1
               }
             ]

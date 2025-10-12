@@ -15,9 +15,9 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 4,
-            "encodings": ["PLAIN", "RLE_DICTIONARY"],
+            "encodings": [0, 8],
             "num_values": 5,
             "path_in_schema": ["a"],
             "statistics": {
@@ -27,15 +27,15 @@
             },
             "total_compressed_size": 63,
             "total_uncompressed_size": 59,
-            "type": "BYTE_ARRAY"
+            "type": 6
           }
         },
         {
           "file_offset": 67,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 67,
-            "encodings": ["DELTA_BINARY_PACKED"],
+            "encodings": [5],
             "num_values": 5,
             "path_in_schema": ["b"],
             "statistics": {
@@ -45,15 +45,15 @@
             },
             "total_compressed_size": 49,
             "total_uncompressed_size": 47,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 116,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 116,
-            "encodings": ["PLAIN", "RLE_DICTIONARY"],
+            "encodings": [0, 8],
             "num_values": 5,
             "path_in_schema": ["c"],
             "statistics": {
@@ -63,15 +63,15 @@
             },
             "total_compressed_size": 88,
             "total_uncompressed_size": 94,
-            "type": "DOUBLE"
+            "type": 5
           }
         },
         {
           "file_offset": 204,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 204,
-            "encodings": ["RLE"],
+            "encodings": [3],
             "num_values": 5,
             "path_in_schema": ["d"],
             "statistics": {
@@ -81,15 +81,15 @@
             },
             "total_compressed_size": 39,
             "total_uncompressed_size": 37,
-            "type": "BOOLEAN"
+            "type": 0
           }
         },
         {
           "file_offset": 243,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 243,
-            "encodings": ["PLAIN", "RLE_DICTIONARY"],
+            "encodings": [0, 8],
             "num_values": 10,
             "path_in_schema": [
               "e",
@@ -103,7 +103,7 @@
             },
             "total_compressed_size": 78,
             "total_uncompressed_size": 74,
-            "type": "INT32"
+            "type": 1
           }
         }
       ],
@@ -117,41 +117,41 @@
       "num_children": 5
     },
     {
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "name": "a",
-      "repetition_type": "OPTIONAL",
-      "type": "BYTE_ARRAY"
+      "repetition_type": 1,
+      "type": 6
     },
     {
       "name": "b",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
       "name": "c",
-      "repetition_type": "REQUIRED",
-      "type": "DOUBLE"
+      "repetition_type": 0,
+      "type": 5
     },
     {
       "name": "d",
-      "repetition_type": "REQUIRED",
-      "type": "BOOLEAN"
+      "repetition_type": 0,
+      "type": 0
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "e",
       "num_children": 1,
-      "repetition_type": "OPTIONAL"
+      "repetition_type": 1
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
       "name": "element",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     }
   ]
 }

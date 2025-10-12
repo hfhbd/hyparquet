@@ -6,13 +6,13 @@
       "num_children": 2
     },
     {
-      "type": "INT64",
-      "repetition_type": "REQUIRED",
+      "type": 2,
+      "repetition_type": 0,
       "name": "long_field"
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "REQUIRED",
+      "type": 6,
+      "repetition_type": 0,
       "name": "binary_field"
     }
   ],
@@ -23,15 +23,15 @@
         {
           "file_offset": 31,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN_DICTIONARY",
-              "BIT_PACKED"
+              2,
+              4
             ],
             "path_in_schema": [
               "long_field"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 1000,
             "total_uncompressed_size": 54,
             "total_compressed_size": 54,
@@ -46,13 +46,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN_DICTIONARY",
+                "page_type": 2,
+                "encoding": 2,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN_DICTIONARY",
+                "page_type": 0,
+                "encoding": 2,
                 "count": 1
               }
             ]
@@ -65,15 +65,15 @@
         {
           "file_offset": 117,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "PLAIN_DICTIONARY",
-              "BIT_PACKED"
+              2,
+              4
             ],
             "path_in_schema": [
               "binary_field"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 1000,
             "total_uncompressed_size": 86,
             "total_compressed_size": 86,
@@ -88,13 +88,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN_DICTIONARY",
+                "page_type": 2,
+                "encoding": 2,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN_DICTIONARY",
+                "page_type": 0,
+                "encoding": 2,
                 "count": 1
               }
             ]

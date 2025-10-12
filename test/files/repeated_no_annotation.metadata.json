@@ -6,30 +6,30 @@
       "num_children": 2
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "id"
     },
     {
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "phoneNumbers",
       "num_children": 1
     },
     {
-      "repetition_type": "REPEATED",
+      "repetition_type": 2,
       "name": "phone",
       "num_children": 2
     },
     {
-      "type": "INT64",
-      "repetition_type": "REQUIRED",
+      "type": 2,
+      "repetition_type": 0,
       "name": "number"
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "kind",
-      "converted_type": "UTF8"
+      "converted_type": 0
     }
   ],
   "num_rows": 0,
@@ -39,15 +39,15 @@
         {
           "file_offset": 64,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE_DICTIONARY"
+              0,
+              8
             ],
             "path_in_schema": [
               "id"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 6,
             "total_uncompressed_size": 60,
             "total_compressed_size": 60,
@@ -58,17 +58,17 @@
         {
           "file_offset": 173,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE_DICTIONARY"
+              0,
+              8
             ],
             "path_in_schema": [
               "phoneNumbers",
               "phone",
               "number"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 8,
             "total_uncompressed_size": 80,
             "total_compressed_size": 80,
@@ -79,17 +79,17 @@
         {
           "file_offset": 294,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "PLAIN",
-              "RLE_DICTIONARY"
+              0,
+              8
             ],
             "path_in_schema": [
               "phoneNumbers",
               "phone",
               "kind"
             ],
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "num_values": 8,
             "total_uncompressed_size": 65,
             "total_compressed_size": 65,

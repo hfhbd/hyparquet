@@ -10,7 +10,7 @@
       "max_values": [
         "parent"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -25,7 +25,7 @@
       "max_values": [
         "report"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]

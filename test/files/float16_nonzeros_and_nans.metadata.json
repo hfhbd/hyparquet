@@ -2,14 +2,14 @@
   "version": 2,
   "schema": [
     {
-    "repetition_type": "REQUIRED",
+    "repetition_type": 0,
     "name": "schema",
     "num_children": 1
     },
     {
-    "type": "FIXED_LEN_BYTE_ARRAY",
+    "type": 7,
     "type_length": 2,
-    "repetition_type": "OPTIONAL",
+    "repetition_type": 1,
     "name": "x",
     "logical_type": {
       "type": "FLOAT16"
@@ -23,16 +23,16 @@
       {
       "file_offset": 80,
       "meta_data": {
-        "type": "FIXED_LEN_BYTE_ARRAY",
+        "type": 7,
         "encodings": [
-          "PLAIN",
-          "RLE",
-          "RLE_DICTIONARY"
+          0,
+          3,
+          8
         ],
         "path_in_schema": [
           "x"
         ],
-        "codec": "UNCOMPRESSED",
+        "codec": 0,
         "num_values": 8,
         "total_uncompressed_size": 76,
         "total_compressed_size": 76,
@@ -47,13 +47,13 @@
       },
       "encoding_stats": [
         {
-          "page_type": "DICTIONARY_PAGE",
-          "encoding": "PLAIN",
+          "page_type": 2,
+          "encoding": 0,
           "count": 1
         },
         {
-          "page_type": "DATA_PAGE",
-          "encoding": "RLE_DICTIONARY",
+          "page_type": 0,
+          "encoding": 8,
           "count": 1
         }
         ]

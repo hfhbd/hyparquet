@@ -6,19 +6,19 @@
      "num_children": 3
    },
    {
-     "type": "BYTE_ARRAY",
-     "repetition_type": "REPEATED",
+     "type": 6,
+     "repetition_type": 2,
      "name": "stringArray",
-     "converted_type": "UTF8"
+     "converted_type": 0
    },
    {
-     "type": "INT32",
-     "repetition_type": "REPEATED",
+     "type": 1,
+     "repetition_type": 2,
      "name": "intArray"
    },
    {
-     "type": "DOUBLE",
-     "repetition_type": "REPEATED",
+     "type": 5,
+     "repetition_type": 2,
      "name": "doubleArray"
    }
  ],
@@ -29,15 +29,15 @@
        {
          "file_offset": 4802,
          "meta_data": {
-           "type": "BYTE_ARRAY",
+           "type": 6,
            "encodings": [
-             "RLE",
-             "PLAIN"
+             3,
+             0
            ],
            "path_in_schema": [
              "stringArray"
            ],
-           "codec": "UNCOMPRESSED",
+           "codec": 0,
            "num_values": 449,
            "total_uncompressed_size": 4798,
            "total_compressed_size": 4798,
@@ -47,15 +47,15 @@
        {
          "file_offset": 5874,
          "meta_data": {
-           "type": "INT32",
+           "type": 1,
            "encodings": [
-             "RLE",
-             "PLAIN"
+             3,
+             0
            ],
            "path_in_schema": [
              "intArray"
            ],
-           "codec": "UNCOMPRESSED",
+           "codec": 0,
            "num_values": 237,
            "total_uncompressed_size": 1038,
            "total_compressed_size": 1038,
@@ -65,15 +65,15 @@
        {
          "file_offset": 7663,
          "meta_data": {
-           "type": "DOUBLE",
+           "type": 5,
            "encodings": [
-             "RLE",
-             "PLAIN"
+             3,
+             0
            ],
            "path_in_schema": [
              "doubleArray"
            ],
-           "codec": "UNCOMPRESSED",
+           "codec": 0,
            "num_values": 225,
            "total_uncompressed_size": 1757,
            "total_compressed_size": 1757,

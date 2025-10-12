@@ -10,7 +10,7 @@
       "max_values": [
         105
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -25,7 +25,7 @@
       "max_values": [
         1895444
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -40,7 +40,7 @@
       "max_values": [
         7135
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -55,7 +55,7 @@
       "max_values": [
         49388
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -70,7 +70,7 @@
       "max_values": [
         2452641
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -85,7 +85,7 @@
       "max_values": [
         2452611
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -100,7 +100,7 @@
       "max_values": [
         30
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -115,7 +115,7 @@
       "max_values": [
         12
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -130,7 +130,7 @@
       "max_values": [
         1991
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -145,7 +145,7 @@
       "max_values": [
         "AAAAAAAAPFAAAAAA"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -160,7 +160,7 @@
       "max_values": [
         "Sir"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -175,7 +175,7 @@
       "max_values": [
         "William"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -190,7 +190,7 @@
       "max_values": [
         "Young"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -205,7 +205,7 @@
       "max_values": [
         "Y"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -220,7 +220,7 @@
       "max_values": [
         "WALLIS AND FUTUNA"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -235,7 +235,7 @@
       "max_values": [
         "William.Warner@zegnrzurU.org"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]
@@ -250,7 +250,7 @@
       "max_values": [
         "2452644"
       ],
-      "boundary_order": "ASCENDING",
+      "boundary_order": 1,
       "null_counts": [
         0
       ]

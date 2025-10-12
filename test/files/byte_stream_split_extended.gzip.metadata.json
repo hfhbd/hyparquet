@@ -2,86 +2,86 @@
   "version": 2,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "schema",
       "num_children": 14
     },
     {
-      "type": "FIXED_LEN_BYTE_ARRAY",
+      "type": 7,
       "type_length": 2,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "float16_plain",
       "logical_type": {
         "type": "FLOAT16"
       }
     },
     {
-      "type": "FIXED_LEN_BYTE_ARRAY",
+      "type": 7,
       "type_length": 2,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "float16_byte_stream_split",
       "logical_type": {
         "type": "FLOAT16"
       }
     },
     {
-      "type": "FLOAT",
-      "repetition_type": "OPTIONAL",
+      "type": 4,
+      "repetition_type": 1,
       "name": "float_plain"
     },
     {
-      "type": "FLOAT",
-      "repetition_type": "OPTIONAL",
+      "type": 4,
+      "repetition_type": 1,
       "name": "float_byte_stream_split"
     },
     {
-      "type": "DOUBLE",
-      "repetition_type": "OPTIONAL",
+      "type": 5,
+      "repetition_type": 1,
       "name": "double_plain"
     },
     {
-      "type": "DOUBLE",
-      "repetition_type": "OPTIONAL",
+      "type": 5,
+      "repetition_type": 1,
       "name": "double_byte_stream_split"
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "int32_plain"
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "int32_byte_stream_split"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "int64_plain"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "int64_byte_stream_split"
     },
     {
-      "type": "FIXED_LEN_BYTE_ARRAY",
+      "type": 7,
       "type_length": 5,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "flba5_plain"
     },
     {
-      "type": "FIXED_LEN_BYTE_ARRAY",
+      "type": 7,
       "type_length": 5,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "flba5_byte_stream_split"
     },
     {
-      "type": "FIXED_LEN_BYTE_ARRAY",
+      "type": 7,
       "type_length": 4,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "decimal_plain",
-      "converted_type": "DECIMAL",
+      "converted_type": 5,
       "scale": 3,
       "precision": 7,
       "logical_type": {
@@ -91,11 +91,11 @@
       }
     },
     {
-      "type": "FIXED_LEN_BYTE_ARRAY",
+      "type": 7,
       "type_length": 4,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "decimal_byte_stream_split",
-      "converted_type": "DECIMAL",
+      "converted_type": 5,
       "scale": 3,
       "precision": 7,
       "logical_type": {
@@ -112,15 +112,15 @@
         {
           "file_offset": 411,
           "meta_data": {
-            "type": "FIXED_LEN_BYTE_ARRAY",
+            "type": 7,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "float16_plain"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 447,
             "total_compressed_size": 407,
@@ -134,8 +134,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -144,15 +144,15 @@
         {
           "file_offset": 834,
           "meta_data": {
-            "type": "FIXED_LEN_BYTE_ARRAY",
+            "type": 7,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "float16_byte_stream_split"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 447,
             "total_compressed_size": 353,
@@ -166,8 +166,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]
@@ -176,15 +176,15 @@
         {
           "file_offset": 1719,
           "meta_data": {
-            "type": "FLOAT",
+            "type": 4,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "float_plain"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 802,
@@ -198,8 +198,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -208,15 +208,15 @@
         {
           "file_offset": 2509,
           "meta_data": {
-            "type": "FLOAT",
+            "type": 4,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "float_byte_stream_split"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 713,
@@ -230,8 +230,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]
@@ -240,15 +240,15 @@
         {
           "file_offset": 4223,
           "meta_data": {
-            "type": "DOUBLE",
+            "type": 5,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "double_plain"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1625,
@@ -262,8 +262,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -272,15 +272,15 @@
         {
           "file_offset": 5821,
           "meta_data": {
-            "type": "DOUBLE",
+            "type": 5,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "double_byte_stream_split"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1504,
@@ -294,8 +294,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]
@@ -304,15 +304,15 @@
         {
           "file_offset": 6608,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "int32_plain"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 681,
@@ -326,8 +326,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -336,15 +336,15 @@
         {
           "file_offset": 7242,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "int32_byte_stream_split"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 557,
@@ -358,8 +358,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]
@@ -368,15 +368,15 @@
         {
           "file_offset": 8567,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "int64_plain"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1236,
@@ -390,8 +390,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -400,15 +400,15 @@
         {
           "file_offset": 9719,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "int64_byte_stream_split"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1058,
@@ -422,8 +422,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]
@@ -432,15 +432,15 @@
         {
           "file_offset": 10388,
           "meta_data": {
-            "type": "FIXED_LEN_BYTE_ARRAY",
+            "type": 7,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "flba5_plain"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 1045,
             "total_compressed_size": 562,
@@ -464,8 +464,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -474,15 +474,15 @@
         {
           "file_offset": 10984,
           "meta_data": {
-            "type": "FIXED_LEN_BYTE_ARRAY",
+            "type": 7,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "flba5_byte_stream_split"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 1045,
             "total_compressed_size": 527,
@@ -506,8 +506,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]
@@ -516,15 +516,15 @@
         {
           "file_offset": 11801,
           "meta_data": {
-            "type": "FIXED_LEN_BYTE_ARRAY",
+            "type": 7,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "decimal_plain"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 736,
@@ -538,8 +538,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -548,15 +548,15 @@
         {
           "file_offset": 12525,
           "meta_data": {
-            "type": "FIXED_LEN_BYTE_ARRAY",
+            "type": 7,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "decimal_byte_stream_split"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 643,
@@ -570,8 +570,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]

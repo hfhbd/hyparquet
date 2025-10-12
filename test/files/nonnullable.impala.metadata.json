@@ -15,9 +15,9 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 4,
-            "encodings": [ "PLAIN", "BIT_PACKED" ],
+            "encodings": [ 0, 4 ],
             "num_values": 1,
             "path_in_schema": [ "ID" ],
             "statistics": {
@@ -27,15 +27,15 @@
             },
             "total_compressed_size": 49,
             "total_uncompressed_size": 49,
-            "type": "INT64"
+            "type": 2
           }
         },
         {
           "file_offset": 53,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 53,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "Int_Array", "list", "element" ],
             "statistics": {
@@ -45,15 +45,15 @@
             },
             "total_compressed_size": 49,
             "total_uncompressed_size": 49,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 102,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 102,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 3,
             "path_in_schema": [
               "int_array_array",
@@ -69,15 +69,15 @@
             },
             "total_compressed_size": 55,
             "total_uncompressed_size": 55,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 157,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 157,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "Int_Map", "map", "key" ],
             "statistics": {
@@ -87,15 +87,15 @@
             },
             "total_compressed_size": 47,
             "total_uncompressed_size": 47,
-            "type": "BYTE_ARRAY"
+            "type": 6
           }
         },
         {
           "file_offset": 204,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 204,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "Int_Map", "map", "value" ],
             "statistics": {
@@ -105,15 +105,15 @@
             },
             "total_compressed_size": 49,
             "total_uncompressed_size": 49,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 253,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 253,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 4,
             "path_in_schema": [
               "int_map_array",
@@ -129,15 +129,15 @@
             },
             "total_compressed_size": 49,
             "total_uncompressed_size": 49,
-            "type": "BYTE_ARRAY"
+            "type": 6
           }
         },
         {
           "file_offset": 302,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 302,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 4,
             "path_in_schema": [
               "int_map_array",
@@ -153,15 +153,15 @@
             },
             "total_compressed_size": 51,
             "total_uncompressed_size": 51,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 353,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 353,
-            "encodings": [ "PLAIN", "BIT_PACKED" ],
+            "encodings": [ 0, 4 ],
             "num_values": 1,
             "path_in_schema": [ "nested_Struct", "a" ],
             "statistics": {
@@ -171,15 +171,15 @@
             },
             "total_compressed_size": 37,
             "total_uncompressed_size": 37,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 390,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 390,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "nested_Struct", "B", "list", "element" ],
             "statistics": {
@@ -189,15 +189,15 @@
             },
             "total_compressed_size": 49,
             "total_uncompressed_size": 49,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 439,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 439,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [
               "nested_Struct",
@@ -216,15 +216,15 @@
             },
             "total_compressed_size": 51,
             "total_uncompressed_size": 51,
-            "type": "INT32"
+            "type": 1
           }
         },
         {
           "file_offset": 490,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 490,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [
               "nested_Struct",
@@ -243,15 +243,15 @@
             },
             "total_compressed_size": 76,
             "total_uncompressed_size": 76,
-            "type": "BYTE_ARRAY"
+            "type": 6
           }
         },
         {
           "file_offset": 566,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 566,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "nested_Struct", "G", "map", "key" ],
             "statistics": {
@@ -259,15 +259,15 @@
             },
             "total_compressed_size": 33,
             "total_uncompressed_size": 33,
-            "type": "BYTE_ARRAY"
+            "type": 6
           }
         },
         {
           "file_offset": 599,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 599,
-            "encodings": [ "PLAIN", "RLE" ],
+            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [
               "nested_Struct",
@@ -284,7 +284,7 @@
             },
             "total_compressed_size": 35,
             "total_uncompressed_size": 35,
-            "type": "DOUBLE"
+            "type": 5
           }
         }
       ],
@@ -299,221 +299,221 @@
     },
     {
       "name": "ID",
-      "repetition_type": "REQUIRED",
-      "type": "INT64"
+      "repetition_type": 0,
+      "type": 2
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "Int_Array",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
       "name": "element",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "int_array_array",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "element",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
       "name": "element",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
-      "converted_type": "MAP",
+      "converted_type": 1,
       "name": "Int_Map",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
-      "converted_type": "MAP_KEY_VALUE",
+      "converted_type": 2,
       "name": "map",
       "num_children": 2,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "name": "key",
-      "repetition_type": "REQUIRED",
-      "type": "BYTE_ARRAY"
+      "repetition_type": 0,
+      "type": 6
     },
     {
       "name": "value",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "int_map_array",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
-      "converted_type": "MAP",
+      "converted_type": 1,
       "name": "element",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
-      "converted_type": "MAP_KEY_VALUE",
+      "converted_type": 2,
       "name": "map",
       "num_children": 2,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "name": "key",
-      "repetition_type": "REQUIRED",
-      "type": "BYTE_ARRAY"
+      "repetition_type": 0,
+      "type": 6
     },
     {
       "name": "value",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
       "name": "nested_Struct",
       "num_children": 4,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "a",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "B",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
       "name": "element",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
       "name": "c",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "D",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "element",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
       "name": "element",
       "num_children": 2,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "e",
-      "repetition_type": "REQUIRED",
-      "type": "INT32"
+      "repetition_type": 0,
+      "type": 1
     },
     {
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "name": "f",
-      "repetition_type": "REQUIRED",
-      "type": "BYTE_ARRAY"
+      "repetition_type": 0,
+      "type": 6
     },
     {
-      "converted_type": "MAP",
+      "converted_type": 1,
       "name": "G",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
-      "converted_type": "MAP_KEY_VALUE",
+      "converted_type": 2,
       "name": "map",
       "num_children": 2,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "name": "key",
-      "repetition_type": "REQUIRED",
-      "type": "BYTE_ARRAY"
+      "repetition_type": 0,
+      "type": 6
     },
     {
       "name": "value",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "h",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
-      "converted_type": "LIST",
+      "converted_type": 3,
       "name": "i",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
       "name": "list",
       "num_children": 1,
-      "repetition_type": "REPEATED"
+      "repetition_type": 2
     },
     {
       "name": "element",
-      "repetition_type": "REQUIRED",
-      "type": "DOUBLE"
+      "repetition_type": 0,
+      "type": 5
     }
   ]
 }

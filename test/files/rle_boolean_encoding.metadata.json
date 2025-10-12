@@ -6,8 +6,8 @@
       "num_children": 1
     },
     {
-      "type": "BOOLEAN",
-      "repetition_type": "OPTIONAL",
+      "type": 0,
+      "repetition_type": 1,
       "name": "datatype_boolean",
       "field_id": 1
     }
@@ -19,14 +19,14 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "BOOLEAN",
+            "type": 0,
             "encodings": [
-              "RLE"
+              3
             ],
             "path_in_schema": [
               "datatype_boolean"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 68,
             "total_uncompressed_size": 49,
             "total_compressed_size": 69,

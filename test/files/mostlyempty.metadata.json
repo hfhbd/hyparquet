@@ -6,8 +6,8 @@
       "num_children": 1
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "empty"
     }
   ],
@@ -18,10 +18,10 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "type": "BYTE_ARRAY",
-            "encodings": ["RLE_DICTIONARY"],
+            "type": 6,
+            "encodings": [8],
             "path_in_schema": ["empty"],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 10,
             "total_uncompressed_size": 40,
             "total_compressed_size": 40,

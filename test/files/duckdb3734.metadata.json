@@ -2,67 +2,67 @@
  "version": 1,
  "schema": [
    {
-     "repetition_type": "REQUIRED",
+     "repetition_type": 0,
      "name": "duckdb_schema",
      "num_children": 2
    },
    {
-     "type": "BYTE_ARRAY",
-     "repetition_type": "OPTIONAL",
+     "type": 6,
+     "repetition_type": 1,
      "name": "tconst",
      "num_children": 0,
-     "converted_type": "UTF8"
+     "converted_type": 0
    },
    {
-     "repetition_type": "OPTIONAL",
+     "repetition_type": 1,
      "name": "principals",
      "num_children": 5
    },
    {
-     "type": "INT32",
-     "repetition_type": "OPTIONAL",
+     "type": 1,
+     "repetition_type": 1,
      "name": "ordering",
      "num_children": 0,
-     "converted_type": "INT_32"
+     "converted_type": 17
    },
    {
-     "type": "BYTE_ARRAY",
-     "repetition_type": "OPTIONAL",
+     "type": 6,
+     "repetition_type": 1,
      "name": "nconst",
      "num_children": 0,
-     "converted_type": "UTF8"
+     "converted_type": 0
    },
    {
-     "type": "BYTE_ARRAY",
-     "repetition_type": "OPTIONAL",
+     "type": 6,
+     "repetition_type": 1,
      "name": "category",
      "num_children": 0,
-     "converted_type": "UTF8"
+     "converted_type": 0
    },
    {
-     "type": "BYTE_ARRAY",
-     "repetition_type": "OPTIONAL",
+     "type": 6,
+     "repetition_type": 1,
      "name": "job",
      "num_children": 0,
-     "converted_type": "UTF8"
+     "converted_type": 0
    },
    {
-     "repetition_type": "OPTIONAL",
+     "repetition_type": 1,
      "name": "characters",
      "num_children": 1,
-     "converted_type": "LIST"
+     "converted_type": 3
    },
    {
-     "repetition_type": "REPEATED",
+     "repetition_type": 2,
      "name": "list",
      "num_children": 1
    },
    {
-     "type": "BYTE_ARRAY",
-     "repetition_type": "OPTIONAL",
+     "type": 6,
+     "repetition_type": 1,
      "name": "element",
      "num_children": 0,
-     "converted_type": "UTF8"
+     "converted_type": 0
    }
  ],
  "num_rows": 10,
@@ -72,15 +72,15 @@
        {
          "file_offset": 0,
          "meta_data": {
-           "type": "BYTE_ARRAY",
+           "type": 6,
            "encodings": [
-             "PLAIN",
-             "RLE_DICTIONARY"
+             0,
+             8
            ],
            "path_in_schema": [
              "tconst"
            ],
-           "codec": "SNAPPY",
+           "codec": 1,
            "num_values": 10,
            "total_uncompressed_size": 0,
            "total_compressed_size": 83,
@@ -97,15 +97,15 @@
        {
          "file_offset": 0,
          "meta_data": {
-           "type": "INT32",
+           "type": 1,
            "encodings": [
-             "PLAIN"
+             0
            ],
            "path_in_schema": [
              "principals",
              "ordering"
            ],
-           "codec": "SNAPPY",
+           "codec": 1,
            "num_values": 10,
            "total_uncompressed_size": 0,
            "total_compressed_size": 53,
@@ -122,15 +122,15 @@
        {
          "file_offset": 0,
          "meta_data": {
-           "type": "BYTE_ARRAY",
+           "type": 6,
            "encodings": [
-             "PLAIN"
+             0
            ],
            "path_in_schema": [
              "principals",
              "nconst"
            ],
-           "codec": "SNAPPY",
+           "codec": 1,
            "num_values": 10,
            "total_uncompressed_size": 0,
            "total_compressed_size": 116,
@@ -147,15 +147,15 @@
        {
          "file_offset": 0,
          "meta_data": {
-           "type": "BYTE_ARRAY",
+           "type": 6,
            "encodings": [
-             "PLAIN"
+             0
            ],
            "path_in_schema": [
              "principals",
              "category"
            ],
-           "codec": "SNAPPY",
+           "codec": 1,
            "num_values": 10,
            "total_uncompressed_size": 0,
            "total_compressed_size": 121,
@@ -172,15 +172,15 @@
        {
          "file_offset": 0,
          "meta_data": {
-           "type": "BYTE_ARRAY",
+           "type": 6,
            "encodings": [
-             "PLAIN"
+             0
            ],
            "path_in_schema": [
              "principals",
              "job"
            ],
-           "codec": "SNAPPY",
+           "codec": 1,
            "num_values": 10,
            "total_uncompressed_size": 0,
            "total_compressed_size": 90,
@@ -197,9 +197,9 @@
        {
          "file_offset": 0,
          "meta_data": {
-           "type": "BYTE_ARRAY",
+           "type": 6,
            "encodings": [
-             "PLAIN"
+             0
            ],
            "path_in_schema": [
              "principals",
@@ -207,7 +207,7 @@
              "list",
              "element"
            ],
-           "codec": "SNAPPY",
+           "codec": 1,
            "num_values": 10,
            "total_uncompressed_size": 0,
            "total_compressed_size": 50,

@@ -8,11 +8,11 @@
         {
           "file_offset": 1471,
           "meta_data": {
-            "codec": "GZIP",
+            "codec": 2,
             "data_page_offset": 4,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "num_values": 513,
             "path_in_schema": [
@@ -24,7 +24,7 @@
             },
             "total_compressed_size": 1467,
             "total_uncompressed_size": 4155,
-            "type": "INT64"
+            "type": 2
           }
         }
       ],
@@ -40,15 +40,15 @@
       "num_children": 1
     },
     {
-      "converted_type": "UINT_64",
+      "converted_type": 14,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 64,
         "isSigned": false
       },
       "name": "long_col",
-      "repetition_type": "OPTIONAL",
-      "type": "INT64"
+      "repetition_type": 1,
+      "type": 2
     }
   ]
 }

@@ -2,21 +2,21 @@
   "version": 2,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "schema",
       "num_children": 2
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "mid"
     },
     {
-      "type": "FIXED_LEN_BYTE_ARRAY",
+      "type": 7,
       "type_length": 6,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "value",
-      "converted_type": "DECIMAL",
+      "converted_type": 5,
       "scale": 10,
       "precision": 14,
       "logical_type": {
@@ -33,16 +33,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "mid"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 5,
             "total_uncompressed_size": 126,
             "total_compressed_size": 120,
@@ -57,13 +57,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -72,16 +72,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "FIXED_LEN_BYTE_ARRAY",
+            "type": 7,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "value"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 5,
             "total_uncompressed_size": 82,
             "total_compressed_size": 86,
@@ -96,13 +96,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]

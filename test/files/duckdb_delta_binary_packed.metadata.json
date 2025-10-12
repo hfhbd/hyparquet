@@ -2,15 +2,15 @@
   "version": 1,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "duckdb_schema",
       "num_children": 1
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "range",
-      "converted_type": "INT_64"
+      "converted_type": 18
     }
   ],
   "num_rows": 1250,
@@ -20,10 +20,10 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT64",
-            "encodings": ["DELTA_BINARY_PACKED"],
+            "type": 2,
+            "encodings": [5],
             "path_in_schema": ["range"],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1250,
             "total_uncompressed_size": 40,
             "total_compressed_size": 42,

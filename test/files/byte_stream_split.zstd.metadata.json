@@ -2,18 +2,18 @@
   "version": 2,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "schema",
       "num_children": 2
     },
     {
-      "type": "FLOAT",
-      "repetition_type": "OPTIONAL",
+      "type": 4,
+      "repetition_type": 1,
       "name": "f32"
     },
     {
-      "type": "DOUBLE",
-      "repetition_type": "OPTIONAL",
+      "type": 5,
+      "repetition_type": 1,
       "name": "f64"
     }
   ],
@@ -24,15 +24,15 @@
         {
           "file_offset": 1162,
           "meta_data": {
-            "type": "FLOAT",
+            "type": 4,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "f32"
             ],
-            "codec": "ZSTD",
+            "codec": 6,
             "num_values": 300,
             "total_uncompressed_size": 1255,
             "total_compressed_size": 1158,
@@ -46,8 +46,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]
@@ -56,15 +56,15 @@
         {
           "file_offset": 3513,
           "meta_data": {
-            "type": "DOUBLE",
+            "type": 5,
             "encodings": [
-              "RLE",
-              "BYTE_STREAM_SPLIT"
+              3,
+              9
             ],
             "path_in_schema": [
               "f64"
             ],
-            "codec": "ZSTD",
+            "codec": 6,
             "num_values": 300,
             "total_uncompressed_size": 2471,
             "total_compressed_size": 2283,
@@ -78,8 +78,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "BYTE_STREAM_SPLIT",
+                "page_type": 0,
+                "encoding": 9,
                 "count": 1
               }
             ]

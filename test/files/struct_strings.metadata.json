@@ -6,22 +6,22 @@
       "num_children": 1
     },
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "inner",
       "num_children": 2
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "str_field",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "DOUBLE",
-      "repetition_type": "OPTIONAL",
+      "type": 5,
+      "repetition_type": 1,
       "name": "f64_field"
     }
   ],
@@ -32,16 +32,16 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "inner",
               "str_field"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 2,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -56,16 +56,16 @@
         {
           "file_offset": 38,
           "meta_data": {
-            "type": "DOUBLE",
+            "type": 5,
             "encodings": [
-              "RLE",
-              "PLAIN"
+              3,
+              0
             ],
             "path_in_schema": [
               "inner",
               "f64_field"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 2,
             "total_uncompressed_size": 31,
             "total_compressed_size": 33,

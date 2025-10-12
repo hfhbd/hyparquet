@@ -1,7 +1,7 @@
 [
   [
     {
-      "boundary_order": "UNORDERED",
+      "boundary_order": 0,
       "max_values": [
         "2022-11-27T17:42:44.280Z"
       ],
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "boundary_order": "UNORDERED",
+      "boundary_order": 0,
       "max_values": [
         85016
       ],
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "boundary_order": "UNORDERED",
+      "boundary_order": 0,
       "max_values": [
         [
           0
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "boundary_order": "UNORDERED",
+      "boundary_order": 0,
       "max_values": [
         1
       ],
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "boundary_order": "UNORDERED",
+      "boundary_order": 0,
       "max_values": [
         343
       ],

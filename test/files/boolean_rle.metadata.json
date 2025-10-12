@@ -16,10 +16,10 @@
           "column_index_offset": 89,
           "file_offset": 47,
           "meta_data": {
-            "codec": "SNAPPY",
+            "codec": 1,
             "data_page_offset": 4,
             "encodings": [
-              "RLE"
+              3
             ],
             "num_values": 15,
             "path_in_schema": [
@@ -32,7 +32,7 @@
             },
             "total_compressed_size": 43,
             "total_uncompressed_size": 41,
-            "type": "BOOLEAN"
+            "type": 0
           },
           "offset_index_length": 10,
           "offset_index_offset": 106
@@ -52,8 +52,8 @@
     },
     {
       "name": "BooleanColumn",
-      "repetition_type": "OPTIONAL",
-      "type": "BOOLEAN"
+      "repetition_type": 1,
+      "type": 0
     }
   ],
   "version": 1

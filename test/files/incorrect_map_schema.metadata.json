@@ -6,34 +6,34 @@
       "num_children": 1
     },
     {
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "name": "my_map",
       "num_children": 1,
-      "converted_type": "MAP",
+      "converted_type": 1,
       "logical_type": {
         "type": "MAP"
       }
     },
     {
-      "repetition_type": "REPEATED",
+      "repetition_type": 2,
       "name": "key_value",
       "num_children": 2,
-      "converted_type": "MAP_KEY_VALUE"
+      "converted_type": 2
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "key",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "value",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
@@ -46,17 +46,17 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "my_map",
               "key_value",
               "key"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 2,
             "total_uncompressed_size": 54,
             "total_compressed_size": 69,
@@ -68,8 +68,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]
@@ -82,17 +82,17 @@
         {
           "file_offset": 73,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "my_map",
               "key_value",
               "value"
             ],
-            "codec": "GZIP",
+            "codec": 2,
             "num_values": 2,
             "total_uncompressed_size": 57,
             "total_compressed_size": 72,
@@ -104,8 +104,8 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 0,
+                "encoding": 0,
                 "count": 1
               }
             ]

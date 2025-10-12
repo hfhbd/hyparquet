@@ -6,10 +6,10 @@
       "num_children": 1
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "TextColumn",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
@@ -22,16 +22,16 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "RLE",
-              "BIT_PACKED",
-              "PLAIN"
+              3,
+              4,
+              0
             ],
             "path_in_schema": [
               "TextColumn"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 3,
             "total_uncompressed_size": 283,
             "total_compressed_size": 288,

@@ -9,14 +9,14 @@
         {
           "file_offset": 4,
           "meta_data": {
-            "codec": "UNCOMPRESSED",
+            "codec": 0,
             "data_page_offset": 4,
             "encodings": [],
             "num_values": 24,
             "path_in_schema": [ "value" ],
             "total_compressed_size": 168,
             "total_uncompressed_size": 168,
-            "type": "BYTE_ARRAY"
+            "type": 6
           }
         }
       ],
@@ -28,16 +28,16 @@
     {
       "name": "schema",
       "num_children": 1,
-      "repetition_type": "REQUIRED"
+      "repetition_type": 0
     },
     {
-      "converted_type": "DECIMAL",
+      "converted_type": 5,
       "field_id": 6,
       "name": "value",
       "precision": 4,
-      "repetition_type": "OPTIONAL",
+      "repetition_type": 1,
       "scale": 2,
-      "type": "BYTE_ARRAY"
+      "type": 6
     }
   ]
 }

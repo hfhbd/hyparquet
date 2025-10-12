@@ -2,15 +2,15 @@
   "version": 2,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "schema",
       "num_children": 8
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "unsigned_int8",
-      "converted_type": "UINT_8",
+      "converted_type": 11,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 8,
@@ -18,10 +18,10 @@
       }
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "unsigned_int16",
-      "converted_type": "UINT_16",
+      "converted_type": 12,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 16,
@@ -29,10 +29,10 @@
       }
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "unsigned_int32",
-      "converted_type": "UINT_32",
+      "converted_type": 13,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 32,
@@ -40,10 +40,10 @@
       }
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "unsigned_int64",
-      "converted_type": "UINT_64",
+      "converted_type": 14,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 64,
@@ -51,10 +51,10 @@
       }
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "signed_int8",
-      "converted_type": "INT_8",
+      "converted_type": 15,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 8,
@@ -62,10 +62,10 @@
       }
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "signed_int16",
-      "converted_type": "INT_16",
+      "converted_type": 16,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 16,
@@ -73,13 +73,13 @@
       }
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "signed_int32"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "signed_int64"
     }
   ],
@@ -90,16 +90,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "unsigned_int8"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 73,
             "total_compressed_size": 77,
@@ -112,13 +112,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -127,16 +127,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "unsigned_int16"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 73,
             "total_compressed_size": 77,
@@ -149,13 +149,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -164,16 +164,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "unsigned_int32"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 73,
             "total_compressed_size": 77,
@@ -186,13 +186,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -201,16 +201,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "unsigned_int64"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 97,
             "total_compressed_size": 90,
@@ -223,13 +223,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -238,16 +238,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "signed_int8"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 85,
             "total_compressed_size": 89,
@@ -262,13 +262,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -277,16 +277,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "signed_int16"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 85,
             "total_compressed_size": 89,
@@ -301,13 +301,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -316,16 +316,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "signed_int32"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 85,
             "total_compressed_size": 89,
@@ -340,13 +340,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -355,16 +355,16 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "signed_int64"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 4,
             "total_uncompressed_size": 117,
             "total_compressed_size": 110,
@@ -379,13 +379,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]

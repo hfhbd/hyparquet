@@ -6,20 +6,20 @@
       "num_children": 5
     },
     {
-      "type": "INT64",
-      "repetition_type": "REQUIRED",
+      "type": 2,
+      "repetition_type": 0,
       "name": "timestamp",
       "logical_type": {
         "type": "TIMESTAMP",
         "isAdjustedToUTC": false,
-        "unit": "MILLIS"
+        "unit": 0
       }
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "item_id",
-      "converted_type": "UINT_32",
+      "converted_type": 13,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 32,
@@ -27,10 +27,10 @@
       }
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "currency_id",
-      "converted_type": "UINT_32",
+      "converted_type": 13,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 32,
@@ -38,15 +38,15 @@
       }
     },
     {
-      "type": "INT64",
-      "repetition_type": "REQUIRED",
+      "type": 2,
+      "repetition_type": 0,
       "name": "count"
     },
     {
-      "type": "INT32",
-      "repetition_type": "REQUIRED",
+      "type": 1,
+      "repetition_type": 0,
       "name": "mf",
-      "converted_type": "UINT_16",
+      "converted_type": 12,
       "logical_type": {
         "type": "INTEGER",
         "bitWidth": 16,
@@ -61,15 +61,15 @@
         {
           "file_offset": 77,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "timestamp"
             ],
-            "codec": "ZSTD",
+            "codec": 6,
             "num_values": 4,
             "total_uncompressed_size": 78,
             "total_compressed_size": 73,
@@ -88,15 +88,15 @@
         {
           "file_offset": 197,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "item_id"
             ],
-            "codec": "ZSTD",
+            "codec": 6,
             "num_values": 4,
             "total_uncompressed_size": 56,
             "total_compressed_size": 65,
@@ -115,15 +115,15 @@
         {
           "file_offset": 279,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "currency_id"
             ],
-            "codec": "ZSTD",
+            "codec": 6,
             "num_values": 4,
             "total_uncompressed_size": 28,
             "total_compressed_size": 37,
@@ -140,15 +140,15 @@
         {
           "file_offset": 383,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "count"
             ],
-            "codec": "ZSTD",
+            "codec": 6,
             "num_values": 4,
             "total_uncompressed_size": 78,
             "total_compressed_size": 68,
@@ -167,15 +167,15 @@
         {
           "file_offset": 492,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "mf"
             ],
-            "codec": "ZSTD",
+            "codec": 6,
             "num_values": 4,
             "total_uncompressed_size": 54,
             "total_compressed_size": 57,

@@ -2,23 +2,23 @@
   "version": 2,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "schema",
       "num_children": 3
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "c0"
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "c1"
     },
     {
-      "type": "DOUBLE",
-      "repetition_type": "OPTIONAL",
+      "type": 5,
+      "repetition_type": 1,
       "name": "v11"
     }
   ],
@@ -29,16 +29,16 @@
         {
           "file_offset": 112,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "c0"
             ],
-            "codec": "BROTLI",
+            "codec": 4,
             "num_values": 4,
             "total_uncompressed_size": 100,
             "total_compressed_size": 108,
@@ -53,13 +53,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -68,16 +68,16 @@
         {
           "file_offset": 280,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "c1"
             ],
-            "codec": "BROTLI",
+            "codec": 4,
             "num_values": 4,
             "total_uncompressed_size": 68,
             "total_compressed_size": 76,
@@ -90,13 +90,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]
@@ -105,16 +105,16 @@
         {
           "file_offset": 460,
           "meta_data": {
-            "type": "DOUBLE",
+            "type": 5,
             "encodings": [
-              "PLAIN",
-              "RLE",
-              "RLE_DICTIONARY"
+              0,
+              3,
+              8
             ],
             "path_in_schema": [
               "v11"
             ],
-            "codec": "BROTLI",
+            "codec": 4,
             "num_values": 4,
             "total_uncompressed_size": 109,
             "total_compressed_size": 116,
@@ -129,13 +129,13 @@
             },
             "encoding_stats": [
               {
-                "page_type": "DICTIONARY_PAGE",
-                "encoding": "PLAIN",
+                "page_type": 2,
+                "encoding": 0,
                 "count": 1
               },
               {
-                "page_type": "DATA_PAGE",
-                "encoding": "RLE_DICTIONARY",
+                "page_type": 0,
+                "encoding": 8,
                 "count": 1
               }
             ]

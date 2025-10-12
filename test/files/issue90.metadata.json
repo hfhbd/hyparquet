@@ -2,13 +2,13 @@
   "version": 1,
   "schema": [
     {
-      "repetition_type": "REQUIRED",
+      "repetition_type": 0,
       "name": "duckdb_schema",
       "num_children": 1
     },
     {
-      "type": "DOUBLE",
-      "repetition_type": "OPTIONAL",
+      "type": 5,
+      "repetition_type": 1,
       "name": "elb_01yr_imp_val"
     }
   ],
@@ -19,14 +19,14 @@
         {
           "file_offset": 0,
           "meta_data": {
-            "type": "DOUBLE",
+            "type": 5,
             "encodings": [
-              "PLAIN"
+              0
             ],
             "path_in_schema": [
               "elb_01yr_imp_val"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 6144,
             "total_uncompressed_size": 45059,
             "total_compressed_size": 44650,

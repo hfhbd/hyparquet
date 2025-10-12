@@ -6,11 +6,11 @@
         "num_children": 1
       },
       {
-        "type": "FIXED_LEN_BYTE_ARRAY",
+        "type": 7,
         "type_length": 11,
-        "repetition_type": "OPTIONAL",
+        "repetition_type": 1,
         "name": "value",
-        "converted_type": "DECIMAL",
+        "converted_type": 5,
         "scale": 2,
         "precision": 25
       }
@@ -22,16 +22,16 @@
           {
             "file_offset": 4,
             "meta_data": {
-              "type": "FIXED_LEN_BYTE_ARRAY",
+              "type": 7,
               "encodings": [
-                "BIT_PACKED",
-                "RLE",
-                "PLAIN"
+                4,
+                3,
+                0
               ],
               "path_in_schema": [
                 "value"
               ],
-              "codec": "UNCOMPRESSED",
+              "codec": 0,
               "num_values": 24,
               "total_uncompressed_size": 319,
               "total_compressed_size": 319,
@@ -43,8 +43,8 @@
               },
               "encoding_stats": [
                 {
-                  "page_type": "DATA_PAGE",
-                  "encoding": "PLAIN",
+                  "page_type": 0,
+                  "encoding": 0,
                   "count": 1
                 }
               ]

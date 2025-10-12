@@ -6,101 +6,101 @@
       "num_children": 17
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "linkback_length"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "agent_call_sid"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "client_sid"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "agent_sid"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "call_date",
       "logical_type": {
         "type": "TIMESTAMP",
         "isAdjustedToUTC": true,
-        "unit": "NANOS"
+        "unit": 2
       }
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "call_type",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "call_sid"
     },
     {
-      "type": "BYTE_ARRAY",
-      "repetition_type": "OPTIONAL",
+      "type": 6,
+      "repetition_type": 1,
       "name": "skills",
-      "converted_type": "UTF8",
+      "converted_type": 0,
       "logical_type": {
         "type": "STRING"
       }
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "result"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "call_wait_duration"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "transfer_duration"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "wrap_up_duration"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "talk_duration"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "hold_duration"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "call_month_epoch"
     },
     {
-      "type": "INT64",
-      "repetition_type": "OPTIONAL",
+      "type": 2,
+      "repetition_type": 1,
       "name": "call_date_epoch"
     },
     {
-      "type": "INT32",
-      "repetition_type": "OPTIONAL",
+      "type": 1,
+      "repetition_type": 1,
       "name": "_version"
     }
   ],
@@ -111,15 +111,15 @@
         {
           "file_offset": 38,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "linkback_length"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -131,15 +131,15 @@
         {
           "file_offset": 107,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "agent_call_sid"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -151,15 +151,15 @@
         {
           "file_offset": 176,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "client_sid"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -171,15 +171,15 @@
         {
           "file_offset": 241,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "agent_sid"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -191,15 +191,15 @@
         {
           "file_offset": 305,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "call_date"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -211,15 +211,15 @@
         {
           "file_offset": 373,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "call_type"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 36,
             "total_compressed_size": 38,
@@ -231,15 +231,15 @@
         {
           "file_offset": 437,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "call_sid"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -251,15 +251,15 @@
         {
           "file_offset": 498,
           "meta_data": {
-            "type": "BYTE_ARRAY",
+            "type": 6,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "skills"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 30,
             "total_compressed_size": 32,
@@ -271,15 +271,15 @@
         {
           "file_offset": 559,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "result"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -291,15 +291,15 @@
         {
           "file_offset": 620,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "call_wait_duration"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -311,15 +311,15 @@
         {
           "file_offset": 693,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "transfer_duration"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -331,15 +331,15 @@
         {
           "file_offset": 765,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "wrap_up_duration"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -351,15 +351,15 @@
         {
           "file_offset": 836,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "talk_duration"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -371,15 +371,15 @@
         {
           "file_offset": 904,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "hold_duration"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -391,15 +391,15 @@
         {
           "file_offset": 972,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "call_month_epoch"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -411,15 +411,15 @@
         {
           "file_offset": 1043,
           "meta_data": {
-            "type": "INT64",
+            "type": 2,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "call_date_epoch"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 32,
             "total_compressed_size": 34,
@@ -431,15 +431,15 @@
         {
           "file_offset": 1109,
           "meta_data": {
-            "type": "INT32",
+            "type": 1,
             "encodings": [
-              "PLAIN",
-              "RLE"
+              0,
+              3
             ],
             "path_in_schema": [
               "_version"
             ],
-            "codec": "SNAPPY",
+            "codec": 1,
             "num_values": 1,
             "total_uncompressed_size": 28,
             "total_compressed_size": 30,
