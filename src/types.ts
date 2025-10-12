@@ -44,28 +44,6 @@ interface ObjectRowFormat {
 export type ParquetReadOptions = BaseParquetReadOptions & (ArrayRowFormat | ObjectRowFormat)
 
 /**
- * Parquet query options for filtering data
- */
-export type ParquetQueryFilter =
-  | ParquetQueryColumnsFilter
-  | { $and: ParquetQueryFilter[] }
-  | { $or: ParquetQueryFilter[] }
-  | { $nor: ParquetQueryFilter[] }
-type ParquetQueryColumnsFilter = { [key: string]: ParquetQueryOperator }
-export type ParquetQueryValue = string | number | boolean | object | null | undefined
-export type ParquetQueryOperator = {
-  $gt?: ParquetQueryValue
-  $gte?: ParquetQueryValue
-  $lt?: ParquetQueryValue
-  $lte?: ParquetQueryValue
-  $eq?: ParquetQueryValue
-  $ne?: ParquetQueryValue
-  $in?: ParquetQueryValue[]
-  $nin?: ParquetQueryValue[]
-  $not?: ParquetQueryOperator
-}
-
-/**
  * A run of column data
  */
 export interface ColumnData {
@@ -188,8 +166,6 @@ export type LogicalType =
   | { type: 'TIME', isAdjustedToUTC: boolean, unit: TimeUnit }
   | { type: 'TIMESTAMP', isAdjustedToUTC: boolean, unit: TimeUnit }
   | { type: 'INTEGER', bitWidth: number, isSigned: boolean }
-
-export type LogicalTypeType = LogicalType['type']
 
 export interface RowGroup {
   columns: ColumnChunk[]

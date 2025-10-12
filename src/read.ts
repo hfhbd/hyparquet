@@ -1,8 +1,8 @@
 import { parquetMetadataAsync, parquetSchema } from './metadata.js'
 import { parquetPlan, prefetchAsyncBuffer } from './plan.js'
 import { assembleAsync, asyncGroupToRows, readRowGroup } from './rowgroup.js'
-import { concat, flatten } from './utils.js'
-import {AsyncRowGroup, BaseParquetReadOptions, DecodedArray, ParquetReadOptions, QueryPlan} from "./types.js";
+import { concat } from './utils.js'
+import {AsyncRowGroup, ParquetReadOptions, QueryPlan} from "./types.js";
 
 /**
  * @import {AsyncRowGroup, DecodedArray, ParquetReadOptions, BaseParquetReadOptions} from '../src/types.js'
@@ -93,27 +93,6 @@ export function parquetReadAsync(options: ParquetReadOptions): AsyncRowGroup[] {
 
   // read row groups
   return plan.groups.map(groupPlan => readRowGroup(options, plan, groupPlan))
-}
-
-/**
- * Reads a single column from a parquet file.
- */
-export async function parquetReadColumn(options: BaseParquetReadOptions): Promise<DecodedArray> {
-  if (options.columns?.length !== 1) {
-    throw new Error('parquetReadColumn expected columns: [columnName]')
-  }
-  options.metadata ??= await parquetMetadataAsync(options.file)
-  const asyncGroups = parquetReadAsync(options)
-
-  // assemble struct columns
-  const schemaTree = parquetSchema(options.metadata)
-  const assembled = asyncGroups.map(arg => assembleAsync(arg, schemaTree))
-
-  const columnData: DecodedArray[] = []
-  for (const rg of assembled) {
-    columnData.push(flatten(await rg.asyncColumns[0].data))
-  }
-  return flatten(columnData)
 }
 
 /**

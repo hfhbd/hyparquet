@@ -52,14 +52,14 @@ export type Compressors = {
 
 // Example implementation with placeholder compressor functions
 export const compressors: Compressors = {
-  [CompressionCodec.UNCOMPRESSED]: (input: Uint8Array, outputLength: number) => input,
+  [CompressionCodec.UNCOMPRESSED]: (input: Uint8Array, _: number) => input,
   [CompressionCodec.SNAPPY]: (input: Uint8Array, outputLength: number) => {
     return decompressSnappy(input, outputLength)
   },
   [CompressionCodec.GZIP]: (input: Uint8Array, outputLength: number) => {
     return decompressGzip(input, outputLength)
   },
-  [CompressionCodec.LZO]: (input: Uint8Array, outputLength: number) => {
+  [CompressionCodec.LZO]: (_: Uint8Array, __: number) => {
     throw new Error("LZO is not supported")
   },
   [CompressionCodec.BROTLI]: (input: Uint8Array, outputLength: number) => {

@@ -35,22 +35,6 @@ export function concat(aaa: any[], bbb: DecodedArray) {
 }
 
 /**
- * Deep equality comparison
- *
- * @param a First object to compare
- * @param b Second object to compare
- * @returns true if objects are equal
- */
-export function equals(a: any, b: any): boolean {
-  if (a === b) return true
-  if (a instanceof Uint8Array && b instanceof Uint8Array) return equals(Array.from(a), Array.from(b))
-  if (!a || !b || typeof a !== typeof b) return false
-  return Array.isArray(a) && Array.isArray(b)
-    ? a.length === b.length && a.every((v, i) => equals(v, b[i]))
-    : typeof a === 'object' && Object.keys(a).length === Object.keys(b).length && Object.keys(a).every(k => equals(a[k], b[k]))
-}
-
-/**
  * Get the byte length of a URL using a HEAD request.
  * If requestInit is provided, it will be passed to fetch.
  */

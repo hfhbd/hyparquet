@@ -90,9 +90,9 @@ export function isListLike(schema: SchemaTree): boolean {
 
   const firstChild = schema.children[0]
   if (firstChild.children.length > 1) return false
-  if (firstChild.element.repetition_type !== FieldRepetitionType.REPEATED) return false
+  return firstChild.element.repetition_type === FieldRepetitionType.REPEATED;
 
-  return true
+
 }
 
 /**
@@ -114,9 +114,9 @@ export function isMapLike(schema: SchemaTree): boolean {
   if (keyChild?.element.repetition_type === FieldRepetitionType.REPEATED) return false
 
   const valueChild = firstChild.children.find(child => child.element.name === 'value')
-  if (valueChild?.element.repetition_type === FieldRepetitionType.REPEATED) return false
+  return valueChild?.element.repetition_type !== FieldRepetitionType.REPEATED;
 
-  return true
+
 }
 
 /**
@@ -129,6 +129,6 @@ export function isFlatColumn(schemaPath: SchemaTree[]): boolean {
   if (schemaPath.length !== 2) return false
   const [, column] = schemaPath
   if (column.element.repetition_type === FieldRepetitionType.REPEATED) return false
-  if (column.children.length) return false
-  return true
+  return !column.children.length;
+
 }

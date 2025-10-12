@@ -1,13 +1,9 @@
 import {
   AsyncBuffer,
-  CompressionCodec,
   ConvertedType,
-  Encoding,
-  FieldRepetitionType,
   FileMetaData, LogicalType,
   MetadataOptions,
   MinMaxType,
-  PageType,
   ParquetParsers,
   ParquetType,
   SchemaElement, SchemaTree, Statistics, TimeUnit
@@ -48,7 +44,7 @@ function decode(value: Uint8Array) {
  * @param initialFetchSize initial fetch size in bytes (default 512kb)
  * @returns parquet metadata object
  */
-export async function parquetMetadataAsync(asyncBuffer:AsyncBuffer, { parsers }: MetadataOptions & { initialFetchSize?: number } = {}, initialFetchSize: number = defaultInitialFetchSize) : Promise<FileMetaData> {
+export async function parquetMetadataAsync(asyncBuffer:AsyncBuffer, { parsers }: MetadataOptions = {}, initialFetchSize: number = defaultInitialFetchSize) : Promise<FileMetaData> {
   if (!asyncBuffer || !(asyncBuffer.byteLength >= 0)) throw new Error('parquet expected AsyncBuffer')
 
   // fetch last bytes (footer) of the file
@@ -88,9 +84,9 @@ export async function parquetMetadataAsync(asyncBuffer:AsyncBuffer, { parsers }:
 /**
  * Read parquet metadata from a buffer synchronously.
  *
- * @param {ArrayBuffer} arrayBuffer parquet file footer
- * @param {MetadataOptions} options metadata parsing options
- * @returns {FileMetaData} parquet metadata object
+ * @param arrayBuffer parquet file footer
+ * @param options metadata parsing options
+ * @returns parquet metadata object
  */
 export function parquetMetadata(arrayBuffer: ArrayBuffer, { parsers }: MetadataOptions = {}): FileMetaData {
   const view = new DataView(arrayBuffer)
