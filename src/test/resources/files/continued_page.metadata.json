@@ -1,0 +1,90 @@
+{
+  "version": 2,
+  "schema": [
+    {
+      "repetition_type": 0,
+      "name": "schema",
+      "num_children": 1
+    },
+    {
+      "repetition_type": 1,
+      "name": "int_list",
+      "num_children": 1,
+      "converted_type": 3,
+      "logical_type": {
+        "type": "LIST"
+      }
+    },
+    {
+      "repetition_type": 2,
+      "name": "list",
+      "num_children": 1
+    },
+    {
+      "type": 1,
+      "repetition_type": 1,
+      "name": "element"
+    }
+  ],
+  "num_rows": 100,
+  "row_groups": [
+    {
+      "columns": [
+        {
+          "file_offset": 0,
+          "meta_data": {
+            "type": 1,
+            "encodings": [
+              0,
+              3,
+              8
+            ],
+            "path_in_schema": [
+              "int_list",
+              "list",
+              "element"
+            ],
+            "codec": 1,
+            "num_values": 2000,
+            "total_uncompressed_size": 2692,
+            "total_compressed_size": 2338,
+            "data_page_offset": 426,
+            "dictionary_page_offset": 4,
+            "statistics": {
+              "max": 99,
+              "min": 0,
+              "null_count": 0,
+              "max_value": 99,
+              "min_value": 0
+            },
+            "encoding_stats": [
+              {
+                "page_type": 2,
+                "encoding": 0,
+                "count": 1
+              },
+              {
+                "page_type": 0,
+                "encoding": 8,
+                "count": 2
+              }
+            ]
+          }
+        }
+      ],
+      "total_byte_size": 2692,
+      "num_rows": 100,
+      "file_offset": 4,
+      "total_compressed_size": 2338,
+      "ordinal": 0
+    }
+  ],
+  "key_value_metadata": [
+    {
+      "key": "ARROW:schema",
+      "value": "/////7AAAAAQAAAAAAAKAAwABgAFAAgACgAAAAABBAAMAAAACAAIAAAABAAIAAAABAAAAAEAAAAEAAAAzP///wAAAQwUAAAAJAAAAAQAAAABAAAALAAAAAgAAABpbnRfbGlzdAAAAAAEAAQABAAAABAAFAAIAAYABwAMAAAAEAAQAAAAAAABAhAAAAAgAAAABAAAAAAAAAAEAAAAaXRlbQAAAAAIAAwACAAHAAgAAAAAAAABIAAAAA=="
+    }
+  ],
+  "created_by": "parquet-cpp-arrow version 19.0.1",
+  "metadata_length": 488
+}

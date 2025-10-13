@@ -1,0 +1,231 @@
+{
+ "version": 1,
+ "schema": [
+   {
+     "repetition_type": 0,
+     "name": "duckdb_schema",
+     "num_children": 2
+   },
+   {
+     "type": 6,
+     "repetition_type": 1,
+     "name": "tconst",
+     "num_children": 0,
+     "converted_type": 0
+   },
+   {
+     "repetition_type": 1,
+     "name": "principals",
+     "num_children": 5
+   },
+   {
+     "type": 1,
+     "repetition_type": 1,
+     "name": "ordering",
+     "num_children": 0,
+     "converted_type": 17
+   },
+   {
+     "type": 6,
+     "repetition_type": 1,
+     "name": "nconst",
+     "num_children": 0,
+     "converted_type": 0
+   },
+   {
+     "type": 6,
+     "repetition_type": 1,
+     "name": "category",
+     "num_children": 0,
+     "converted_type": 0
+   },
+   {
+     "type": 6,
+     "repetition_type": 1,
+     "name": "job",
+     "num_children": 0,
+     "converted_type": 0
+   },
+   {
+     "repetition_type": 1,
+     "name": "characters",
+     "num_children": 1,
+     "converted_type": 3
+   },
+   {
+     "repetition_type": 2,
+     "name": "list",
+     "num_children": 1
+   },
+   {
+     "type": 6,
+     "repetition_type": 1,
+     "name": "element",
+     "num_children": 0,
+     "converted_type": 0
+   }
+ ],
+ "num_rows": 10,
+ "row_groups": [
+   {
+     "columns": [
+       {
+         "file_offset": 0,
+         "meta_data": {
+           "type": 6,
+           "encodings": [
+             0,
+             8
+           ],
+           "path_in_schema": [
+             "tconst"
+           ],
+           "codec": 1,
+           "num_values": 10,
+           "total_uncompressed_size": 0,
+           "total_compressed_size": 83,
+           "data_page_offset": 4,
+           "statistics": {
+             "max": "tt0000004",
+             "min": "tt0000001",
+             "null_count": 0,
+             "max_value": "tt0000004",
+             "min_value": "tt0000001"
+           }
+         }
+       },
+       {
+         "file_offset": 0,
+         "meta_data": {
+           "type": 1,
+           "encodings": [
+             0
+           ],
+           "path_in_schema": [
+             "principals",
+             "ordering"
+           ],
+           "codec": 1,
+           "num_values": 10,
+           "total_uncompressed_size": 0,
+           "total_compressed_size": 53,
+           "data_page_offset": 87,
+           "statistics": {
+             "max": 4,
+             "min": 1,
+             "null_count": 0,
+             "max_value": 4,
+             "min_value": 1
+           }
+         }
+       },
+       {
+         "file_offset": 0,
+         "meta_data": {
+           "type": 6,
+           "encodings": [
+             0
+           ],
+           "path_in_schema": [
+             "principals",
+             "nconst"
+           ],
+           "codec": 1,
+           "num_values": 10,
+           "total_uncompressed_size": 0,
+           "total_compressed_size": 116,
+           "data_page_offset": 140,
+           "statistics": {
+             "max": "nm5442200",
+             "min": "nm0005690",
+             "null_count": 0,
+             "max_value": "nm5442200",
+             "min_value": "nm0005690"
+           }
+         }
+       },
+       {
+         "file_offset": 0,
+         "meta_data": {
+           "type": 6,
+           "encodings": [
+             0
+           ],
+           "path_in_schema": [
+             "principals",
+             "category"
+           ],
+           "codec": 1,
+           "num_values": 10,
+           "total_uncompressed_size": 0,
+           "total_compressed_size": 121,
+           "data_page_offset": 256,
+           "statistics": {
+             "max": "self",
+             "min": "cinematographer",
+             "null_count": 0,
+             "max_value": "self",
+             "min_value": "cinematographer"
+           }
+         }
+       },
+       {
+         "file_offset": 0,
+         "meta_data": {
+           "type": 6,
+           "encodings": [
+             0
+           ],
+           "path_in_schema": [
+             "principals",
+             "job"
+           ],
+           "codec": 1,
+           "num_values": 10,
+           "total_uncompressed_size": 0,
+           "total_compressed_size": 90,
+           "data_page_offset": 377,
+           "statistics": {
+             "max": "producer",
+             "min": "\\N",
+             "null_count": 0,
+             "max_value": "producer",
+             "min_value": "\\N"
+           }
+         }
+       },
+       {
+         "file_offset": 0,
+         "meta_data": {
+           "type": 6,
+           "encodings": [
+             0
+           ],
+           "path_in_schema": [
+             "principals",
+             "characters",
+             "list",
+             "element"
+           ],
+           "codec": 1,
+           "num_values": 10,
+           "total_uncompressed_size": 0,
+           "total_compressed_size": 50,
+           "data_page_offset": 467,
+           "statistics": {
+             "max": "\\N",
+             "min": "[\"Self\"]",
+             "max_value": "\\N",
+             "min_value": "[\"Self\"]"
+           }
+         }
+       }
+     ],
+     "total_byte_size": 0,
+     "num_rows": 10,
+     "file_offset": 4
+   }
+ ],
+ "created_by": "DuckDB",
+ "metadata_length": 690
+}

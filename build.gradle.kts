@@ -7,6 +7,7 @@ kotlin.jvmToolchain(8)
 
 dependencies {
     implementation(libs.serialization.json)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 
     testImplementation(kotlin("test"))
 }

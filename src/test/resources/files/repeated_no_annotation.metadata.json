@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "schema": [
+    {
+      "name": "user",
+      "num_children": 2
+    },
+    {
+      "type": 1,
+      "repetition_type": 0,
+      "name": "id"
+    },
+    {
+      "repetition_type": 1,
+      "name": "phoneNumbers",
+      "num_children": 1
+    },
+    {
+      "repetition_type": 2,
+      "name": "phone",
+      "num_children": 2
+    },
+    {
+      "type": 2,
+      "repetition_type": 0,
+      "name": "number"
+    },
+    {
+      "type": 6,
+      "repetition_type": 1,
+      "name": "kind",
+      "converted_type": 0
+    }
+  ],
+  "num_rows": 0,
+  "row_groups": [
+    {
+      "columns": [
+        {
+          "file_offset": 64,
+          "meta_data": {
+            "type": 1,
+            "encodings": [
+              0,
+              8
+            ],
+            "path_in_schema": [
+              "id"
+            ],
+            "codec": 0,
+            "num_values": 6,
+            "total_uncompressed_size": 60,
+            "total_compressed_size": 60,
+            "data_page_offset": 42,
+            "dictionary_page_offset": 4
+          }
+        },
+        {
+          "file_offset": 173,
+          "meta_data": {
+            "type": 2,
+            "encodings": [
+              0,
+              8
+            ],
+            "path_in_schema": [
+              "phoneNumbers",
+              "phone",
+              "number"
+            ],
+            "codec": 0,
+            "num_values": 8,
+            "total_uncompressed_size": 80,
+            "total_compressed_size": 80,
+            "data_page_offset": 139,
+            "dictionary_page_offset": 93
+          }
+        },
+        {
+          "file_offset": 294,
+          "meta_data": {
+            "type": 6,
+            "encodings": [
+              0,
+              8
+            ],
+            "path_in_schema": [
+              "phoneNumbers",
+              "phone",
+              "kind"
+            ],
+            "codec": 0,
+            "num_values": 8,
+            "total_uncompressed_size": 65,
+            "total_compressed_size": 65,
+            "data_page_offset": 261,
+            "dictionary_page_offset": 229
+          }
+        }
+      ],
+      "total_byte_size": 205,
+      "num_rows": 6
+    }
+  ],
+  "created_by": "parquet-rs version 0.3.0 (build b45ce7cba2199f22d93269c150d8a83916c69b5e)",
+  "metadata_length": 306
+}
