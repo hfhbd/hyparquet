@@ -18,7 +18,8 @@ fun fileToJson(filePath: String): Any? {
  */
 fun reader(bytes: IntArray): DataReader {
     val byteArray = bytes.map { it.toByte() }.toByteArray()
-    return DataReader(ByteBuffer.wrap(byteArray), 0)
+    val buffer = java.nio.ByteBuffer.wrap(byteArray)
+    return DataReader(buffer, 0)
 }
 
 /**

@@ -87,7 +87,7 @@ data class ByteRange(
 
 data class DataReader(
     val view: ByteBuffer,
-    val offset: Int
+    var offset: Int
 )
 
 // Parquet file metadata types

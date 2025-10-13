@@ -27,7 +27,7 @@ fun deserializeTCompactProtocol(reader: DataReader): Map<String, ThriftType> {
     var lastFid = 0
     val value = mutableMapOf<String, ThriftType>()
 
-    while (reader.offset < reader.view.remaining()) {
+    while (reader.offset < reader.view.limit()) {
         // Parse each field based on its type and add to the result object
         val (type, fid, newLastFid) = readFieldBegin(reader, lastFid)
         lastFid = newLastFid
@@ -62,14 +62,17 @@ fun readElement(reader: DataReader, type: Int): ThriftType {
             ThriftType.BigIntType(readZigZagLong(reader))
         }
         CompactType.DOUBLE -> {
-            val double = reader.view.getDouble(reader.offset)
+            reader.view.position(reader.offset)
+            val double = reader.view.double
             reader.offset += 8
             ThriftType.NumberType(double)
         }
         CompactType.BINARY -> {
             val length = readVarInt(reader)
             val bytes = ByteArray(length)
-            reader.view.getBytes(bytes, reader.offset, length)
+            for (i in 0 until length) {
+                bytes[i] = reader.view.get(reader.offset + i)
+            }
             reader.offset += length
             ThriftType.ByteArrayType(bytes)
         }
@@ -109,6 +112,10 @@ fun readElement(reader: DataReader, type: Int): ThriftType {
  * Read field begin
  */
 private fun readFieldBegin(reader: DataReader, lastFid: Int): Triple<Int, Int, Int> {
+    if (reader.offset >= reader.view.limit()) {
+        return Triple(CompactType.STOP, 0, lastFid)
+    }
+    
     val byte = reader.view.get(reader.offset)
     reader.offset++
     val typeAndDelta = byte.toInt() and 0xff
@@ -129,7 +136,7 @@ private fun readFieldBegin(reader: DataReader, lastFid: Int): Triple<Int, Int, I
 fun readVarInt(reader: DataReader): Int {
     var result = 0
     var shift = 0
-    while (true) {
+    while (reader.offset < reader.view.limit()) {
         val byte = reader.view.get(reader.offset)
         reader.offset++
         result = result or ((byte.toInt() and 0x7f) shl shift)
@@ -138,6 +145,7 @@ fun readVarInt(reader: DataReader): Int {
         }
         shift += 7
     }
+    throw Error("Unexpected end of buffer reading varint")
 }
 
 /**
@@ -146,7 +154,7 @@ fun readVarInt(reader: DataReader): Int {
 fun readVarLong(reader: DataReader): Long {
     var result = 0L
     var shift = 0
-    while (true) {
+    while (reader.offset < reader.view.limit()) {
         val byte = reader.view.get(reader.offset)
         reader.offset++
         result = result or ((byte.toLong() and 0x7f) shl shift)
@@ -155,6 +163,7 @@ fun readVarLong(reader: DataReader): Long {
         }
         shift += 7
     }
+    throw Error("Unexpected end of buffer reading varlong")
 }
 
 /**
@@ -176,19 +185,3 @@ fun readZigZagLong(reader: DataReader): Long {
     return (zigzag ushr 1) xor -(zigzag and 1L)
 }
 
-/**
- * Helper function to get byte at current position and advance
- */
-fun ByteBuffer.getByte(offset: Int): Byte {
-    return get(offset)
-}
-
-/**
- * Helper function to get bytes starting at offset
- */
-fun ByteBuffer.getBytes(bytes: ByteArray, offset: Int, length: Int) {
-    val currentPos = position()
-    position(offset)
-    get(bytes, 0, length)
-    position(currentPos)
-}
