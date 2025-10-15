@@ -90,7 +90,6 @@ export interface SchemaElement {
   converted_type?: ConvertedType
   scale?: number
   precision?: number
-  field_id?: number
   logical_type?: LogicalType
 }
 

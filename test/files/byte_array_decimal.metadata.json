@@ -32,7 +32,6 @@
     },
     {
       "converted_type": 5,
-      "field_id": 6,
       "name": "value",
       "precision": 4,
       "repetition_type": 1,

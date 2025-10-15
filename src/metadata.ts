@@ -115,7 +115,6 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
     converted_type: field.field_6,
     scale: field.field_7,
     precision: field.field_8,
-    field_id: field.field_9,
     logical_type: logicalType(field.field_10),
   }))
   const num_rows = metadata.field_3

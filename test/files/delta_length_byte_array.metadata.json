@@ -4,15 +4,13 @@
     {
       "repetition_type": 0,
       "name": "schema",
-      "num_children": 1,
-      "field_id": -1
+      "num_children": 1
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "FRUIT",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }

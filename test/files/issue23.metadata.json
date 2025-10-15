@@ -8,15 +8,13 @@
     {
       "repetition_type": 1,
       "name": "menu",
-      "num_children": 6,
-      "field_id": 1
+      "num_children": 6
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -24,15 +22,13 @@
     {
       "repetition_type": 2,
       "name": "name",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -42,7 +38,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -50,15 +45,13 @@
     {
       "repetition_type": 2,
       "name": "categories",
-      "num_children": 3,
-      "field_id": 3
+      "num_children": 3
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -66,15 +59,13 @@
     {
       "repetition_type": 2,
       "name": "name",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -84,7 +75,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -92,15 +82,13 @@
     {
       "repetition_type": 2,
       "name": "dishes",
-      "num_children": 11,
-      "field_id": 3
+      "num_children": 11
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -108,15 +96,13 @@
     {
       "repetition_type": 2,
       "name": "name",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -126,7 +112,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -134,15 +119,13 @@
     {
       "repetition_type": 2,
       "name": "addons",
-      "num_children": 5,
-      "field_id": 3
+      "num_children": 5
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -150,15 +133,13 @@
     {
       "repetition_type": 2,
       "name": "name",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -168,7 +149,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -176,27 +156,23 @@
     {
       "type": 0,
       "repetition_type": 1,
-      "name": "required",
-      "field_id": 3
+      "name": "required"
     },
     {
       "type": 1,
       "repetition_type": 1,
-      "name": "maxSelected",
-      "field_id": 4
+      "name": "maxSelected"
     },
     {
       "repetition_type": 2,
       "name": "items",
-      "num_children": 5,
-      "field_id": 5
+      "num_children": 5
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -204,15 +180,13 @@
     {
       "repetition_type": 1,
       "name": "ingredient",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -220,15 +194,13 @@
     {
       "repetition_type": 2,
       "name": "name",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -238,7 +210,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -248,7 +219,6 @@
       "repetition_type": 1,
       "name": "unitSize",
       "converted_type": 4,
-      "field_id": 3,
       "logical_type": {
         "type": "ENUM"
       }
@@ -256,63 +226,53 @@
     {
       "repetition_type": 1,
       "name": "price",
-      "num_children": 2,
-      "field_id": 4
+      "num_children": 2
     },
     {
       "type": 1,
       "repetition_type": 1,
-      "name": "scale",
-      "field_id": 1
+      "name": "scale"
     },
     {
       "repetition_type": 1,
       "name": "int_val",
-      "num_children": 1,
-      "field_id": 2
+      "num_children": 1
     },
     {
       "type": 6,
       "repetition_type": 1,
-      "name": "value",
-      "field_id": 1
+      "name": "value"
     },
     {
       "repetition_type": 1,
       "name": "volume",
-      "num_children": 2,
-      "field_id": 5
+      "num_children": 2
     },
     {
       "type": 1,
       "repetition_type": 1,
-      "name": "scale",
-      "field_id": 1
+      "name": "scale"
     },
     {
       "repetition_type": 1,
       "name": "int_val",
-      "num_children": 1,
-      "field_id": 2
+      "num_children": 1
     },
     {
       "type": 6,
       "repetition_type": 1,
-      "name": "value",
-      "field_id": 1
+      "name": "value"
     },
     {
       "repetition_type": 2,
       "name": "description",
-      "num_children": 2,
-      "field_id": 4
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -322,7 +282,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -330,15 +289,13 @@
     {
       "repetition_type": 2,
       "name": "components",
-      "num_children": 2,
-      "field_id": 5
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -348,7 +305,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -358,7 +314,6 @@
       "repetition_type": 1,
       "name": "unitSize",
       "converted_type": 4,
-      "field_id": 6,
       "logical_type": {
         "type": "ENUM"
       }
@@ -366,75 +321,63 @@
     {
       "repetition_type": 2,
       "name": "priceSizes",
-      "num_children": 2,
-      "field_id": 7
+      "num_children": 2
     },
     {
       "repetition_type": 1,
       "name": "volume",
-      "num_children": 2,
-      "field_id": 1
+      "num_children": 2
     },
     {
       "type": 1,
       "repetition_type": 1,
-      "name": "scale",
-      "field_id": 1
+      "name": "scale"
     },
     {
       "repetition_type": 1,
       "name": "int_val",
-      "num_children": 1,
-      "field_id": 2
+      "num_children": 1
     },
     {
       "type": 6,
       "repetition_type": 1,
-      "name": "value",
-      "field_id": 1
+      "name": "value"
     },
     {
       "repetition_type": 1,
       "name": "price",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 1,
       "repetition_type": 1,
-      "name": "scale",
-      "field_id": 1
+      "name": "scale"
     },
     {
       "repetition_type": 1,
       "name": "int_val",
-      "num_children": 1,
-      "field_id": 2
+      "num_children": 1
     },
     {
       "type": 6,
       "repetition_type": 1,
-      "name": "value",
-      "field_id": 1
+      "name": "value"
     },
     {
       "type": 1,
       "repetition_type": 1,
-      "name": "orderIndex",
-      "field_id": 8
+      "name": "orderIndex"
     },
     {
       "type": 0,
       "repetition_type": 1,
-      "name": "popular",
-      "field_id": 9
+      "name": "popular"
     },
     {
       "type": 6,
       "repetition_type": 2,
       "name": "tags",
       "converted_type": 4,
-      "field_id": 10,
       "logical_type": {
         "type": "ENUM"
       }
@@ -442,15 +385,13 @@
     {
       "repetition_type": 2,
       "name": "images",
-      "num_children": 2,
-      "field_id": 11
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "url",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -458,15 +399,13 @@
     {
       "repetition_type": 2,
       "name": "transformations",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "label",
       "converted_type": 4,
-      "field_id": 1,
       "logical_type": {
         "type": "ENUM"
       }
@@ -476,7 +415,6 @@
       "repetition_type": 1,
       "name": "url",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -486,7 +424,6 @@
       "repetition_type": 1,
       "name": "title",
       "converted_type": 0,
-      "field_id": 4,
       "logical_type": {
         "type": "STRING"
       }
@@ -494,15 +431,13 @@
     {
       "repetition_type": 2,
       "name": "description",
-      "num_children": 2,
-      "field_id": 5
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "key",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -512,7 +447,6 @@
       "repetition_type": 1,
       "name": "value",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -522,7 +456,6 @@
       "repetition_type": 2,
       "name": "languages",
       "converted_type": 4,
-      "field_id": 6,
       "logical_type": {
         "type": "ENUM"
       }
@@ -530,15 +463,13 @@
     {
       "repetition_type": 1,
       "name": "socialLinks",
-      "num_children": 2,
-      "field_id": 2
+      "num_children": 2
     },
     {
       "type": 6,
       "repetition_type": 1,
       "name": "facebook",
       "converted_type": 0,
-      "field_id": 1,
       "logical_type": {
         "type": "STRING"
       }
@@ -548,7 +479,6 @@
       "repetition_type": 1,
       "name": "instagram",
       "converted_type": 0,
-      "field_id": 2,
       "logical_type": {
         "type": "STRING"
       }
@@ -558,7 +488,6 @@
       "repetition_type": 1,
       "name": "currency",
       "converted_type": 4,
-      "field_id": 3,
       "logical_type": {
         "type": "ENUM"
       }

@@ -8,8 +8,7 @@
     {
       "type": 0,
       "repetition_type": 1,
-      "name": "datatype_boolean",
-      "field_id": 1
+      "name": "datatype_boolean"
     }
   ],
   "num_rows": 68,
