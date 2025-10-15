@@ -10,7 +10,6 @@ describe('parquetPlan', () => {
     const plan = parquetPlan({ file, metadata })
     expect(plan).toMatchObject({
       metadata,
-      rowStart: 0,
       fetches: [
         { startByte: 4, endByte: 1166 },
         { startByte: 1166, endByte: 2326 },

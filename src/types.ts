@@ -275,7 +275,6 @@ export type ThriftType = boolean | number | bigint | Uint8Array | ThriftType[] |
  */
 export interface QueryPlan {
   metadata: FileMetaData
-  rowStart: number
   fetches: ByteRange[] // byte ranges to fetch
   groups: GroupPlan[] // byte ranges by row group
 }

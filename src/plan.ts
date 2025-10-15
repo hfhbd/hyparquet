@@ -49,7 +49,7 @@ export function parquetPlan({ metadata }: ParquetReadOptions): QueryPlan {
     groupStart = groupEnd
   }
 
-  return { metadata, rowStart, fetches, groups }
+  return { metadata, fetches, groups }
 }
 
 export function getColumnRange({ dictionary_page_offset, data_page_offset, total_compressed_size }: ColumnMetaData): ByteRange {
