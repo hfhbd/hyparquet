@@ -36,21 +36,7 @@
             "num_values": 300,
             "total_uncompressed_size": 1255,
             "total_compressed_size": 1158,
-            "data_page_offset": 4,
-            "statistics": {
-              "max": 2.3831448554992676,
-              "min": -2.772592782974243,
-              "null_count": 0,
-              "max_value": 2.3831448554992676,
-              "min_value": -2.772592782974243
-            },
-            "encoding_stats": [
-              {
-                "page_type": 0,
-                "encoding": 9,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 4
           }
         },
         {
@@ -68,21 +54,7 @@
             "num_values": 300,
             "total_uncompressed_size": 2471,
             "total_compressed_size": 2283,
-            "data_page_offset": 1230,
-            "statistics": {
-              "max": 2.6962240525635797,
-              "min": -3.0461430547999266,
-              "null_count": 0,
-              "max_value": 2.6962240525635797,
-              "min_value": -3.0461430547999266
-            },
-            "encoding_stats": [
-              {
-                "page_type": 0,
-                "encoding": 9,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 1230
           }
         }
       ],

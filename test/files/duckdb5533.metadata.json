@@ -73,12 +73,7 @@
             "num_values": 4,
             "total_uncompressed_size": 78,
             "total_compressed_size": 73,
-            "data_page_offset": 4,
-            "statistics": {
-              "null_count": 0,
-              "max_value": "2022-11-27T17:42:44.280Z",
-              "min_value": "2022-11-27T17:42:43.514Z"
-            }
+            "data_page_offset": 4
           },
           "offset_index_offset": 656,
           "offset_index_length": 11,
@@ -100,12 +95,7 @@
             "num_values": 4,
             "total_uncompressed_size": 56,
             "total_compressed_size": 65,
-            "data_page_offset": 132,
-            "statistics": {
-              "null_count": 0,
-              "max_value": 85016,
-              "min_value": 1184
-            }
+            "data_page_offset": 132
           },
           "offset_index_offset": 667,
           "offset_index_length": 12,
@@ -127,10 +117,7 @@
             "num_values": 4,
             "total_uncompressed_size": 28,
             "total_compressed_size": 37,
-            "data_page_offset": 242,
-            "statistics": {
-              "null_count": 4
-            }
+            "data_page_offset": 242
           },
           "offset_index_offset": 679,
           "offset_index_length": 11,
@@ -152,12 +139,7 @@
             "num_values": 4,
             "total_uncompressed_size": 78,
             "total_compressed_size": 68,
-            "data_page_offset": 315,
-            "statistics": {
-              "null_count": 0,
-              "max_value": 1,
-              "min_value": -1
-            }
+            "data_page_offset": 315
           },
           "offset_index_offset": 690,
           "offset_index_length": 12,
@@ -179,12 +161,7 @@
             "num_values": 4,
             "total_uncompressed_size": 54,
             "total_compressed_size": 57,
-            "data_page_offset": 435,
-            "statistics": {
-              "null_count": 0,
-              "max_value": 343,
-              "min_value": 343
-            }
+            "data_page_offset": 435
           },
           "offset_index_offset": 702,
           "offset_index_length": 11,

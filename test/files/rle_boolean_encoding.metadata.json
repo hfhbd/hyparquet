@@ -30,14 +30,7 @@
             "num_values": 68,
             "total_uncompressed_size": 49,
             "total_compressed_size": 69,
-            "data_page_offset": 4,
-            "statistics": {
-              "max": true,
-              "min": false,
-              "null_count": 6,
-              "max_value": true,
-              "min_value": false
-            }
+            "data_page_offset": 4
           }
         }
       ],

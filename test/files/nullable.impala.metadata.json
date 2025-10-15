@@ -244,12 +244,7 @@
             "num_values": 7,
             "total_uncompressed_size": 103,
             "total_compressed_size": 103,
-            "data_page_offset": 4,
-            "statistics": {
-              "max": 7,
-              "min": 1,
-              "null_count": 0
-            }
+            "data_page_offset": 4
           }
         },
         {
@@ -269,12 +264,7 @@
             "num_values": 14,
             "total_uncompressed_size": 78,
             "total_compressed_size": 78,
-            "data_page_offset": 107,
-            "statistics": {
-              "max": 3,
-              "min": 1,
-              "null_count": 8
-            }
+            "data_page_offset": 107
           }
         },
         {
@@ -296,12 +286,7 @@
             "num_values": 20,
             "total_uncompressed_size": 103,
             "total_compressed_size": 103,
-            "data_page_offset": 185,
-            "statistics": {
-              "max": 6,
-              "min": 1,
-              "null_count": 10
-            }
+            "data_page_offset": 185
           }
         },
         {
@@ -321,12 +306,7 @@
             "num_values": 10,
             "total_uncompressed_size": 80,
             "total_compressed_size": 80,
-            "data_page_offset": 288,
-            "statistics": {
-              "max": "k3",
-              "min": "k1",
-              "null_count": 4
-            }
+            "data_page_offset": 288
           }
         },
         {
@@ -346,12 +326,7 @@
             "num_values": 10,
             "total_uncompressed_size": 61,
             "total_compressed_size": 61,
-            "data_page_offset": 368,
-            "statistics": {
-              "max": 100,
-              "min": 1,
-              "null_count": 7
-            }
+            "data_page_offset": 368
           }
         },
         {
@@ -373,12 +348,7 @@
             "num_values": 11,
             "total_uncompressed_size": 77,
             "total_compressed_size": 77,
-            "data_page_offset": 429,
-            "statistics": {
-              "max": "k3",
-              "min": "k1",
-              "null_count": 8
-            }
+            "data_page_offset": 429
           }
         },
         {
@@ -400,12 +370,7 @@
             "num_values": 11,
             "total_uncompressed_size": 72,
             "total_compressed_size": 72,
-            "data_page_offset": 506,
-            "statistics": {
-              "max": 1,
-              "min": 1,
-              "null_count": 9
-            }
+            "data_page_offset": 506
           }
         },
         {
@@ -425,12 +390,7 @@
             "num_values": 7,
             "total_uncompressed_size": 48,
             "total_compressed_size": 48,
-            "data_page_offset": 578,
-            "statistics": {
-              "max": 7,
-              "min": 1,
-              "null_count": 5
-            }
+            "data_page_offset": 578
           }
         },
         {
@@ -451,12 +411,7 @@
             "num_values": 9,
             "total_uncompressed_size": 63,
             "total_compressed_size": 63,
-            "data_page_offset": 626,
-            "statistics": {
-              "max": 3,
-              "min": 1,
-              "null_count": 6
-            }
+            "data_page_offset": 626
           }
         },
         {
@@ -481,12 +436,7 @@
             "num_values": 19,
             "total_uncompressed_size": 90,
             "total_compressed_size": 90,
-            "data_page_offset": 689,
-            "statistics": {
-              "max": 11,
-              "min": -10,
-              "null_count": 13
-            }
+            "data_page_offset": 689
           }
         },
         {
@@ -511,12 +461,7 @@
             "num_values": 19,
             "total_uncompressed_size": 93,
             "total_compressed_size": 93,
-            "data_page_offset": 779,
-            "statistics": {
-              "max": "c",
-              "min": "aaa",
-              "null_count": 13
-            }
+            "data_page_offset": 779
           }
         },
         {
@@ -537,12 +482,7 @@
             "num_values": 11,
             "total_uncompressed_size": 101,
             "total_compressed_size": 101,
-            "data_page_offset": 872,
-            "statistics": {
-              "max": "g5",
-              "min": "foo",
-              "null_count": 4
-            }
+            "data_page_offset": 872
           }
         },
         {
@@ -567,12 +507,7 @@
             "num_values": 13,
             "total_uncompressed_size": 104,
             "total_compressed_size": 104,
-            "data_page_offset": 973,
-            "statistics": {
-              "max": 3.3,
-              "min": 1.1,
-              "null_count": 9
-            }
+            "data_page_offset": 973
           }
         }
       ],

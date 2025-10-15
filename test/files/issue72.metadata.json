@@ -35,15 +35,7 @@
             "num_values": 3,
             "total_uncompressed_size": 283,
             "total_compressed_size": 288,
-            "data_page_offset": 4,
-            "statistics": {
-              "max": "258d7fff-6418-499f-af07-c6611937d7d8",
-              "min": "086f2968-327b-48a8-8cdf-64f46bcd8173",
-              "null_count": 0,
-              "distinct_count": 2,
-              "max_value": "258d7fff-6418-499f-af07-c6611937d7d8",
-              "min_value": "086f2968-327b-48a8-8cdf-64f46bcd8173"
-            }
+            "data_page_offset": 4
           }
         }
       ],

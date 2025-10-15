@@ -25,7 +25,7 @@ import { flatten } from './utils.js'
  * @param {GroupPlan} groupPlan
  * @returns {AsyncRowGroup} resolves to column data
  */
-export function readRowGroup(options: ParquetReadOptions, {metadata, columns}: QueryPlan, groupPlan: GroupPlan): AsyncRowGroup {
+export function readRowGroup(options: ParquetReadOptions, {metadata}: QueryPlan, groupPlan: GroupPlan): AsyncRowGroup {
   const { file, compressors, utf8 } = options
 
   const asyncColumns: AsyncColumn[] = []
@@ -35,10 +35,6 @@ export function readRowGroup(options: ParquetReadOptions, {metadata, columns}: Q
   for (const { file_path, meta_data } of groupPlan.rowGroup.columns) {
     if (file_path) throw new Error('parquet file_path not supported')
     if (!meta_data) throw new Error('parquet column metadata is undefined')
-
-    // skip columns that are not requested
-    const columnName = meta_data.path_in_schema[0]
-    if (columns && !columns.includes(columnName)) continue
 
     const { startByte, endByte } = getColumnRange(meta_data)
     const columnBytes = endByte - startByte
@@ -101,20 +97,17 @@ export function readRowGroup(options: ParquetReadOptions, {metadata, columns}: Q
  * @param {AsyncRowGroup} asyncGroup
  * @param {number} selectStart
  * @param {number} selectEnd
- * @param {string[] | undefined} columns
  * @param {'object' | 'array'} [rowFormat]
  * @returns {Promise<Record<string, any>[] | any[][]>} resolves to row data
  */
-export async function asyncGroupToRows({ asyncColumns }: AsyncRowGroup, selectStart: number, selectEnd: number, columns: string[] | undefined, rowFormat: 'object' | 'array'): Promise<Record<string, any>[] | any[][]> {
+export async function asyncGroupToRows({ asyncColumns }: AsyncRowGroup, selectStart: number, selectEnd: number, rowFormat: 'object' | 'array'): Promise<Record<string, any>[] | any[][]> {
   // columnData[i] for asyncColumns[i]
   // TODO: do it without flatten
   const columnDatas = await Promise.all(asyncColumns.map(({ data }) => data.then(flatten)))
 
   // careful mapping of column order for rowFormat: array
-  const includedColumnNames = asyncColumns
+  const columnOrder = asyncColumns
     .map(child => child.pathInSchema[0])
-    .filter(name => !columns || columns.includes(name))
-  const columnOrder = columns ?? includedColumnNames
   const columnIndexes = columnOrder.map(name => asyncColumns.findIndex(column => column.pathInSchema[0] === name))
 
   // transpose columns into rows

@@ -1,7 +1,6 @@
 import fs from 'fs'
 import { compressors } from './helpers.ts'
 import { describe, expect, it } from 'vitest'
-import { parquetMetadataAsync } from '../src/metadata.js'
 import { parquetRead } from '../src/read.js'
 import { toJson } from '../src/utils.js'
 import { asyncBufferFromFile } from '../src/node.js'
@@ -29,28 +28,6 @@ describe('parquetRead test files', () => {
           const expected = fileToJson(`test/files/${base}.json`)
           // stringify and parse to make legal json (NaN, -0, etc.)
           expect(JSON.parse(JSON.stringify(toJson(rows)))).toEqual(expected)
-        },
-      })
-    })
-
-    it(`read the last row from ${filename}`, async () => {
-      // this exercises some of the page-skipping optimizations
-      const file = await asyncBufferFromFile(`test/files/${filename}`)
-      const metadata = await parquetMetadataAsync(file)
-      let numRows = Number(metadata.num_rows)
-      // repeated_no_annotation has wrong num_rows in metadata:
-      if (filename === 'repeated_no_annotation.parquet') numRows = 6
-      await parquetRead({
-        file,
-        compressors,
-        rowStart: numRows - 1,
-        rowEnd: numRows,
-        onComplete(rows) {
-          const base = filename.replace('.parquet', '')
-          if (rows.length) {
-            const expected = [fileToJson(`test/files/${base}.json`).at(-1)]
-            expect(toJson(rows)).toEqual(expected)
-          }
         },
       })
     })

@@ -1,14 +1,8 @@
 import {
   AsyncBuffer,
-  ConvertedType,
   FileMetaData, LogicalType,
-  MetadataOptions,
-  MinMaxType,
-  ParquetParsers,
-  ParquetType,
-  SchemaElement, SchemaTree, Statistics, TimeUnit
+  SchemaElement, SchemaTree, TimeUnit
 } from './types.ts'
-import {DEFAULT_PARSERS, parseDecimal, parseFloat16} from './convert.js'
 import {getSchemaPath} from './schema.js'
 import {deserializeTCompactProtocol} from './thrift.js'
 
@@ -40,11 +34,10 @@ function decode(value: Uint8Array) {
  * or a second request for up to the metadata size.
  *
  * @param asyncBuffer parquet file contents
- * @param options
  * @param initialFetchSize initial fetch size in bytes (default 512kb)
  * @returns parquet metadata object
  */
-export async function parquetMetadataAsync(asyncBuffer:AsyncBuffer, { parsers }: MetadataOptions = {}, initialFetchSize: number = defaultInitialFetchSize) : Promise<FileMetaData> {
+export async function parquetMetadataAsync(asyncBuffer:AsyncBuffer, initialFetchSize: number = defaultInitialFetchSize) : Promise<FileMetaData> {
   if (!asyncBuffer || !(asyncBuffer.byteLength >= 0)) throw new Error('parquet expected AsyncBuffer')
 
   // fetch last bytes (footer) of the file
@@ -74,10 +67,10 @@ export async function parquetMetadataAsync(asyncBuffer:AsyncBuffer, { parsers }:
     const combinedView = new Uint8Array(combinedBuffer)
     combinedView.set(new Uint8Array(metadataBuffer))
     combinedView.set(new Uint8Array(footerBuffer), footerOffset - metadataOffset)
-    return parquetMetadata(combinedBuffer, { parsers })
+    return parquetMetadata(combinedBuffer)
   } else {
     // parse metadata from the footer
-    return parquetMetadata(footerBuffer, { parsers })
+    return parquetMetadata(footerBuffer)
   }
 }
 
@@ -85,14 +78,10 @@ export async function parquetMetadataAsync(asyncBuffer:AsyncBuffer, { parsers }:
  * Read parquet metadata from a buffer synchronously.
  *
  * @param arrayBuffer parquet file footer
- * @param options metadata parsing options
  * @returns parquet metadata object
  */
-export function parquetMetadata(arrayBuffer: ArrayBuffer, { parsers }: MetadataOptions = {}): FileMetaData {
+export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
   const view = new DataView(arrayBuffer)
-
-  // Use default parsers if not given
-  parsers = { ...DEFAULT_PARSERS, ...parsers }
 
   // Validate footer magic number "PAR1"
   if (view.byteLength < 8) {
@@ -129,11 +118,9 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer, { parsers }: MetadataO
     field_id: field.field_9,
     logical_type: logicalType(field.field_10),
   }))
-  // schema element per column index
-  const columnSchema = schema.filter(e => e.type !== undefined)
   const num_rows = metadata.field_3
   const row_groups = metadata.field_4.map((rowGroup: any) => ({
-    columns: rowGroup.field_1.map((column: any, columnIndex: number) => ({
+    columns: rowGroup.field_1.map((column: any) => ({
       file_path: decode(column.field_1),
       file_offset: column.field_2,
       meta_data: column.field_3 && {
@@ -148,26 +135,11 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer, { parsers }: MetadataO
         data_page_offset: column.field_3.field_9,
         index_page_offset: column.field_3.field_10,
         dictionary_page_offset: column.field_3.field_11,
-        statistics: convertStats(column.field_3.field_12, columnSchema[columnIndex], parsers),
-        encoding_stats: column.field_3.field_13?.map((encodingStat: any) => ({
-          page_type: encodingStat.field_1,
-          encoding: encodingStat.field_2,
-          count: encodingStat.field_3,
-        })),
-        bloom_filter_offset: column.field_3.field_14,
-        bloom_filter_length: column.field_3.field_15,
-        size_statistics: column.field_3.field_16 && {
-          unencoded_byte_array_data_bytes: column.field_3.field_16.field_1,
-          repetition_level_histogram: column.field_3.field_16.field_2,
-          definition_level_histogram: column.field_3.field_16.field_3,
-        }
       },
       offset_index_offset: column.field_4,
       offset_index_length: column.field_5,
       column_index_offset: column.field_6,
       column_index_length: column.field_7,
-      crypto_metadata: column.field_8,
-      encrypted_column_metadata: column.field_9,
     })),
     total_byte_size: rowGroup.field_2,
     num_rows: rowGroup.field_3,
@@ -249,55 +221,4 @@ function timeUnit(unit: any): TimeUnit {
   if (unit.field_2) return TimeUnit.MICROS
   if (unit.field_3) return TimeUnit.NANOS
   throw new Error('parquet time unit required')
-}
-
-/**
- * Convert column statistics based on column type.
- * @param {any} stats
- * @param {SchemaElement} schema
- * @param {ParquetParsers} parsers
- * @returns {Statistics}
- */
-function convertStats(stats: any, schema: SchemaElement, parsers: ParquetParsers): Statistics {
-  return stats && {
-    max: convertMetadata(stats.field_1, schema, parsers),
-    min: convertMetadata(stats.field_2, schema, parsers),
-    null_count: stats.field_3,
-    distinct_count: stats.field_4,
-    max_value: convertMetadata(stats.field_5, schema, parsers),
-    min_value: convertMetadata(stats.field_6, schema, parsers),
-    is_max_value_exact: stats.field_7,
-    is_min_value_exact: stats.field_8,
-  }
-}
-
-/**
- * @param {Uint8Array | undefined} value
- * @param {SchemaElement} schema
- * @param {ParquetParsers} parsers
- * @returns {MinMaxType | undefined}
- */
-export function convertMetadata(value: Uint8Array | undefined = undefined, schema: SchemaElement, parsers: ParquetParsers): MinMaxType | undefined {
-  const type = schema.type
-  const converted_type = schema.converted_type
-  const logical_type = schema.logical_type
-  if (value === undefined) return value
-  if (type === ParquetType.BOOLEAN) return value[0] === 1
-  if (type === ParquetType.BYTE_ARRAY) return parsers.stringFromBytes(value)
-  const view = new DataView(value.buffer, value.byteOffset, value.byteLength)
-  if (type === ParquetType.FLOAT && view.byteLength === 4) return view.getFloat32(0, true)
-  if (type === ParquetType.DOUBLE && view.byteLength === 8) return view.getFloat64(0, true)
-  if (type === ParquetType.INT32 && converted_type === ConvertedType.DATE) return parsers.dateFromDays(view.getInt32(0, true))
-  if (type === ParquetType.INT64 && converted_type === ConvertedType.TIMESTAMP_MILLIS) return parsers.timestampFromMilliseconds(view.getBigInt64(0, true))
-  if (type === ParquetType.INT64 && converted_type === ConvertedType.TIMESTAMP_MICROS) return parsers.timestampFromMicroseconds(view.getBigInt64(0, true))
-  if (type === ParquetType.INT64 && logical_type?.type === 'TIMESTAMP' && logical_type?.unit === TimeUnit.NANOS) return parsers.timestampFromNanoseconds(view.getBigInt64(0, true))
-  if (type === ParquetType.INT64 && logical_type?.type === 'TIMESTAMP' && logical_type?.unit === TimeUnit.MICROS) return parsers.timestampFromMicroseconds(view.getBigInt64(0, true))
-  if (type === ParquetType.INT64 && logical_type?.type === 'TIMESTAMP') return parsers.timestampFromMilliseconds(view.getBigInt64(0, true))
-  if (type === ParquetType.INT32 && view.byteLength === 4) return view.getInt32(0, true)
-  if (type === ParquetType.INT64 && view.byteLength === 8) return view.getBigInt64(0, true)
-  if (converted_type === ConvertedType.DECIMAL) return parseDecimal(value) * 10 ** -(schema.scale || 0)
-  if (logical_type?.type === 'FLOAT16') return parseFloat16(value)
-  if (type === ParquetType.FIXED_LEN_BYTE_ARRAY) return value
-  // assert(false)
-  return value
 }

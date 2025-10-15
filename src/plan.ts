@@ -1,5 +1,5 @@
 import {AsyncBuffer, ByteRange, ColumnMetaData, GroupPlan, ParquetReadOptions, QueryPlan} from "./types.js"
-import { concat } from './utils.js'
+import {concat} from './utils.js'
 
 // Combine column chunks into a single byte range if less than 32mb
 const columnChunkAggregation: number = 1 << 25 // 32mb
@@ -8,7 +8,8 @@ const columnChunkAggregation: number = 1 << 25 // 32mb
  * Plan which byte ranges to read to satisfy a read request.
  * Metadata must be non-null.
  */
-export function parquetPlan({ metadata, rowStart = 0, rowEnd = Infinity, columns }: ParquetReadOptions): QueryPlan {
+export function parquetPlan({ metadata }: ParquetReadOptions): QueryPlan {
+  const rowStart = 0
   if (!metadata) throw new Error('parquetPlan requires metadata')
   const groups: GroupPlan[] = []
   const fetches: ByteRange[] = []
@@ -19,24 +20,22 @@ export function parquetPlan({ metadata, rowStart = 0, rowEnd = Infinity, columns
     const groupRows = Number(rowGroup.num_rows)
     const groupEnd = groupStart + groupRows
     // if row group overlaps with row range, add it to the plan
-    if (groupRows > 0 && groupEnd >= rowStart && groupStart < rowEnd) {
+    if (groupRows > 0 && groupEnd >= rowStart) {
       const ranges: ByteRange[] = []
       // loop through each column chunk
       for (const { file_path, meta_data } of rowGroup.columns) {
         if (file_path) throw new Error('parquet file_path not supported')
         if (!meta_data) throw new Error('parquet column metadata is undefined')
         // add included columns to the plan
-        if (!columns || columns.includes(meta_data.path_in_schema[0])) {
-          ranges.push(getColumnRange(meta_data))
-        }
+        ranges.push(getColumnRange(meta_data))
       }
       const selectStart = Math.max(rowStart - groupStart, 0)
-      const selectEnd = Math.min(rowEnd - groupStart, groupRows)
+      const selectEnd = Math.min(Infinity - groupStart, groupRows)
       groups.push({ ranges, rowGroup, groupStart, groupRows, selectStart, selectEnd })
 
       // map group plan to ranges
       const groupSize = ranges[ranges.length - 1]?.endByte - ranges[0]?.startByte
-      if (!columns && groupSize < columnChunkAggregation) {
+      if (groupSize < columnChunkAggregation) {
         // full row group
         fetches.push({
           startByte: ranges[0].startByte,
@@ -44,16 +43,13 @@ export function parquetPlan({ metadata, rowStart = 0, rowEnd = Infinity, columns
         })
       } else if (ranges.length) {
         concat(fetches, ranges)
-      } else if (columns?.length) {
-        throw new Error(`parquet columns not found: ${columns.join(', ')}`)
       }
     }
 
     groupStart = groupEnd
   }
-  if (!isFinite(rowEnd)) rowEnd = groupStart
 
-  return { metadata, rowStart, rowEnd, columns, fetches, groups }
+  return { metadata, rowStart, fetches, groups }
 }
 
 export function getColumnRange({ dictionary_page_offset, data_page_offset, total_compressed_size }: ColumnMetaData): ByteRange {
@@ -67,7 +63,7 @@ export function getColumnRange({ dictionary_page_offset, data_page_offset, total
 /**
  * Prefetch byte ranges from an AsyncBuffer.
  */
-export function prefetchAsyncBuffer(file: AsyncBuffer, {fetches}: QueryPlan): AsyncBuffer {
+export function prefetchAsyncBuffer(file: AsyncBuffer, fetches: ByteRange[]): AsyncBuffer {
   // fetch byte ranges from the file
   const promises = fetches.map(({ startByte, endByte }) => file.slice(startByte, endByte))
   return {

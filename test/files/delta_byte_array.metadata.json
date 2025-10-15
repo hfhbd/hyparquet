@@ -78,19 +78,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 8248,
             "total_compressed_size": 8248,
-            "data_page_offset": 4,
-            "statistics": {
-              "null_count": 0,
-              "max_value": "AAAAAAAAPPCAAAAA",
-              "min_value": "AAAAAAAAAABAAAAA"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 4
           }
         },
         {
@@ -107,19 +95,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 3362,
             "total_compressed_size": 3362,
-            "data_page_offset": 8252,
-            "statistics": {
-              "null_count": 30,
-              "max_value": "Sir",
-              "min_value": "Dr."
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 8252
           }
         },
         {
@@ -136,19 +112,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 6595,
             "total_compressed_size": 6595,
-            "data_page_offset": 11614,
-            "statistics": {
-              "null_count": 32,
-              "max_value": "Zachary",
-              "min_value": "Aaron"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 11614
           }
         },
         {
@@ -165,19 +129,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 6955,
             "total_compressed_size": 6955,
-            "data_page_offset": 18209,
-            "statistics": {
-              "null_count": 24,
-              "max_value": "Zamora",
-              "min_value": "Adams"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 18209
           }
         },
         {
@@ -194,19 +146,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 1220,
             "total_compressed_size": 1220,
-            "data_page_offset": 25164,
-            "statistics": {
-              "null_count": 29,
-              "max_value": "Y",
-              "min_value": "N"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 25164
           }
         },
         {
@@ -223,19 +163,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 9599,
             "total_compressed_size": 9599,
-            "data_page_offset": 26384,
-            "statistics": {
-              "null_count": 31,
-              "max_value": "ZIMBABWE",
-              "min_value": "AFGHANISTAN"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 26384
           }
         },
         {
@@ -252,17 +180,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 42,
             "total_compressed_size": 42,
-            "data_page_offset": 35983,
-            "statistics": {
-              "null_count": 1000
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 35983
           }
         },
         {
@@ -279,19 +197,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 27763,
             "total_compressed_size": 27763,
-            "data_page_offset": 36025,
-            "statistics": {
-              "null_count": 31,
-              "max_value": "Zachary.Parsons@hHmnLrbKsfY.com",
-              "min_value": "Aaron.Browder@iUpddkHI9z8.org"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 36025
           }
         },
         {
@@ -308,19 +214,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 3511,
             "total_compressed_size": 3511,
-            "data_page_offset": 63788,
-            "statistics": {
-              "null_count": 25,
-              "max_value": "2452648",
-              "min_value": "2452283"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 63788
           }
         }
       ],

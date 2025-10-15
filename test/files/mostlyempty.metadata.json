@@ -26,10 +26,7 @@
             "total_uncompressed_size": 40,
             "total_compressed_size": 40,
             "data_page_offset": 18,
-            "dictionary_page_offset": 4,
-            "statistics": {
-              "null_count": 10
-            }
+            "dictionary_page_offset": 4
           }
         }
       ],

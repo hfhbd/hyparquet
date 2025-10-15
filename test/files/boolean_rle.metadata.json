@@ -25,11 +25,6 @@
             "path_in_schema": [
               "BooleanColumn"
             ],
-            "statistics": {
-              "max_value": true,
-              "min_value": false,
-              "null_count": 5
-            },
             "total_compressed_size": 43,
             "total_uncompressed_size": 41,
             "type": 0

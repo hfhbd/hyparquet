@@ -25,8 +25,9 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
 
   // read row groups
   const asyncGroups = parquetReadAsync(options)
-
-  const { rowStart = 0, rowEnd, columns, onChunk, onComplete, rowFormat } = options
+  const rowStart = 0
+  const rowEnd = Infinity
+  const { onChunk, onComplete, rowFormat } = options
 
   // skip assembly if no onComplete or onChunk, but wait for reading to finish
   if (!onComplete && !onChunk) {
@@ -70,8 +71,8 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
       const selectEnd = Math.min((rowEnd ?? Infinity) - asyncGroup.groupStart, asyncGroup.groupRows)
       // transpose column chunks to rows in output
       const groupData = rowFormat === 'object' ?
-        await asyncGroupToRows(asyncGroup, selectStart, selectEnd, columns, 'object') :
-        await asyncGroupToRows(asyncGroup, selectStart, selectEnd, columns, 'array')
+        await asyncGroupToRows(asyncGroup, selectStart, selectEnd, 'object') :
+        await asyncGroupToRows(asyncGroup, selectStart, selectEnd, 'array')
       concat(rows, groupData)
     }
     onComplete(rows)
@@ -89,7 +90,7 @@ export function parquetReadAsync(options: ParquetReadOptions): AsyncRowGroup[] {
 
   // prefetch byte ranges
   const plan: QueryPlan = parquetPlan(options)
-  options.file = prefetchAsyncBuffer(options.file, plan)
+  options.file = prefetchAsyncBuffer(options.file, plan.fetches)
 
   // read row groups
   return plan.groups.map(groupPlan => readRowGroup(options, plan, groupPlan))

@@ -42,26 +42,7 @@
             "total_uncompressed_size": 117,
             "total_compressed_size": 121,
             "data_page_offset": 33,
-            "dictionary_page_offset": 4,
-            "statistics": {
-              "max": -12345.67,
-              "min": -12345.67,
-              "null_count": 0,
-              "max_value": -12345.67,
-              "min_value": -12345.67
-            },
-            "encoding_stats": [
-              {
-                "page_type": 2,
-                "encoding": 0,
-                "count": 1
-              },
-              {
-                "page_type": 0,
-                "encoding": 8,
-                "count": 1
-              }
-            ]
+            "dictionary_page_offset": 4
           }
         }
       ],

@@ -20,11 +20,6 @@
             "encodings": [0, 8],
             "num_values": 5,
             "path_in_schema": ["a"],
-            "statistics": {
-              "max": "abc",
-              "min": "abc",
-              "null_count": 1
-            },
             "total_compressed_size": 63,
             "total_uncompressed_size": 59,
             "type": 6
@@ -38,11 +33,6 @@
             "encodings": [5],
             "num_values": 5,
             "path_in_schema": ["b"],
-            "statistics": {
-              "max": 5,
-              "min": 1,
-              "null_count": 0
-            },
             "total_compressed_size": 49,
             "total_uncompressed_size": 47,
             "type": 1
@@ -56,11 +46,6 @@
             "encodings": [0, 8],
             "num_values": 5,
             "path_in_schema": ["c"],
-            "statistics": {
-              "max": 5,
-              "min": 2,
-              "null_count": 0
-            },
             "total_compressed_size": 88,
             "total_uncompressed_size": 94,
             "type": 5
@@ -74,11 +59,6 @@
             "encodings": [3],
             "num_values": 5,
             "path_in_schema": ["d"],
-            "statistics": {
-              "max": true,
-              "min": false,
-              "null_count": 0
-            },
             "total_compressed_size": 39,
             "total_uncompressed_size": 37,
             "type": 0
@@ -96,11 +76,6 @@
               "list",
               "element"
             ],
-            "statistics": {
-              "max": 3,
-              "min": 1,
-              "null_count": 2
-            },
             "total_compressed_size": 78,
             "total_uncompressed_size": 74,
             "type": 1

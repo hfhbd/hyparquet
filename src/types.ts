@@ -11,21 +11,11 @@ export interface ParquetParsers {
 }
 
 /**
- * Parquet Metadata options for metadata parsing
- */
-export interface MetadataOptions {
-  parsers?: ParquetParsers // custom parsers to decode advanced types
-}
-
-/**
  * Parquet query options for reading data
  */
 export interface BaseParquetReadOptions {
   file: AsyncBuffer // file-like object containing parquet data
   metadata?: FileMetaData // parquet metadata, will be parsed if not provided
-  columns?: string[] // columns to read, all columns if undefined
-  rowStart?: number // first requested row index (inclusive)
-  rowEnd?: number // last requested row index (exclusive)
   onChunk?: (chunk: ColumnData) => void // called when a column chunk is parsed. chunks may contain data outside the requested range.
   onPage?: (chunk: ColumnData) => void // called when a data page is parsed. pages may contain data outside the requested range.
   compressors?: Compressors // custom decompressors
@@ -201,11 +191,8 @@ export interface ColumnMetaData {
   data_page_offset: bigint
   index_page_offset?: bigint
   dictionary_page_offset?: bigint
-  statistics?: Statistics
-  encoding_stats?: PageEncodingStats[]
   bloom_filter_offset?: bigint
   bloom_filter_length?: number
-  size_statistics?: SizeStatistics
 }
 
 type ColumnCryptoMetaData = Record<string, never>
@@ -242,31 +229,6 @@ export interface KeyValue {
   value?: string
 }
 
-export type MinMaxType = bigint | boolean | number | string | Date | Uint8Array
-
-export interface Statistics {
-  max?: MinMaxType
-  min?: MinMaxType
-  null_count?: bigint
-  distinct_count?: bigint
-  max_value?: MinMaxType
-  min_value?: MinMaxType
-  is_max_value_exact?: boolean
-  is_min_value_exact?: boolean
-}
-
-interface SizeStatistics {
-  unencoded_byte_array_data_bytes?: bigint
-  repetition_level_histogram?: bigint[]
-  definition_level_histogram?: bigint[]
-}
-
-interface PageEncodingStats {
-  page_type: PageType
-  encoding: Encoding
-  count: number
-}
-
 export enum PageType {
   DATA_PAGE,
   INDEX_PAGE,
@@ -297,7 +259,6 @@ export interface DataPageHeader {
   encoding: Encoding
   definition_level_encoding: Encoding
   repetition_level_encoding: Encoding
-  statistics?: Statistics
 }
 
 type IndexPageHeader = Record<string, never>
@@ -316,7 +277,6 @@ export interface DataPageHeaderV2 {
   definition_levels_byte_length: number
   repetition_levels_byte_length: number
   is_compressed?: boolean
-  statistics?: Statistics
 }
 
 export interface DataPage {
@@ -335,29 +295,6 @@ export type DecodedArray =
   | Float64Array
   | any[]
 
-export interface OffsetIndex {
-  page_locations: PageLocation[]
-  unencoded_byte_array_data_bytes?: bigint[]
-}
-
-export interface PageLocation {
-  offset: bigint
-  compressed_page_size: number
-  first_row_index: bigint
-}
-
-export interface ColumnIndex {
-  null_pages: boolean[]
-  min_values: MinMaxType[]
-  max_values: MinMaxType[]
-  boundary_order: BoundaryOrder
-  null_counts?: bigint[]
-  repetition_level_histograms?: bigint[]
-  definition_level_histograms?: bigint[]
-}
-
-export enum BoundaryOrder { UNORDERED, ASCENDING, DESCENDING }
-
 export type ThriftObject = { [ key: `field_${number}` ]: ThriftType }
 export type ThriftType = boolean | number | bigint | Uint8Array | ThriftType[] | ThriftObject
 
@@ -367,8 +304,6 @@ export type ThriftType = boolean | number | bigint | Uint8Array | ThriftType[] |
 export interface QueryPlan {
   metadata: FileMetaData
   rowStart: number
-  rowEnd?: number
-  columns?: string[] // columns to read
   fetches: ByteRange[] // byte ranges to fetch
   groups: GroupPlan[] // byte ranges by row group
 }

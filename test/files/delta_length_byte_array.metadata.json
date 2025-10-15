@@ -37,14 +37,7 @@
             "num_values": 1000,
             "total_uncompressed_size": 23747,
             "total_compressed_size": 2625,
-            "data_page_offset": 4,
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 6,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 4
           }
         }
       ],

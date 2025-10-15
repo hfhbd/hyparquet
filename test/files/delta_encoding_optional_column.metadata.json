@@ -117,21 +117,7 @@
             "num_values": 100,
             "total_uncompressed_size": 81,
             "total_compressed_size": 81,
-            "data_page_offset": 4,
-            "statistics": {
-              "max": 100,
-              "min": 1,
-              "null_count": 0,
-              "max_value": 100,
-              "min_value": 1
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 4
           }
         },
         {
@@ -148,21 +134,7 @@
             "num_values": 100,
             "total_uncompressed_size": 358,
             "total_compressed_size": 358,
-            "data_page_offset": 85,
-            "statistics": {
-              "max": 1895444,
-              "min": 8817,
-              "null_count": 3,
-              "max_value": 1895444,
-              "min_value": 8817
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 85
           }
         },
         {
@@ -179,21 +151,7 @@
             "num_values": 100,
             "total_uncompressed_size": 311,
             "total_compressed_size": 311,
-            "data_page_offset": 443,
-            "statistics": {
-              "max": 7135,
-              "min": 37,
-              "null_count": 2,
-              "max_value": 7135,
-              "min_value": 37
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 443
           }
         },
         {
@@ -210,21 +168,7 @@
             "num_values": 100,
             "total_uncompressed_size": 353,
             "total_compressed_size": 353,
-            "data_page_offset": 754,
-            "statistics": {
-              "max": 49388,
-              "min": 571,
-              "null_count": 0,
-              "max_value": 49388,
-              "min_value": 571
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 754
           }
         },
         {
@@ -241,21 +185,7 @@
             "num_values": 100,
             "total_uncompressed_size": 297,
             "total_compressed_size": 297,
-            "data_page_offset": 1107,
-            "statistics": {
-              "max": 2452641,
-              "min": 2449130,
-              "null_count": 1,
-              "max_value": 2452641,
-              "min_value": 2449130
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 1107
           }
         },
         {
@@ -272,21 +202,7 @@
             "num_values": 100,
             "total_uncompressed_size": 297,
             "total_compressed_size": 297,
-            "data_page_offset": 1404,
-            "statistics": {
-              "max": 2452611,
-              "min": 2449010,
-              "null_count": 1,
-              "max_value": 2452611,
-              "min_value": 2449010
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 1404
           }
         },
         {
@@ -303,21 +219,7 @@
             "num_values": 100,
             "total_uncompressed_size": 160,
             "total_compressed_size": 160,
-            "data_page_offset": 1701,
-            "statistics": {
-              "max": 30,
-              "min": 1,
-              "null_count": 3,
-              "max_value": 30,
-              "min_value": 1
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 1701
           }
         },
         {
@@ -334,21 +236,7 @@
             "num_values": 100,
             "total_uncompressed_size": 146,
             "total_compressed_size": 146,
-            "data_page_offset": 1861,
-            "statistics": {
-              "max": 12,
-              "min": 1,
-              "null_count": 3,
-              "max_value": 12,
-              "min_value": 1
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 1861
           }
         },
         {
@@ -365,21 +253,7 @@
             "num_values": 100,
             "total_uncompressed_size": 172,
             "total_compressed_size": 172,
-            "data_page_offset": 2007,
-            "statistics": {
-              "max": 1991,
-              "min": 1925,
-              "null_count": 3,
-              "max_value": 1991,
-              "min_value": 1925
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 5,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 2007
           }
         },
         {
@@ -396,19 +270,7 @@
             "num_values": 100,
             "total_uncompressed_size": 976,
             "total_compressed_size": 976,
-            "data_page_offset": 2179,
-            "statistics": {
-              "null_count": 0,
-              "max_value": "AAAAAAAAPFAAAAAA",
-              "min_value": "AAAAAAAAABAAAAAA"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 2179
           }
         },
         {
@@ -425,19 +287,7 @@
             "num_values": 100,
             "total_uncompressed_size": 376,
             "total_compressed_size": 376,
-            "data_page_offset": 3155,
-            "statistics": {
-              "null_count": 3,
-              "max_value": "Sir",
-              "min_value": "Dr."
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 3155
           }
         },
         {
@@ -454,19 +304,7 @@
             "num_values": 100,
             "total_uncompressed_size": 694,
             "total_compressed_size": 694,
-            "data_page_offset": 3531,
-            "statistics": {
-              "null_count": 3,
-              "max_value": "William",
-              "min_value": "Albert"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 3531
           }
         },
         {
@@ -483,19 +321,7 @@
             "num_values": 100,
             "total_uncompressed_size": 777,
             "total_compressed_size": 777,
-            "data_page_offset": 4225,
-            "statistics": {
-              "null_count": 1,
-              "max_value": "Young",
-              "min_value": "Baker"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 4225
           }
         },
         {
@@ -512,19 +338,7 @@
             "num_values": 100,
             "total_uncompressed_size": 156,
             "total_compressed_size": 156,
-            "data_page_offset": 5002,
-            "statistics": {
-              "null_count": 4,
-              "max_value": "Y",
-              "min_value": "N"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 5002
           }
         },
         {
@@ -541,19 +355,7 @@
             "num_values": 100,
             "total_uncompressed_size": 1111,
             "total_compressed_size": 1111,
-            "data_page_offset": 5158,
-            "statistics": {
-              "null_count": 4,
-              "max_value": "WALLIS AND FUTUNA",
-              "min_value": "AFGHANISTAN"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 5158
           }
         },
         {
@@ -570,19 +372,7 @@
             "num_values": 100,
             "total_uncompressed_size": 2813,
             "total_compressed_size": 2813,
-            "data_page_offset": 6269,
-            "statistics": {
-              "null_count": 3,
-              "max_value": "William.Warner@zegnrzurU.org",
-              "min_value": "Albert.Brunson@62.com"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 6269
           }
         },
         {
@@ -599,19 +389,7 @@
             "num_values": 100,
             "total_uncompressed_size": 407,
             "total_compressed_size": 407,
-            "data_page_offset": 9082,
-            "statistics": {
-              "null_count": 3,
-              "max_value": "2452644",
-              "min_value": "2452293"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 3,
-                "encoding": 7,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 9082
           }
         }
       ],

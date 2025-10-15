@@ -60,19 +60,7 @@
             "num_values": 2,
             "total_uncompressed_size": 54,
             "total_compressed_size": 69,
-            "data_page_offset": 4,
-            "statistics": {
-              "null_count": 0,
-              "max_value": "parent",
-              "min_value": "name"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 0,
-                "encoding": 0,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 4
           },
           "offset_index_offset": 198,
           "offset_index_length": 11,
@@ -96,19 +84,7 @@
             "num_values": 2,
             "total_uncompressed_size": 57,
             "total_compressed_size": 72,
-            "data_page_offset": 73,
-            "statistics": {
-              "null_count": 0,
-              "max_value": "report",
-              "min_value": "another"
-            },
-            "encoding_stats": [
-              {
-                "page_type": 0,
-                "encoding": 0,
-                "count": 1
-              }
-            ]
+            "data_page_offset": 73
           },
           "offset_index_offset": 209,
           "offset_index_length": 12,

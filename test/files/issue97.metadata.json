@@ -37,14 +37,7 @@
             "total_uncompressed_size": 14,
             "total_compressed_size": 14,
             "data_page_offset": 0,
-            "dictionary_page_offset": 4,
-            "encoding_stats": [
-              {
-                "page_type": 2,
-                "encoding": 0,
-                "count": 1
-              }
-            ]
+            "dictionary_page_offset": 4
           }
         },
         {
@@ -61,8 +54,7 @@
             "num_values": 0,
             "total_uncompressed_size": 0,
             "total_compressed_size": 0,
-            "data_page_offset": 0,
-            "encoding_stats": []
+            "data_page_offset": 0
           }
         }
       ],

@@ -780,17 +780,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 4,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4
          },
          "offset_index_offset": 6051,
          "offset_index_length": 10,
@@ -814,17 +804,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 54,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 54
          },
          "offset_index_offset": 6061,
          "offset_index_length": 10,
@@ -848,17 +828,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 104,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 104
          },
          "offset_index_offset": 6071,
          "offset_index_length": 11,
@@ -882,21 +852,7 @@
            "num_values": 1,
            "total_uncompressed_size": 44,
            "total_compressed_size": 59,
-           "data_page_offset": 154,
-           "statistics": {
-             "max": "name",
-             "min": "name",
-             "null_count": 0,
-             "max_value": "name",
-             "min_value": "name"
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 154
          },
          "offset_index_offset": 6082,
          "offset_index_length": 11,
@@ -920,21 +876,7 @@
            "num_values": 1,
            "total_uncompressed_size": 31,
            "total_compressed_size": 51,
-           "data_page_offset": 213,
-           "statistics": {
-             "max": false,
-             "min": false,
-             "null_count": 0,
-             "max_value": false,
-             "min_value": false
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 213
          },
          "offset_index_offset": 6093,
          "offset_index_length": 11,
@@ -958,17 +900,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 264,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 264
          },
          "offset_index_offset": 6104,
          "offset_index_length": 11,
@@ -992,17 +924,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 314,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 314
          },
          "offset_index_offset": 6115,
          "offset_index_length": 11,
@@ -1026,17 +948,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 364,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 364
          },
          "offset_index_offset": 6126,
          "offset_index_length": 11,
@@ -1060,17 +972,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 414,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 414
          },
          "offset_index_offset": 6137,
          "offset_index_length": 11,
@@ -1094,17 +996,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 464,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 464
          },
          "offset_index_offset": 6148,
          "offset_index_length": 11,
@@ -1128,17 +1020,7 @@
            "num_values": 1,
            "total_uncompressed_size": 36,
            "total_compressed_size": 53,
-           "data_page_offset": 514,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 514
          },
          "offset_index_offset": 6159,
          "offset_index_length": 11,
@@ -1163,17 +1045,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 567,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 567
          },
          "offset_index_offset": 6170,
          "offset_index_length": 11,
@@ -1198,17 +1070,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 617,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 617
          },
          "offset_index_offset": 6181,
          "offset_index_length": 11,
@@ -1233,17 +1095,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 667,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 667
          },
          "offset_index_offset": 6192,
          "offset_index_length": 11,
@@ -1268,17 +1120,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 717,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 717
          },
          "offset_index_offset": 6203,
          "offset_index_length": 11,
@@ -1303,17 +1145,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 767,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 767
          },
          "offset_index_offset": 6214,
          "offset_index_length": 11,
@@ -1338,17 +1170,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 817,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 817
          },
          "offset_index_offset": 6225,
          "offset_index_length": 11,
@@ -1373,17 +1195,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 867,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 867
          },
          "offset_index_offset": 6236,
          "offset_index_length": 11,
@@ -1408,17 +1220,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 917,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 917
          },
          "offset_index_offset": 6247,
          "offset_index_length": 11,
@@ -1443,17 +1245,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 967,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 967
          },
          "offset_index_offset": 6258,
          "offset_index_length": 11,
@@ -1478,17 +1270,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 1017,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1017
          },
          "offset_index_offset": 6269,
          "offset_index_length": 11,
@@ -1513,17 +1295,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 1067,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1067
          },
          "offset_index_offset": 6280,
          "offset_index_length": 11,
@@ -1548,17 +1320,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 1117,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1117
          },
          "offset_index_offset": 6291,
          "offset_index_length": 11,
@@ -1583,17 +1345,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 1167,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1167
          },
          "offset_index_offset": 6302,
          "offset_index_length": 11,
@@ -1618,17 +1370,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 1217,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1217
          },
          "offset_index_offset": 6313,
          "offset_index_length": 11,
@@ -1653,17 +1395,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 1267,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1267
          },
          "offset_index_offset": 6324,
          "offset_index_length": 11,
@@ -1688,17 +1420,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 1317,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1317
          },
          "offset_index_offset": 6335,
          "offset_index_length": 11,
@@ -1724,17 +1446,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1367,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1367
          },
          "offset_index_offset": 6346,
          "offset_index_length": 11,
@@ -1761,17 +1473,7 @@
            "num_values": 1,
            "total_uncompressed_size": 38,
            "total_compressed_size": 55,
-           "data_page_offset": 1421,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1421
          },
          "offset_index_offset": 6357,
          "offset_index_length": 11,
@@ -1797,17 +1499,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1476,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1476
          },
          "offset_index_offset": 6368,
          "offset_index_length": 11,
@@ -1833,17 +1525,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1530,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1530
          },
          "offset_index_offset": 6379,
          "offset_index_length": 11,
@@ -1869,17 +1551,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1584,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1584
          },
          "offset_index_offset": 6390,
          "offset_index_length": 11,
@@ -1905,17 +1577,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1638,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1638
          },
          "offset_index_offset": 6401,
          "offset_index_length": 11,
@@ -1941,17 +1603,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1692,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1692
          },
          "offset_index_offset": 6412,
          "offset_index_length": 11,
@@ -1977,17 +1629,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1746,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1746
          },
          "offset_index_offset": 6423,
          "offset_index_length": 11,
@@ -2013,17 +1655,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1800,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1800
          },
          "offset_index_offset": 6434,
          "offset_index_length": 11,
@@ -2049,17 +1681,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1854,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1854
          },
          "offset_index_offset": 6445,
          "offset_index_length": 11,
@@ -2085,17 +1707,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1908,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1908
          },
          "offset_index_offset": 6456,
          "offset_index_length": 11,
@@ -2121,17 +1733,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 1962,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 1962
          },
          "offset_index_offset": 6467,
          "offset_index_length": 11,
@@ -2157,17 +1759,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2016,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2016
          },
          "offset_index_offset": 6478,
          "offset_index_length": 11,
@@ -2193,17 +1785,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2070,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2070
          },
          "offset_index_offset": 6489,
          "offset_index_length": 11,
@@ -2229,17 +1811,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2124,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2124
          },
          "offset_index_offset": 6500,
          "offset_index_length": 11,
@@ -2265,17 +1837,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2178,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2178
          },
          "offset_index_offset": 6511,
          "offset_index_length": 11,
@@ -2301,17 +1863,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2232,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2232
          },
          "offset_index_offset": 6522,
          "offset_index_length": 11,
@@ -2337,17 +1889,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2286,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2286
          },
          "offset_index_offset": 6533,
          "offset_index_length": 11,
@@ -2373,17 +1915,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2340,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2340
          },
          "offset_index_offset": 6544,
          "offset_index_length": 11,
@@ -2409,17 +1941,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2394,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2394
          },
          "offset_index_offset": 6555,
          "offset_index_length": 11,
@@ -2445,17 +1967,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2448,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2448
          },
          "offset_index_offset": 6566,
          "offset_index_length": 11,
@@ -2481,17 +1993,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2502,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2502
          },
          "offset_index_offset": 6577,
          "offset_index_length": 11,
@@ -2517,17 +2019,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2556,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2556
          },
          "offset_index_offset": 6588,
          "offset_index_length": 11,
@@ -2553,17 +2045,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2610,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2610
          },
          "offset_index_offset": 6599,
          "offset_index_length": 11,
@@ -2589,17 +2071,7 @@
            "num_values": 1,
            "total_uncompressed_size": 37,
            "total_compressed_size": 54,
-           "data_page_offset": 2664,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2664
          },
          "offset_index_offset": 6610,
          "offset_index_length": 11,
@@ -2626,17 +2098,7 @@
            "num_values": 1,
            "total_uncompressed_size": 38,
            "total_compressed_size": 55,
-           "data_page_offset": 2718,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2718
          },
          "offset_index_offset": 6621,
          "offset_index_length": 11,
@@ -2662,17 +2124,7 @@
            "num_values": 1,
            "total_uncompressed_size": 36,
            "total_compressed_size": 53,
-           "data_page_offset": 2773,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2773
          },
          "offset_index_offset": 6632,
          "offset_index_length": 11,
@@ -2698,17 +2150,7 @@
            "num_values": 1,
            "total_uncompressed_size": 36,
            "total_compressed_size": 53,
-           "data_page_offset": 2826,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2826
          },
          "offset_index_offset": 6643,
          "offset_index_length": 11,
@@ -2731,17 +2173,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 2879,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2879
          },
          "offset_index_offset": 6654,
          "offset_index_length": 11,
@@ -2764,17 +2196,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 2928,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2928
          },
          "offset_index_offset": 6665,
          "offset_index_length": 11,
@@ -2797,17 +2219,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 2977,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 2977
          },
          "offset_index_offset": 6676,
          "offset_index_length": 11,
@@ -2831,17 +2243,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3026,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3026
          },
          "offset_index_offset": 6687,
          "offset_index_length": 11,
@@ -2865,17 +2267,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3076,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3076
          },
          "offset_index_offset": 6698,
          "offset_index_length": 11,
@@ -2899,17 +2291,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 3126,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3126
          },
          "offset_index_offset": 6709,
          "offset_index_length": 11,
@@ -2933,17 +2315,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3177,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3177
          },
          "offset_index_offset": 6720,
          "offset_index_length": 11,
@@ -2967,17 +2339,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3227,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3227
          },
          "offset_index_offset": 6731,
          "offset_index_length": 11,
@@ -3001,17 +2363,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3277,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3277
          },
          "offset_index_offset": 6742,
          "offset_index_length": 11,
@@ -3035,17 +2387,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3327,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3327
          },
          "offset_index_offset": 6753,
          "offset_index_length": 11,
@@ -3069,17 +2411,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3377,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3377
          },
          "offset_index_offset": 6764,
          "offset_index_length": 11,
@@ -3103,17 +2435,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3427,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3427
          },
          "offset_index_offset": 6775,
          "offset_index_length": 11,
@@ -3137,17 +2459,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3477,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3477
          },
          "offset_index_offset": 6786,
          "offset_index_length": 11,
@@ -3171,17 +2483,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 3527,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3527
          },
          "offset_index_offset": 6797,
          "offset_index_length": 11,
@@ -3205,17 +2507,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 3578,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3578
          },
          "offset_index_offset": 6808,
          "offset_index_length": 11,
@@ -3239,17 +2531,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3629,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3629
          },
          "offset_index_offset": 6819,
          "offset_index_length": 11,
@@ -3273,17 +2555,7 @@
            "num_values": 1,
            "total_uncompressed_size": 30,
            "total_compressed_size": 50,
-           "data_page_offset": 3679,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3679
          },
          "offset_index_offset": 6830,
          "offset_index_length": 11,
@@ -3308,17 +2580,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 3729,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3729
          },
          "offset_index_offset": 6841,
          "offset_index_length": 11,
@@ -3343,17 +2605,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 3780,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3780
          },
          "offset_index_offset": 6852,
          "offset_index_length": 11,
@@ -3376,17 +2628,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 3831,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3831
          },
          "offset_index_offset": 6863,
          "offset_index_length": 11,
@@ -3409,17 +2651,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 3880,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3880
          },
          "offset_index_offset": 6874,
          "offset_index_length": 11,
@@ -3442,17 +2674,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 3929,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3929
          },
          "offset_index_offset": 6885,
          "offset_index_length": 11,
@@ -3475,17 +2697,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 3978,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 3978
          },
          "offset_index_offset": 6896,
          "offset_index_length": 11,
@@ -3508,17 +2720,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4029,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4029
          },
          "offset_index_offset": 6907,
          "offset_index_length": 11,
@@ -3541,17 +2743,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4078,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4078
          },
          "offset_index_offset": 6918,
          "offset_index_length": 11,
@@ -3574,17 +2766,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4127,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4127
          },
          "offset_index_offset": 6929,
          "offset_index_length": 11,
@@ -3607,17 +2789,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4176,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4176
          },
          "offset_index_offset": 6940,
          "offset_index_length": 11,
@@ -3640,17 +2812,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4225,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4225
          },
          "offset_index_offset": 6951,
          "offset_index_length": 11,
@@ -3673,17 +2835,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4274,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4274
          },
          "offset_index_offset": 6962,
          "offset_index_length": 11,
@@ -3706,17 +2858,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 4323,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4323
          },
          "offset_index_offset": 6973,
          "offset_index_length": 11,
@@ -3739,17 +2881,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 4374,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4374
          },
          "offset_index_offset": 6984,
          "offset_index_length": 11,
@@ -3772,17 +2904,7 @@
            "num_values": 1,
            "total_uncompressed_size": 35,
            "total_compressed_size": 51,
-           "data_page_offset": 4425,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4425
          },
          "offset_index_offset": 6995,
          "offset_index_length": 11,
@@ -3805,21 +2927,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4476,
-           "statistics": {
-             "max": false,
-             "min": false,
-             "null_count": 0,
-             "max_value": false,
-             "min_value": false
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4476
          },
          "offset_index_offset": 7006,
          "offset_index_length": 11,
@@ -3842,21 +2950,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4525,
-           "statistics": {
-             "max": false,
-             "min": false,
-             "null_count": 0,
-             "max_value": false,
-             "min_value": false
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4525
          },
          "offset_index_offset": 7017,
          "offset_index_length": 11,
@@ -3879,17 +2973,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4574,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4574
          },
          "offset_index_offset": 7028,
          "offset_index_length": 11,
@@ -3912,17 +2996,7 @@
            "num_values": 1,
            "total_uncompressed_size": 29,
            "total_compressed_size": 49,
-           "data_page_offset": 4623,
-           "statistics": {
-             "null_count": 1
-           },
-           "encoding_stats": [
-             {
-               "page_type": 0,
-               "encoding": 0,
-               "count": 1
-             }
-           ]
+           "data_page_offset": 4623
          },
          "offset_index_offset": 7039,
          "offset_index_length": 11,

@@ -47,26 +47,7 @@
             "total_uncompressed_size": 126,
             "total_compressed_size": 120,
             "data_page_offset": 50,
-            "dictionary_page_offset": 4,
-            "statistics": {
-              "max": 190,
-              "min": 40,
-              "null_count": 0,
-              "max_value": 190,
-              "min_value": 40
-            },
-            "encoding_stats": [
-              {
-                "page_type": 2,
-                "encoding": 0,
-                "count": 1
-              },
-              {
-                "page_type": 0,
-                "encoding": 8,
-                "count": 1
-              }
-            ]
+            "dictionary_page_offset": 4
           }
         },
         {
@@ -86,26 +67,7 @@
             "total_uncompressed_size": 82,
             "total_compressed_size": 86,
             "data_page_offset": 146,
-            "dictionary_page_offset": 124,
-            "statistics": {
-              "max": 2015,
-              "min": 2015,
-              "null_count": 0,
-              "max_value": 2015,
-              "min_value": 2015
-            },
-            "encoding_stats": [
-              {
-                "page_type": 2,
-                "encoding": 0,
-                "count": 1
-              },
-              {
-                "page_type": 0,
-                "encoding": 8,
-                "count": 1
-              }
-            ]
+            "dictionary_page_offset": 124
           }
         }
       ],
