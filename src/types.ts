@@ -225,7 +225,6 @@ export interface PageHeader {
   type: PageType
   uncompressed_page_size: number
   compressed_page_size: number
-  crc?: number
   data_page_header?: DataPageHeader
   dictionary_page_header?: DictionaryPageHeader
   data_page_header_v2?: DataPageHeaderV2

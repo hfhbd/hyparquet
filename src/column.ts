@@ -165,7 +165,6 @@ function parquetHeader(reader: DataReader): PageHeader {
   const type: PageType = header.field_1
   const uncompressed_page_size = header.field_2
   const compressed_page_size = header.field_3
-  const crc = header.field_4
   const data_page_header: DataPageHeader = header.field_5 && {
     num_values: header.field_5.field_1,
     encoding: header.field_5.field_2,
@@ -198,7 +197,6 @@ function parquetHeader(reader: DataReader): PageHeader {
     type,
     uncompressed_page_size,
     compressed_page_size,
-    crc,
     data_page_header,
     dictionary_page_header,
     data_page_header_v2,
