@@ -175,8 +175,6 @@ export interface ColumnChunk {
   offset_index_length?: number
   column_index_offset?: bigint
   column_index_length?: number
-  crypto_metadata?: ColumnCryptoMetaData
-  encrypted_column_metadata?: Uint8Array
 }
 
 export interface ColumnMetaData {
@@ -194,8 +192,6 @@ export interface ColumnMetaData {
   bloom_filter_offset?: bigint
   bloom_filter_length?: number
 }
-
-type ColumnCryptoMetaData = Record<string, never>
 
 export enum Encoding {
     PLAIN,
