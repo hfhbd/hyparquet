@@ -182,9 +182,7 @@ function parquetHeader(reader: DataReader): PageHeader {
   }
   const index_page_header = header.field_6
   const dictionary_page_header: DictionaryPageHeader = header.field_7 && {
-    num_values: header.field_7.field_1,
-    encoding: header.field_7.field_2,
-    is_sorted: header.field_7.field_3,
+    num_values: header.field_7.field_1
   }
   const data_page_header_v2: DataPageHeaderV2 = header.field_8 && {
     num_values: header.field_8.field_1,

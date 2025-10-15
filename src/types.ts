@@ -253,8 +253,6 @@ type IndexPageHeader = Record<string, never>
 
 export interface DictionaryPageHeader {
   num_values: number
-  encoding: Encoding
-  is_sorted?: boolean
 }
 
 export interface DataPageHeaderV2 {
