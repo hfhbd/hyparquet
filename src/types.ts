@@ -184,8 +184,6 @@ export interface ColumnMetaData {
   data_page_offset: bigint
   index_page_offset?: bigint
   dictionary_page_offset?: bigint
-  bloom_filter_offset?: bigint
-  bloom_filter_length?: number
 }
 
 export enum Encoding {
