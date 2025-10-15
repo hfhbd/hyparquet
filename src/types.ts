@@ -159,7 +159,6 @@ export interface RowGroup {
   columns: ColumnChunk[]
   total_byte_size: bigint
   num_rows: bigint
-  sorting_columns?: SortingColumn[]
   file_offset?: bigint
   total_compressed_size?: bigint
   ordinal?: number
@@ -222,12 +221,6 @@ export enum PageType {
   INDEX_PAGE,
   DICTIONARY_PAGE,
   DATA_PAGE_V2
-}
-
-interface SortingColumn {
-  column_idx: number
-  descending: boolean
-  nulls_first: boolean
 }
 
 // Parquet file header types

@@ -141,11 +141,6 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
     })),
     total_byte_size: rowGroup.field_2,
     num_rows: rowGroup.field_3,
-    sorting_columns: rowGroup.field_4?.map((sortingColumn: any) => ({
-      column_idx: sortingColumn.field_1,
-      descending: sortingColumn.field_2,
-      nulls_first: sortingColumn.field_3,
-    })),
     file_offset: rowGroup.field_5,
     total_compressed_size: rowGroup.field_6,
     ordinal: rowGroup.field_7,
