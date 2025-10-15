@@ -168,8 +168,6 @@ function parquetHeader(reader: DataReader): PageHeader {
   const data_page_header: DataPageHeader = header.field_5 && {
     num_values: header.field_5.field_1,
     encoding: header.field_5.field_2,
-    definition_level_encoding: header.field_5.field_3,
-    repetition_level_encoding: header.field_5.field_4,
     statistics: header.field_5.field_5 && {
       max: header.field_5.field_5.field_1,
       min: header.field_5.field_5.field_2,

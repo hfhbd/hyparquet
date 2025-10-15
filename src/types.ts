@@ -233,8 +233,6 @@ export interface PageHeader {
 export interface DataPageHeader {
   num_values: number
   encoding: Encoding
-  definition_level_encoding: Encoding
-  repetition_level_encoding: Encoding
 }
 
 export interface DictionaryPageHeader {
