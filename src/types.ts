@@ -237,7 +237,6 @@ export interface PageHeader {
   compressed_page_size: number
   crc?: number
   data_page_header?: DataPageHeader
-  index_page_header?: IndexPageHeader
   dictionary_page_header?: DictionaryPageHeader
   data_page_header_v2?: DataPageHeaderV2
 }
@@ -248,8 +247,6 @@ export interface DataPageHeader {
   definition_level_encoding: Encoding
   repetition_level_encoding: Encoding
 }
-
-type IndexPageHeader = Record<string, never>
 
 export interface DictionaryPageHeader {
   num_values: number

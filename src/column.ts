@@ -180,7 +180,6 @@ function parquetHeader(reader: DataReader): PageHeader {
       min_value: header.field_5.field_5.field_6,
     },
   }
-  const index_page_header = header.field_6
   const dictionary_page_header: DictionaryPageHeader = header.field_7 && {
     num_values: header.field_7.field_1
   }
@@ -201,7 +200,6 @@ function parquetHeader(reader: DataReader): PageHeader {
     compressed_page_size,
     crc,
     data_page_header,
-    index_page_header,
     dictionary_page_header,
     data_page_header_v2,
   }
