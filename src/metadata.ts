@@ -131,7 +131,6 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
         num_values: column.field_3.field_5,
         total_uncompressed_size: column.field_3.field_6,
         total_compressed_size: column.field_3.field_7,
-        key_value_metadata: column.field_3.field_8,
         data_page_offset: column.field_3.field_9,
         index_page_offset: column.field_3.field_10,
         dictionary_page_offset: column.field_3.field_11,
@@ -152,10 +151,6 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
     total_compressed_size: rowGroup.field_6,
     ordinal: rowGroup.field_7,
   }))
-  const key_value_metadata = metadata.field_5?.map((keyValue: any) => ({
-    key: decode(keyValue.field_1),
-    value: decode(keyValue.field_2),
-  }))
   const created_by = decode(metadata.field_6)
 
   return {
@@ -163,7 +158,6 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
     schema,
     num_rows,
     row_groups,
-    key_value_metadata,
     created_by,
     metadata_length: metadataLength,
   }

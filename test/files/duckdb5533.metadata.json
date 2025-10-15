@@ -176,36 +176,6 @@
       "ordinal": 0
     }
   ],
-  "key_value_metadata": [
-    {
-      "key": "addon_version",
-      "value": "1.8.0"
-    },
-    {
-      "key": "map",
-      "value": "18"
-    },
-    {
-      "key": "character",
-      "value": "Undeadscarlight"
-    },
-    {
-      "key": "level",
-      "value": "80"
-    },
-    {
-      "key": "start",
-      "value": "2022-11-27T17:42:35.480941703Z"
-    },
-    {
-      "key": "end",
-      "value": "2022-11-27T17:43:01.105178597Z"
-    },
-    {
-      "key": "ARROW:schema",
-      "value": "/////5oBAAAEAAAA8v///xQAAAAEAAEAAAAKAAsACAAKAAQA+P///wwAAAAIAAgAAAAEAAUAAAAoAQAA4AAAAJQAAABIAAAABAAAAOz///80AAAAIAAAABgAAAACAAAAEAARAAQAAAAQAAgAAAAMAAAAAAD2////EAAAAAAABgAIAAQAAgAAAG1mAADs////OAAAACAAAAAYAAAAAgAAABAAEQAEAAAAEAAIAAAADAAAAAAA9P///0AAAAABAAAACAAJAAQACAAFAAAAY291bnQAAADs////NAAAACAAAAAYAAAAAQIAABAAEgAEABAAEQAIAAAADAAAAAAA9v///yAAAAAAAAYACAAEAAsAAABjdXJyZW5jeV9pZADs////NAAAACAAAAAYAAAAAQIAABAAEgAEABAAEQAIAAAADAAAAAAA9v///yAAAAAAAAYACAAEAAcAAABpdGVtX2lkAOz///8wAAAAIAAAABgAAAAKAAAAEAARAAQAAAAQAAgAAAAMAAAAAAD6////AQAGAAYABAAJAAAAdGltZXN0YW1wAA=="
-    }
-  ],
   "created_by": "Arrow2 - Native Rust implementation of Arrow",
   "metadata_length": 1218
 }

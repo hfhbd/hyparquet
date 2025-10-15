@@ -1,12 +1,6 @@
 {
   "version": 1,
   "created_by": "parquet-mr version 1.8.1 (build 4aba4dae7bb0d4edbcf7923ae1339f28fd3f7fcf)",
-  "key_value_metadata": [
-    {
-      "key": "org.apache.spark.sql.parquet.row.metadata",
-      "value": "{\"type\":\"struct\",\"fields\":[{\"name\":\"a\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"b\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"c\",\"type\":\"double\",\"nullable\":false,\"metadata\":{}},{\"name\":\"d\",\"type\":\"boolean\",\"nullable\":false,\"metadata\":{}},{\"name\":\"e\",\"type\":{\"type\":\"array\",\"elementType\":\"integer\",\"containsNull\":false},\"nullable\":true,\"metadata\":{}}]}"
-    }
-  ],
   "metadata_length": 836,
   "num_rows": 5,
   "row_groups": [

@@ -74,12 +74,6 @@
       "ordinal": 0
     }
   ],
-  "key_value_metadata": [
-    {
-      "key": "writer.model.name",
-      "value": "example"
-    }
-  ],
   "created_by": "parquet-mr version 1.13.0-SNAPSHOT (build 261f7d2679407c833545b56f4c85a4ae8b5c9ed4)",
   "metadata_length": 525
 }

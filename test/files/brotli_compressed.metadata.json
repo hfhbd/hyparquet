@@ -94,16 +94,6 @@
       "ordinal": 0
     }
   ],
-  "key_value_metadata": [
-    {
-      "key": "pandas",
-      "value": "{\"index_columns\": [{\"kind\": \"range\", \"name\": null, \"start\": 0, \"stop\": 4, \"step\": 1}], \"column_indexes\": [{\"name\": null, \"field_name\": null, \"pandas_type\": \"unicode\", \"numpy_type\": \"object\", \"metadata\": {\"encoding\": \"UTF-8\"}}], \"columns\": [{\"name\": \"c0\", \"field_name\": \"c0\", \"pandas_type\": \"int64\", \"numpy_type\": \"int64\", \"metadata\": null}, {\"name\": \"c1\", \"field_name\": \"c1\", \"pandas_type\": \"bytes\", \"numpy_type\": \"object\", \"metadata\": null}, {\"name\": \"v11\", \"field_name\": \"v11\", \"pandas_type\": \"float64\", \"numpy_type\": \"float64\", \"metadata\": null}], \"creator\": {\"library\": \"pyarrow\", \"version\": \"15.0.0\"}, \"pandas_version\": \"2.1.4\"}"
-    },
-    {
-      "key": "ARROW:schema",
-      "value": "/////4gDAAAQAAAAAAAKAA4ABgAFAAgACgAAAAABBAAQAAAAAAAKAAwAAAAEAAgACgAAALACAAAEAAAAAQAAAAwAAAAIAAwABAAIAAgAAAAIAAAAEAAAAAYAAABwYW5kYXMAAHkCAAB7ImluZGV4X2NvbHVtbnMiOiBbeyJraW5kIjogInJhbmdlIiwgIm5hbWUiOiBudWxsLCAic3RhcnQiOiAwLCAic3RvcCI6IDQsICJzdGVwIjogMX1dLCAiY29sdW1uX2luZGV4ZXMiOiBbeyJuYW1lIjogbnVsbCwgImZpZWxkX25hbWUiOiBudWxsLCAicGFuZGFzX3R5cGUiOiAidW5pY29kZSIsICJudW1weV90eXBlIjogIm9iamVjdCIsICJtZXRhZGF0YSI6IHsiZW5jb2RpbmciOiAiVVRGLTgifX1dLCAiY29sdW1ucyI6IFt7Im5hbWUiOiAiYzAiLCAiZmllbGRfbmFtZSI6ICJjMCIsICJwYW5kYXNfdHlwZSI6ICJpbnQ2NCIsICJudW1weV90eXBlIjogImludDY0IiwgIm1ldGFkYXRhIjogbnVsbH0sIHsibmFtZSI6ICJjMSIsICJmaWVsZF9uYW1lIjogImMxIiwgInBhbmRhc190eXBlIjogImJ5dGVzIiwgIm51bXB5X3R5cGUiOiAib2JqZWN0IiwgIm1ldGFkYXRhIjogbnVsbH0sIHsibmFtZSI6ICJ2MTEiLCAiZmllbGRfbmFtZSI6ICJ2MTEiLCAicGFuZGFzX3R5cGUiOiAiZmxvYXQ2NCIsICJudW1weV90eXBlIjogImZsb2F0NjQiLCAibWV0YWRhdGEiOiBudWxsfV0sICJjcmVhdG9yIjogeyJsaWJyYXJ5IjogInB5YXJyb3ciLCAidmVyc2lvbiI6ICIxNS4wLjAifSwgInBhbmRhc192ZXJzaW9uIjogIjIuMS40In0AAAADAAAAdAAAADgAAAAEAAAAqP///wAAAQMQAAAAHAAAAAQAAAAAAAAAAwAAAHYxMQAAAAYACAAGAAYAAAAAAAIA2P///wAAAQQQAAAAGAAAAAQAAAAAAAAAAgAAAGMxAAAEAAQABAAAABAAFAAIAAYABwAMAAAAEAAQAAAAAAABAhAAAAAcAAAABAAAAAAAAAACAAAAYzAAAAgADAAIAAcACAAAAAAAAAFAAAAA"
-    }
-  ],
   "created_by": "parquet-cpp-arrow version 15.0.0",
   "metadata_length": 2242
 }

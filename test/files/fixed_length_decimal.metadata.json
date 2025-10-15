@@ -43,12 +43,6 @@
         "num_rows": 24
       }
     ],
-    "key_value_metadata": [
-      {
-        "key": "org.apache.spark.sql.parquet.row.metadata",
-        "value": "{\"type\":\"struct\",\"fields\":[{\"name\":\"value\",\"type\":\"decimal(25,2)\",\"nullable\":true,\"metadata\":{}}]}"
-      }
-    ],
     "created_by": "parquet-mr version 1.8.2 (build c6522788629e590a53eb79874b95f6c3ff11f16c)",
     "metadata_length": 346
   }

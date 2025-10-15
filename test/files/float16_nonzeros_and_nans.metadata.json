@@ -48,12 +48,6 @@
     "ordinal": 0
     }
   ],
-  "key_value_metadata": [
-    {
-    "key": "ARROW:schema",
-    "value": "/////3AAAAAQAAAAAAAKAAwABgAFAAgACgAAAAABBAAMAAAACAAIAAAABAAIAAAABAAAAAEAAAAUAAAAEAAUAAgABgAHAAwAAAAQABAAAAAAAAEDEAAAABgAAAAEAAAAAAAAAAEAAAB4AAAABAAEAAQAAAAAAAAA"
-    }
-  ],
   "created_by": "parquet-cpp-arrow version 15.0.0-SNAPSHOT",
   "metadata_length": 346
 }

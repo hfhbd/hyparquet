@@ -67,7 +67,6 @@ export interface FileMetaData {
   schema: SchemaElement[]
   num_rows: bigint
   row_groups: RowGroup[]
-  key_value_metadata?: KeyValue[]
   created_by?: string
   // column_orders?: ColumnOrder[]
   // encryption_algorithm?: EncryptionAlgorithm
@@ -185,7 +184,6 @@ export interface ColumnMetaData {
   num_values: bigint
   total_uncompressed_size: bigint
   total_compressed_size: bigint
-  key_value_metadata?: KeyValue[]
   data_page_offset: bigint
   index_page_offset?: bigint
   dictionary_page_offset?: bigint
@@ -218,11 +216,6 @@ export enum CompressionCodec {
 }
 export type Compressors = {
   [K in CompressionCodec]?: (input: Uint8Array, outputLength: number) => Uint8Array
-}
-
-export interface KeyValue {
-  key: string
-  value?: string
 }
 
 export enum PageType {

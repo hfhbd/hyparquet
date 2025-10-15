@@ -1,11 +1,5 @@
 {
   "created_by": "Polars",
-  "key_value_metadata": [
-    {
-      "key": "ARROW:schema",
-      "value": "/////3YAAAAEAAAA8v///xQAAAAEAAEAAAAKAAsACAAKAAQA+P///wwAAAAIAAgAAAAEAAEAAAAEAAAA7P///ywAAAAgAAAAGAAAAAEGAAAQABIABAAQABEACAAAAAwAAAAAAPz///8EAAQADQAAAEJvb2xlYW5Db2x1bW4A"
-    }
-  ],
   "metadata_length": 308,
   "num_rows": 15,
   "row_groups": [

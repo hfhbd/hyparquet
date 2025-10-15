@@ -85,7 +85,6 @@
      "num_rows": 100
    }
  ],
- "key_value_metadata": [],
  "created_by": "parquet.js",
  "metadata_length": 211
 }

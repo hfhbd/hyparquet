@@ -78,16 +78,6 @@
       "ordinal": 0
     }
   ],
-  "key_value_metadata": [
-    {
-      "key": "pandas",
-      "value": "{\"index_columns\": [{\"kind\": \"range\", \"name\": null, \"start\": 0, \"stop\": 5, \"step\": 1}], \"column_indexes\": [{\"name\": null, \"field_name\": null, \"pandas_type\": \"unicode\", \"numpy_type\": \"object\", \"metadata\": {\"encoding\": \"UTF-8\"}}], \"columns\": [{\"name\": \"mid\", \"field_name\": \"mid\", \"pandas_type\": \"int64\", \"numpy_type\": \"int64\", \"metadata\": null}, {\"name\": \"value\", \"field_name\": \"value\", \"pandas_type\": \"decimal\", \"numpy_type\": \"object\", \"metadata\": {\"precision\": 14, \"scale\": 10}}], \"creator\": {\"library\": \"pyarrow\", \"version\": \"19.0.0\"}, \"pandas_version\": \"2.2.3\"}"
-    },
-    {
-      "key": "ARROW:schema",
-      "value": "/////xgDAAAQAAAAAAAKAA4ABgAFAAgACgAAAAABBAAQAAAAAAAKAAwAAAAEAAgACgAAAGACAAAEAAAAAQAAAAQAAACA/f//QAIAAAQAAAAyAgAAeyJpbmRleF9jb2x1bW5zIjogW3sia2luZCI6ICJyYW5nZSIsICJuYW1lIjogbnVsbCwgInN0YXJ0IjogMCwgInN0b3AiOiA1LCAic3RlcCI6IDF9XSwgImNvbHVtbl9pbmRleGVzIjogW3sibmFtZSI6IG51bGwsICJmaWVsZF9uYW1lIjogbnVsbCwgInBhbmRhc190eXBlIjogInVuaWNvZGUiLCAibnVtcHlfdHlwZSI6ICJvYmplY3QiLCAibWV0YWRhdGEiOiB7ImVuY29kaW5nIjogIlVURi04In19XSwgImNvbHVtbnMiOiBbeyJuYW1lIjogIm1pZCIsICJmaWVsZF9uYW1lIjogIm1pZCIsICJwYW5kYXNfdHlwZSI6ICJpbnQ2NCIsICJudW1weV90eXBlIjogImludDY0IiwgIm1ldGFkYXRhIjogbnVsbH0sIHsibmFtZSI6ICJ2YWx1ZSIsICJmaWVsZF9uYW1lIjogInZhbHVlIiwgInBhbmRhc190eXBlIjogImRlY2ltYWwiLCAibnVtcHlfdHlwZSI6ICJvYmplY3QiLCAibWV0YWRhdGEiOiB7InByZWNpc2lvbiI6IDE0LCAic2NhbGUiOiAxMH19XSwgImNyZWF0b3IiOiB7ImxpYnJhcnkiOiAicHlhcnJvdyIsICJ2ZXJzaW9uIjogIjE5LjAuMCJ9LCAicGFuZGFzX3ZlcnNpb24iOiAiMi4yLjMifQAABgAAAHBhbmRhcwAAAgAAAFAAAAAEAAAAyP///wAAAQcQAAAAIAAAAAQAAAAAAAAABQAAAHZhbHVlAAAACAAMAAQACAAIAAAADgAAAAoAAAAQABQACAAGAAcADAAAABAAEAAAAAAAAQIQAAAAHAAAAAQAAAAAAAAAAwAAAG1pZAAIAAwACAAHAAgAAAAAAAABQAAAAAAAAAA="
-    }
-  ],
   "created_by": "parquet-cpp-arrow version 19.0.0",
   "metadata_length": 1959
 }

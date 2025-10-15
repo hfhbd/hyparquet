@@ -1765,48 +1765,6 @@
       "ordinal": 0
     }
   ],
-  "key_value_metadata": [
-    {
-      "key": "parquet.proto.descriptor",
-      "value": "name: \"MenuStructure\"\nfield {\n  name: \"menu\"\n  number: 1\n  label: LABEL_OPTIONAL\n  type: TYPE_MESSAGE\n  type_name: \".itasty.Menu\"\n}\nfield {\n  name: \"socialLinks\"\n  number: 2\n  label: LABEL_OPTIONAL\n  type: TYPE_MESSAGE\n  type_name: \".itasty.SocialLinks\"\n}\nfield {\n  name: \"currency\"\n  number: 3\n  label: LABEL_OPTIONAL\n  type: TYPE_ENUM\n  type_name: \".itasty.Currency\"\n}\n"
-    },
-    {
-      "key": "parquet.proto.class",
-      "value": "pl.itaste.app.common.core.components.menu.parquet.proto3.Schema$MenuStructure"
-    },
-    {
-      "key": "parquet.proto.enum.itasty.Language",
-      "value": "UK:2,EN:0,PL:1"
-    },
-    {
-      "key": "parquet.proto.unwrapProtoWrappers",
-      "value": "false"
-    },
-    {
-      "key": "parquet.proto.enum.itasty.RecipeTag",
-      "value": "GLUTEN_FREE:5,LACTOSE_FREE:4,VEGAN:1,HALAL:2,ORGANIC:6,KOSHER:3,VEGETARIAN:0"
-    },
-    {
-      "key": "parquet.proto.writeSpecsCompliant",
-      "value": "false"
-    },
-    {
-      "key": "writer.model.name",
-      "value": "protobuf"
-    },
-    {
-      "key": "parquet.proto.enum.itasty.ImageLabel",
-      "value": "THUMBNAIL_SMALL:0,LARGE:3,THUMBNAIL:1"
-    },
-    {
-      "key": "parquet.proto.enum.itasty.UnitSize",
-      "value": "KG:0"
-    },
-    {
-      "key": "parquet.proto.enum.itasty.Currency",
-      "value": "PLN:0"
-    }
-  ],
   "created_by": "parquet-mr version 1.14.1 (build 97ede968377400d1d79e3196636ba3de392196ba)",
   "metadata_length": 8838
 }
