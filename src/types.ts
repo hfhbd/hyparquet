@@ -161,7 +161,6 @@ export interface RowGroup {
   num_rows: bigint
   file_offset?: bigint
   total_compressed_size?: bigint
-  ordinal?: number
 }
 
 export interface ColumnChunk {

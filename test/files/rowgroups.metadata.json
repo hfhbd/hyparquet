@@ -35,7 +35,6 @@
       ],
       "file_offset": 4,
       "num_rows": 10,
-      "ordinal": 0,
       "total_byte_size": 172,
       "total_compressed_size": 146
     },
@@ -58,7 +57,6 @@
       ],
       "file_offset": 248,
       "num_rows": 5,
-      "ordinal": 1,
       "total_byte_size": 126,
       "total_compressed_size": 120
     }

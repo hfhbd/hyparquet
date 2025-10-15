@@ -42,8 +42,7 @@
       "total_byte_size": 23747,
       "num_rows": 1000,
       "file_offset": 0,
-      "total_compressed_size": 2625,
-      "ordinal": 0
+      "total_compressed_size": 2625
     }
   ],
   "metadata_length": 105

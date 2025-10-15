@@ -143,7 +143,6 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
     num_rows: rowGroup.field_3,
     file_offset: rowGroup.field_5,
     total_compressed_size: rowGroup.field_6,
-    ordinal: rowGroup.field_7,
   }))
   const created_by = decode(metadata.field_6)
 

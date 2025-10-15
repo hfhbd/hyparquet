@@ -251,8 +251,7 @@
       "total_byte_size": 688,
       "num_rows": 4,
       "file_offset": 4,
-      "total_compressed_size": 698,
-      "ordinal": 0
+      "total_compressed_size": 698
     }
   ],
   "created_by": "parquet-cpp-arrow version 19.0.1",

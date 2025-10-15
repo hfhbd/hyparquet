@@ -1690,8 +1690,7 @@
       "total_byte_size": 3571,
       "num_rows": 1,
       "file_offset": 4,
-      "total_compressed_size": 3571,
-      "ordinal": 0
+      "total_compressed_size": 3571
     }
   ],
   "created_by": "parquet-mr version 1.14.1 (build 97ede968377400d1d79e3196636ba3de392196ba)",

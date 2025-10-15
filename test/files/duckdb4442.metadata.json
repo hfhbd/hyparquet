@@ -452,8 +452,7 @@
       "total_byte_size": 542,
       "num_rows": 1,
       "file_offset": 4,
-      "total_compressed_size": 576,
-      "ordinal": 0
+      "total_compressed_size": 576
     }
   ],
   "created_by": "Arrow2 - Native Rust implementation of Arrow",
