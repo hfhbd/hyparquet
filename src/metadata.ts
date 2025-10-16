@@ -1,7 +1,7 @@
 import {
-  AsyncBuffer,
-  FileMetaData, LogicalType,
-  SchemaElement, SchemaTree, TimeUnit
+  AsyncBuffer, ColumnChunk,
+  FileMetaData, LogicalType, RowGroup,
+  SchemaElement, SchemaTree, ThriftObject, TimeUnit
 } from './types.ts'
 import {getSchemaPath} from './schema.js'
 import {deserializeTCompactProtocol} from './thrift.js'
@@ -9,8 +9,8 @@ import {deserializeTCompactProtocol} from './thrift.js'
 export const defaultInitialFetchSize = 1 << 19 // 512kb
 
 const decoder = new TextDecoder()
-function decode(value: Uint8Array) {
-  return value && decoder.decode(value)
+function decode(value: Uint8Array): string {
+  return decoder.decode(value)
 }
 
 /**
@@ -94,56 +94,69 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
   // Parquet files store metadata at the end of the file
   // Metadata length is 4 bytes before the last PAR1
   const metadataLengthOffset = view.byteLength - 8
-  const metadataLength = view.getUint32(metadataLengthOffset, true)
-  if (metadataLength > view.byteLength - 8) {
+  const metadata_length = view.getUint32(metadataLengthOffset, true)
+  if (metadata_length > view.byteLength - 8) {
     // {metadata}, metadata_length, PAR1
-    throw new Error(`parquet metadata length ${metadataLength} exceeds available buffer ${view.byteLength - 8}`)
+    throw new Error(`parquet metadata length ${metadata_length} exceeds available buffer ${view.byteLength - 8}`)
   }
 
-  const metadataOffset = metadataLengthOffset - metadataLength
+  const metadataOffset = metadataLengthOffset - metadata_length
   const reader = { view, offset: metadataOffset }
   const metadata = deserializeTCompactProtocol(reader)
 
   // Parse metadata from thrift data
-  const version = metadata.field_1
-  const schema: SchemaElement[] = metadata.field_2.map((field: any) => ({
-    type: field.field_1,
-    type_length: field.field_2,
-    repetition_type: field.field_3,
-    name: decode(field.field_4),
-    num_children: field.field_5,
-    converted_type: field.field_6,
-    scale: field.field_7,
-    precision: field.field_8,
-    logical_type: logicalType(field.field_10),
-  }))
-  const num_rows = metadata.field_3
-  const row_groups = metadata.field_4.map((rowGroup: any) => ({
-    columns: rowGroup.field_1.map((column: any) => ({
-      file_path: decode(column.field_1),
-      file_offset: column.field_2,
-      meta_data: column.field_3 && {
-        type: column.field_3.field_1,
-        path_in_schema: column.field_3.field_3.map(decode),
-        codec: column.field_3.field_4,
-        num_values: column.field_3.field_5,
-        total_uncompressed_size: column.field_3.field_6,
-        total_compressed_size: column.field_3.field_7,
-        data_page_offset: column.field_3.field_9,
-        index_page_offset: column.field_3.field_10,
-        dictionary_page_offset: column.field_3.field_11,
-      },
-      offset_index_offset: column.field_4,
-      offset_index_length: column.field_5,
-      column_index_offset: column.field_6,
-      column_index_length: column.field_7,
-    })),
-    total_byte_size: rowGroup.field_2,
-    num_rows: rowGroup.field_3,
-    file_offset: rowGroup.field_5,
-    total_compressed_size: rowGroup.field_6,
-  }))
-  const created_by = decode(metadata.field_6)
+  const version = metadata[1] as number
+  const schema: SchemaElement[] = (metadata[2] as ThriftObject).map((field): SchemaElement => {
+    let fieldO = field as ThriftObject
+    return {
+      type: fieldO[1] as number | undefined,
+      type_length: fieldO[2] as number | undefined,
+      repetition_type: fieldO[3] as number | undefined,
+      name: decode(fieldO[4] as Uint8Array),
+      num_children: fieldO[5] as number | undefined,
+      converted_type: fieldO[6] as number | undefined,
+      scale: fieldO[7] as number | undefined,
+      precision: fieldO[8] as number | undefined,
+      logical_type: logicalType(fieldO[10]),
+    };
+  })
+  const num_rows = metadata[3] as bigint
+  const row_groups = (metadata[4] as ThriftObject).map(function (rowGroup): RowGroup {
+    const rowGroupField = rowGroup as ThriftObject
+    const rowGroupField1 = rowGroupField[1] as ThriftObject
+    return {
+      columns: rowGroupField1.map(function (column): ColumnChunk {
+        const columnField = column as ThriftObject
+        const columnField3 = columnField[3] as ThriftObject | undefined
+        const filePath = columnField[1] as Uint8Array | undefined
+        return {
+          file_path: filePath && decode(filePath),
+          file_offset: columnField[2] as bigint,
+          meta_data: columnField3 && {
+            type: columnField3[1] as number,
+            path_in_schema: (columnField3[3] as Uint8Array[]).map(decode),
+            codec: columnField3[4] as number,
+            num_values: columnField3[5] as bigint,
+            total_uncompressed_size: columnField3[6] as bigint,
+            total_compressed_size: columnField3[7] as bigint,
+            data_page_offset: columnField3[9] as bigint,
+            index_page_offset: columnField3[10] as bigint | undefined,
+            dictionary_page_offset: columnField3[11] as bigint | undefined,
+          },
+          offset_index_offset: columnField[4] as bigint |undefined,
+          offset_index_length: columnField[5]as number |undefined,
+          column_index_offset: columnField[6]as bigint |undefined,
+          column_index_length: columnField[7]as number |undefined,
+        };
+      }),
+      total_byte_size: rowGroupField[2] as bigint,
+      num_rows: rowGroupField[3] as bigint,
+      file_offset: rowGroupField[5] as bigint | undefined,
+      total_compressed_size: rowGroupField[6] as bigint | undefined,
+    };
+  })
+  const createdByArray = metadata[6] as Uint8Array | undefined
+  const created_by = createdByArray && decode(createdByArray)
 
   return {
     version,
@@ -151,18 +164,18 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
     num_rows,
     row_groups,
     created_by,
-    metadata_length: metadataLength,
+    metadata_length,
   }
 }
 
 /**
  * Return a tree of schema elements from parquet metadata.
  *
- * @param {{schema: SchemaElement[]}} metadata parquet metadata object
+ * @param {SchemaElement[]} schema parquet metadata object
  * @returns {SchemaTree} tree of schema elements
  */
-export function parquetSchema({ schema }: { schema: SchemaElement[] }): SchemaTree {
-  return getSchemaPath(schema, [])[0]
+export function parquetSchema(schema: SchemaElement[]): SchemaTree {
+  return getSchemaPath(schema, [])[0]!
 }
 
 function logicalType(logicalType: any): LogicalType | undefined {

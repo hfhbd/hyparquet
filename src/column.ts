@@ -7,7 +7,7 @@ import {
   FieldRepetitionType,
   PageHeader,
   PageType,
-  RowGroupSelect
+  RowGroupSelect, ThriftObject
 } from './types.js'
 import {convert, convertWithDictionary} from './convert.js'
 import {decompressPage, readDataPage, readDataPageV2} from './datapage.js'
@@ -24,11 +24,13 @@ import {deserializeTCompactProtocol} from './thrift.js'
  * @param {(chunk: ColumnData) => void} [onPage] callback for each page
  * @returns {DecodedArray[]}
  */
-export function readColumn(reader: DataReader, {
-  groupStart,
-  selectStart,
-  selectEnd
-}: RowGroupSelect, columnDecoder: ColumnDecoder, onPage: (chunk: ColumnData) => void =  _ => {}): DecodedArray[] {
+export function readColumn(
+    reader: DataReader,
+    rowGroupSelect: RowGroupSelect,
+    columnDecoder: ColumnDecoder,
+    onPage: (chunk: ColumnData) => void =  _ => {},
+): DecodedArray[] {
+  const { groupStart, selectStart, selectEnd} = rowGroupSelect
   const { columnName, schemaPath } = columnDecoder
   const isFlat = isFlatColumn(schemaPath)
   const chunks: DecodedArray[] = []
@@ -118,7 +120,7 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
     } else {
       // wrap nested flat data by depth
       for (let i = 2; i < schemaPath.length; i++) {
-        if (schemaPath[i].element.repetition_type !== FieldRepetitionType.REQUIRED) {
+        if (schemaPath[i]!.element.repetition_type !== FieldRepetitionType.REQUIRED) {
           values = Array.from(values, e => [e])
         }
       }
@@ -162,33 +164,37 @@ function parquetHeader(reader: DataReader): PageHeader {
   const header = deserializeTCompactProtocol(reader)
 
   // Parse parquet header from thrift data
-  const type: PageType = header.field_1
-  const uncompressed_page_size = header.field_2
-  const compressed_page_size = header.field_3
-  const data_page_header: DataPageHeader = header.field_5 && {
-    num_values: header.field_5.field_1,
-    encoding: header.field_5.field_2,
-    statistics: header.field_5.field_5 && {
-      max: header.field_5.field_5.field_1,
-      min: header.field_5.field_5.field_2,
-      null_count: header.field_5.field_5.field_3,
-      distinct_count: header.field_5.field_5.field_4,
-      max_value: header.field_5.field_5.field_5,
-      min_value: header.field_5.field_5.field_6,
-    },
+  const type: PageType = header[1]! as number
+  const uncompressed_page_size = header[2] as number
+  const compressed_page_size = header[3] as number
+  const header5 = header[5] as ThriftObject | undefined
+  let data_page_header: DataPageHeader | undefined = undefined
+  if (header5) {
+    data_page_header = {
+      num_values: header5[1] as number,
+      encoding: header5[2] as number,
+    }
   }
-  const dictionary_page_header: DictionaryPageHeader = header.field_7 && {
-    num_values: header.field_7.field_1
+  const header7 = header[7] as ThriftObject | undefined
+  let dictionary_page_header: DictionaryPageHeader | undefined = undefined
+  if (header7) {
+    dictionary_page_header = {
+      num_values: header7[1] as number,
+    }
   }
-  const data_page_header_v2: DataPageHeaderV2 = header.field_8 && {
-    num_values: header.field_8.field_1,
-    num_nulls: header.field_8.field_2,
-    num_rows: header.field_8.field_3,
-    encoding: header.field_8.field_4,
-    definition_levels_byte_length: header.field_8.field_5,
-    repetition_levels_byte_length: header.field_8.field_6,
-    is_compressed: header.field_8.field_7 === undefined ? true : header.field_8.field_7, // default true
-    statistics: header.field_8.field_8,
+  const header8 = header[8] as ThriftObject | undefined
+  let data_page_header_v2: DataPageHeaderV2 | undefined = undefined
+  if (header8) {
+    const header87 = header8[7] as boolean | undefined
+    data_page_header_v2 = {
+      num_values: header8[1] as number,
+      num_nulls: header8[2] as number,
+      num_rows: header8[3] as number,
+      encoding: header8[4] as number,
+      definition_levels_byte_length: header8[5] as number,
+      repetition_levels_byte_length: header8[6] as number,
+      is_compressed: header87 === undefined ? true : header87, // default true
+    }
   }
 
   return {

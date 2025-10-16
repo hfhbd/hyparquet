@@ -38,7 +38,7 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
   }
 
   // assemble struct columns
-  const schemaTree = parquetSchema(options.metadata)
+  const schemaTree = parquetSchema(options.metadata.schema)
   const assembled = asyncGroups.map(arg => assembleAsync(arg, schemaTree))
 
   // onChunk emit all chunks (don't await)
@@ -49,7 +49,7 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
           let rowStart = asyncGroup.groupStart
           for (const columnData of columnDatas) {
             onChunk({
-              columnName: asyncColumn.pathInSchema[0],
+              columnName: asyncColumn.pathInSchema[0]!,
               columnData,
               rowStart,
               rowEnd: rowStart + columnData.length,
@@ -71,8 +71,8 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
       const selectEnd = Math.min((rowEnd ?? Infinity) - asyncGroup.groupStart, asyncGroup.groupRows)
       // transpose column chunks to rows in output
       const groupData = rowFormat === 'object' ?
-        await asyncGroupToRows(asyncGroup, selectStart, selectEnd, 'object') :
-        await asyncGroupToRows(asyncGroup, selectStart, selectEnd, 'array')
+        await asyncGroupToRows(asyncGroup.asyncColumns, selectStart, selectEnd, 'object') :
+        await asyncGroupToRows(asyncGroup.asyncColumns, selectStart, selectEnd, 'array')
       concat(rows, groupData)
     }
     onComplete(rows)
@@ -89,11 +89,11 @@ export function parquetReadAsync(options: ParquetReadOptions): AsyncRowGroup[] {
   // TODO: validate options (start, end, columns, etc)
 
   // prefetch byte ranges
-  const plan: QueryPlan = parquetPlan(options)
+  const plan: QueryPlan = parquetPlan(options.metadata)
   options.file = prefetchAsyncBuffer(options.file, plan.fetches)
 
   // read row groups
-  return plan.groups.map(groupPlan => readRowGroup(options, plan, groupPlan))
+  return plan.groups.map(groupPlan => readRowGroup(options, plan.metadata, groupPlan))
 }
 
 /**

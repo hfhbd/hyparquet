@@ -1,5 +1,4 @@
-import { defaultInitialFetchSize } from './metadata.js'
-import {AsyncBuffer, Awaitable, DecodedArray} from "./types.js";
+import {AsyncBuffer, DecodedArray} from "./types.js";
 
 /**
  * Replace bigint, date, etc. with legal JSON types.
@@ -94,78 +93,12 @@ export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: 
     },
   }
 }
-
-/**
- * Returns a cached layer on top of an AsyncBuffer. For caching slices of a file
- * that are read multiple times, possibly over a network.
- *
- * @param file file-like object to cache
- * @param {{ minSize?: number }} [options]
- * @returns cached file-like object
- */
-export function cachedAsyncBuffer({ byteLength, slice }: AsyncBuffer, {minSize = defaultInitialFetchSize}: {
-  minSize?: number;
-} = {}): AsyncBuffer {
-  if (byteLength < minSize) {
-    // Cache whole file if it's small
-    const buffer = slice(0, byteLength)
-    return {
-      byteLength,
-      async slice(start, end) {
-        return (await buffer).slice(start, end)
-      },
-    }
-  }
-  const cache = new Map()
-  return {
-    byteLength,
-    /**
-     * @param {number} start
-     * @param {number} [end]
-     * @returns {Awaitable<ArrayBuffer>}
-     */
-    slice(start: number, end: number): Awaitable<ArrayBuffer> {
-      const key = cacheKey(start, end, byteLength)
-      const cached = cache.get(key)
-      if (cached) return cached
-      // cache miss, read from file
-      const promise = slice(start, end)
-      cache.set(key, promise)
-      return promise
-    },
-  }
-}
-
-
-/**
- * Returns canonical cache key for a byte range 'start,end'.
- * Normalize int-range and suffix-range requests to the same key.
- *
- * @param start start byte of range
- * @param [end] end byte of range, or undefined for suffix range
- * @param [size] size of file, or undefined for suffix range
- */
-function cacheKey(start: number, end: number, size: number): string {
-  if (start < 0) {
-    if (end !== undefined) throw new Error(`invalid suffix range [${start}, ${end}]`)
-    if (size === undefined) return `${start},`
-    return `${size + start},${size}`
-  } else if (end !== undefined) {
-    if (start > end) throw new Error(`invalid empty range [${start}, ${end}]`)
-    return `${start},${end}`
-  } else if (size === undefined) {
-    return `${start},`
-  } else {
-    return `${start},${size}`
-  }
-}
-
 /**
  * Flatten a list of lists into a single list.
  */
 export function flatten(chunks: DecodedArray[]): DecodedArray {
   if (!chunks) return []
-  if (chunks.length === 1) return chunks[0]
+  if (chunks.length === 1) return chunks[0]!
   const output: any[] = []
   for (const chunk of chunks) {
     concat(output, chunk)

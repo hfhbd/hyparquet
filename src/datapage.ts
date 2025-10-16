@@ -26,7 +26,8 @@ import {
  * @param {ColumnDecoder} columnDecoder
  * @returns {DataPage} definition levels, repetition levels, and array of values
  */
-export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, {type, element, schemaPath}: ColumnDecoder): DataPage {
+export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, columnDecoder: ColumnDecoder): DataPage {
+  const {type, element, schemaPath} = columnDecoder
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
   const reader = { view, offset: 0 }
   let dataPage: DecodedArray
@@ -241,4 +242,5 @@ function readDefinitionLevelsV2(reader: DataReader, daph2: DataPageHeaderV2, sch
     readRleBitPackedHybrid(reader, bitWidth(maxDefinitionLevel), values, daph2.definition_levels_byte_length)
     return values
   }
+  return undefined
 }

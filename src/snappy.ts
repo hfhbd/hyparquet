@@ -17,7 +17,7 @@ const WORD_MASK = [0, 0xff, 0xffff, 0xffffff, 0xffffffff]
  */
 function copyBytes(fromArray: Uint8Array, fromPos: number, toArray: Uint8Array, toPos: number, length: number) {
   for (let i = 0; i < length; i++) {
-    toArray[toPos + i] = fromArray[fromPos + i]
+    toArray[toPos + i] = fromArray[fromPos + i]!
   }
 }
 
@@ -36,7 +36,7 @@ export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
 
   // skip preamble (contains uncompressed length as varint)
   while (pos < inputLength) {
-    const c = input[pos]
+    const c = input[pos]!
     pos++
     if (c < 128) {
       break
@@ -47,7 +47,7 @@ export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
   }
 
   while (pos < inputLength) {
-    const c = input[pos]
+    const c = input[pos]!
     let len = 0
     pos++
 
@@ -65,11 +65,11 @@ export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
           throw new Error('snappy error literal pos + 3 >= inputLength')
         }
         const lengthSize = len - 60 // length bytes - 1
-        len = input[pos]
-          + (input[pos + 1] << 8)
-          + (input[pos + 2] << 16)
-          + (input[pos + 3] << 24)
-        len = (len & WORD_MASK[lengthSize]) + 1
+        len = input[pos]!
+          + (input[pos + 1]! << 8)
+          + (input[pos + 2]! << 16)
+          + (input[pos + 3]! << 24)
+        len = (len & WORD_MASK[lengthSize]!) + 1
         pos += lengthSize
       }
       if (pos + len > inputLength) {
@@ -85,7 +85,7 @@ export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
       case 1:
         // Copy with 1-byte offset
         len = (c >>> 2 & 0x7) + 4
-        offset = input[pos] + (c >>> 5 << 8)
+        offset = input[pos]! + (c >>> 5 << 8)
         pos++
         break
       case 2:
@@ -94,7 +94,7 @@ export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
           throw new Error('snappy error end of input')
         }
         len = (c >>> 2) + 1
-        offset = input[pos] + (input[pos + 1] << 8)
+        offset = input[pos]! + (input[pos + 1]! << 8)
         pos += 2
         break
       case 3:
@@ -103,10 +103,10 @@ export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
           throw new Error('snappy error end of input')
         }
         len = (c >>> 2) + 1
-        offset = input[pos]
-          + (input[pos + 1] << 8)
-          + (input[pos + 2] << 16)
-          + (input[pos + 3] << 24)
+        offset = input[pos]!
+          + (input[pos + 1]! << 8)
+          + (input[pos + 2]! << 16)
+          + (input[pos + 3]! << 24)
         pos += 4
         break
       default:

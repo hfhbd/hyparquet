@@ -20,13 +20,10 @@ export const CompactType = {
 
 /**
  * Parse TCompactProtocol
- *
- * @param {DataReader} reader
- * @returns {{ [key: `field_${number}`]: any }}
  */
-export function deserializeTCompactProtocol(reader: DataReader): { [key: `field_${number}`]: any } {
+export function deserializeTCompactProtocol(reader: DataReader): ThriftObject {
   let lastFid = 0
-  const value: ThriftObject = {}
+  const values: ThriftType[] = []
 
   while (reader.offset < reader.view.byteLength) {
     // Parse each field based on its type and add to the result object
@@ -38,10 +35,10 @@ export function deserializeTCompactProtocol(reader: DataReader): { [key: `field_
     }
 
     // Handle the field based on its type
-    value[`field_${fid}`] = readElement(reader, type)
+    values[fid] = readElement(reader, type)
   }
 
-  return value
+  return values
 }
 
 /**
@@ -87,7 +84,7 @@ function readElement(reader: DataReader, type: number) : ThriftType {
     return values
   }
   case CompactType.STRUCT: {
-    const structValues: ThriftObject = {}
+    const structValues: ThriftType[] = []
     let lastFid = 0
     while (true) {
       const [fieldType, fid, newLastFid] = readFieldBegin(reader, lastFid)
@@ -95,7 +92,7 @@ function readElement(reader: DataReader, type: number) : ThriftType {
       if (fieldType === CompactType.STOP) {
         break
       }
-      structValues[`field_${fid}`] = readElement(reader, fieldType)
+      structValues[fid] = readElement(reader, fieldType)
     }
     return structValues
   }

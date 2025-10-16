@@ -15,21 +15,21 @@ export interface ParquetParsers {
  */
 export interface BaseParquetReadOptions {
   file: AsyncBuffer // file-like object containing parquet data
-  metadata?: FileMetaData // parquet metadata, will be parsed if not provided
-  onChunk?: (chunk: ColumnData) => void // called when a column chunk is parsed. chunks may contain data outside the requested range.
-  onPage?: (chunk: ColumnData) => void // called when a data page is parsed. pages may contain data outside the requested range.
-  compressors?: Compressors // custom decompressors
-  utf8?: boolean // decode byte arrays as utf8 strings (default true)
-  parsers?: ParquetParsers // custom parsers to decode advanced types
+  metadata: FileMetaData // parquet metadata, will be parsed if not provided
+  readonly onChunk?: (chunk: ColumnData) => void // called when a column chunk is parsed. chunks may contain data outside the requested range.
+  readonly onPage?: (chunk: ColumnData) => void // called when a data page is parsed. pages may contain data outside the requested range.
+  readonly compressors: Compressors | undefined // custom decompressors
+  readonly utf8: boolean // decode byte arrays as utf8 strings (default true)
+  readonly parsers: ParquetParsers | undefined // custom parsers to decode advanced types
 }
 
 interface ArrayRowFormat {
-  rowFormat?: 'array' // format of each row passed to the onComplete function. Can be omitted, as it's the default.
-  onComplete?: (rows: any[][]) => void // called when all requested rows and columns are parsed
+  readonly rowFormat?: 'array' // format of each row passed to the onComplete function. Can be omitted, as it's the default.
+  readonly onComplete?: (rows: any[][]) => void // called when all requested rows and columns are parsed
 }
 interface ObjectRowFormat {
-  rowFormat: 'object' // format of each row passed to the onComplete function
-  onComplete?: (rows: Record<string, any>[]) => void // called when all requested rows and columns are parsed
+  readonly rowFormat?: 'object' // format of each row passed to the onComplete function
+  readonly onComplete?: (rows: Record<string, any>[]) => void // called when all requested rows and columns are parsed
 }
 export type ParquetReadOptions = BaseParquetReadOptions & (ArrayRowFormat | ObjectRowFormat)
 
@@ -37,41 +37,38 @@ export type ParquetReadOptions = BaseParquetReadOptions & (ArrayRowFormat | Obje
  * A run of column data
  */
 export interface ColumnData {
-  columnName: string
-  columnData: DecodedArray
-  rowStart: number
-  rowEnd: number // exclusive
+  readonly columnName: string
+  readonly columnData: DecodedArray
+  readonly rowStart: number
+  readonly rowEnd: number // exclusive
 }
 
 /**
  * File-like object that can read slices of a file asynchronously.
  */
 export interface AsyncBuffer {
-  byteLength: number
-  slice(start: number, end?: number): Awaitable<ArrayBuffer>
+  readonly byteLength: number
+  slice(start: number, end: number | undefined): Awaitable<ArrayBuffer>
 }
 export type Awaitable<T> = T | Promise<T>
 export interface ByteRange {
-  startByte: number
-  endByte: number // exclusive
+  readonly startByte: number
+  readonly endByte: number // exclusive
 }
 
 export interface DataReader {
-  view: DataView
+  readonly view: DataView
   offset: number
 }
 
 // Parquet file metadata types
 export interface FileMetaData {
-  version: number
-  schema: SchemaElement[]
-  num_rows: bigint
-  row_groups: RowGroup[]
-  created_by?: string
-  // column_orders?: ColumnOrder[]
-  // encryption_algorithm?: EncryptionAlgorithm
-  // footer_signing_key_metadata?: Uint8Array
-  metadata_length: number
+  readonly version: number
+  readonly schema: SchemaElement[]
+  readonly num_rows: bigint
+  readonly row_groups: RowGroup[]
+  readonly created_by: string | undefined
+  readonly metadata_length: number
 }
 
 export interface SchemaTree {
@@ -82,15 +79,15 @@ export interface SchemaTree {
 }
 
 export interface SchemaElement {
-  type?: ParquetType
-  type_length?: number
-  repetition_type?: FieldRepetitionType
+  type: ParquetType | undefined
+  type_length: number | undefined
+  repetition_type: FieldRepetitionType | undefined
   name: string
-  num_children?: number
-  converted_type?: ConvertedType
-  scale?: number
-  precision?: number
-  logical_type?: LogicalType
+  num_children: number | undefined
+  converted_type: ConvertedType | undefined
+  scale: number | undefined
+  precision: number | undefined
+  logical_type: LogicalType | undefined
 }
 
 export enum ParquetType {
@@ -159,18 +156,18 @@ export interface RowGroup {
   columns: ColumnChunk[]
   total_byte_size: bigint
   num_rows: bigint
-  file_offset?: bigint
-  total_compressed_size?: bigint
+  file_offset: bigint | undefined
+  total_compressed_size: bigint | undefined
 }
 
 export interface ColumnChunk {
-  file_path?: string
+  file_path: string | undefined
   file_offset: bigint
-  meta_data?: ColumnMetaData
-  offset_index_offset?: bigint
-  offset_index_length?: number
-  column_index_offset?: bigint
-  column_index_length?: number
+  meta_data: ColumnMetaData | undefined
+  offset_index_offset: bigint | undefined
+  offset_index_length: number | undefined
+  column_index_offset: bigint | undefined
+  column_index_length: number | undefined
 }
 
 export interface ColumnMetaData {
@@ -181,8 +178,8 @@ export interface ColumnMetaData {
   total_uncompressed_size: bigint
   total_compressed_size: bigint
   data_page_offset: bigint
-  index_page_offset?: bigint
-  dictionary_page_offset?: bigint
+  index_page_offset: bigint | undefined
+  dictionary_page_offset: bigint | undefined
 }
 
 export enum Encoding {
@@ -224,9 +221,9 @@ export interface PageHeader {
   type: PageType
   uncompressed_page_size: number
   compressed_page_size: number
-  data_page_header?: DataPageHeader
-  dictionary_page_header?: DictionaryPageHeader
-  data_page_header_v2?: DataPageHeaderV2
+  data_page_header: DataPageHeader | undefined
+  dictionary_page_header: DictionaryPageHeader | undefined
+  data_page_header_v2: DataPageHeaderV2 | undefined
 }
 
 export interface DataPageHeader {
@@ -245,7 +242,7 @@ export interface DataPageHeaderV2 {
   encoding: Encoding
   definition_levels_byte_length: number
   repetition_levels_byte_length: number
-  is_compressed?: boolean
+  is_compressed: boolean | undefined
 }
 
 export interface DataPage {
@@ -264,7 +261,7 @@ export type DecodedArray =
   | Float64Array
   | any[]
 
-export type ThriftObject = { [ key: `field_${number}` ]: ThriftType }
+export type ThriftObject = ThriftType[]
 export type ThriftType = boolean | number | bigint | Uint8Array | ThriftType[] | ThriftObject
 
 /**
@@ -292,8 +289,8 @@ export interface ColumnDecoder {
   schemaPath: SchemaTree[]
   codec: CompressionCodec
   parsers: ParquetParsers
-  compressors?: Compressors
-  utf8?: boolean
+  compressors: Compressors | undefined
+  utf8: boolean | undefined
 }
 
 export interface RowGroupSelect {

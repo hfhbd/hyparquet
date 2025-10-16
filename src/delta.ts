@@ -27,7 +27,7 @@ export function deltaBinaryUnpack(reader: DataReader, count: number, output: Int
 
     for (let i = 0; i < miniblockPerBlock && outputIndex < count; i++) {
       // new miniblock
-      const bitWidth = BigInt(bitWidths[i])
+      const bitWidth = BigInt(bitWidths[i]!)
       if (bitWidth) {
         let bitpackPos = 0n
         let miniblockCount = valuesPerMiniblock
@@ -71,7 +71,7 @@ export function deltaLengthByteArray(reader: DataReader, count: number, output: 
   deltaBinaryUnpack(reader, count, lengths)
   for (let i = 0; i < count; i++) {
     output[i] = new Uint8Array(reader.view.buffer, reader.view.byteOffset + reader.offset, lengths[i])
-    reader.offset += lengths[i]
+    reader.offset += lengths[i]!
   }
 }
 
@@ -85,12 +85,12 @@ export function deltaByteArray(reader: DataReader, count: number, output: Uint8A
     const suffix = new Uint8Array(reader.view.buffer, reader.view.byteOffset + reader.offset, suffixData[i])
     if (prefixData[i]) {
       // copy from previous value
-      output[i] = new Uint8Array(prefixData[i] + suffixData[i])
-      output[i].set(output[i - 1].subarray(0, prefixData[i]))
-      output[i].set(suffix, prefixData[i])
+      output[i] = new Uint8Array(prefixData[i]! + suffixData[i]!)
+      output[i]!.set(output[i - 1]!.subarray(0, prefixData[i]))
+      output[i]!.set(suffix, prefixData[i]!)
     } else {
       output[i] = suffix
     }
-    reader.offset += suffixData[i]
+    reader.offset += suffixData[i]!
   }
 }

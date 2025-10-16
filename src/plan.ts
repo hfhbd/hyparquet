@@ -1,4 +1,11 @@
-import {AsyncBuffer, ByteRange, ColumnMetaData, GroupPlan, ParquetReadOptions, QueryPlan} from "./types.js"
+import {
+  AsyncBuffer,
+  ByteRange,
+  ColumnMetaData,
+  FileMetaData,
+  GroupPlan,
+  QueryPlan
+} from "./types.js"
 import {concat} from './utils.js'
 
 // Combine column chunks into a single byte range if less than 32mb
@@ -8,7 +15,7 @@ const columnChunkAggregation: number = 1 << 25 // 32mb
  * Plan which byte ranges to read to satisfy a read request.
  * Metadata must be non-null.
  */
-export function parquetPlan({ metadata }: ParquetReadOptions): QueryPlan {
+export function parquetPlan(metadata: FileMetaData): QueryPlan {
   const rowStart = 0
   if (!metadata) throw new Error('parquetPlan requires metadata')
   const groups: GroupPlan[] = []
@@ -34,12 +41,12 @@ export function parquetPlan({ metadata }: ParquetReadOptions): QueryPlan {
       groups.push({ ranges, rowGroup, groupStart, groupRows, selectStart, selectEnd })
 
       // map group plan to ranges
-      const groupSize = ranges[ranges.length - 1]?.endByte - ranges[0]?.startByte
+      const groupSize = ranges[ranges.length - 1]!.endByte - ranges[0]!.startByte
       if (groupSize < columnChunkAggregation) {
         // full row group
         fetches.push({
-          startByte: ranges[0].startByte,
-          endByte: ranges[ranges.length - 1].endByte,
+          startByte: ranges[0]!.startByte,
+          endByte: ranges[ranges.length - 1]!.endByte,
         })
       } else if (ranges.length) {
         concat(fetches, ranges)
@@ -52,7 +59,8 @@ export function parquetPlan({ metadata }: ParquetReadOptions): QueryPlan {
   return { metadata, fetches, groups }
 }
 
-export function getColumnRange({ dictionary_page_offset, data_page_offset, total_compressed_size }: ColumnMetaData): ByteRange {
+export function getColumnRange(columnMetaData: ColumnMetaData): ByteRange {
+  const { dictionary_page_offset, data_page_offset, total_compressed_size } = columnMetaData
   const columnOffset = dictionary_page_offset || data_page_offset
   return {
     startByte: Number(columnOffset),
@@ -72,17 +80,17 @@ export function prefetchAsyncBuffer(file: AsyncBuffer, fetches: ByteRange[]): As
       // find matching slice
       const index = fetches.findIndex(({ startByte, endByte }) => startByte <= start && end <= endByte)
       if (index < 0) throw new Error(`no prefetch for range [${start}, ${end}]`)
-      if (fetches[index].startByte !== start || fetches[index].endByte !== end) {
+      if (fetches[index]!.startByte !== start || fetches[index]!.endByte !== end) {
         // slice a subrange of the prefetch
-        const startOffset = start - fetches[index].startByte
-        const endOffset = end - fetches[index].startByte
+        const startOffset = start - fetches[index]!.startByte
+        const endOffset = end - fetches[index]!.startByte
         if (promises[index] instanceof Promise) {
           return promises[index].then(buffer => buffer.slice(startOffset, endOffset))
         } else {
-          return promises[index].slice(startOffset, endOffset)
+          return promises[index]!.slice(startOffset, endOffset)
         }
       } else {
-        return promises[index]
+        return promises[index]!
       }
     },
   }

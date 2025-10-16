@@ -5,11 +5,10 @@ import { getColumnRange } from './plan.js'
 import { getSchemaPath } from './schema.js'
 import {
   AsyncColumn,
-  AsyncRowGroup, DecodedArray,
+  AsyncRowGroup, ColumnDecoder, DecodedArray, FileMetaData,
   GroupPlan,
   ParquetParsers,
   ParquetReadOptions,
-  QueryPlan,
   SchemaTree
 } from "./types.js"
 import { flatten } from './utils.js'
@@ -21,11 +20,11 @@ import { flatten } from './utils.js'
  * Read a row group from a file-like object.
  *
  * @param {ParquetReadOptions} options
- * @param {QueryPlan} plan
+ * @param {FileMetaData} metadata
  * @param {GroupPlan} groupPlan
  * @returns {AsyncRowGroup} resolves to column data
  */
-export function readRowGroup(options: ParquetReadOptions, {metadata}: QueryPlan, groupPlan: GroupPlan): AsyncRowGroup {
+export function readRowGroup(options: ParquetReadOptions, metadata: FileMetaData, groupPlan: GroupPlan): AsyncRowGroup {
   const { file, compressors, utf8 } = options
 
   const asyncColumns: AsyncColumn[] = []
@@ -57,10 +56,10 @@ export function readRowGroup(options: ParquetReadOptions, {metadata}: QueryPlan,
         const schemaPath = getSchemaPath(metadata.schema, meta_data.path_in_schema)
         const reader = { view: new DataView(arrayBuffer), offset: 0 }
         const subcolumn = meta_data.path_in_schema.join('.')
-        const columnDecoder = {
+        const columnDecoder: ColumnDecoder = {
           columnName: subcolumn,
           type: meta_data.type,
-          element: schemaPath[schemaPath.length - 1].element,
+          element: schemaPath[schemaPath.length - 1]!.element,
           schemaPath,
           codec: meta_data.codec,
           parsers,
@@ -94,13 +93,13 @@ export function readRowGroup(options: ParquetReadOptions, {metadata}: QueryPlan,
  * @returns {Promise<any[][]>} resolves to row data
  */
 /**
- * @param {AsyncRowGroup} asyncGroup
+ * @param {AsyncColumn[]} asyncColumns
  * @param {number} selectStart
  * @param {number} selectEnd
  * @param {'object' | 'array'} [rowFormat]
  * @returns {Promise<Record<string, any>[] | any[][]>} resolves to row data
  */
-export async function asyncGroupToRows({ asyncColumns }: AsyncRowGroup, selectStart: number, selectEnd: number, rowFormat: 'object' | 'array'): Promise<Record<string, any>[] | any[][]> {
+export async function asyncGroupToRows(asyncColumns: AsyncColumn[], selectStart: number, selectEnd: number, rowFormat: 'object' | 'array'): Promise<Record<string, any>[] | any[][]> {
   // columnData[i] for asyncColumns[i]
   // TODO: do it without flatten
   const columnDatas = await Promise.all(asyncColumns.map(({ data }) => data.then(flatten)))
@@ -119,7 +118,7 @@ export async function asyncGroupToRows({ asyncColumns }: AsyncRowGroup, selectSt
       // return each row as an object
       const rowData: Record<string, any> = {}
       for (let i = 0; i < asyncColumns.length; i++) {
-        rowData[asyncColumns[i].pathInSchema[0]] = columnDatas[i][row]
+        rowData[asyncColumns[i]!.pathInSchema[0]!] = columnDatas[i]![row]
       }
       groupData[selectRow] = rowData
     }
@@ -132,8 +131,8 @@ export async function asyncGroupToRows({ asyncColumns }: AsyncRowGroup, selectSt
     // return each row as an array
     const rowData = new Array(asyncColumns.length)
     for (let i = 0; i < columnOrder.length; i++) {
-      if (columnIndexes[i] >= 0) {
-        rowData[i] = columnDatas[columnIndexes[i]][row]
+      if (columnIndexes[i]! >= 0) {
+        rowData[i] = columnDatas[columnIndexes[i]!]![row]
       }
     }
     groupData[selectRow] = rowData

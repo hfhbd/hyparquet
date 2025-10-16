@@ -58,7 +58,7 @@ export function convertWithDictionary(data: DecodedArray, dictionary: DecodedArr
  * @param {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} columnDecoder
  * @returns {DecodedArray} series of rich types
  */
-export function convert(data: DecodedArray, columnDecoder: Pick<ColumnDecoder, "element" | "utf8" | "parsers">): DecodedArray {
+export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): DecodedArray {
   const { element, parsers, utf8 = true } = columnDecoder
   const { type, converted_type: ctype, logical_type: ltype } = element
   if (ctype === ConvertedType.DECIMAL) {
@@ -169,7 +169,7 @@ function parseInt96Nanos(value: bigint): bigint {
  */
 export function parseFloat16(bytes: Uint8Array | undefined): number | undefined {
   if (!bytes) return undefined
-  const int16 = bytes[1] << 8 | bytes[0]
+  const int16 = bytes[1]! << 8 | bytes[0]!
   const sign = int16 >> 15 ? -1 : 1
   const exp = int16 >> 10 & 0x1f
   const frac = int16 & 0x3ff
