@@ -21,7 +21,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 2,
-            "encodings": [5],
             "path_in_schema": ["range"],
             "codec": 1,
             "num_values": 1250,

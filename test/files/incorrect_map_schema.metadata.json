@@ -47,10 +47,6 @@
           "file_offset": 4,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "my_map",
               "key_value",
@@ -71,10 +67,6 @@
           "file_offset": 73,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "my_map",
               "key_value",

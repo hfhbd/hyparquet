@@ -19,7 +19,6 @@
           "file_offset": 4,
           "meta_data": {
             "type": 6,
-            "encodings": [8],
             "path_in_schema": ["empty"],
             "codec": 1,
             "num_values": 10,

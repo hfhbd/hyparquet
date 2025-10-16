@@ -30,10 +30,6 @@
          "file_offset": 4802,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "stringArray"
            ],
@@ -48,10 +44,6 @@
          "file_offset": 5874,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "intArray"
            ],
@@ -66,10 +58,6 @@
          "file_offset": 7663,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "doubleArray"
            ],

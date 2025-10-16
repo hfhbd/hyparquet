@@ -131,9 +131,7 @@
           "file_offset": 4,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_customer_sk:"
             ],
@@ -152,9 +150,7 @@
           "file_offset": 54,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_current_cdemo_sk:"
             ],
@@ -173,9 +169,7 @@
           "file_offset": 442,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_current_hdemo_sk:"
             ],
@@ -194,9 +188,7 @@
           "file_offset": 703,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_current_addr_sk:"
             ],
@@ -215,9 +207,7 @@
           "file_offset": 1010,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_first_shipto_date_sk:"
             ],
@@ -236,9 +226,7 @@
           "file_offset": 1257,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_first_sales_date_sk:"
             ],
@@ -257,9 +245,7 @@
           "file_offset": 1504,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_birth_day:"
             ],
@@ -278,9 +264,7 @@
           "file_offset": 1635,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_birth_month:"
             ],
@@ -299,9 +283,7 @@
           "file_offset": 1750,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              5
-            ],
+
             "path_in_schema": [
               "c_birth_year:"
             ],
@@ -320,9 +302,6 @@
           "file_offset": 1894,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_customer_id:"
             ],
@@ -341,9 +320,6 @@
           "file_offset": 2827,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_salutation:"
             ],
@@ -362,9 +338,6 @@
           "file_offset": 3205,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_first_name:"
             ],
@@ -383,9 +356,6 @@
           "file_offset": 3912,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_last_name:"
             ],
@@ -404,9 +374,6 @@
           "file_offset": 4663,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_preferred_cust_flag:"
             ],
@@ -425,9 +392,6 @@
           "file_offset": 4817,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_birth_country:"
             ],
@@ -446,9 +410,6 @@
           "file_offset": 5971,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_email_address:"
             ],
@@ -467,9 +428,6 @@
           "file_offset": 8828,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_last_review_date:"
             ],

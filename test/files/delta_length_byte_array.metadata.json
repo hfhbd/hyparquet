@@ -24,10 +24,6 @@
           "file_offset": 2629,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              6
-            ],
             "path_in_schema": [
               "FRUIT"
             ],

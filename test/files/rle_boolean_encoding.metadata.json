@@ -19,9 +19,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 0,
-            "encodings": [
-              3
-            ],
             "path_in_schema": [
               "datatype_boolean"
             ],

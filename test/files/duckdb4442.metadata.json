@@ -112,10 +112,7 @@
           "file_offset": 38,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "linkback_length"
             ],
@@ -132,10 +129,7 @@
           "file_offset": 107,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "agent_call_sid"
             ],
@@ -152,10 +146,7 @@
           "file_offset": 176,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "client_sid"
             ],
@@ -172,10 +163,7 @@
           "file_offset": 241,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "agent_sid"
             ],
@@ -192,10 +180,7 @@
           "file_offset": 305,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "call_date"
             ],
@@ -212,10 +197,7 @@
           "file_offset": 373,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "call_type"
             ],
@@ -232,10 +214,7 @@
           "file_offset": 437,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "call_sid"
             ],
@@ -252,10 +231,7 @@
           "file_offset": 498,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "skills"
             ],
@@ -272,10 +248,7 @@
           "file_offset": 559,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "result"
             ],
@@ -292,10 +265,7 @@
           "file_offset": 620,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "call_wait_duration"
             ],
@@ -312,10 +282,7 @@
           "file_offset": 693,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "transfer_duration"
             ],
@@ -332,10 +299,7 @@
           "file_offset": 765,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "wrap_up_duration"
             ],
@@ -352,10 +316,7 @@
           "file_offset": 836,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "talk_duration"
             ],
@@ -372,10 +333,7 @@
           "file_offset": 904,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "hold_duration"
             ],
@@ -392,10 +350,7 @@
           "file_offset": 972,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "call_month_epoch"
             ],
@@ -412,10 +367,7 @@
           "file_offset": 1043,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "call_date_epoch"
             ],
@@ -432,10 +384,7 @@
           "file_offset": 1109,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "_version"
             ],

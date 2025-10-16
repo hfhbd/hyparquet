@@ -33,10 +33,6 @@
           "file_offset": 4,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "inner",
               "str_field"
@@ -52,10 +48,6 @@
           "file_offset": 38,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "inner",
               "f64_field"

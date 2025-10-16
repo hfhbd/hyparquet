@@ -20,9 +20,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              0
-            ],
             "path_in_schema": [
               "elb_01yr_imp_val"
             ],

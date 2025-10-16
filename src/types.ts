@@ -175,7 +175,6 @@ export interface ColumnChunk {
 
 export interface ColumnMetaData {
   type: ParquetType
-  encodings: Encoding[]
   path_in_schema: string[]
   codec: CompressionCodec
   num_values: bigint

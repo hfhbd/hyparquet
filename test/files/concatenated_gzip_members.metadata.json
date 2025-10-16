@@ -10,10 +10,6 @@
           "meta_data": {
             "codec": 2,
             "data_page_offset": 4,
-            "encodings": [
-              0,
-              3
-            ],
             "num_values": 513,
             "path_in_schema": [
               "long_col"

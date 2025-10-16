@@ -11,7 +11,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 4,
-            "encodings": [],
             "num_values": 24,
             "path_in_schema": [ "value" ],
             "total_compressed_size": 168,

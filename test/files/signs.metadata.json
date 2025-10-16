@@ -91,11 +91,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "unsigned_int8"
             ],
@@ -111,11 +106,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "unsigned_int16"
             ],
@@ -131,11 +121,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "unsigned_int32"
             ],
@@ -151,11 +136,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "unsigned_int64"
             ],
@@ -171,11 +151,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "signed_int8"
             ],
@@ -191,11 +166,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "signed_int16"
             ],
@@ -211,11 +181,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "signed_int32"
             ],
@@ -231,11 +196,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "signed_int64"
             ],

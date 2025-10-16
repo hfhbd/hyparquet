@@ -10,10 +10,6 @@
           "meta_data": {
             "codec": 5,
             "data_page_offset": 4,
-            "encodings": [
-              4,
-              2
-            ],
             "num_values": 4,
             "path_in_schema": [
               "c0"
@@ -28,10 +24,6 @@
           "meta_data": {
             "codec": 5,
             "data_page_offset": 116,
-            "encodings": [
-              4,
-              2
-            ],
             "num_values": 4,
             "path_in_schema": [
               "c1"
@@ -46,11 +38,6 @@
           "meta_data": {
             "codec": 5,
             "data_page_offset": 195,
-            "encodings": [
-              4,
-              2,
-              3
-            ],
             "num_values": 4,
             "path_in_schema": [
               "v11"

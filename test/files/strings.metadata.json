@@ -30,7 +30,6 @@
           "file_offset": 4,
           "meta_data": {
             "type": 6,
-            "encodings": [0],
             "path_in_schema": ["bytes"],
             "codec": 0,
             "num_values": 4,
@@ -43,7 +42,6 @@
           "file_offset": 66,
           "meta_data": {
             "type": 6,
-            "encodings": [0],
             "path_in_schema": ["c_utf8"],
             "codec": 0,
             "num_values": 4,
@@ -56,7 +54,6 @@
           "file_offset": 128,
           "meta_data": {
             "type": 6,
-            "encodings": [0],
             "path_in_schema": ["l_utf8"],
             "codec": 0,
             "num_values": 4,

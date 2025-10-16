@@ -11,7 +11,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 4,
-            "encodings": [ 0, 4 ],
             "num_values": 1,
             "path_in_schema": [ "ID" ],
             "total_compressed_size": 49,
@@ -24,7 +23,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 53,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "Int_Array", "list", "element" ],
             "total_compressed_size": 49,
@@ -37,7 +35,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 102,
-            "encodings": [ 0, 3 ],
             "num_values": 3,
             "path_in_schema": [
               "int_array_array",
@@ -56,7 +53,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 157,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "Int_Map", "map", "key" ],
             "total_compressed_size": 47,
@@ -69,7 +65,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 204,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "Int_Map", "map", "value" ],
             "total_compressed_size": 49,
@@ -82,7 +77,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 253,
-            "encodings": [ 0, 3 ],
             "num_values": 4,
             "path_in_schema": [
               "int_map_array",
@@ -101,7 +95,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 302,
-            "encodings": [ 0, 3 ],
             "num_values": 4,
             "path_in_schema": [
               "int_map_array",
@@ -120,7 +113,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 353,
-            "encodings": [ 0, 4 ],
             "num_values": 1,
             "path_in_schema": [ "nested_Struct", "a" ],
             "total_compressed_size": 37,
@@ -133,7 +125,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 390,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "nested_Struct", "B", "list", "element" ],
             "total_compressed_size": 49,
@@ -146,7 +137,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 439,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [
               "nested_Struct",
@@ -168,7 +158,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 490,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [
               "nested_Struct",
@@ -190,7 +179,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 566,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [ "nested_Struct", "G", "map", "key" ],
             "total_compressed_size": 33,
@@ -203,7 +191,6 @@
           "meta_data": {
             "codec": 0,
             "data_page_offset": 599,
-            "encodings": [ 0, 3 ],
             "num_values": 1,
             "path_in_schema": [
               "nested_Struct",

@@ -124,7 +124,6 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
       file_offset: column.field_2,
       meta_data: column.field_3 && {
         type: column.field_3.field_1,
-        encodings: column.field_3.field_2?.map((e: number) => e),
         path_in_schema: column.field_3.field_3.map(decode),
         codec: column.field_3.field_4,
         num_values: column.field_3.field_5,

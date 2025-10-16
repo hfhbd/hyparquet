@@ -29,11 +29,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "row"
             ],
@@ -53,11 +48,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "quality"
             ],
@@ -85,11 +75,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "row"
             ],
@@ -109,11 +94,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "quality"
             ],

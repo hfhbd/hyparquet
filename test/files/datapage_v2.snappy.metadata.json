@@ -11,7 +11,6 @@
           "meta_data": {
             "codec": 1,
             "data_page_offset": 4,
-            "encodings": [0, 8],
             "num_values": 5,
             "path_in_schema": ["a"],
             "total_compressed_size": 63,
@@ -24,7 +23,6 @@
           "meta_data": {
             "codec": 1,
             "data_page_offset": 67,
-            "encodings": [5],
             "num_values": 5,
             "path_in_schema": ["b"],
             "total_compressed_size": 49,
@@ -37,7 +35,6 @@
           "meta_data": {
             "codec": 1,
             "data_page_offset": 116,
-            "encodings": [0, 8],
             "num_values": 5,
             "path_in_schema": ["c"],
             "total_compressed_size": 88,
@@ -50,7 +47,6 @@
           "meta_data": {
             "codec": 1,
             "data_page_offset": 204,
-            "encodings": [3],
             "num_values": 5,
             "path_in_schema": ["d"],
             "total_compressed_size": 39,
@@ -63,7 +59,6 @@
           "meta_data": {
             "codec": 1,
             "data_page_offset": 243,
-            "encodings": [0, 8],
             "num_values": 10,
             "path_in_schema": [
               "e",

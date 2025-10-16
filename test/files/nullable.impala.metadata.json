@@ -232,11 +232,6 @@
           "file_offset": 4,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              4,
-              0,
-              3
-            ],
             "path_in_schema": [
               "id"
             ],
@@ -251,10 +246,6 @@
           "file_offset": 107,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "int_array",
               "list",
@@ -271,10 +262,6 @@
           "file_offset": 185,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "int_array_Array",
               "list",
@@ -293,10 +280,6 @@
           "file_offset": 288,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "int_map",
               "map",
@@ -313,10 +296,6 @@
           "file_offset": 368,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "int_map",
               "map",
@@ -333,10 +312,6 @@
           "file_offset": 429,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "int_Map_Array",
               "list",
@@ -355,10 +330,6 @@
           "file_offset": 506,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "int_Map_Array",
               "list",
@@ -377,11 +348,6 @@
           "file_offset": 578,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              4,
-              0,
-              3
-            ],
             "path_in_schema": [
               "nested_struct",
               "A"
@@ -397,10 +363,6 @@
           "file_offset": 626,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "nested_struct",
               "b",
@@ -418,10 +380,6 @@
           "file_offset": 689,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "nested_struct",
               "C",
@@ -443,10 +401,6 @@
           "file_offset": 779,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "nested_struct",
               "C",
@@ -468,10 +422,6 @@
           "file_offset": 872,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "nested_struct",
               "g",
@@ -489,10 +439,6 @@
           "file_offset": 973,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "nested_struct",
               "g",

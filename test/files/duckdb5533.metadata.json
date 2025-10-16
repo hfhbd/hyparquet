@@ -62,10 +62,6 @@
           "file_offset": 77,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "timestamp"
             ],
@@ -84,10 +80,6 @@
           "file_offset": 197,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "item_id"
             ],
@@ -106,10 +98,6 @@
           "file_offset": 279,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "currency_id"
             ],
@@ -128,10 +116,6 @@
           "file_offset": 383,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "count"
             ],
@@ -150,10 +134,6 @@
           "file_offset": 492,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "mf"
             ],

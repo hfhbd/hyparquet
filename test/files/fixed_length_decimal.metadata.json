@@ -23,11 +23,6 @@
             "file_offset": 4,
             "meta_data": {
               "type": 7,
-              "encodings": [
-                4,
-                3,
-                0
-              ],
               "path_in_schema": [
                 "value"
               ],

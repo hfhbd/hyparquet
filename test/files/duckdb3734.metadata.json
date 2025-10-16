@@ -73,10 +73,6 @@
          "file_offset": 0,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             0,
-             8
-           ],
            "path_in_schema": [
              "tconst"
            ],
@@ -90,11 +86,7 @@
        {
          "file_offset": 0,
          "meta_data": {
-           "type": 1,
-           "encodings": [
-             0
-           ],
-           "path_in_schema": [
+           "type": 1,           "path_in_schema": [
              "principals",
              "ordering"
            ],
@@ -109,9 +101,6 @@
          "file_offset": 0,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             0
-           ],
            "path_in_schema": [
              "principals",
              "nconst"
@@ -127,9 +116,6 @@
          "file_offset": 0,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             0
-           ],
            "path_in_schema": [
              "principals",
              "category"
@@ -145,9 +131,6 @@
          "file_offset": 0,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             0
-           ],
            "path_in_schema": [
              "principals",
              "job"
@@ -163,9 +146,6 @@
          "file_offset": 0,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             0
-           ],
            "path_in_schema": [
              "principals",
              "characters",

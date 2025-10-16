@@ -501,11 +501,7 @@
           "file_offset": 4,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              4,
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "key"
@@ -525,10 +521,7 @@
           "file_offset": 46,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "name",
@@ -549,10 +542,7 @@
           "file_offset": 88,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "name",
@@ -573,10 +563,7 @@
           "file_offset": 138,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -597,10 +584,6 @@
           "file_offset": 223,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
             "path_in_schema": [
               "menu",
               "categories",
@@ -623,10 +606,7 @@
           "file_offset": 262,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -648,10 +628,7 @@
           "file_offset": 338,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -673,10 +650,7 @@
           "file_offset": 431,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -700,10 +674,7 @@
           "file_offset": 536,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -727,10 +698,7 @@
           "file_offset": 576,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -753,10 +721,7 @@
           "file_offset": 663,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -781,10 +746,7 @@
           "file_offset": 704,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -808,10 +770,7 @@
           "file_offset": 784,
           "meta_data": {
             "type": 0,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -834,10 +793,7 @@
           "file_offset": 842,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -861,10 +817,7 @@
           "file_offset": 882,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -888,10 +841,7 @@
           "file_offset": 1046,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -917,10 +867,7 @@
           "file_offset": 1126,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -947,10 +894,7 @@
           "file_offset": 1299,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -977,10 +921,7 @@
           "file_offset": 1376,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1005,10 +946,7 @@
           "file_offset": 1444,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1034,10 +972,7 @@
           "file_offset": 1486,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1063,10 +998,7 @@
           "file_offset": 1569,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1092,10 +1024,7 @@
           "file_offset": 1610,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1121,10 +1050,7 @@
           "file_offset": 1681,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1148,10 +1074,7 @@
           "file_offset": 1721,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1174,10 +1097,7 @@
           "file_offset": 1946,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1201,10 +1121,7 @@
           "file_offset": 2009,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1228,10 +1145,7 @@
           "file_offset": 2071,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1254,10 +1168,7 @@
           "file_offset": 2133,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1282,10 +1193,7 @@
           "file_offset": 2173,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1310,10 +1218,7 @@
           "file_offset": 2244,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1338,10 +1243,7 @@
           "file_offset": 2308,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1367,10 +1269,7 @@
           "file_offset": 2371,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1393,10 +1292,7 @@
           "file_offset": 2410,
           "meta_data": {
             "type": 0,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1418,10 +1314,7 @@
           "file_offset": 2554,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              2
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1444,10 +1337,7 @@
           "file_offset": 2595,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1470,10 +1360,7 @@
           "file_offset": 2759,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1497,10 +1384,7 @@
           "file_offset": 2839,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "categories",
@@ -1524,11 +1408,7 @@
           "file_offset": 3299,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              4,
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "title"
@@ -1548,10 +1428,7 @@
           "file_offset": 3333,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "description",
@@ -1572,10 +1449,7 @@
           "file_offset": 3375,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "description",
@@ -1596,10 +1470,7 @@
           "file_offset": 3425,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "menu",
               "languages"
@@ -1619,11 +1490,7 @@
           "file_offset": 3479,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              4,
-              0,
-              3
-            ],
+
             "path_in_schema": [
               "socialLinks",
               "facebook"
@@ -1643,11 +1510,6 @@
           "file_offset": 3509,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              4,
-              0,
-              3
-            ],
             "path_in_schema": [
               "socialLinks",
               "instagram"
@@ -1667,11 +1529,6 @@
           "file_offset": 3539,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              4,
-              0,
-              3
-            ],
             "path_in_schema": [
               "currency"
             ],

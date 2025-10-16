@@ -113,15 +113,10 @@
           "file_offset": 411,
           "meta_data": {
             "type": 7,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "float16_plain"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 447,
             "total_compressed_size": 407,
             "data_page_offset": 4
@@ -131,15 +126,10 @@
           "file_offset": 834,
           "meta_data": {
             "type": 7,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "float16_byte_stream_split"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 447,
             "total_compressed_size": 353,
             "data_page_offset": 481
@@ -149,15 +139,10 @@
           "file_offset": 1719,
           "meta_data": {
             "type": 4,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "float_plain"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 802,
             "data_page_offset": 917
@@ -167,15 +152,10 @@
           "file_offset": 2509,
           "meta_data": {
             "type": 4,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "float_byte_stream_split"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 713,
             "data_page_offset": 1796
@@ -185,15 +165,10 @@
           "file_offset": 4223,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "double_plain"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1625,
             "data_page_offset": 2598
@@ -203,15 +178,10 @@
           "file_offset": 5821,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "double_byte_stream_split"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1504,
             "data_page_offset": 4317
@@ -221,15 +191,10 @@
           "file_offset": 6608,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "int32_plain"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 681,
             "data_page_offset": 5927
@@ -239,15 +204,10 @@
           "file_offset": 7242,
           "meta_data": {
             "type": 1,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "int32_byte_stream_split"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 557,
             "data_page_offset": 6685
@@ -257,15 +217,10 @@
           "file_offset": 8567,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "int64_plain"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1236,
             "data_page_offset": 7331
@@ -275,15 +230,10 @@
           "file_offset": 9719,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "int64_byte_stream_split"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 1671,
             "total_compressed_size": 1058,
             "data_page_offset": 8661
@@ -293,15 +243,10 @@
           "file_offset": 10388,
           "meta_data": {
             "type": 7,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "flba5_plain"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 1045,
             "total_compressed_size": 562,
             "data_page_offset": 9826
@@ -311,15 +256,10 @@
           "file_offset": 10984,
           "meta_data": {
             "type": 7,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "flba5_byte_stream_split"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 1045,
             "total_compressed_size": 527,
             "data_page_offset": 10457
@@ -329,15 +269,10 @@
           "file_offset": 11801,
           "meta_data": {
             "type": 7,
-            "encodings": [
-              3,
-              0
-            ],
             "path_in_schema": [
               "decimal_plain"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 736,
             "data_page_offset": 11065
@@ -347,15 +282,10 @@
           "file_offset": 12525,
           "meta_data": {
             "type": 7,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "decimal_byte_stream_split"
             ],
-            "codec": 2,
-            "num_values": 200,
+            "codec": 2,            "num_values": 200,
             "total_uncompressed_size": 855,
             "total_compressed_size": 643,
             "data_page_offset": 11882

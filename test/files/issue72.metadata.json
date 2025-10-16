@@ -23,11 +23,6 @@
           "file_offset": 4,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              3,
-              4,
-              0
-            ],
             "path_in_schema": [
               "TextColumn"
             ],

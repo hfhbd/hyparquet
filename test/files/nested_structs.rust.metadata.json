@@ -1395,11 +1395,6 @@
          "file_offset": 86,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "roll_num",
              "min"
@@ -1416,11 +1411,6 @@
          "file_offset": 232,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "roll_num",
              "max"
@@ -1437,11 +1427,6 @@
          "file_offset": 380,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "roll_num",
              "mean"
@@ -1458,11 +1443,6 @@
          "file_offset": 529,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "roll_num",
              "count"
@@ -1479,11 +1459,6 @@
          "file_offset": 679,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "roll_num",
              "sum"
@@ -1500,11 +1475,6 @@
          "file_offset": 827,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "roll_num",
              "variance"
@@ -1521,11 +1491,6 @@
          "file_offset": 980,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "PC_CUR",
              "min"
@@ -1542,11 +1507,6 @@
          "file_offset": 1126,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "PC_CUR",
              "max"
@@ -1563,11 +1523,6 @@
          "file_offset": 1272,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "PC_CUR",
              "mean"
@@ -1584,11 +1539,6 @@
          "file_offset": 1419,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "PC_CUR",
              "count"
@@ -1605,11 +1555,6 @@
          "file_offset": 1567,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "PC_CUR",
              "sum"
@@ -1626,11 +1571,6 @@
          "file_offset": 1713,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "PC_CUR",
              "variance"
@@ -1647,11 +1587,6 @@
          "file_offset": 1864,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2012",
              "min"
@@ -1668,11 +1603,6 @@
          "file_offset": 2012,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2012",
              "max"
@@ -1689,11 +1619,6 @@
          "file_offset": 2160,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2012",
              "mean"
@@ -1710,11 +1635,6 @@
          "file_offset": 2309,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2012",
              "count"
@@ -1731,11 +1651,6 @@
          "file_offset": 2459,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2012",
              "sum"
@@ -1752,11 +1667,6 @@
          "file_offset": 2607,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2012",
              "variance"
@@ -1773,11 +1683,6 @@
          "file_offset": 2760,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2016",
              "min"
@@ -1794,11 +1699,6 @@
          "file_offset": 2908,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2016",
              "max"
@@ -1815,11 +1715,6 @@
          "file_offset": 3056,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2016",
              "mean"
@@ -1836,11 +1731,6 @@
          "file_offset": 3205,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2016",
              "count"
@@ -1857,11 +1747,6 @@
          "file_offset": 3355,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2016",
              "sum"
@@ -1878,11 +1763,6 @@
          "file_offset": 3503,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "CVA_2016",
              "variance"
@@ -1899,11 +1779,6 @@
          "file_offset": 3656,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_3",
              "min"
@@ -1920,11 +1795,6 @@
          "file_offset": 3801,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_3",
              "max"
@@ -1941,11 +1811,6 @@
          "file_offset": 3946,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_3",
              "mean"
@@ -1962,11 +1827,6 @@
          "file_offset": 4092,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_3",
              "count"
@@ -1983,11 +1843,6 @@
          "file_offset": 4239,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_3",
              "sum"
@@ -2004,11 +1859,6 @@
          "file_offset": 4384,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_3",
              "variance"
@@ -2025,11 +1875,6 @@
          "file_offset": 4534,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_4",
              "min"
@@ -2046,11 +1891,6 @@
          "file_offset": 4679,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_4",
              "max"
@@ -2067,11 +1907,6 @@
          "file_offset": 4824,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_4",
              "mean"
@@ -2088,11 +1923,6 @@
          "file_offset": 4970,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_4",
              "count"
@@ -2109,11 +1939,6 @@
          "file_offset": 5117,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_4",
              "sum"
@@ -2130,11 +1955,6 @@
          "file_offset": 5262,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "BIA_4",
              "variance"
@@ -2151,11 +1971,6 @@
          "file_offset": 5412,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_FRONTAGE",
              "min"
@@ -2172,11 +1987,6 @@
          "file_offset": 5567,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_FRONTAGE",
              "max"
@@ -2193,11 +2003,6 @@
          "file_offset": 5722,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_FRONTAGE",
              "mean"
@@ -2214,11 +2019,6 @@
          "file_offset": 5878,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_FRONTAGE",
              "count"
@@ -2235,11 +2035,6 @@
          "file_offset": 6035,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_FRONTAGE",
              "sum"
@@ -2256,11 +2051,6 @@
          "file_offset": 6190,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_FRONTAGE",
              "variance"
@@ -2277,11 +2067,6 @@
          "file_offset": 6350,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_DEPTH",
              "min"
@@ -2298,11 +2083,6 @@
          "file_offset": 6502,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_DEPTH",
              "max"
@@ -2319,11 +2099,6 @@
          "file_offset": 6654,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_DEPTH",
              "mean"
@@ -2340,11 +2115,6 @@
          "file_offset": 6807,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_DEPTH",
              "count"
@@ -2361,11 +2131,6 @@
          "file_offset": 6961,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_DEPTH",
              "sum"
@@ -2382,11 +2147,6 @@
          "file_offset": 7113,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_DEPTH",
              "variance"
@@ -2403,11 +2163,6 @@
          "file_offset": 7270,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_LOT_SIZE",
              "min"
@@ -2424,11 +2179,6 @@
          "file_offset": 7425,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_LOT_SIZE",
              "max"
@@ -2445,11 +2195,6 @@
          "file_offset": 7580,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_LOT_SIZE",
              "mean"
@@ -2466,11 +2211,6 @@
          "file_offset": 7736,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_LOT_SIZE",
              "count"
@@ -2487,11 +2227,6 @@
          "file_offset": 7893,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_LOT_SIZE",
              "sum"
@@ -2508,11 +2243,6 @@
          "file_offset": 8048,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ACTUAL_LOT_SIZE",
              "variance"
@@ -2529,11 +2259,6 @@
          "file_offset": 8208,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA",
              "min"
@@ -2550,11 +2275,6 @@
          "file_offset": 8352,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA",
              "max"
@@ -2571,11 +2291,6 @@
          "file_offset": 8498,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA",
              "mean"
@@ -2592,11 +2307,6 @@
          "file_offset": 8645,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA",
              "count"
@@ -2613,11 +2323,6 @@
          "file_offset": 8793,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA",
              "sum"
@@ -2634,11 +2339,6 @@
          "file_offset": 8939,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA",
              "variance"
@@ -2655,11 +2355,6 @@
          "file_offset": 9090,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "SOURCE_GLA",
              "min"
@@ -2676,11 +2371,6 @@
          "file_offset": 9243,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "SOURCE_GLA",
              "max"
@@ -2697,11 +2387,6 @@
          "file_offset": 9396,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "SOURCE_GLA",
              "mean"
@@ -2718,11 +2403,6 @@
          "file_offset": 9550,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "SOURCE_GLA",
              "count"
@@ -2739,11 +2419,6 @@
          "file_offset": 9705,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "SOURCE_GLA",
              "sum"
@@ -2760,11 +2435,6 @@
          "file_offset": 9858,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "SOURCE_GLA",
              "variance"
@@ -2781,11 +2451,6 @@
          "file_offset": 10016,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "IPS_GLA",
              "min"
@@ -2802,11 +2467,6 @@
          "file_offset": 10166,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "IPS_GLA",
              "max"
@@ -2823,11 +2483,6 @@
          "file_offset": 10316,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "IPS_GLA",
              "mean"
@@ -2844,11 +2499,6 @@
          "file_offset": 10467,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "IPS_GLA",
              "count"
@@ -2865,11 +2515,6 @@
          "file_offset": 10619,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "IPS_GLA",
              "sum"
@@ -2886,11 +2531,6 @@
          "file_offset": 10769,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "IPS_GLA",
              "variance"
@@ -2907,11 +2547,6 @@
          "file_offset": 10924,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA_ALL",
              "min"
@@ -2928,11 +2563,6 @@
          "file_offset": 11074,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA_ALL",
              "max"
@@ -2949,11 +2579,6 @@
          "file_offset": 11224,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA_ALL",
              "mean"
@@ -2970,11 +2595,6 @@
          "file_offset": 11375,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA_ALL",
              "count"
@@ -2991,11 +2611,6 @@
          "file_offset": 11527,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA_ALL",
              "sum"
@@ -3012,11 +2627,6 @@
          "file_offset": 11677,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "GLA_ALL",
              "variance"
@@ -3033,11 +2643,6 @@
          "file_offset": 11832,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "bia",
              "min"
@@ -3054,11 +2659,6 @@
          "file_offset": 11978,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "bia",
              "max"
@@ -3075,11 +2675,6 @@
          "file_offset": 12124,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "bia",
              "mean"
@@ -3096,11 +2691,6 @@
          "file_offset": 12271,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "bia",
              "count"
@@ -3117,11 +2707,6 @@
          "file_offset": 12419,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "bia",
              "sum"
@@ -3138,11 +2723,6 @@
          "file_offset": 12565,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "bia",
              "variance"
@@ -3159,11 +2739,6 @@
          "file_offset": 12716,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_LOT_SIZE",
              "min"
@@ -3180,11 +2755,6 @@
          "file_offset": 12877,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_LOT_SIZE",
              "max"
@@ -3201,11 +2771,6 @@
          "file_offset": 13038,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_LOT_SIZE",
              "mean"
@@ -3222,11 +2787,6 @@
          "file_offset": 13200,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_LOT_SIZE",
              "count"
@@ -3243,11 +2803,6 @@
          "file_offset": 13363,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_LOT_SIZE",
              "sum"
@@ -3264,11 +2819,6 @@
          "file_offset": 13524,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_LOT_SIZE",
              "variance"
@@ -3285,11 +2835,6 @@
          "file_offset": 13690,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_area",
              "min"
@@ -3306,11 +2851,6 @@
          "file_offset": 13851,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_area",
              "max"
@@ -3327,11 +2867,6 @@
          "file_offset": 14012,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_area",
              "mean"
@@ -3348,11 +2883,6 @@
          "file_offset": 14174,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_area",
              "count"
@@ -3369,11 +2899,6 @@
          "file_offset": 14337,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_area",
              "sum"
@@ -3390,11 +2915,6 @@
          "file_offset": 14498,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_area",
              "variance"
@@ -3411,11 +2931,6 @@
          "file_offset": 14664,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_FRONTAGE",
              "min"
@@ -3432,11 +2947,6 @@
          "file_offset": 14825,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_FRONTAGE",
              "max"
@@ -3453,11 +2963,6 @@
          "file_offset": 14986,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_FRONTAGE",
              "mean"
@@ -3474,11 +2979,6 @@
          "file_offset": 15148,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_FRONTAGE",
              "count"
@@ -3495,11 +2995,6 @@
          "file_offset": 15311,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_FRONTAGE",
              "sum"
@@ -3516,11 +3011,6 @@
          "file_offset": 15472,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_FRONTAGE",
              "variance"
@@ -3537,11 +3027,6 @@
          "file_offset": 15638,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_DEPTH",
              "min"
@@ -3558,11 +3043,6 @@
          "file_offset": 15796,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_DEPTH",
              "max"
@@ -3579,11 +3059,6 @@
          "file_offset": 15954,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_DEPTH",
              "mean"
@@ -3600,11 +3075,6 @@
          "file_offset": 16113,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_DEPTH",
              "count"
@@ -3621,11 +3091,6 @@
          "file_offset": 16273,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_DEPTH",
              "sum"
@@ -3642,11 +3107,6 @@
          "file_offset": 16431,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "EFFECTIVE_DEPTH",
              "variance"
@@ -3663,11 +3123,6 @@
          "file_offset": 16594,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "rw_area_tot",
              "min"
@@ -3684,11 +3139,6 @@
          "file_offset": 16748,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "rw_area_tot",
              "max"
@@ -3705,11 +3155,6 @@
          "file_offset": 16902,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "rw_area_tot",
              "mean"
@@ -3726,11 +3171,6 @@
          "file_offset": 17057,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "rw_area_tot",
              "count"
@@ -3747,11 +3187,6 @@
          "file_offset": 17213,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "rw_area_tot",
              "sum"
@@ -3768,11 +3203,6 @@
          "file_offset": 17367,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "rw_area_tot",
              "variance"
@@ -3789,11 +3219,6 @@
          "file_offset": 17526,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_sqft",
              "min"
@@ -3810,11 +3235,6 @@
          "file_offset": 17687,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_sqft",
              "max"
@@ -3831,11 +3251,6 @@
          "file_offset": 17848,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_sqft",
              "mean"
@@ -3852,11 +3267,6 @@
          "file_offset": 18010,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_sqft",
              "count"
@@ -3873,11 +3283,6 @@
          "file_offset": 18173,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_sqft",
              "sum"
@@ -3894,11 +3299,6 @@
          "file_offset": 18334,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "effective_lot_sqft",
              "variance"
@@ -3915,11 +3315,6 @@
          "file_offset": 18500,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "dup",
              "min"
@@ -3936,11 +3331,6 @@
          "file_offset": 18646,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "dup",
              "max"
@@ -3957,11 +3347,6 @@
          "file_offset": 18792,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "dup",
              "mean"
@@ -3978,11 +3363,6 @@
          "file_offset": 18939,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "dup",
              "count"
@@ -3999,11 +3379,6 @@
          "file_offset": 19087,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "dup",
              "sum"
@@ -4020,11 +3395,6 @@
          "file_offset": 19233,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "dup",
              "variance"
@@ -4041,11 +3411,6 @@
          "file_offset": 19384,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "nonCTXT",
              "min"
@@ -4062,11 +3427,6 @@
          "file_offset": 19534,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "nonCTXT",
              "max"
@@ -4083,11 +3443,6 @@
          "file_offset": 19684,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "nonCTXT",
              "mean"
@@ -4104,11 +3459,6 @@
          "file_offset": 19835,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "nonCTXT",
              "count"
@@ -4125,11 +3475,6 @@
          "file_offset": 19987,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "nonCTXT",
              "sum"
@@ -4146,11 +3491,6 @@
          "file_offset": 20137,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "nonCTXT",
              "variance"
@@ -4167,11 +3507,6 @@
          "file_offset": 20292,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "vacantland",
              "min"
@@ -4188,11 +3523,6 @@
          "file_offset": 20445,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "vacantland",
              "max"
@@ -4209,11 +3539,6 @@
          "file_offset": 20598,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "vacantland",
              "mean"
@@ -4230,11 +3555,6 @@
          "file_offset": 20752,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "vacantland",
              "count"
@@ -4251,11 +3571,6 @@
          "file_offset": 20907,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "vacantland",
              "sum"
@@ -4272,11 +3587,6 @@
          "file_offset": 21060,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "vacantland",
              "variance"
@@ -4293,11 +3603,6 @@
          "file_offset": 21218,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "parkingbillboard",
              "min"
@@ -4314,11 +3619,6 @@
          "file_offset": 21377,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "parkingbillboard",
              "max"
@@ -4335,11 +3635,6 @@
          "file_offset": 21536,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "parkingbillboard",
              "mean"
@@ -4356,11 +3651,6 @@
          "file_offset": 21696,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "parkingbillboard",
              "count"
@@ -4377,11 +3667,6 @@
          "file_offset": 21857,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "parkingbillboard",
              "sum"
@@ -4398,11 +3683,6 @@
          "file_offset": 22016,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "parkingbillboard",
              "variance"
@@ -4419,11 +3699,6 @@
          "file_offset": 22180,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "cvalte10",
              "min"
@@ -4440,11 +3715,6 @@
          "file_offset": 22331,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "cvalte10",
              "max"
@@ -4461,11 +3731,6 @@
          "file_offset": 22482,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "cvalte10",
              "mean"
@@ -4482,11 +3747,6 @@
          "file_offset": 22634,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "cvalte10",
              "count"
@@ -4503,11 +3763,6 @@
          "file_offset": 22787,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "cvalte10",
              "sum"
@@ -4524,11 +3779,6 @@
          "file_offset": 22938,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "cvalte10",
              "variance"
@@ -4545,11 +3795,6 @@
          "file_offset": 23094,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "condootherhotel",
              "min"
@@ -4566,11 +3811,6 @@
          "file_offset": 23252,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "condootherhotel",
              "max"
@@ -4587,11 +3827,6 @@
          "file_offset": 23410,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "condootherhotel",
              "mean"
@@ -4608,11 +3843,6 @@
          "file_offset": 23569,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "condootherhotel",
              "count"
@@ -4629,11 +3859,6 @@
          "file_offset": 23729,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "condootherhotel",
              "sum"
@@ -4650,11 +3875,6 @@
          "file_offset": 23887,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "condootherhotel",
              "variance"
@@ -4671,11 +3891,6 @@
          "file_offset": 24050,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_lot_size",
              "min"
@@ -4692,11 +3907,6 @@
          "file_offset": 24212,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_lot_size",
              "max"
@@ -4713,11 +3923,6 @@
          "file_offset": 24374,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_lot_size",
              "mean"
@@ -4734,11 +3939,6 @@
          "file_offset": 24537,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_lot_size",
              "count"
@@ -4755,11 +3955,6 @@
          "file_offset": 24701,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_lot_size",
              "sum"
@@ -4776,11 +3971,6 @@
          "file_offset": 24863,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_lot_size",
              "variance"
@@ -4797,11 +3987,6 @@
          "file_offset": 25030,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_efflot_size",
              "min"
@@ -4818,11 +4003,6 @@
          "file_offset": 25195,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_efflot_size",
              "max"
@@ -4839,11 +4019,6 @@
          "file_offset": 25360,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_efflot_size",
              "mean"
@@ -4860,11 +4035,6 @@
          "file_offset": 25526,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_efflot_size",
              "count"
@@ -4881,11 +4051,6 @@
          "file_offset": 25693,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_efflot_size",
              "sum"
@@ -4902,11 +4067,6 @@
          "file_offset": 25858,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "calculated_efflot_size",
              "variance"
@@ -4923,11 +4083,6 @@
          "file_offset": 26028,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsite",
              "min"
@@ -4944,11 +4099,6 @@
          "file_offset": 26182,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsite",
              "max"
@@ -4965,11 +4115,6 @@
          "file_offset": 26336,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsite",
              "mean"
@@ -4986,11 +4131,6 @@
          "file_offset": 26491,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsite",
              "count"
@@ -5007,11 +4147,6 @@
          "file_offset": 26647,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsite",
              "sum"
@@ -5028,11 +4163,6 @@
          "file_offset": 26801,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsite",
              "variance"
@@ -5049,11 +4179,6 @@
          "file_offset": 26960,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missinggla",
              "min"
@@ -5070,11 +4195,6 @@
          "file_offset": 27113,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missinggla",
              "max"
@@ -5091,11 +4211,6 @@
          "file_offset": 27266,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missinggla",
              "mean"
@@ -5112,11 +4227,6 @@
          "file_offset": 27420,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missinggla",
              "count"
@@ -5133,11 +4243,6 @@
          "file_offset": 27575,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missinggla",
              "sum"
@@ -5154,11 +4259,6 @@
          "file_offset": 27728,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missinggla",
              "variance"
@@ -5175,11 +4275,6 @@
          "file_offset": 27886,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsitegla",
              "min"
@@ -5196,11 +4291,6 @@
          "file_offset": 28043,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsitegla",
              "max"
@@ -5217,11 +4307,6 @@
          "file_offset": 28200,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsitegla",
              "mean"
@@ -5238,11 +4323,6 @@
          "file_offset": 28358,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsitegla",
              "count"
@@ -5259,11 +4339,6 @@
          "file_offset": 28517,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsitegla",
              "sum"
@@ -5280,11 +4355,6 @@
          "file_offset": 28674,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "missingsitegla",
              "variance"
@@ -5301,11 +4371,6 @@
          "file_offset": 28836,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "actual_lot_size_sqft",
              "min"
@@ -5322,11 +4387,6 @@
          "file_offset": 28999,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "actual_lot_size_sqft",
              "max"
@@ -5343,11 +4403,6 @@
          "file_offset": 29162,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "actual_lot_size_sqft",
              "mean"
@@ -5364,11 +4419,6 @@
          "file_offset": 29326,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "actual_lot_size_sqft",
              "count"
@@ -5385,11 +4435,6 @@
          "file_offset": 29491,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "actual_lot_size_sqft",
              "sum"
@@ -5406,11 +4451,6 @@
          "file_offset": 29654,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "actual_lot_size_sqft",
              "variance"
@@ -5427,11 +4467,6 @@
          "file_offset": 29822,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "lotsize_sqft",
              "min"
@@ -5448,11 +4483,6 @@
          "file_offset": 29977,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "lotsize_sqft",
              "max"
@@ -5469,11 +4499,6 @@
          "file_offset": 30132,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "lotsize_sqft",
              "mean"
@@ -5490,11 +4515,6 @@
          "file_offset": 30288,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "lotsize_sqft",
              "count"
@@ -5511,11 +4531,6 @@
          "file_offset": 30445,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "lotsize_sqft",
              "sum"
@@ -5532,11 +4547,6 @@
          "file_offset": 30600,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "lotsize_sqft",
              "variance"
@@ -5553,11 +4563,6 @@
          "file_offset": 30760,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "count",
              "min"
@@ -5574,11 +4579,6 @@
          "file_offset": 30908,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "count",
              "max"
@@ -5595,11 +4595,6 @@
          "file_offset": 31056,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "count",
              "mean"
@@ -5616,11 +4611,6 @@
          "file_offset": 31205,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "count",
              "count"
@@ -5637,11 +4627,6 @@
          "file_offset": 31355,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "count",
              "sum"
@@ -5658,11 +4643,6 @@
          "file_offset": 31503,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "count",
              "variance"
@@ -5679,11 +4659,6 @@
          "file_offset": 31656,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_observation_date",
              "min"
@@ -5700,11 +4675,6 @@
          "file_offset": 31818,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_observation_date",
              "max"
@@ -5721,11 +4691,6 @@
          "file_offset": 31980,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_observation_date",
              "mean"
@@ -5742,11 +4707,6 @@
          "file_offset": 32143,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_observation_date",
              "count"
@@ -5763,11 +4723,6 @@
          "file_offset": 32307,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_observation_date",
              "sum"
@@ -5784,11 +4739,6 @@
          "file_offset": 32469,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_observation_date",
              "variance"
@@ -5805,11 +4755,6 @@
          "file_offset": 32636,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_tz_offset_minutes_ul_observation_date",
              "min"
@@ -5826,11 +4771,6 @@
          "file_offset": 32819,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_tz_offset_minutes_ul_observation_date",
              "max"
@@ -5847,11 +4787,6 @@
          "file_offset": 33002,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_tz_offset_minutes_ul_observation_date",
              "mean"
@@ -5868,11 +4803,6 @@
          "file_offset": 33186,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_tz_offset_minutes_ul_observation_date",
              "count"
@@ -5889,11 +4819,6 @@
          "file_offset": 33371,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_tz_offset_minutes_ul_observation_date",
              "sum"
@@ -5910,11 +4835,6 @@
          "file_offset": 33554,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             0,
-             8,
-             3
-           ],
            "path_in_schema": [
              "ul_tz_offset_minutes_ul_observation_date",
              "variance"

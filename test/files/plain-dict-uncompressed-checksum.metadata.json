@@ -24,10 +24,6 @@
           "file_offset": 31,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              2,
-              4
-            ],
             "path_in_schema": [
               "long_field"
             ],
@@ -47,10 +43,6 @@
           "file_offset": 117,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              2,
-              4
-            ],
             "path_in_schema": [
               "binary_field"
             ],

@@ -25,10 +25,6 @@
           "file_offset": 1162,
           "meta_data": {
             "type": 4,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "f32"
             ],
@@ -43,10 +39,6 @@
           "file_offset": 3513,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              3,
-              9
-            ],
             "path_in_schema": [
               "f64"
             ],

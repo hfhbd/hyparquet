@@ -12,9 +12,6 @@
           "meta_data": {
             "codec": 1,
             "data_page_offset": 4,
-            "encodings": [
-              3
-            ],
             "num_values": 15,
             "path_in_schema": [
               "BooleanColumn"

@@ -30,11 +30,6 @@
           "file_offset": 112,
           "meta_data": {
             "type": 2,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "c0"
             ],
@@ -50,11 +45,6 @@
           "file_offset": 280,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "c1"
             ],
@@ -70,11 +60,6 @@
           "file_offset": 460,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              0,
-              3,
-              8
-            ],
             "path_in_schema": [
               "v11"
             ],

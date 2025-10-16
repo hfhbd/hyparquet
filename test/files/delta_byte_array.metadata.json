@@ -68,9 +68,6 @@
           "file_offset": 4,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_customer_id"
             ],
@@ -85,9 +82,6 @@
           "file_offset": 8252,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_salutation"
             ],
@@ -102,9 +96,6 @@
           "file_offset": 11614,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_first_name"
             ],
@@ -119,9 +110,6 @@
           "file_offset": 18209,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_last_name"
             ],
@@ -136,9 +124,6 @@
           "file_offset": 25164,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_preferred_cust_flag"
             ],
@@ -153,9 +138,6 @@
           "file_offset": 26384,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_birth_country"
             ],
@@ -170,9 +152,6 @@
           "file_offset": 35983,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_login"
             ],
@@ -187,9 +166,6 @@
           "file_offset": 36025,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_email_address"
             ],
@@ -204,9 +180,6 @@
           "file_offset": 63788,
           "meta_data": {
             "type": 6,
-            "encodings": [
-              7
-            ],
             "path_in_schema": [
               "c_last_review_date"
             ],

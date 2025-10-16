@@ -767,11 +767,6 @@
          "file_offset": 4,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "referenceName"
@@ -791,11 +786,6 @@
          "file_offset": 54,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "start"
@@ -815,11 +805,6 @@
          "file_offset": 104,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "end"
@@ -839,10 +824,6 @@
          "file_offset": 154,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "names",
@@ -863,11 +844,6 @@
          "file_offset": 213,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "splitFromMultiAllelic"
@@ -887,11 +863,6 @@
          "file_offset": 264,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "referenceAllele"
@@ -911,11 +882,6 @@
          "file_offset": 314,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "alternateAllele"
@@ -935,11 +901,6 @@
          "file_offset": 364,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "quality"
@@ -959,11 +920,6 @@
          "file_offset": 414,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "filtersApplied"
@@ -983,11 +939,6 @@
          "file_offset": 464,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "filtersPassed"
@@ -1007,10 +958,6 @@
          "file_offset": 514,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "filtersFailed",
@@ -1031,11 +978,6 @@
          "file_offset": 567,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1056,11 +998,6 @@
          "file_offset": 617,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1081,11 +1018,6 @@
          "file_offset": 667,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1106,11 +1038,6 @@
          "file_offset": 717,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1131,11 +1058,6 @@
          "file_offset": 767,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1156,11 +1078,6 @@
          "file_offset": 817,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1181,11 +1098,6 @@
          "file_offset": 867,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1206,11 +1118,6 @@
          "file_offset": 917,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1231,11 +1138,6 @@
          "file_offset": 967,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1256,11 +1158,6 @@
          "file_offset": 1017,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1281,11 +1178,6 @@
          "file_offset": 1067,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1305,13 +1197,7 @@
        {
          "file_offset": 1117,
          "meta_data": {
-           "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
-           "path_in_schema": [
+           "type": 0,           "path_in_schema": [
              "variant",
              "annotation",
              "hapMap2"
@@ -1330,13 +1216,7 @@
        {
          "file_offset": 1167,
          "meta_data": {
-           "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
-           "path_in_schema": [
+           "type": 0,           "path_in_schema": [
              "variant",
              "annotation",
              "hapMap3"
@@ -1356,11 +1236,6 @@
          "file_offset": 1217,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1380,13 +1255,7 @@
        {
          "file_offset": 1267,
          "meta_data": {
-           "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
-           "path_in_schema": [
+           "type": 0,           "path_in_schema": [
              "variant",
              "annotation",
              "thousandGenomes"
@@ -1406,11 +1275,6 @@
          "file_offset": 1317,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1431,10 +1295,6 @@
          "file_offset": 1367,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1457,10 +1317,6 @@
          "file_offset": 1421,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1484,10 +1340,6 @@
          "file_offset": 1476,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1510,10 +1362,6 @@
          "file_offset": 1530,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1536,10 +1384,6 @@
          "file_offset": 1584,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1562,10 +1406,6 @@
          "file_offset": 1638,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1588,10 +1428,6 @@
          "file_offset": 1692,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1614,10 +1450,6 @@
          "file_offset": 1746,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1640,10 +1472,6 @@
          "file_offset": 1800,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1666,10 +1494,6 @@
          "file_offset": 1854,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1692,10 +1516,6 @@
          "file_offset": 1908,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1718,10 +1538,6 @@
          "file_offset": 1962,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1744,10 +1560,6 @@
          "file_offset": 2016,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1770,10 +1582,6 @@
          "file_offset": 2070,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1796,10 +1604,6 @@
          "file_offset": 2124,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1822,10 +1626,6 @@
          "file_offset": 2178,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1848,10 +1648,6 @@
          "file_offset": 2232,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1874,10 +1670,6 @@
          "file_offset": 2286,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1900,10 +1692,6 @@
          "file_offset": 2340,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1926,10 +1714,6 @@
          "file_offset": 2394,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1952,10 +1736,6 @@
          "file_offset": 2448,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -1978,10 +1758,6 @@
          "file_offset": 2502,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -2004,10 +1780,6 @@
          "file_offset": 2556,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -2030,10 +1802,6 @@
          "file_offset": 2610,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -2056,10 +1824,6 @@
          "file_offset": 2664,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -2082,10 +1846,6 @@
          "file_offset": 2718,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -2109,10 +1869,6 @@
          "file_offset": 2773,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -2135,10 +1891,6 @@
          "file_offset": 2826,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variant",
              "annotation",
@@ -2161,11 +1913,6 @@
          "file_offset": 2879,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "referenceName"
            ],
@@ -2184,11 +1931,6 @@
          "file_offset": 2928,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "start"
            ],
@@ -2207,11 +1949,6 @@
          "file_offset": 2977,
          "meta_data": {
            "type": 2,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "end"
            ],
@@ -2230,11 +1967,6 @@
          "file_offset": 3026,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "filtersApplied"
@@ -2254,11 +1986,6 @@
          "file_offset": 3076,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "filtersPassed"
@@ -2278,10 +2005,6 @@
          "file_offset": 3126,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "filtersFailed",
@@ -2302,11 +2025,6 @@
          "file_offset": 3177,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "downsampled"
@@ -2326,11 +2044,6 @@
          "file_offset": 3227,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "baseQRankSum"
@@ -2350,11 +2063,6 @@
          "file_offset": 3277,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "fisherStrandBiasPValue"
@@ -2374,11 +2082,6 @@
          "file_offset": 3327,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "rmsMapQ"
@@ -2398,11 +2101,6 @@
          "file_offset": 3377,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "mapq0Reads"
@@ -2422,11 +2120,6 @@
          "file_offset": 3427,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "mqRankSum"
@@ -2446,11 +2139,6 @@
          "file_offset": 3477,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "readPositionRankSum"
@@ -2470,10 +2158,6 @@
          "file_offset": 3527,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "genotypePriors",
@@ -2494,10 +2178,6 @@
          "file_offset": 3578,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "genotypePosteriors",
@@ -2518,11 +2198,6 @@
          "file_offset": 3629,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "vqslod"
@@ -2542,11 +2217,6 @@
          "file_offset": 3679,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "culprit"
@@ -2566,10 +2236,6 @@
          "file_offset": 3729,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "attributes",
@@ -2591,10 +2257,6 @@
          "file_offset": 3780,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "variantCallingAnnotations",
              "attributes",
@@ -2616,11 +2278,6 @@
          "file_offset": 3831,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "sampleId"
            ],
@@ -2639,11 +2296,6 @@
          "file_offset": 3880,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "sampleDescription"
            ],
@@ -2662,11 +2314,6 @@
          "file_offset": 3929,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "processingDescription"
            ],
@@ -2685,10 +2332,6 @@
          "file_offset": 3978,
          "meta_data": {
            "type": 6,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "alleles",
              "array"
@@ -2708,11 +2351,6 @@
          "file_offset": 4029,
          "meta_data": {
            "type": 4,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "expectedAlleleDosage"
            ],
@@ -2731,11 +2369,6 @@
          "file_offset": 4078,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "referenceReadDepth"
            ],
@@ -2754,11 +2387,6 @@
          "file_offset": 4127,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "alternateReadDepth"
            ],
@@ -2777,11 +2405,6 @@
          "file_offset": 4176,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "readDepth"
            ],
@@ -2800,11 +2423,6 @@
          "file_offset": 4225,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "minReadDepth"
            ],
@@ -2823,11 +2441,6 @@
          "file_offset": 4274,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "genotypeQuality"
            ],
@@ -2846,10 +2459,6 @@
          "file_offset": 4323,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "genotypeLikelihoods",
              "array"
@@ -2869,10 +2478,6 @@
          "file_offset": 4374,
          "meta_data": {
            "type": 5,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "nonReferenceLikelihoods",
              "array"
@@ -2892,10 +2497,6 @@
          "file_offset": 4425,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             0
-           ],
            "path_in_schema": [
              "strandBiasComponents",
              "array"
@@ -2915,11 +2516,6 @@
          "file_offset": 4476,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "splitFromMultiAllelic"
            ],
@@ -2938,11 +2534,6 @@
          "file_offset": 4525,
          "meta_data": {
            "type": 0,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "phased"
            ],
@@ -2961,11 +2552,6 @@
          "file_offset": 4574,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "phaseSetId"
            ],
@@ -2984,11 +2570,6 @@
          "file_offset": 4623,
          "meta_data": {
            "type": 1,
-           "encodings": [
-             3,
-             4,
-             0
-           ],
            "path_in_schema": [
              "phaseQuality"
            ],

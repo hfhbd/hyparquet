@@ -25,10 +25,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 5,
-            "encodings": [
-              0,
-              3
-            ],
             "path_in_schema": [
               "a"
             ],
@@ -44,9 +40,6 @@
           "file_offset": 0,
           "meta_data": {
             "type": 0,
-            "encodings": [
-              3
-            ],
             "path_in_schema": [
               "b"
             ],
