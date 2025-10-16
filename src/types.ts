@@ -15,12 +15,12 @@ export interface ParquetParsers {
  */
 export interface BaseParquetReadOptions {
   file: AsyncBuffer // file-like object containing parquet data
-  metadata: FileMetaData // parquet metadata, will be parsed if not provided
+  metadata?: FileMetaData // parquet metadata, will be parsed if not provided
   readonly onChunk?: (chunk: ColumnData) => void // called when a column chunk is parsed. chunks may contain data outside the requested range.
   readonly onPage?: (chunk: ColumnData) => void // called when a data page is parsed. pages may contain data outside the requested range.
-  readonly compressors: Compressors | undefined // custom decompressors
-  readonly utf8: boolean // decode byte arrays as utf8 strings (default true)
-  readonly parsers: ParquetParsers | undefined // custom parsers to decode advanced types
+  readonly compressors?: Compressors // custom decompressors
+  readonly utf8?: boolean // decode byte arrays as utf8 strings (default true)
+  readonly parsers?: ParquetParsers // custom parsers to decode advanced types
 }
 
 interface ArrayRowFormat {
@@ -28,7 +28,7 @@ interface ArrayRowFormat {
   readonly onComplete?: (rows: any[][]) => void // called when all requested rows and columns are parsed
 }
 interface ObjectRowFormat {
-  readonly rowFormat?: 'object' // format of each row passed to the onComplete function
+  readonly rowFormat: 'object' // format of each row passed to the onComplete function
   readonly onComplete?: (rows: Record<string, any>[]) => void // called when all requested rows and columns are parsed
 }
 export type ParquetReadOptions = BaseParquetReadOptions & (ArrayRowFormat | ObjectRowFormat)
@@ -289,8 +289,8 @@ export interface ColumnDecoder {
   schemaPath: SchemaTree[]
   codec: CompressionCodec
   parsers: ParquetParsers
-  compressors: Compressors | undefined
-  utf8: boolean | undefined
+  compressors?: Compressors
+  utf8?: boolean
 }
 
 export interface RowGroupSelect {

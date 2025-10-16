@@ -63,9 +63,14 @@ export function readRowGroup(options: ParquetReadOptions, metadata: FileMetaData
           schemaPath,
           codec: meta_data.codec,
           parsers,
-          compressors,
-          utf8,
         }
+        if (utf8) {
+          columnDecoder.utf8 = utf8
+        }
+        if (compressors) {
+          columnDecoder.compressors = compressors
+        }
+
         return readColumn(reader, groupPlan, columnDecoder, options.onPage)
       }),
     })
