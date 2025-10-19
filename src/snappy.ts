@@ -112,7 +112,7 @@ export function snappyUncompress(input: Uint8Array, output: Uint8Array) {
       default:
         break
       }
-      if (offset === 0 || Number.isNaN(offset)) {
+      if (offset === 0 || isNaN(offset)) {
         throw new Error(`invalid offset ${offset} pos ${pos} inputLength ${inputLength}`)
       }
       if (offset > outPos) {
