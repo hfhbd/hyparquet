@@ -177,6 +177,9 @@ fun readZigZagLong(reader: DataReader): Long {
     return (zigzag ushr 1) xor -(zigzag and 1)
 }
 
+// Alias for compatibility
+fun readZigZagBigInt(reader: DataReader): Long = readZigZagLong(reader)
+
 /**
  * Read field type and field id
  *
