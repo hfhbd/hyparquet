@@ -55,7 +55,7 @@ export function convertWithDictionary(data: DecodedArray, dictionary: DecodedArr
  * Convert known types from primitive to rich.
  *
  * @param {DecodedArray} data series of primitive types
- * @param {Pick<ColumnDecoder, "element" | "utf8" | "parsers">} columnDecoder
+ * @param {ColumnDecoder} columnDecoder - uses element, utf8, and parsers properties
  * @returns {DecodedArray} series of rich types
  */
 export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): DecodedArray {
@@ -95,10 +95,10 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
   if (ctype === ConvertedType.INTERVAL) {
     throw new Error('parquet interval not supported')
   }
-  if (ctype === ConvertedType.UTF8 || ltype?.type === 'STRING' || utf8 && type === ParquetType.BYTE_ARRAY) {
+  if (ctype === ConvertedType.UTF8 || (ltype && ltype.type === 'STRING') || utf8 && type === ParquetType.BYTE_ARRAY) {
     return data.map(v => parsers!.stringFromBytes(v))
   }
-  if (ctype === ConvertedType.UINT_64 || ltype?.type === 'INTEGER' && ltype.bitWidth === 64 && !ltype.isSigned) {
+  if (ctype === ConvertedType.UINT_64 || (ltype && ltype.type === 'INTEGER' && ltype.bitWidth === 64 && !ltype.isSigned)) {
     if (data instanceof BigInt64Array) {
       return new BigUint64Array(data.buffer, data.byteOffset, data.length)
     }
@@ -106,7 +106,7 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
     for (let i = 0; i < arr.length; i++) arr[i] = BigInt(data[i])
     return arr
   }
-  if (ctype === ConvertedType.UINT_32 || ltype?.type === 'INTEGER' && ltype.bitWidth === 32 && !ltype.isSigned) {
+  if (ctype === ConvertedType.UINT_32 || (ltype && ltype.type === 'INTEGER' && ltype.bitWidth === 32 && !ltype.isSigned)) {
     if (data instanceof Int32Array) {
       return new Uint32Array(data.buffer, data.byteOffset, data.length)
     }
@@ -114,10 +114,10 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
     for (let i = 0; i < arr.length; i++) arr[i] = data[i]
     return arr
   }
-  if (ltype?.type === 'FLOAT16') {
+  if (ltype && ltype.type === 'FLOAT16') {
     return Array.from(data).map(parseFloat16)
   }
-  if (ltype?.type === 'TIMESTAMP') {
+  if (ltype && ltype.type === 'TIMESTAMP') {
     const { unit } = ltype
     let parser: ParquetParsers[keyof ParquetParsers] = parsers!.timestampFromMilliseconds
     if (unit === TimeUnit.MICROS) parser = parsers!.timestampFromMicroseconds

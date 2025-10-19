@@ -6,7 +6,7 @@ import {DecodedArray, FieldRepetitionType, SchemaTree} from "./types.js";
  * definition and repetition levels, according to Dremel encoding.
  */
 export function assembleLists(output: any[], definitionLevels: number[] | undefined, repetitionLevels: number[], values: DecodedArray, schemaPath: SchemaTree[]): DecodedArray {
-  const n = definitionLevels?.length || repetitionLevels.length
+  const n = (definitionLevels ? definitionLevels.length : 0) || repetitionLevels.length
   if (!n) return values
   const maxDefinitionLevel = getMaxDefinitionLevel(schemaPath)
   const repetitionPath: (FieldRepetitionType | undefined)[] = schemaPath.map(({ element }) => element.repetition_type)
@@ -35,7 +35,7 @@ export function assembleLists(output: any[], definitionLevels: number[] | undefi
 
   for (let i = 0; i < n; i++) {
     // assert(currentDefLevel === containerStack.length - 1)
-    const def = definitionLevels?.length ? definitionLevels[i] : maxDefinitionLevel
+    const def = (definitionLevels && definitionLevels.length) ? definitionLevels[i] : maxDefinitionLevel
     const rep = repetitionLevels[i]
 
     // Pop up to start of rep level

@@ -127,7 +127,7 @@ function readDefinitionLevels(reader: DataReader, daph: DataPageHeader, schemaPa
  */
 export function decompressPage(compressedBytes: Uint8Array, uncompressed_page_size: number, codec: CompressionCodec, compressors: Compressors | undefined): Uint8Array {
   let page: Uint8Array
-  const customDecompressor = compressors?.[codec]
+  const customDecompressor = compressors ? compressors[codec] : undefined
   if (codec === CompressionCodec.UNCOMPRESSED) {
     page = compressedBytes
   } else if (customDecompressor) {
@@ -138,8 +138,8 @@ export function decompressPage(compressedBytes: Uint8Array, uncompressed_page_si
   } else {
     throw new Error(`parquet unsupported compression codec: ${codec}`)
   }
-  if (page?.length !== uncompressed_page_size) {
-    throw new Error(`parquet decompressed page length ${page?.length} does not match header ${uncompressed_page_size}`)
+  if (page.length !== uncompressed_page_size) {
+    throw new Error(`parquet decompressed page length ${page.length} does not match header ${uncompressed_page_size}`)
   }
   return page
 }

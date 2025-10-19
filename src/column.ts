@@ -57,20 +57,20 @@ export function readColumn(
       dictionary = readPage(reader, header, columnDecoder, dictionary, undefined, 0)
       dictionary = convert(dictionary, columnDecoder)
     } else {
-      const lastChunkLength = lastChunk?.length || 0
+      const lastChunkLength = lastChunk ? lastChunk.length : 0
       const values = readPage(reader, header, columnDecoder, dictionary, lastChunk, selectStart - rowCount)
       if (lastChunk === values) {
         // continued from previous page
         rowCount += values.length - lastChunkLength
       } else {
-        emitLastChunk?.()
+        if (emitLastChunk) emitLastChunk()
         chunks.push(values)
         rowCount += values.length
         lastChunk = values
       }
     }
   }
-  emitLastChunk?.()
+  if (emitLastChunk) emitLastChunk()
   // assert(rowCount >= selectEnd)
   if (rowCount > selectEnd && lastChunk) {
     // truncate last chunk to row limit
@@ -114,7 +114,7 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
 
     // convert types, dereference dictionary, and assemble lists
     let values = convertWithDictionary(dataPage, dictionary, daph.encoding, columnDecoder)
-    if (repetitionLevels.length || definitionLevels?.length) {
+    if (repetitionLevels.length || (definitionLevels && definitionLevels.length)) {
       const output = Array.isArray(previousChunk) ? previousChunk : []
       return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath!)
     } else {
