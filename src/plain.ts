@@ -26,7 +26,7 @@ export function readPlain(reader: DataReader, type: ParquetType, count: number, 
   } else if (type === ParquetType.BYTE_ARRAY) {
     return readPlainByteArray(reader, count)
   } else if (type === ParquetType.FIXED_LEN_BYTE_ARRAY) {
-    if (!fixedLength) throw new Error('parquet missing fixed length')
+    if (fixedLength === undefined) throw new Error('parquet missing fixed length')
     return readPlainByteArrayFixed(reader, count, fixedLength)
   } else {
     throw new Error(`parquet unhandled type: ${type}`)

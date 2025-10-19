@@ -130,9 +130,9 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
         const columnField3 = columnField[3] as ThriftObject | undefined
         const filePath = columnField[1] as Uint8Array | undefined
         return {
-          file_path: filePath && decode(filePath),
+          file_path: filePath !== undefined ? decode(filePath) : undefined,
           file_offset: columnField[2] as bigint,
-          meta_data: columnField3 && {
+          meta_data: columnField3 !== undefined ? {
             type: columnField3[1] as number,
             path_in_schema: (columnField3[3] as Uint8Array[]).map(decode),
             codec: columnField3[4] as number,
@@ -142,7 +142,7 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
             data_page_offset: columnField3[9] as bigint,
             index_page_offset: columnField3[10] as bigint | undefined,
             dictionary_page_offset: columnField3[11] as bigint | undefined,
-          },
+          } : undefined,
           offset_index_offset: columnField[4] as bigint |undefined,
           offset_index_length: columnField[5]as number |undefined,
           column_index_offset: columnField[6]as bigint |undefined,
@@ -156,7 +156,7 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
     };
   })
   const createdByArray = metadata[6] as Uint8Array | undefined
-  const created_by = createdByArray && decode(createdByArray)
+  const created_by = createdByArray !== undefined ? decode(createdByArray) : undefined
 
   return {
     version,
@@ -179,7 +179,7 @@ export function parquetSchema(schema: SchemaElement[]): SchemaTree {
 }
 
 function logicalType(logicalType: ThriftObject | undefined): LogicalType | undefined {
-  if (!logicalType) return undefined
+  if (logicalType === undefined) return undefined
   if (logicalType.at(1) !== undefined) return { type: 'STRING' }
   if (logicalType.at(2) !== undefined) return { type: 'MAP' }
   if (logicalType.at(3) !== undefined) return { type: 'LIST' }

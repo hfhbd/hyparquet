@@ -38,14 +38,16 @@ export function readColumn(
   let lastChunk: DecodedArray | undefined = undefined
   let rowCount = 0
 
-  const emitLastChunk = onPage && (() => {
-    lastChunk && onPage({
-      columnName: columnName!,
-      columnData: lastChunk,
-      rowStart: groupStart + rowCount - lastChunk.length,
-      rowEnd: groupStart + rowCount,
-    })
-  })
+  const emitLastChunk = onPage !== undefined ? (() => {
+    if (lastChunk !== undefined) {
+      onPage({
+        columnName: columnName!,
+        columnData: lastChunk,
+        rowStart: groupStart + rowCount - lastChunk.length,
+        rowEnd: groupStart + rowCount,
+      })
+    }
+  }) : undefined
 
   while (isFlat ? rowCount < selectEnd : reader.offset < reader.view.byteLength - 1) {
     if (reader.offset >= reader.view.byteLength - 1) break // end of reader
@@ -57,22 +59,22 @@ export function readColumn(
       dictionary = readPage(reader, header, columnDecoder, dictionary, undefined, 0)
       dictionary = convert(dictionary, columnDecoder)
     } else {
-      const lastChunkLength = lastChunk ? lastChunk.length : 0
+      const lastChunkLength = lastChunk !== undefined ? lastChunk.length : 0
       const values = readPage(reader, header, columnDecoder, dictionary, lastChunk, selectStart - rowCount)
       if (lastChunk === values) {
         // continued from previous page
         rowCount += values.length - lastChunkLength
       } else {
-        if (emitLastChunk) emitLastChunk()
+        if (emitLastChunk !== undefined) emitLastChunk()
         chunks.push(values)
         rowCount += values.length
         lastChunk = values
       }
     }
   }
-  if (emitLastChunk) emitLastChunk()
+  if (emitLastChunk !== undefined) emitLastChunk()
   // assert(rowCount >= selectEnd)
-  if (rowCount > selectEnd && lastChunk) {
+  if (rowCount > selectEnd && lastChunk !== undefined) {
     // truncate last chunk to row limit
     chunks[chunks.length - 1] = lastChunk.slice(0, selectEnd - (rowCount - lastChunk.length))
   }
@@ -101,7 +103,7 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
   // parse page data by type
   if (header.type === PageType.DATA_PAGE.valueOf()) {
     const daph = header.data_page_header
-    if (!daph) throw new Error('parquet data page header is undefined')
+    if (daph === undefined) throw new Error('parquet data page header is undefined')
 
     // skip unnecessary non-nested pages
     if (pageStart > daph.num_values && isFlatColumn(schemaPath!)) {
@@ -114,7 +116,7 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
 
     // convert types, dereference dictionary, and assemble lists
     let values = convertWithDictionary(dataPage, dictionary, daph.encoding, columnDecoder)
-    if (repetitionLevels.length || (definitionLevels && definitionLevels.length)) {
+    if (repetitionLevels.length > 0 || (definitionLevels !== undefined && definitionLevels.length > 0)) {
       const output = Array.isArray(previousChunk) ? previousChunk : []
       return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath!)
     } else {
@@ -128,7 +130,7 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
     }
   } else if (header.type === PageType.DATA_PAGE_V2) {
     const daph2 = header.data_page_header_v2
-    if (!daph2) throw new Error('parquet data page header v2 is undefined')
+    if (daph2 === undefined) throw new Error('parquet data page header v2 is undefined')
 
     // skip unnecessary pages
     if (pageStart > daph2.num_rows) {
@@ -144,7 +146,7 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
     return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath!)
   } else if (header.type === PageType.DICTIONARY_PAGE) {
     const diph = header.dictionary_page_header
-    if (!diph) throw new Error('parquet dictionary page header is undefined')
+    if (diph === undefined) throw new Error('parquet dictionary page header is undefined')
 
     const page = decompressPage(
       compressedBytes, Number(header.uncompressed_page_size), codec!, compressors
@@ -169,7 +171,7 @@ function parquetHeader(reader: DataReader): PageHeader {
   const compressed_page_size = header[3] as number
   const header5 = header[5] as ThriftObject | undefined
   let data_page_header: DataPageHeader | undefined = undefined
-  if (header5) {
+  if (header5 !== undefined) {
     data_page_header = {
       num_values: header5[1] as number,
       encoding: header5[2] as number,
@@ -177,14 +179,14 @@ function parquetHeader(reader: DataReader): PageHeader {
   }
   const header7 = header[7] as ThriftObject | undefined
   let dictionary_page_header: DictionaryPageHeader | undefined = undefined
-  if (header7) {
+  if (header7 !== undefined) {
     dictionary_page_header = {
       num_values: header7[1] as number,
     }
   }
   const header8 = header[8] as ThriftObject | undefined
   let data_page_header_v2: DataPageHeaderV2 | undefined = undefined
-  if (header8) {
+  if (header8 !== undefined) {
     const header87 = header8[7] as boolean | undefined
     data_page_header_v2 = {
       num_values: header8[1] as number,

@@ -41,9 +41,9 @@ export async function byteLengthFromUrl(url: string, requestInit?: RequestInit, 
   const fetch = customFetch !== undefined ? customFetch : globalThis.fetch
   return await fetch(url, { ...requestInit, method: 'HEAD' })
     .then(res => {
-      if (!res.ok) throw new Error(`fetch head failed ${res.status}`)
+      if (res.ok === false) throw new Error(`fetch head failed ${res.status}`)
       const length = res.headers.get('Content-Length')
-      if (!length) throw new Error('missing content length')
+      if (length === null || length === undefined) throw new Error('missing content length')
       return parseInt(length)
     })
 }
@@ -55,21 +55,21 @@ export async function byteLengthFromUrl(url: string, requestInit?: RequestInit, 
  * If requestInit is provided, it will be passed to fetch.
  */
 export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: customFetch }: { url: string; byteLength?: number; fetch?: typeof globalThis.fetch; requestInit?: RequestInit; }): Promise<AsyncBuffer> {
-  if (!url) throw new Error('missing url')
+  if (url === undefined || url === '') throw new Error('missing url')
   const fetch = customFetch !== undefined ? customFetch : globalThis.fetch
   // byte length from HEAD request
-  byteLength ||= await byteLengthFromUrl(url, requestInit, fetch)
+  byteLength = byteLength !== undefined ? byteLength : await byteLengthFromUrl(url, requestInit, fetch)
 
   /**
    * A promise for the whole buffer, if range requests are not supported.
    */
   let buffer: Promise<ArrayBuffer> | undefined = undefined
-  const init = requestInit || {}
+  const init = requestInit !== undefined ? requestInit : {}
 
   return {
     byteLength,
     async slice(start, end) {
-      if (buffer) {
+      if (buffer !== undefined) {
         return buffer.then(buffer => buffer.slice(start, end))
       }
 
@@ -78,7 +78,7 @@ export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: 
       headers.set('Range', `bytes=${start}-${endStr}`)
 
       const res = await fetch(url, { ...init, headers })
-      if (!res.ok || !res.body) throw new Error(`fetch failed ${res.status}`)
+      if (res.ok === false || res.body === null) throw new Error(`fetch failed ${res.status}`)
 
       if (res.status === 200) {
         // Endpoint does not support range requests and returned the whole object
@@ -97,7 +97,7 @@ export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: 
  * Flatten a list of lists into a single list.
  */
 export function flatten(chunks: DecodedArray[]): DecodedArray {
-  if (!chunks) return []
+  if (chunks === undefined) return []
   if (chunks.length === 1) return chunks[0]
   const output: any[] = []
   for (const chunk of chunks) {
