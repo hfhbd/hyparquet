@@ -79,22 +79,22 @@ export interface FileMetaData {
 }
 
 export interface SchemaTree {
-  children: SchemaTree[]
-  count: number
-  element: SchemaElement
-  path: string[]
+  readonly children: SchemaTree[]
+  readonly count: number
+  readonly element: SchemaElement
+  readonly path: string[]
 }
 
 export interface SchemaElement {
-  type?: ParquetType
-  type_length?: number
-  repetition_type?: FieldRepetitionType | undefined
-  name: string
-  num_children?: number
-  converted_type?: ConvertedType
-  scale?: number
-  precision?: number
-  logical_type: LogicalType | undefined
+  readonly type?: ParquetType
+  readonly type_length?: number
+  readonly repetition_type?: FieldRepetitionType | undefined
+  readonly name: string
+  readonly num_children?: number
+  readonly converted_type?: ConvertedType
+  readonly scale?: number
+  readonly precision?: number
+  readonly logical_type: LogicalType | undefined
 }
 
 export enum ParquetType {
@@ -160,33 +160,33 @@ export type LogicalType =
   | { type: 'INTEGER', bitWidth: number, isSigned: boolean }
 
 export interface RowGroup {
-  columns: ColumnChunk[]
-  total_byte_size: bigint
-  num_rows: bigint
-  file_offset: bigint | undefined
-  total_compressed_size: bigint | undefined
+  readonly columns: ColumnChunk[]
+  readonly total_byte_size: bigint
+  readonly num_rows: bigint
+  readonly file_offset: bigint | undefined
+  readonly total_compressed_size: bigint | undefined
 }
 
 export interface ColumnChunk {
-  file_path: string | undefined
-  file_offset: bigint
-  meta_data: ColumnMetaData | undefined
-  offset_index_offset: bigint | undefined
-  offset_index_length: number | undefined
-  column_index_offset: bigint | undefined
-  column_index_length: number | undefined
+  readonly file_path: string | undefined
+  readonly file_offset: bigint
+  readonly meta_data: ColumnMetaData | undefined
+  readonly offset_index_offset: bigint | undefined
+  readonly offset_index_length: number | undefined
+  readonly column_index_offset: bigint | undefined
+  readonly column_index_length: number | undefined
 }
 
 export interface ColumnMetaData {
-  type: ParquetType
-  path_in_schema: string[]
-  codec: CompressionCodec
-  num_values: bigint
-  total_uncompressed_size: bigint
-  total_compressed_size: bigint
-  data_page_offset: bigint
-  index_page_offset: bigint | undefined
-  dictionary_page_offset: bigint | undefined
+  readonly type: ParquetType
+  readonly path_in_schema: string[]
+  readonly codec: CompressionCodec
+  readonly num_values: bigint
+  readonly total_uncompressed_size: bigint
+  readonly total_compressed_size: bigint
+  readonly data_page_offset: bigint
+  readonly index_page_offset: bigint | undefined
+  readonly dictionary_page_offset: bigint | undefined
 }
 
 export enum Encoding {
@@ -225,37 +225,37 @@ export enum PageType {
 
 // Parquet file header types
 export interface PageHeader {
-  type: PageType
-  uncompressed_page_size: number
-  compressed_page_size: number
-  data_page_header: DataPageHeader | undefined
-  dictionary_page_header: DictionaryPageHeader | undefined
-  data_page_header_v2: DataPageHeaderV2 | undefined
+  readonly type: PageType
+  readonly uncompressed_page_size: number
+  readonly compressed_page_size: number
+  readonly data_page_header: DataPageHeader | undefined
+  readonly dictionary_page_header: DictionaryPageHeader | undefined
+  readonly data_page_header_v2: DataPageHeaderV2 | undefined
 }
 
 export interface DataPageHeader {
-  num_values: number
-  encoding: Encoding
+  readonly num_values: number
+  readonly encoding: Encoding
 }
 
 export interface DictionaryPageHeader {
-  num_values: number
+  readonly num_values: number
 }
 
 export interface DataPageHeaderV2 {
-  num_values: number
-  num_nulls: number
-  num_rows: number
-  encoding: Encoding
-  definition_levels_byte_length: number
-  repetition_levels_byte_length: number
-  is_compressed: boolean | undefined
+  readonly num_values: number
+  readonly num_nulls: number
+  readonly num_rows: number
+  readonly encoding: Encoding
+  readonly definition_levels_byte_length: number
+  readonly repetition_levels_byte_length: number
+  readonly is_compressed: boolean | undefined
 }
 
 export interface DataPage {
-  definitionLevels: number[] | undefined
-  repetitionLevels: number[]
-  dataPage: DecodedArray
+  readonly definitionLevels: number[] | undefined
+  readonly repetitionLevels: number[]
+  readonly dataPage: DecodedArray
 }
 
 export type DecodedArray =
@@ -275,44 +275,44 @@ export type ThriftType = boolean | number | bigint | Uint8Array | ThriftType[] |
  * Query plan for which byte ranges to read.
  */
 export interface QueryPlan {
-  metadata: FileMetaData
-  fetches: ByteRange[] // byte ranges to fetch
-  groups: GroupPlan[] // byte ranges by row group
+  readonly metadata: FileMetaData
+  readonly fetches: ByteRange[] // byte ranges to fetch
+  readonly groups: GroupPlan[] // byte ranges by row group
 }
 // Plan for one group
 export interface GroupPlan {
-  ranges: ByteRange[]
-  rowGroup: RowGroup // row group metadata
-  groupStart: number // row index of the first row in the group
-  selectStart: number // row index in the group to start reading
-  selectEnd: number // row index in the group to stop reading
-  groupRows: number
+  readonly ranges: ByteRange[]
+  readonly rowGroup: RowGroup // row group metadata
+  readonly groupStart: number // row index of the first row in the group
+  readonly selectStart: number // row index in the group to start reading
+  readonly selectEnd: number // row index in the group to stop reading
+  readonly groupRows: number
 }
 
 export interface ColumnDecoder {
-  columnName?: string | undefined,
-  type?: ParquetType | undefined
-  element: SchemaElement
-  schemaPath?: SchemaTree[] | undefined
-  codec?: CompressionCodec | undefined
-  parsers?: ParquetParsers | undefined
+  readonly columnName?: string | undefined,
+  readonly type?: ParquetType | undefined
+  readonly element: SchemaElement
+  readonly schemaPath?: SchemaTree[] | undefined
+  readonly codec?: CompressionCodec | undefined
+  readonly parsers?: ParquetParsers | undefined
   compressors?: Compressors | undefined
   utf8?: boolean | undefined
 }
 
 export interface RowGroupSelect {
-  groupStart: number // row index of the first row in the group
-  selectStart: number // row index in the group to start reading
-  selectEnd: number // row index in the group to stop reading
-  groupRows: number
+  readonly groupStart: number // row index of the first row in the group
+  readonly selectStart: number // row index in the group to start reading
+  readonly selectEnd: number // row index in the group to stop reading
+  readonly groupRows: number
 }
 
 export interface AsyncColumn {
-  pathInSchema: string[]
-  data: Promise<DecodedArray[]>
+  readonly pathInSchema: string[]
+  readonly data: Promise<DecodedArray[]>
 }
 export interface AsyncRowGroup {
-  groupStart: number
-  groupRows: number
-  asyncColumns: AsyncColumn[]
+  readonly groupStart: number
+  readonly groupRows: number
+  readonly asyncColumns: AsyncColumn[]
 }
