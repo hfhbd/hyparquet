@@ -38,7 +38,7 @@ export function concat(aaa: any[], bbb: DecodedArray) {
  * If requestInit is provided, it will be passed to fetch.
  */
 export async function byteLengthFromUrl(url: string, requestInit?: RequestInit, customFetch?: typeof globalThis.fetch): Promise<number> {
-  const fetch = customFetch ?? globalThis.fetch
+  const fetch = customFetch !== undefined ? customFetch : globalThis.fetch
   return await fetch(url, { ...requestInit, method: 'HEAD' })
     .then(res => {
       if (!res.ok) throw new Error(`fetch head failed ${res.status}`)
@@ -56,7 +56,7 @@ export async function byteLengthFromUrl(url: string, requestInit?: RequestInit, 
  */
 export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: customFetch }: { url: string; byteLength?: number; fetch?: typeof globalThis.fetch; requestInit?: RequestInit; }): Promise<AsyncBuffer> {
   if (!url) throw new Error('missing url')
-  const fetch = customFetch ?? globalThis.fetch
+  const fetch = customFetch !== undefined ? customFetch : globalThis.fetch
   // byte length from HEAD request
   byteLength ||= await byteLengthFromUrl(url, requestInit, fetch)
 

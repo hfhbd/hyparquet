@@ -2,7 +2,7 @@ import { parquetMetadataAsync, parquetSchema } from './metadata.js'
 import { parquetPlan, prefetchAsyncBuffer } from './plan.js'
 import { assembleAsync, asyncGroupToRows, readRowGroup } from './rowgroup.js'
 import { concat } from './utils.js'
-import {AsyncRowGroup, ParquetReadOptions, QueryPlan} from "./types.js";
+import {AsyncRowGroup, ParquetReadOptions, ParquetReadOptionsWithoutOnComplete, QueryPlan} from "./types.js";
 
 /**
  * @import {AsyncRowGroup, DecodedArray, ParquetReadOptions, BaseParquetReadOptions} from '../src/types.js'
@@ -21,7 +21,9 @@ import {AsyncRowGroup, ParquetReadOptions, QueryPlan} from "./types.js";
  */
 export async function parquetRead(options: ParquetReadOptions): Promise<void> {
   // load metadata if not provided
-  options.metadata ??= await parquetMetadataAsync(options.file)
+  if (options.metadata === undefined) {
+    options.metadata = await parquetMetadataAsync(options.file)
+  }
 
   // read row groups
   const asyncGroups = parquetReadAsync(options)
@@ -68,7 +70,7 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
     for (const asyncGroup of assembled) {
       // filter to rows in range
       const selectStart = Math.max(rowStart - asyncGroup.groupStart, 0)
-      const selectEnd = Math.min((rowEnd ?? Infinity) - asyncGroup.groupStart, asyncGroup.groupRows)
+      const selectEnd = Math.min((rowEnd !== undefined ? rowEnd : Infinity) - asyncGroup.groupStart, asyncGroup.groupRows)
       // transpose column chunks to rows in output
       const groupData = rowFormat === 'object' ?
         await asyncGroupToRows(asyncGroup.asyncColumns, selectStart, selectEnd, 'object') :
@@ -100,10 +102,10 @@ export function parquetReadAsync(options: ParquetReadOptions): AsyncRowGroup[] {
  * This is a helper function to read parquet row data as a promise.
  * It is a wrapper around the more configurable parquetRead function.
  *
- * @param {Omit<ParquetReadOptions, 'onComplete'>} options
+ * @param {ParquetReadOptionsWithoutOnComplete} options
  * @returns {Promise<Record<string, any>[]>} resolves when all requested rows and columns are parsed
  */
-export function parquetReadObjects(options: Omit<ParquetReadOptions, 'onComplete'>): Promise<Record<string, any>[]> {
+export function parquetReadObjects(options: ParquetReadOptionsWithoutOnComplete): Promise<Record<string, any>[]> {
   return new Promise((onComplete, reject) => {
     parquetRead({
       ...options,

@@ -34,6 +34,13 @@ interface ObjectRowFormat {
 export type ParquetReadOptions = BaseParquetReadOptions & (ArrayRowFormat | ObjectRowFormat)
 
 /**
+ * Parquet query options without onComplete callback
+ */
+export type ParquetReadOptionsWithoutOnComplete = BaseParquetReadOptions & {
+  readonly rowFormat?: 'array' | 'object'
+}
+
+/**
  * A run of column data
  */
 export interface ColumnData {

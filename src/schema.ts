@@ -111,10 +111,10 @@ export function isMapLike(schema: SchemaTree): boolean {
   if (firstChild.element.repetition_type !== FieldRepetitionType.REPEATED) return false
 
   const keyChild = firstChild.children.find(child => child.element.name === 'key')
-  if (keyChild?.element.repetition_type === FieldRepetitionType.REPEATED) return false
+  if (keyChild && keyChild.element.repetition_type === FieldRepetitionType.REPEATED) return false
 
   const valueChild = firstChild.children.find(child => child.element.name === 'value')
-  return valueChild?.element.repetition_type !== FieldRepetitionType.REPEATED;
+  return valueChild ? valueChild.element.repetition_type !== FieldRepetitionType.REPEATED : false;
 
 
 }
