@@ -12,7 +12,18 @@ describe('convert function', () => {
 
   it('returns the same data if converted_type is undefined', () => {
     const data = [1, 2, 3]
-    const element = { name }
+    const element: SchemaElement = {
+      name,
+
+      converted_type: undefined,
+      logical_type: undefined,
+      num_children: undefined,
+      precision: undefined,
+      repetition_type: undefined,
+      scale: undefined,
+      type: undefined,
+      type_length: undefined,
+    }
     expect(convert(data, { element, parsers })).toEqual(data)
   })
 

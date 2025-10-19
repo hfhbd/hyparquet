@@ -143,7 +143,7 @@ describe('asyncBufferFromUrl', () => {
     })
 
     const buffer = await asyncBufferFromUrl({ url: 'https://example.com', byteLength: 1024 })
-    await buffer.slice(100)
+    await buffer.slice(100, undefined)
 
     expect(fetch).toHaveBeenCalledWith('https://example.com', {
       headers: new Headers({ Range: 'bytes=100-' }),

@@ -68,14 +68,14 @@ describe('deserializeTCompactProtocol function', () => {
     expect(reader.offset).toBe(index + 1)
 
     // Assertions for each basic type
-    expect(value.field_1).toBe(true) // TRUE
-    expect(value.field_2).toBe(false) // FALSE
-    expect(value.field_3).toBe(0x7f) // BYTE
-    expect(value.field_4).toBe(0x7fff) // I16
-    expect(value.field_5).toBe(0x7fffffff) // I32
-    expect(value.field_6).toBe(BigInt('0x7fffffffffffffff')) // I64
-    expect(value.field_7).toBeCloseTo(123.456) // DOUBLE
-    expect(new TextDecoder().decode(value.field_8)).toBe('Hello, Thrift!') // STRING
+    expect(value[1]).toBe(true) // TRUE
+    expect(value[2]).toBe(false) // FALSE
+    expect(value[3]).toBe(0x7f) // BYTE
+    expect(value[4]).toBe(0x7fff) // I16
+    expect(value[5]).toBe(0x7fffffff) // I32
+    expect(value[6]).toBe(BigInt('0x7fffffffffffffff')) // I64
+    expect(value[7]).toBeCloseTo(123.456) // DOUBLE
+    expect(new TextDecoder().decode(value[8] as Uint8Array)).toBe('Hello, Thrift!') // STRING
   })
 
   it('parses rle-dict column index correctly', () => {
@@ -83,14 +83,14 @@ describe('deserializeTCompactProtocol function', () => {
     const view = new DataView(buffer.buffer)
     const reader = { view, offset: 0 }
     const value = deserializeTCompactProtocol(reader)
-    expect(value.field_1).toEqual([false])
-    expect(value.field_2).toEqual([new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0])])
-    expect(value.field_3).toEqual([new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0])])
-    expect(value.field_4).toEqual(1)
-    expect(value.field_5).toEqual([0n])
-    expect(value.field_6).toBeUndefined()
-    expect(value.field_7).toBeUndefined()
-    expect(value.field_8).toBeUndefined()
+    expect(value[1]).toEqual([false])
+    expect(value[2]).toEqual([new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0])])
+    expect(value[3]).toEqual([new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0])])
+    expect(value[4]).toEqual(1)
+    expect(value[5]).toEqual([0n])
+    expect(value[6]).toBeUndefined()
+    expect(value[7]).toBeUndefined()
+    expect(value[8]).toBeUndefined()
   })
 
 })

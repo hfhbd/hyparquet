@@ -7,7 +7,7 @@ describe('parquetPlan', () => {
   it('generates a query plan', async () => {
     const file = await asyncBufferFromFile('test/files/page_indexed.parquet')
     const metadata = await parquetMetadataAsync(file)
-    const plan = parquetPlan({ file, metadata })
+    const plan = parquetPlan(metadata)
     expect(plan).toMatchObject({
       metadata,
       fetches: [

@@ -18,6 +18,13 @@ describe('assembleLists', () => {
       element: {
         name: 'name',
         repetition_type,
+        converted_type: undefined,
+        logical_type: undefined,
+        num_children: undefined,
+        precision: undefined,
+        scale: undefined,
+        type: undefined,
+        type_length: undefined
       },
       count: 1,
       children: [],

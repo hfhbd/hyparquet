@@ -120,7 +120,7 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
     } else {
       // wrap nested flat data by depth
       for (let i = 2; i < schemaPath.length; i++) {
-        if (schemaPath[i]!.element.repetition_type !== FieldRepetitionType.REQUIRED) {
+        if (schemaPath[i].element.repetition_type !== FieldRepetitionType.REQUIRED) {
           values = Array.from(values, e => [e])
         }
       }
@@ -164,7 +164,7 @@ function parquetHeader(reader: DataReader): PageHeader {
   const header = deserializeTCompactProtocol(reader)
 
   // Parse parquet header from thrift data
-  const type: PageType = header[1]! as number
+  const type: PageType = header[1] as number
   const uncompressed_page_size = header[2] as number
   const compressed_page_size = header[3] as number
   const header5 = header[5] as ThriftObject | undefined

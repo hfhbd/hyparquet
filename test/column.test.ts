@@ -5,6 +5,7 @@ import { parquetMetadata } from '../src/metadata.js'
 import { asyncBufferFromFile } from '../src/node.js'
 import { getColumnRange } from '../src/plan.js'
 import { getSchemaPath } from '../src/schema.js'
+import {ColumnDecoder} from "../src/types.ts";
 
 const values = [null, 1, -2, NaN, 0, -1, -0, 2]
 
@@ -16,19 +17,19 @@ describe('readColumn', () => {
   ])('readColumn with rowGroupEnd %p', async ({ selectEnd, expected }) => {
     const testFile = 'test/files/float16_nonzeros_and_nans.parquet'
     const file = await asyncBufferFromFile(testFile)
-    const arrayBuffer = await file.slice(0)
+    const arrayBuffer = await file.slice(0, undefined)
     const metadata = parquetMetadata(arrayBuffer)
 
-    const column = metadata.row_groups[0].columns[0]
+    const column = metadata.row_groups[0]!.columns[0]!
     if (!column.meta_data) throw new Error(`No column metadata for ${testFile}`)
     const { startByte, endByte } = getColumnRange(column.meta_data)
     const columnArrayBuffer = arrayBuffer.slice(startByte, endByte)
     const schemaPath = getSchemaPath(metadata.schema, column.meta_data?.path_in_schema ?? [])
     const reader = { view: new DataView(columnArrayBuffer), offset: 0 }
-    const columnDecoder = {
+    const columnDecoder: ColumnDecoder = {
       columnName: column.meta_data.path_in_schema.join('.'),
       type: column.meta_data.type,
-      element: schemaPath[schemaPath.length - 1].element,
+      element: schemaPath[schemaPath.length - 1]!.element,
       schemaPath,
       parsers: DEFAULT_PARSERS,
       codec: column.meta_data.codec,
@@ -47,19 +48,19 @@ describe('readColumn', () => {
   it('readColumn should return a typed array', async () => {
     const testFile = 'test/files/datapage_v2.snappy.parquet'
     const file = await asyncBufferFromFile(testFile)
-    const arrayBuffer = await file.slice(0)
+    const arrayBuffer = await file.slice(0, undefined)
     const metadata = parquetMetadata(arrayBuffer)
 
-    const column = metadata.row_groups[0].columns[1] // second column
+    const column = metadata.row_groups[0]!.columns[1]! // second column
     if (!column.meta_data) throw new Error(`No column metadata for ${testFile}`)
     const { startByte, endByte } = getColumnRange(column.meta_data)
     const columnArrayBuffer = arrayBuffer.slice(startByte, endByte)
     const schemaPath = getSchemaPath(metadata.schema, column.meta_data?.path_in_schema ?? [])
     const reader = { view: new DataView(columnArrayBuffer), offset: 0 }
-    const columnDecoder = {
+    const columnDecoder: ColumnDecoder = {
       columnName: column.meta_data.path_in_schema.join('.'),
       type: column.meta_data.type,
-      element: schemaPath[schemaPath.length - 1].element,
+      element: schemaPath[schemaPath.length - 1]!.element,
       schemaPath,
       parsers: DEFAULT_PARSERS,
       codec: column.meta_data.codec,

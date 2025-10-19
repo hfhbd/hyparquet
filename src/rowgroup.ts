@@ -59,7 +59,7 @@ export function readRowGroup(options: ParquetReadOptions, metadata: FileMetaData
         const columnDecoder: ColumnDecoder = {
           columnName: subcolumn,
           type: meta_data.type,
-          element: schemaPath[schemaPath.length - 1]!.element,
+          element: schemaPath[schemaPath.length - 1].element,
           schemaPath,
           codec: meta_data.codec,
           parsers,
@@ -123,7 +123,7 @@ export async function asyncGroupToRows(asyncColumns: AsyncColumn[], selectStart:
       // return each row as an object
       const rowData: Record<string, any> = {}
       for (let i = 0; i < asyncColumns.length; i++) {
-        rowData[asyncColumns[i]!.pathInSchema[0]!] = columnDatas[i]![row]
+        rowData[asyncColumns[i].pathInSchema[0]] = columnDatas[i][row]
       }
       groupData[selectRow] = rowData
     }
@@ -136,8 +136,8 @@ export async function asyncGroupToRows(asyncColumns: AsyncColumn[], selectStart:
     // return each row as an array
     const rowData = new Array(asyncColumns.length)
     for (let i = 0; i < columnOrder.length; i++) {
-      if (columnIndexes[i]! >= 0) {
-        rowData[i] = columnDatas[columnIndexes[i]!]![row]
+      if (columnIndexes[i] >= 0) {
+        rowData[i] = columnDatas[columnIndexes[i]][row]
       }
     }
     groupData[selectRow] = rowData

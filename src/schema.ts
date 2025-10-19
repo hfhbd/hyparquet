@@ -9,14 +9,14 @@ import {ConvertedType, FieldRepetitionType, SchemaElement, SchemaTree} from "./t
  * @returns {SchemaTree} tree of schema elements
  */
 function schemaTree(schema: SchemaElement[], rootIndex: number, path: string[]): SchemaTree {
-  const element = schema[rootIndex]!
+  const element = schema[rootIndex]
   const children = []
   let count = 1
 
   // Read the specified number of children
   if (element.num_children) {
     while (children.length < element.num_children) {
-      const childElement = schema[rootIndex + count]!
+      const childElement = schema[rootIndex + count]
       const child = schemaTree(schema, rootIndex + count, [...path, childElement.name])
       count += child.count
       children.push(child)
@@ -88,7 +88,7 @@ export function isListLike(schema: SchemaTree): boolean {
   if (schema.element.converted_type !== ConvertedType.LIST) return false
   if (schema.children.length > 1) return false
 
-  const firstChild = schema.children[0]!
+  const firstChild = schema.children[0]
   if (firstChild.children.length > 1) return false
   return firstChild.element.repetition_type === FieldRepetitionType.REPEATED;
 
@@ -106,7 +106,7 @@ export function isMapLike(schema: SchemaTree): boolean {
   if (schema.element.converted_type !== ConvertedType.MAP) return false
   if (schema.children.length > 1) return false
 
-  const firstChild = schema.children[0]!
+  const firstChild = schema.children[0]
   if (firstChild.children.length !== 2) return false
   if (firstChild.element.repetition_type !== FieldRepetitionType.REPEATED) return false
 
@@ -127,7 +127,7 @@ export function isMapLike(schema: SchemaTree): boolean {
  */
 export function isFlatColumn(schemaPath: SchemaTree[]): boolean {
   if (schemaPath.length !== 2) return false
-  const column = schemaPath[1]!
+  const column = schemaPath[1]
   if (column.element.repetition_type === FieldRepetitionType.REPEATED) return false
   return !column.children.length;
 

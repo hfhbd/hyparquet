@@ -1,6 +1,4 @@
 import { describe, expect, it, vi } from 'vitest'
-import { convertWithDictionary } from '../src/convert.js'
-import { parquetMetadataAsync } from '../src/metadata.js'
 import { parquetRead, parquetReadObjects } from '../src/read.js'
 import { asyncBufferFromFile } from '../src/node.js'
 import { countingBuffer } from './helpers.js'
@@ -13,7 +11,7 @@ describe('parquetRead', () => {
     const file = await asyncBufferFromFile('test/files/rowgroups.parquet')
     await parquetRead({
       file,
-      onComplete(rows) {
+      onComplete(rows: any) {
         expect(rows).toEqual([
           [1n], [2n], [3n], [4n], [5n], [6n], [7n], [8n], [9n], [10n], [11n], [12n], [13n], [14n], [15n],
         ])

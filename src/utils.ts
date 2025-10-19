@@ -98,7 +98,7 @@ export async function asyncBufferFromUrl({ url, byteLength, requestInit, fetch: 
  */
 export function flatten(chunks: DecodedArray[]): DecodedArray {
   if (!chunks) return []
-  if (chunks.length === 1) return chunks[0]!
+  if (chunks.length === 1) return chunks[0]
   const output: any[] = []
   for (const chunk of chunks) {
     concat(output, chunk)

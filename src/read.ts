@@ -49,7 +49,7 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
           let rowStart = asyncGroup.groupStart
           for (const columnData of columnDatas) {
             onChunk({
-              columnName: asyncColumn.pathInSchema[0]!,
+              columnName: asyncColumn.pathInSchema[0],
               columnData,
               rowStart,
               rowEnd: rowStart + columnData.length,

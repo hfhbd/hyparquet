@@ -169,7 +169,7 @@ function parseInt96Nanos(value: bigint): bigint {
  */
 export function parseFloat16(bytes: Uint8Array | undefined): number | undefined {
   if (!bytes) return undefined
-  const int16 = bytes[1]! << 8 | bytes[0]!
+  const int16 = bytes[1] << 8 | bytes[0]
   const sign = int16 >> 15 ? -1 : 1
   const exp = int16 >> 10 & 0x1f
   const frac = int16 & 0x3ff

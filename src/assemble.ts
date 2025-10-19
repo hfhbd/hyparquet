@@ -35,8 +35,8 @@ export function assembleLists(output: any[], definitionLevels: number[] | undefi
 
   for (let i = 0; i < n; i++) {
     // assert(currentDefLevel === containerStack.length - 1)
-    const def = definitionLevels?.length ? definitionLevels[i]! : maxDefinitionLevel
-    const rep = repetitionLevels[i]!
+    const def = definitionLevels?.length ? definitionLevels[i] : maxDefinitionLevel
+    const rep = repetitionLevels[i]
 
     // Pop up to start of rep level
     while (currentDepth && (rep < currentRepLevel || repetitionPath[currentDepth] !== FieldRepetitionType.REPEATED)) {
@@ -105,10 +105,10 @@ export function assembleNested(subcolumnData: Map<string, DecodedArray>, schema:
   const nextDepth = optional ? depth + 1 : depth
 
   if (isListLike(schema)) {
-    let sublist = schema.children[0]!
+    let sublist = schema.children[0]
     let subDepth = nextDepth
     if (sublist.children.length === 1) {
-      sublist = sublist.children[0]!
+      sublist = sublist.children[0]
       subDepth++
     }
     assembleNested(subcolumnData, sublist, subDepth)
@@ -123,11 +123,11 @@ export function assembleNested(subcolumnData: Map<string, DecodedArray>, schema:
   }
 
   if (isMapLike(schema)) {
-    const mapName = schema.children[0]!.element.name
+    const mapName = schema.children[0].element.name
 
     // Assemble keys and values
-    assembleNested(subcolumnData, schema.children[0]!.children[0]!, nextDepth + 1)
-    assembleNested(subcolumnData, schema.children[0]!.children[1]!, nextDepth + 1)
+    assembleNested(subcolumnData, schema.children[0].children[0], nextDepth + 1)
+    assembleNested(subcolumnData, schema.children[0].children[1], nextDepth + 1)
 
     const keys = subcolumnData.get(`${path}.${mapName}.key`)
     const values = subcolumnData.get(`${path}.${mapName}.value`)
@@ -205,13 +205,13 @@ function assembleMaps(keys: DecodedArray, values: DecodedArray, depth: number): 
  */
 function invertStruct(struct: Record<string, any[]>, depth: number): any[] {
   const keys = Object.keys(struct)
-  const length = struct[keys[0]!]!.length
+  const length = struct[keys[0]].length
   const out = []
   for (let i = 0; i < length; i++) {
     const obj: Record<string, any> = {}
     for (const key of keys) {
-      if (struct[key]!.length !== length) throw new Error('parquet struct parsing error')
-      obj[key] = struct[key]![i]
+      if (struct[key].length !== length) throw new Error('parquet struct parsing error')
+      obj[key] = struct[key][i]
     }
     if (depth) {
       out.push(invertStruct(obj, depth - 1)) // deeper

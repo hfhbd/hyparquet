@@ -175,7 +175,7 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
  * @returns {SchemaTree} tree of schema elements
  */
 export function parquetSchema(schema: SchemaElement[]): SchemaTree {
-  return getSchemaPath(schema, [])[0]!
+  return getSchemaPath(schema, [])[0]
 }
 
 function logicalType(logicalType: any): LogicalType | undefined {
