@@ -38,7 +38,7 @@ export function getSchemaPath(schema: SchemaElement[], name: string[]): SchemaTr
   const path = [tree]
   for (const part of name) {
     const child = tree.children.find(child => child.element.name === part)
-    if (!child) throw new Error(`parquet schema element not found: ${name}`)
+    if (child === undefined) throw new Error(`parquet schema element not found: ${name}`)
     path.push(child)
     tree = child
   }
@@ -84,7 +84,7 @@ export function getMaxDefinitionLevel(schemaPath: SchemaTree[]): number {
  * @returns {boolean} true if list-like
  */
 export function isListLike(schema: SchemaTree): boolean {
-  if (!schema) return false
+  if (schema === undefined) return false
   if (schema.element.converted_type !== ConvertedType.LIST) return false
   if (schema.children.length > 1) return false
 
@@ -102,7 +102,7 @@ export function isListLike(schema: SchemaTree): boolean {
  * @returns {boolean} true if map-like
  */
 export function isMapLike(schema: SchemaTree): boolean {
-  if (!schema) return false
+  if (schema === undefined) return false
   if (schema.element.converted_type !== ConvertedType.MAP) return false
   if (schema.children.length > 1) return false
 

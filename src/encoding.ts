@@ -81,7 +81,7 @@ function readBitPacked(reader: DataReader, header: number, bitWidth: number, out
   let data: number = 0
   if (reader.offset < reader.view.byteLength) {
     data = reader.view.getUint8(reader.offset++)
-  } else if (mask) {
+  } else if (mask > 0) {
     // sometimes out-of-bounds reads are masked out
     throw new Error(`parquet bitpack offset ${reader.offset} out of range`)
   }
@@ -159,7 +159,7 @@ function byteWidth(type: ParquetType, typeLength: number | undefined): number {
   case ParquetType.DOUBLE:
     return 8
   case ParquetType.FIXED_LEN_BYTE_ARRAY:
-    if (!typeLength) throw new Error('parquet byteWidth missing type_length')
+    if (typeLength === undefined) throw new Error('parquet byteWidth missing type_length')
     return typeLength
   default:
     throw new Error(`parquet unsupported type: ${type}`)

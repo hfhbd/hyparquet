@@ -48,7 +48,7 @@ export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, columnDeco
     daph.encoding === Encoding.RLE
   ) {
     const bitWidth = type === ParquetType.BOOLEAN ? 1 : view.getUint8(reader.offset++)
-    if (bitWidth) {
+    if (bitWidth > 0) {
       dataPage = new Array(nValues)
       if (type === ParquetType.BOOLEAN) {
         readRleBitPackedHybrid(reader, bitWidth, dataPage)
@@ -86,7 +86,7 @@ export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, columnDeco
 function readRepetitionLevels(reader: DataReader, daph: DataPageHeader, schemaPath: SchemaTree[]): any[] {
   if (schemaPath.length > 1) {
     const maxRepetitionLevel = getMaxRepetitionLevel(schemaPath)
-    if (maxRepetitionLevel) {
+    if (maxRepetitionLevel > 0) {
       const values = new Array(daph.num_values)
       readRleBitPackedHybrid(reader, bitWidth(maxRepetitionLevel), values)
       return values
@@ -103,7 +103,7 @@ function readRepetitionLevels(reader: DataReader, daph: DataPageHeader, schemaPa
  */
 function readDefinitionLevels(reader: DataReader, daph: DataPageHeader, schemaPath: SchemaTree[]): { definitionLevels: number[]; numNulls: number } {
   const maxDefinitionLevel = getMaxDefinitionLevel(schemaPath)
-  if (!maxDefinitionLevel) return { definitionLevels: [], numNulls: 0 }
+  if (maxDefinitionLevel === 0) return { definitionLevels: [], numNulls: 0 }
 
   const definitionLevels = new Array(daph.num_values)
   readRleBitPackedHybrid(reader, bitWidth(maxDefinitionLevel), definitionLevels)
@@ -127,10 +127,10 @@ function readDefinitionLevels(reader: DataReader, daph: DataPageHeader, schemaPa
  */
 export function decompressPage(compressedBytes: Uint8Array, uncompressed_page_size: number, codec: CompressionCodec, compressors: Compressors | undefined): Uint8Array {
   let page: Uint8Array | undefined
-  const customDecompressor = compressors ? compressors[codec] : undefined
+  const customDecompressor = compressors !== undefined ? compressors[codec] : undefined
   if (codec === CompressionCodec.UNCOMPRESSED) {
     page = compressedBytes
-  } else if (customDecompressor) {
+  } else if (customDecompressor !== undefined) {
     page = customDecompressor(compressedBytes, uncompressed_page_size)
   } else if (codec === CompressionCodec.SNAPPY) {
     page = new Uint8Array(uncompressed_page_size)
@@ -138,8 +138,8 @@ export function decompressPage(compressedBytes: Uint8Array, uncompressed_page_si
   } else {
     throw new Error(`parquet unsupported compression codec: ${codec}`)
   }
-  if (!page || page.length !== uncompressed_page_size) {
-    throw new Error(`parquet decompressed page length ${page ? page.length : 'undefined'} does not match header ${uncompressed_page_size}`)
+  if (page === undefined || page.length !== uncompressed_page_size) {
+    throw new Error(`parquet decompressed page length ${page !== undefined ? page.length : 'undefined'} does not match header ${uncompressed_page_size}`)
   }
   return page
 }
@@ -158,7 +158,7 @@ export function readDataPageV2(compressedBytes: Uint8Array, ph: PageHeader, colu
   const reader = { view, offset: 0 }
   const { type, element, schemaPath, codec, compressors } = columnDecoder
   const daph2 = ph.data_page_header_v2
-  if (!daph2) throw new Error('parquet data page header v2 is undefined')
+  if (daph2 === undefined) throw new Error('parquet data page header v2 is undefined')
 
   // repetition levels
   const repetitionLevels = readRepetitionLevelsV2(reader, daph2, schemaPath!)
@@ -221,7 +221,7 @@ export function readDataPageV2(compressedBytes: Uint8Array, ph: PageHeader, colu
  */
 function readRepetitionLevelsV2(reader: DataReader, daph2: DataPageHeaderV2, schemaPath: SchemaTree[]): any[] {
   const maxRepetitionLevel = getMaxRepetitionLevel(schemaPath)
-  if (!maxRepetitionLevel) return []
+  if (maxRepetitionLevel === 0) return []
 
   const values = new Array(daph2.num_values)
   readRleBitPackedHybrid(reader, bitWidth(maxRepetitionLevel), values, daph2.repetition_levels_byte_length)
@@ -236,7 +236,7 @@ function readRepetitionLevelsV2(reader: DataReader, daph2: DataPageHeaderV2, sch
  */
 function readDefinitionLevelsV2(reader: DataReader, daph2: DataPageHeaderV2, schemaPath: SchemaTree[]): number[] | undefined {
   const maxDefinitionLevel = getMaxDefinitionLevel(schemaPath)
-  if (maxDefinitionLevel) {
+  if (maxDefinitionLevel > 0) {
     // V2 we know the length
     const values = new Array(daph2.num_values)
     readRleBitPackedHybrid(reader, bitWidth(maxDefinitionLevel), values, daph2.definition_levels_byte_length)

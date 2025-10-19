@@ -22,7 +22,7 @@ export const DEFAULT_PARSERS: ParquetParsers = {
     return new Date(days * 86400000)
   },
   stringFromBytes(bytes) {
-    return bytes && decoder.decode(bytes)
+    return bytes !== undefined ? decoder.decode(bytes) : undefined
   },
 }
 
@@ -36,7 +36,7 @@ export const DEFAULT_PARSERS: ParquetParsers = {
  * @returns {DecodedArray} series of rich types
  */
 export function convertWithDictionary(data: DecodedArray, dictionary: DecodedArray | undefined, encoding: Encoding, columnDecoder: ColumnDecoder): DecodedArray {
-  if (dictionary && (encoding === Encoding.PLAIN_DICTIONARY || Encoding.RLE_DICTIONARY)) {
+  if (dictionary !== undefined && (encoding === Encoding.PLAIN_DICTIONARY || Encoding.RLE_DICTIONARY)) {
     let output = data
     if (data instanceof Uint8Array && !(dictionary instanceof Uint8Array)) {
       // @ts-expect-error upgrade data to match dictionary type with fancy constructor
@@ -62,7 +62,7 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
   const { element, parsers, utf8 = true } = columnDecoder
   const { type, converted_type: ctype, logical_type: ltype } = element
   if (ctype === ConvertedType.DECIMAL) {
-    const scale = element.scale || 0
+    const scale = element.scale !== undefined ? element.scale : 0
     const factor = 10 ** -scale
     const arr = new Array(data.length)
     for (let i = 0; i < arr.length; i++) {
@@ -74,7 +74,7 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
     }
     return arr
   }
-  if (!ctype && type === ParquetType.INT96) {
+  if (ctype === undefined && type === ParquetType.INT96) {
     return Array.from(data).map(v => parsers!.timestampFromNanoseconds(parseInt96Nanos(v)))
   }
   if (ctype === ConvertedType.DATE) {
@@ -136,7 +136,7 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
  * @returns {number}
  */
 export function parseDecimal(bytes: Uint8Array): number {
-  if (!bytes.length) return 0
+  if (bytes.length === 0) return 0
 
   let value = 0n
   for (const byte of bytes) {
@@ -168,7 +168,7 @@ function parseInt96Nanos(value: bigint): bigint {
  * @returns {number | undefined}
  */
 export function parseFloat16(bytes: Uint8Array | undefined): number | undefined {
-  if (!bytes) return undefined
+  if (bytes === undefined) return undefined
   const int16 = bytes[1] << 8 | bytes[0]
   const sign = int16 >> 15 ? -1 : 1
   const exp = int16 >> 10 & 0x1f

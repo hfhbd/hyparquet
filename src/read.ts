@@ -32,7 +32,7 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
   const { onChunk, onComplete, rowFormat } = options
 
   // skip assembly if no onComplete or onChunk, but wait for reading to finish
-  if (!onComplete && !onChunk) {
+  if (onComplete === undefined && onChunk === undefined) {
     for (const { asyncColumns } of asyncGroups) {
       for (const { data } of asyncColumns) await data
     }
@@ -44,7 +44,7 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
   const assembled = asyncGroups.map(arg => assembleAsync(arg, schemaTree))
 
   // onChunk emit all chunks (don't await)
-  if (onChunk) {
+  if (onChunk !== undefined) {
     for (const asyncGroup of assembled) {
       for (const asyncColumn of asyncGroup.asyncColumns) {
         asyncColumn.data.then(columnDatas => {
@@ -64,7 +64,7 @@ export async function parquetRead(options: ParquetReadOptions): Promise<void> {
   }
 
   // onComplete transpose column chunks to rows
-  if (onComplete) {
+  if (onComplete !== undefined) {
     // loosen the types to avoid duplicate code
     const rows: any[] = []
     for (const asyncGroup of assembled) {

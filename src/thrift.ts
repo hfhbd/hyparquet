@@ -168,6 +168,6 @@ function readFieldBegin(reader: DataReader, lastFid: number): [number, number, n
     return [0, 0, lastFid]
   }
   const delta = byte >> 4
-  const fid = delta ? lastFid + delta : readZigZag(reader)
+  const fid = delta > 0 ? lastFid + delta : readZigZag(reader)
   return [type, fid, fid]
 }

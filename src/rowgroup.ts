@@ -32,8 +32,8 @@ export function readRowGroup(options: ParquetReadOptions, metadata: FileMetaData
 
   // read column data
   for (const { file_path, meta_data } of groupPlan.rowGroup.columns) {
-    if (file_path) throw new Error('parquet file_path not supported')
-    if (!meta_data) throw new Error('parquet column metadata is undefined')
+    if (file_path !== undefined) throw new Error('parquet file_path not supported')
+    if (meta_data === undefined) throw new Error('parquet column metadata is undefined')
 
     const { startByte, endByte } = getColumnRange(meta_data)
     const columnBytes = endByte - startByte
@@ -67,7 +67,7 @@ export function readRowGroup(options: ParquetReadOptions, metadata: FileMetaData
         if (utf8 !== undefined) {
           columnDecoder.utf8 = utf8
         }
-        if (compressors) {
+        if (compressors !== undefined) {
           columnDecoder.compressors = compressors
         }
 
@@ -152,9 +152,9 @@ export function assembleAsync(asyncRowGroup: AsyncRowGroup, schemaTree: SchemaTr
   const { asyncColumns } = asyncRowGroup
   const assembled: AsyncColumn[] = []
   for (const child of schemaTree.children) {
-    if (child.children.length) {
+    if (child.children.length > 0) {
       const childColumns = asyncColumns.filter(column => column.pathInSchema[0] === child.element.name)
-      if (!childColumns.length) continue
+      if (childColumns.length === 0) continue
 
       // wait for all child columns to be read
       const flatData: Map<string, DecodedArray> = new Map()
@@ -166,7 +166,7 @@ export function assembleAsync(asyncRowGroup: AsyncRowGroup, schemaTree: SchemaTr
         // assemble the column
         assembleNested(flatData, child)
         const flatColumn = flatData.get(child.path.join('.'))
-        if (!flatColumn) throw new Error('parquet column data not assembled')
+        if (flatColumn === undefined) throw new Error('parquet column data not assembled')
         return [flatColumn]
       })
 
@@ -174,7 +174,7 @@ export function assembleAsync(asyncRowGroup: AsyncRowGroup, schemaTree: SchemaTr
     } else {
       // leaf node, return the column
       const asyncColumn = asyncColumns.find(column => column.pathInSchema[0] === child.element.name)
-      if (asyncColumn) {
+      if (asyncColumn !== undefined) {
         assembled.push(asyncColumn)
       }
     }

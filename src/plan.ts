@@ -17,7 +17,7 @@ const columnChunkAggregation: number = 1 << 25 // 32mb
  */
 export function parquetPlan(metadata: FileMetaData): QueryPlan {
   const rowStart = 0
-  if (!metadata) throw new Error('parquetPlan requires metadata')
+  if (metadata === undefined) throw new Error('parquetPlan requires metadata')
   const groups: GroupPlan[] = []
   const fetches: ByteRange[] = []
 
@@ -31,8 +31,8 @@ export function parquetPlan(metadata: FileMetaData): QueryPlan {
       const ranges: ByteRange[] = []
       // loop through each column chunk
       for (const { file_path, meta_data } of rowGroup.columns) {
-        if (file_path) throw new Error('parquet file_path not supported')
-        if (!meta_data) throw new Error('parquet column metadata is undefined')
+        if (file_path !== undefined) throw new Error('parquet file_path not supported')
+        if (meta_data === undefined) throw new Error('parquet column metadata is undefined')
         // add included columns to the plan
         ranges.push(getColumnRange(meta_data))
       }
@@ -61,7 +61,7 @@ export function parquetPlan(metadata: FileMetaData): QueryPlan {
 
 export function getColumnRange(columnMetaData: ColumnMetaData): ByteRange {
   const { dictionary_page_offset, data_page_offset, total_compressed_size } = columnMetaData
-  const columnOffset = dictionary_page_offset || data_page_offset
+  const columnOffset = dictionary_page_offset !== undefined ? dictionary_page_offset : data_page_offset
   return {
     startByte: Number(columnOffset),
     endByte: Number(columnOffset + total_compressed_size),
