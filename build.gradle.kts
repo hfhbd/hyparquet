@@ -1,12 +1,18 @@
 plugins {
-    kotlin("jvm") version "2.2.20"
-    kotlin("plugin.serialization") version "2.2.20"
+    kotlin("jvm") version "2.3.0-Beta1"
+    kotlin("plugin.serialization") version "2.3.0-Beta1"
 }
 
-kotlin.jvmToolchain(8)
+kotlin {
+    jvmToolchain(8)
+    compilerOptions {
+        optIn.add("kotlin.time.ExperimentalTime")
+    }
+}
 
 dependencies {
     implementation(libs.serialization.json)
+    implementation(libs.io.core)
 
     testImplementation(kotlin("test"))
 }
@@ -18,4 +24,8 @@ tasks.test {
 java {
     withSourcesJar()
     withJavadocJar()
+}
+
+sourceSets.main {
+    resources.srcDir(file("test/files"))
 }
