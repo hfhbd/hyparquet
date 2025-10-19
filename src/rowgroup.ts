@@ -64,7 +64,7 @@ export function readRowGroup(options: ParquetReadOptions, metadata: FileMetaData
           codec: meta_data.codec,
           parsers,
         }
-        if (utf8) {
+        if (utf8 !== undefined) {
           columnDecoder.utf8 = utf8
         }
         if (compressors) {

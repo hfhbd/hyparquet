@@ -33,15 +33,15 @@ export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, columnDeco
   let dataPage: DecodedArray
 
   // repetition and definition levels
-  const repetitionLevels = readRepetitionLevels(reader, daph, schemaPath)
+  const repetitionLevels = readRepetitionLevels(reader, daph, schemaPath!)
   // assert(!repetitionLevels.length || repetitionLevels.length === daph.num_values)
-  const { definitionLevels, numNulls } = readDefinitionLevels(reader, daph, schemaPath)
+  const { definitionLevels, numNulls } = readDefinitionLevels(reader, daph, schemaPath!)
   // assert(!definitionLevels.length || definitionLevels.length === daph.num_values)
 
   // read values based on encoding
   const nValues = daph.num_values - numNulls
   if (daph.encoding === Encoding.PLAIN) {
-    dataPage = readPlain(reader, type, nValues, element.type_length)
+    dataPage = readPlain(reader, type!, nValues, element.type_length)
   } else if (
     daph.encoding === Encoding.PLAIN_DICTIONARY ||
     daph.encoding === Encoding.RLE_DICTIONARY ||
@@ -61,7 +61,7 @@ export function readDataPage(bytes: Uint8Array, daph: DataPageHeader, columnDeco
       dataPage = new Uint8Array(nValues) // nValue zeroes
     }
   } else if (daph.encoding === Encoding.BYTE_STREAM_SPLIT) {
-    dataPage = byteStreamSplit(reader, nValues, type, element.type_length)
+    dataPage = byteStreamSplit(reader, nValues, type!, element.type_length)
   } else if (daph.encoding === Encoding.DELTA_BINARY_PACKED) {
     const int32 = type === ParquetType.INT32
     dataPage = int32 ? new Int32Array(nValues) : new BigInt64Array(nValues)
@@ -161,18 +161,18 @@ export function readDataPageV2(compressedBytes: Uint8Array, ph: PageHeader, colu
   if (!daph2) throw new Error('parquet data page header v2 is undefined')
 
   // repetition levels
-  const repetitionLevels = readRepetitionLevelsV2(reader, daph2, schemaPath)
+  const repetitionLevels = readRepetitionLevelsV2(reader, daph2, schemaPath!)
   reader.offset = daph2.repetition_levels_byte_length // readVarInt() => len for boolean v2?
 
   // definition levels
-  const definitionLevels = readDefinitionLevelsV2(reader, daph2, schemaPath)
+  const definitionLevels = readDefinitionLevelsV2(reader, daph2, schemaPath!)
   // assert(reader.offset === daph2.repetition_levels_byte_length + daph2.definition_levels_byte_length)
 
   const uncompressedPageSize = ph.uncompressed_page_size - daph2.definition_levels_byte_length - daph2.repetition_levels_byte_length
 
   let page = compressedBytes.subarray(reader.offset)
   if (daph2.is_compressed !== false) {
-    page = decompressPage(page, uncompressedPageSize, codec, compressors)
+    page = decompressPage(page, uncompressedPageSize, codec!, compressors)
   }
   const pageView = new DataView(page.buffer, page.byteOffset, page.byteLength)
   const pageReader = { view: pageView, offset: 0 }
@@ -181,7 +181,7 @@ export function readDataPageV2(compressedBytes: Uint8Array, ph: PageHeader, colu
   let dataPage: DecodedArray
   const nValues = daph2.num_values - daph2.num_nulls
   if (daph2.encoding === Encoding.PLAIN) {
-    dataPage = readPlain(pageReader, type, nValues, element.type_length)
+    dataPage = readPlain(pageReader, type!, nValues, element.type_length)
   } else if (daph2.encoding === Encoding.RLE) {
     // assert(type === 'BOOLEAN')
     dataPage = new Array(nValues)
@@ -205,7 +205,7 @@ export function readDataPageV2(compressedBytes: Uint8Array, ph: PageHeader, colu
     dataPage = new Array(nValues)
     deltaByteArray(pageReader, nValues, dataPage)
   } else if (daph2.encoding === Encoding.BYTE_STREAM_SPLIT) {
-    dataPage = byteStreamSplit(reader, nValues, type, element.type_length)
+    dataPage = byteStreamSplit(reader, nValues, type!, element.type_length)
   } else {
     throw new Error(`parquet unsupported encoding: ${daph2.encoding}`)
   }

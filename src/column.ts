@@ -32,7 +32,7 @@ export function readColumn(
 ): DecodedArray[] {
   const { groupStart, selectStart, selectEnd} = rowGroupSelect
   const { columnName, schemaPath } = columnDecoder
-  const isFlat = isFlatColumn(schemaPath)
+  const isFlat = isFlatColumn(schemaPath!)
   const chunks: DecodedArray[] = []
   let dictionary: DecodedArray | undefined = undefined
   let lastChunk: DecodedArray | undefined = undefined
@@ -40,7 +40,7 @@ export function readColumn(
 
   const emitLastChunk = onPage && (() => {
     lastChunk && onPage({
-      columnName,
+      columnName: columnName!,
       columnData: lastChunk,
       rowStart: groupStart + rowCount - lastChunk.length,
       rowEnd: groupStart + rowCount,
@@ -104,11 +104,11 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
     if (!daph) throw new Error('parquet data page header is undefined')
 
     // skip unnecessary non-nested pages
-    if (pageStart > daph.num_values && isFlatColumn(schemaPath)) {
+    if (pageStart > daph.num_values && isFlatColumn(schemaPath!)) {
       return new Array(daph.num_values) // TODO: don't allocate array
     }
 
-    const page = decompressPage(compressedBytes, Number(header.uncompressed_page_size), codec, compressors)
+    const page = decompressPage(compressedBytes, Number(header.uncompressed_page_size), codec!, compressors)
     const { definitionLevels, repetitionLevels, dataPage } = readDataPage(page, daph, columnDecoder)
     // assert(!daph.statistics?.null_count || daph.statistics.null_count === BigInt(daph.num_values - dataPage.length))
 
@@ -116,11 +116,11 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
     let values = convertWithDictionary(dataPage, dictionary, daph.encoding, columnDecoder)
     if (repetitionLevels.length || definitionLevels?.length) {
       const output = Array.isArray(previousChunk) ? previousChunk : []
-      return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath)
+      return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath!)
     } else {
       // wrap nested flat data by depth
-      for (let i = 2; i < schemaPath.length; i++) {
-        if (schemaPath[i].element.repetition_type !== FieldRepetitionType.REQUIRED) {
+      for (let i = 2; i < schemaPath!.length; i++) {
+        if (schemaPath![i].element.repetition_type !== FieldRepetitionType.REQUIRED) {
           values = Array.from(values, e => [e])
         }
       }
@@ -141,17 +141,17 @@ export function readPage(reader: DataReader, header: PageHeader, columnDecoder: 
     // convert types, dereference dictionary, and assemble lists
     const values = convertWithDictionary(dataPage, dictionary, daph2.encoding, columnDecoder)
     const output = Array.isArray(previousChunk) ? previousChunk : []
-    return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath)
+    return assembleLists(output, definitionLevels, repetitionLevels, values, schemaPath!)
   } else if (header.type === PageType.DICTIONARY_PAGE) {
     const diph = header.dictionary_page_header
     if (!diph) throw new Error('parquet dictionary page header is undefined')
 
     const page = decompressPage(
-      compressedBytes, Number(header.uncompressed_page_size), codec, compressors
+      compressedBytes, Number(header.uncompressed_page_size), codec!, compressors
     )
 
     const reader = { view: new DataView(page.buffer, page.byteOffset, page.byteLength), offset: 0 }
-    return readPlain(reader, type, diph.num_values, element.type_length)
+    return readPlain(reader, type!, diph.num_values, element.type_length)
   } else {
     throw new Error(`parquet unsupported page type: ${header.type}`)
   }

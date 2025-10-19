@@ -4,7 +4,7 @@ import {ConvertedType, FieldRepetitionType, SchemaElement} from "../src/types.js
 
 describe('Parquet schema utils', () => {
   const schema: SchemaElement[] = [
-    { name: 'root', num_children: 7 },
+    { name: 'root', num_children: 7, repetition_type: undefined },
     { name: 'flat', repetition_type: FieldRepetitionType.OPTIONAL },
     { name: 'listy', repetition_type: FieldRepetitionType.OPTIONAL, num_children: 1, converted_type: ConvertedType.LIST },
     { name: 'list', repetition_type: FieldRepetitionType.REPEATED, num_children: 1 },

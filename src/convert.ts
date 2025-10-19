@@ -75,16 +75,16 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
     return arr
   }
   if (!ctype && type === ParquetType.INT96) {
-    return Array.from(data).map(v => parsers.timestampFromNanoseconds(parseInt96Nanos(v)))
+    return Array.from(data).map(v => parsers!.timestampFromNanoseconds(parseInt96Nanos(v)))
   }
   if (ctype === ConvertedType.DATE) {
-    return Array.from(data).map(v => parsers.dateFromDays(v))
+    return Array.from(data).map(v => parsers!.dateFromDays(v))
   }
   if (ctype === ConvertedType.TIMESTAMP_MILLIS) {
-    return Array.from(data).map(v => parsers.timestampFromMilliseconds(v))
+    return Array.from(data).map(v => parsers!.timestampFromMilliseconds(v))
   }
   if (ctype === ConvertedType.TIMESTAMP_MICROS) {
-    return Array.from(data).map(v => parsers.timestampFromMicroseconds(v))
+    return Array.from(data).map(v => parsers!.timestampFromMicroseconds(v))
   }
   if (ctype === ConvertedType.JSON) {
     return data.map(v => JSON.parse(decoder.decode(v)))
@@ -96,7 +96,7 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
     throw new Error('parquet interval not supported')
   }
   if (ctype === ConvertedType.UTF8 || ltype?.type === 'STRING' || utf8 && type === ParquetType.BYTE_ARRAY) {
-    return data.map(v => parsers.stringFromBytes(v))
+    return data.map(v => parsers!.stringFromBytes(v))
   }
   if (ctype === ConvertedType.UINT_64 || ltype?.type === 'INTEGER' && ltype.bitWidth === 64 && !ltype.isSigned) {
     if (data instanceof BigInt64Array) {
@@ -119,9 +119,9 @@ export function convert(data: DecodedArray, columnDecoder: ColumnDecoder): Decod
   }
   if (ltype?.type === 'TIMESTAMP') {
     const { unit } = ltype
-    let parser: ParquetParsers[keyof ParquetParsers] = parsers.timestampFromMilliseconds
-    if (unit === TimeUnit.MICROS) parser = parsers.timestampFromMicroseconds
-    if (unit === TimeUnit.NANOS) parser = parsers.timestampFromNanoseconds
+    let parser: ParquetParsers[keyof ParquetParsers] = parsers!.timestampFromMilliseconds
+    if (unit === TimeUnit.MICROS) parser = parsers!.timestampFromMicroseconds
+    if (unit === TimeUnit.NANOS) parser = parsers!.timestampFromNanoseconds
     const arr = new Array(data.length)
     for (let i = 0; i < arr.length; i++) {
       arr[i] = parser(data[i])

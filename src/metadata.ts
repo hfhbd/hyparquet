@@ -109,15 +109,15 @@ export function parquetMetadata(arrayBuffer: ArrayBuffer): FileMetaData {
   const schema: SchemaElement[] = (metadata[2] as ThriftObject).map((field): SchemaElement => {
     let fieldO = field as ThriftObject
     return {
-      type: fieldO[1] as number | undefined,
-      type_length: fieldO[2] as number | undefined,
-      repetition_type: fieldO[3] as number | undefined,
+      type: fieldO[1] as number,
+      type_length: fieldO[2] as number,
+      repetition_type: fieldO[3] as number,
       name: decode(fieldO[4] as Uint8Array),
-      num_children: fieldO[5] as number | undefined,
-      converted_type: fieldO[6] as number | undefined,
-      scale: fieldO[7] as number | undefined,
-      precision: fieldO[8] as number | undefined,
-      logical_type: logicalType(fieldO[10]),
+      num_children: fieldO[5] as number,
+      converted_type: fieldO[6] as number,
+      scale: fieldO[7] as number,
+      precision: fieldO[8] as number,
+      logical_type: logicalType(fieldO[10] as ThriftObject | undefined),
     };
   })
   const num_rows = metadata[3] as bigint
@@ -178,46 +178,45 @@ export function parquetSchema(schema: SchemaElement[]): SchemaTree {
   return getSchemaPath(schema, [])[0]
 }
 
-function logicalType(logicalType: any): LogicalType | undefined {
-  if (logicalType?.field_1) return { type: 'STRING' }
-  if (logicalType?.field_2) return { type: 'MAP' }
-  if (logicalType?.field_3) return { type: 'LIST' }
-  if (logicalType?.field_4) return { type: 'ENUM' }
-  if (logicalType?.field_5) return {
+function logicalType(logicalType: ThriftObject | undefined): LogicalType | undefined {
+  if (!logicalType) return undefined
+  if (logicalType.at(1) !== undefined) return { type: 'STRING' }
+  if (logicalType.at(2) !== undefined) return { type: 'MAP' }
+  if (logicalType.at(3) !== undefined) return { type: 'LIST' }
+  if (logicalType.at(4) !== undefined) return { type: 'ENUM' }
+  if (logicalType.at(5) !== undefined) return {
     type: 'DECIMAL',
-    scale: logicalType.field_5.field_1,
-    precision: logicalType.field_5.field_2,
+    scale: (logicalType[5] as ThriftObject)[1] as number,
+    precision: (logicalType[5] as ThriftObject)[2] as number,
   }
-  if (logicalType?.field_6) return { type: 'DATE' }
-  if (logicalType?.field_7) return {
+  if (logicalType.at(6) !== undefined) return { type: 'DATE' }
+  if (logicalType.at(7) !== undefined) return {
     type: 'TIME',
-    isAdjustedToUTC: logicalType.field_7.field_1,
-    unit: timeUnit(logicalType.field_7.field_2),
+    isAdjustedToUTC: (logicalType[7] as ThriftObject)[1] as boolean,
+    unit: timeUnit((logicalType[7] as ThriftObject)[2] as ThriftObject),
   }
-  if (logicalType?.field_8) return {
+  if (logicalType.at(8) !== undefined) return {
     type: 'TIMESTAMP',
-    isAdjustedToUTC: logicalType.field_8.field_1,
-    unit: timeUnit(logicalType.field_8.field_2),
+    isAdjustedToUTC: (logicalType[8] as ThriftObject)[1] as boolean,
+    unit: timeUnit((logicalType[8] as ThriftObject)[2] as ThriftObject),
   }
-  if (logicalType?.field_10) return {
+  if (logicalType.at(10) !== undefined) return {
     type: 'INTEGER',
-    bitWidth: logicalType.field_10.field_1,
-    isSigned: logicalType.field_10.field_2,
+    bitWidth: (logicalType[10] as ThriftObject)[1] as number,
+    isSigned: (logicalType[10] as ThriftObject)[2] as boolean,
   }
-  if (logicalType?.field_11) return { type: 'NULL' }
-  if (logicalType?.field_12) return { type: 'JSON' }
-  if (logicalType?.field_13) return { type: 'BSON' }
-  if (logicalType?.field_14) return { type: 'UUID' }
-  if (logicalType?.field_15) return { type: 'FLOAT16' }
-  if (logicalType?.field_16) return { type: 'VARIANT' }
-  if (logicalType?.field_17) return undefined
-  if (logicalType?.field_18) return undefined
-  return logicalType
+  if (logicalType.at(11) !== undefined) return { type: 'NULL' }
+  if (logicalType.at(12) !== undefined) return { type: 'JSON' }
+  if (logicalType.at(13) !== undefined) return { type: 'BSON' }
+  if (logicalType.at(14) !== undefined) return { type: 'UUID' }
+  if (logicalType.at(15) !== undefined) return { type: 'FLOAT16' }
+  if (logicalType.at(16) !== undefined) return { type: 'VARIANT' }
+  throw new Error("unsupported logical type")
 }
 
-function timeUnit(unit: any): TimeUnit {
-  if (unit.field_1) return TimeUnit.MILLIS
-  if (unit.field_2) return TimeUnit.MICROS
-  if (unit.field_3) return TimeUnit.NANOS
+function timeUnit(unit: ThriftObject): TimeUnit {
+  if (unit.at(1) !== undefined) return TimeUnit.MILLIS
+  if (unit.at(2) !== undefined) return TimeUnit.MICROS
+  if (unit.at(3) !== undefined) return TimeUnit.NANOS
   throw new Error('parquet time unit required')
 }

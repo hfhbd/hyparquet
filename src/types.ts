@@ -79,14 +79,14 @@ export interface SchemaTree {
 }
 
 export interface SchemaElement {
-  type: ParquetType | undefined
-  type_length: number | undefined
-  repetition_type: FieldRepetitionType | undefined
+  type?: ParquetType
+  type_length?: number
+  repetition_type?: FieldRepetitionType | undefined
   name: string
-  num_children: number | undefined
-  converted_type: ConvertedType | undefined
-  scale: number | undefined
-  precision: number | undefined
+  num_children?: number
+  converted_type?: ConvertedType
+  scale?: number
+  precision?: number
   logical_type: LogicalType | undefined
 }
 
@@ -283,14 +283,14 @@ export interface GroupPlan {
 }
 
 export interface ColumnDecoder {
-  columnName: string
-  type: ParquetType
+  columnName?: string | undefined,
+  type?: ParquetType | undefined
   element: SchemaElement
-  schemaPath: SchemaTree[]
-  codec: CompressionCodec
-  parsers: ParquetParsers
-  compressors?: Compressors
-  utf8?: boolean
+  schemaPath?: SchemaTree[] | undefined
+  codec?: CompressionCodec | undefined
+  parsers?: ParquetParsers | undefined
+  compressors?: Compressors | undefined
+  utf8?: boolean | undefined
 }
 
 export interface RowGroupSelect {
