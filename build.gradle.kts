@@ -15,6 +15,7 @@ dependencies {
     implementation(libs.io.core)
 
     testImplementation(kotlin("test"))
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
 }
 
 tasks.test {
