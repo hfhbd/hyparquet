@@ -49,16 +49,11 @@ fun readRowGroup(
         val asyncColumn = AsyncColumn(
             pathInSchema = path_in_schema,
             data = suspend {
-                readColumn(options.file, metaData, columnDecoder, schemaPath, rowGroupSelect)
+                readColumn(options.file, metaData, columnDecoder, schemaPath, rowGroupSelect, options.onPage)
             }
         )
         
         asyncColumns.add(asyncColumn)
-        
-        // Call onPage callback if provided
-        options.onPage?.let { onPage ->
-            // TODO: Implement onPage callback
-        }
     }
     
     return AsyncRowGroup(

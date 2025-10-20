@@ -8,7 +8,8 @@ suspend fun readColumn(
     columnMetaData: ColumnMetaData,
     columnDecoder: ColumnDecoder,
     schemaPath: List<SchemaTree>,
-    rowGroupSelect: RowGroupSelect
+    rowGroupSelect: RowGroupSelect,
+    onPage: ((ColumnData) -> Unit)? = null
 ): List<DecodedArray> {
     val codec = columnMetaData.codec
     val compressors = columnDecoder.compressors
@@ -79,6 +80,16 @@ suspend fun readColumn(
                 val encoding = pageHeader.data_page_header?.encoding ?: Encoding.PLAIN
                 val convertedData = convertWithDictionary(dataPage.dataPage, dictionary, encoding, columnDecoder)
                 result.add(convertedData)
+                
+                // Call onPage callback if provided
+                onPage?.let { callback ->
+                    callback(ColumnData(
+                        columnName = columnDecoder.columnName ?: "",
+                        columnData = convertedData,
+                        rowStart = rowGroupSelect.groupStart + rowsRead,
+                        rowEnd = rowGroupSelect.groupStart + rowsRead + (pageHeader.data_page_header?.num_values ?: 0)
+                    ))
+                }
                 
                 rowsRead += pageHeader.data_page_header?.num_values ?: 0
             }

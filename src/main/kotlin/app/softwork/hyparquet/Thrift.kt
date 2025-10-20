@@ -69,7 +69,7 @@ private fun readElement(reader: DataReader, type: Int): ThriftType {
         CompactType.DOUBLE -> {
             val value = reader.view.getDouble(reader.offset)
             reader.offset += 8
-            ThriftType.IntType(value.toInt()) // TODO: proper double handling
+            ThriftType.DoubleType(value)
         }
         CompactType.BINARY -> {
             val stringLength = readVarInt(reader)
@@ -117,7 +117,9 @@ private fun readElement(reader: DataReader, type: Int): ThriftType {
             }
             ThriftType.ObjectType(structValues)
         }
-        // TODO: MAP, SET, UUID
+        CompactType.MAP, CompactType.SET, CompactType.UUID -> {
+            throw Error("thrift type not yet implemented: $type (MAP/SET/UUID)")
+        }
         else -> throw Error("thrift unhandled type: $type")
     }
 }

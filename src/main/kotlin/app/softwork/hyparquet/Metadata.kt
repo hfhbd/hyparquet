@@ -79,12 +79,14 @@ fun parquetMetadata(arrayBuffer: ByteArray): FileMetaData {
 
     // Parse metadata from thrift data
     val version = (metadata[1] as? ThriftType.IntType)?.value ?: 0
-    val schema = (metadata[2] as? ThriftType.ObjectType)?.value?.mapNotNull { field ->
+    val schemaList = metadata[2] as? ThriftType.ListType
+    val schema = schemaList?.value?.mapNotNull { field ->
         (field as? ThriftType.ObjectType)?.let { parseSchemaElement(it.value) }
     } ?: emptyList()
     
     val num_rows = (metadata[3] as? ThriftType.LongType)?.value ?: 0L
-    val row_groups = (metadata[4] as? ThriftType.ObjectType)?.value?.mapNotNull { rowGroup ->
+    val rowGroupsList = metadata[4] as? ThriftType.ListType
+    val row_groups = rowGroupsList?.value?.mapNotNull { rowGroup ->
         (rowGroup as? ThriftType.ObjectType)?.let { parseRowGroup(it.value) }
     } ?: emptyList()
     
@@ -132,7 +134,8 @@ private fun parseSchemaElement(field: ThriftObject): SchemaElement {
 }
 
 private fun parseRowGroup(rowGroupField: ThriftObject): RowGroup {
-    val columns = (rowGroupField.getOrNull(1) as? ThriftType.ObjectType)?.value?.mapNotNull { column ->
+    val columnsList = rowGroupField.getOrNull(1) as? ThriftType.ListType
+    val columns = columnsList?.value?.mapNotNull { column ->
         (column as? ThriftType.ObjectType)?.let { parseColumnChunk(it.value) }
     } ?: emptyList()
     

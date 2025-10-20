@@ -352,6 +352,7 @@ sealed class ThriftType {
     data class BooleanType(val value: Boolean) : ThriftType()
     data class IntType(val value: Int) : ThriftType()
     data class LongType(val value: Long) : ThriftType()
+    data class DoubleType(val value: Double) : ThriftType()
     data class ByteArrayType(val value: ByteArray) : ThriftType() {
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
