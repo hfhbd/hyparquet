@@ -1,12 +1,48 @@
 package app.softwork.hyparquet
 
+import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.json.Json
+import java.io.File
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
-import kotlin.test.assertTrue
 
 class MetadataTest {
+    
+    private val parquetFiles = getParquetTestFiles()
+    
+    @Test
+    fun `parse metadata from all parquet files`() = runTest {
+        for (filename in parquetFiles) {
+            val asyncBuffer = asyncBufferFromFile("test/files/$filename")
+            val arrayBuffer = asyncBuffer.slice(0, null)
+            val result = toJson(parquetMetadata(arrayBuffer))
+            val base = filename.replace(".parquet", "")
+            val expectedFile = File("test/files/$base.metadata.json")
+            
+            if (expectedFile.exists()) {
+                val expected = Json.parseToJsonElement(expectedFile.readText())
+                assertEquals(expected, result, "Failed for file: $filename")
+            }
+        }
+    }
+    
+    @Test
+    fun `parse metadata async from all parquet files`() = runTest {
+        for (filename in parquetFiles) {
+            val asyncBuffer = asyncBufferFromFile("test/files/$filename")
+            val result = parquetMetadataAsync(asyncBuffer)
+            val base = filename.replace(".parquet", "")
+            val expectedFile = File("test/files/$base.metadata.json")
+            
+            if (expectedFile.exists()) {
+                val expected = Json.parseToJsonElement(expectedFile.readText())
+                assertEquals(expected, toJson(result), "Failed for file: $filename")
+            }
+        }
+    }
     
     @Test
     fun `throws for a too short file`() {
@@ -45,21 +81,34 @@ class MetadataTest {
     }
     
     @Test
-    fun `validates basic metadata structure`() {
-        // Create simple valid metadata structure for testing
-        val metadata = FileMetaData(
-            version = 1,
-            schema = listOf(
-                SchemaElement(name = "root", num_children = 1, repetition_type = null, logical_type = null),
-                SchemaElement(name = "field", repetition_type = FieldRepetitionType.OPTIONAL, logical_type = null)
-            ),
-            num_rows = 100,
-            row_groups = emptyList(),
-            created_by = "test",
-            metadata_length = 50
-        )
+    fun `throws for invalid magic number async`() = runTest {
+        val buffer = byteArrayOf(0xff.toByte(), 0xff.toByte(), 0xff.toByte(), 0xff.toByte(), 0xff.toByte(), 0xff.toByte(), 0xff.toByte(), 0xff.toByte())
+        val asyncBuffer = object : AsyncBuffer {
+            override val byteLength: Long = buffer.size.toLong()
+            override suspend fun slice(start: Long, end: Long?): ByteArray {
+                val actualEnd = (end ?: byteLength).toInt()
+                return buffer.copyOfRange(start.toInt(), actualEnd)
+            }
+        }
         
-        assertTrue(metadata.schema.isNotEmpty())
-        assertTrue(metadata.num_rows == 100L)
+        assertFailsWith<Error> {
+            parquetMetadataAsync(asyncBuffer)
+        }
+    }
+    
+    @Test
+    fun `throws for invalid metadata length async`() = runTest {
+        val buffer = byteArrayOf(0xff.toByte(), 0xff.toByte(), 0xff.toByte(), 0xff.toByte(), 80, 65, 82, 49)
+        val asyncBuffer = object : AsyncBuffer {
+            override val byteLength: Long = buffer.size.toLong()
+            override suspend fun slice(start: Long, end: Long?): ByteArray {
+                val actualEnd = (end ?: byteLength).toInt()
+                return buffer.copyOfRange(start.toInt(), actualEnd)
+            }
+        }
+        
+        assertFailsWith<Error> {
+            parquetMetadataAsync(asyncBuffer)
+        }
     }
 }

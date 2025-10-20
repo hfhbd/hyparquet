@@ -1,80 +1,52 @@
 package app.softwork.hyparquet
 
+import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.json.Json
+import java.io.File
 import kotlin.test.Test
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
+import kotlin.test.assertEquals
 
 class ReadFilesTest {
     
-    @Test
-    fun `read options support row format array`() {
-        val mockBuffer = object : AsyncBuffer {
-            override val byteLength: Long = 1000
-            override suspend fun slice(start: Long, end: Long?): ByteArray = byteArrayOf()
-        }
-        
-        val options = ParquetReadOptions(
-            file = mockBuffer,
-            rowFormat = RowFormat.ARRAY
-        )
-        
-        assertNotNull(options.rowFormat)
-        assertTrue(options.rowFormat == RowFormat.ARRAY)
-    }
+    private val parquetFiles = getParquetTestFiles()
+    
+    // Files to skip (as in the original TypeScript test)
+    private val skipFiles = setOf(
+        "byte_stream_split.zstd.parquet",
+        "delta_length_byte_array.parquet",
+        "duckdb5533.parquet",
+        "nested_structs.rust.parquet"
+    )
     
     @Test
-    fun `read options support row format object`() {
-        val mockBuffer = object : AsyncBuffer {
-            override val byteLength: Long = 1000
-            override suspend fun slice(start: Long, end: Long?): ByteArray = byteArrayOf()
+    fun `parse data from all parquet test files`() = runTest {
+        for (filename in parquetFiles) {
+            if (filename in skipFiles) {
+                continue
+            }
+            
+            val file = asyncBufferFromFile("test/files/$filename")
+            
+            parquetRead(ParquetReadOptions(
+                file = file,
+                onChunk = { _ -> },
+                onPage = { _ -> },
+                rowFormat = RowFormat.ARRAY,
+                utf8 = true,
+                compressors = testCompressors,
+                onComplete = { rows ->
+                    val base = filename.replace(".parquet", "")
+                    val expectedFile = File("test/files/$base.json")
+                    
+                    if (expectedFile.exists()) {
+                        val expected = Json.parseToJsonElement(expectedFile.readText())
+                        // stringify and parse to make legal json (NaN, -0, etc.)
+                        val result = toJson(rows)
+                        val resultJson = Json.parseToJsonElement(Json.encodeToString(kotlinx.serialization.json.JsonElement.serializer(), result))
+                        assertEquals(expected, resultJson, "Failed for file: $filename")
+                    }
+                }
+            ))
         }
-        
-        val options = ParquetReadOptions(
-            file = mockBuffer,
-            rowFormat = RowFormat.OBJECT
-        )
-        
-        assertNotNull(options.rowFormat)
-        assertTrue(options.rowFormat == RowFormat.OBJECT)
-    }
-    
-    @Test
-    fun `parquet read options support callbacks`() {
-        val mockBuffer = object : AsyncBuffer {
-            override val byteLength: Long = 1000
-            override suspend fun slice(start: Long, end: Long?): ByteArray = byteArrayOf()
-        }
-        
-        var onCompleteCalled = false
-        var onChunkCalled = false
-        
-        val options = ParquetReadOptions(
-            file = mockBuffer,
-            onComplete = { _ -> onCompleteCalled = true },
-            onChunk = { _ -> onChunkCalled = true }
-        )
-        
-        assertNotNull(options.onComplete)
-        assertNotNull(options.onChunk)
-    }
-    
-    @Test
-    fun `compressors can be provided in options`() {
-        val mockBuffer = object : AsyncBuffer {
-            override val byteLength: Long = 1000
-            override suspend fun slice(start: Long, end: Long?): ByteArray = byteArrayOf()
-        }
-        
-        val mockCompressors: Compressors = mapOf(
-            CompressionCodec.SNAPPY to { input, _ -> input }
-        )
-        
-        val options = BaseParquetReadOptions(
-            file = mockBuffer,
-            compressors = mockCompressors
-        )
-        
-        assertNotNull(options.compressors)
-        assertTrue(options.compressors!!.containsKey(CompressionCodec.SNAPPY))
     }
 }

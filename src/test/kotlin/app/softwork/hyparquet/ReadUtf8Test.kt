@@ -1,5 +1,6 @@
 package app.softwork.hyparquet
 
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -7,63 +8,54 @@ import kotlin.test.assertTrue
 class ReadUtf8Test {
     
     @Test
-    fun `utf8 conversion options are supported`() {
-        // Test that utf8 parameter is available in read options
-        val mockBuffer = object : AsyncBuffer {
-            override val byteLength: Long = 1000
-            override suspend fun slice(start: Long, end: Long?): ByteArray = byteArrayOf()
-        }
+    fun `default utf8 behavior`() = runTest {
+        val file = asyncBufferFromFile("test/files/strings.parquet")
+        val rows = parquetReadObjects(BaseParquetReadOptions(file = file))
         
-        val optionsWithUtf8True = BaseParquetReadOptions(
-            file = mockBuffer,
-            utf8 = true
-        )
+        assertEquals(4, rows.size)
+        assertEquals("alpha", (rows[0] as? Map<*, *>)?.get("bytes"))
+        assertEquals("alpha", (rows[0] as? Map<*, *>)?.get("c_utf8"))
+        assertEquals("alpha", (rows[0] as? Map<*, *>)?.get("l_utf8"))
         
-        val optionsWithUtf8False = BaseParquetReadOptions(
-            file = mockBuffer,
-            utf8 = false
-        )
-        
-        assertEquals(true, optionsWithUtf8True.utf8)
-        assertEquals(false, optionsWithUtf8False.utf8)
+        assertEquals("bravo", (rows[1] as? Map<*, *>)?.get("bytes"))
+        assertEquals("charlie", (rows[2] as? Map<*, *>)?.get("bytes"))
+        assertEquals("delta", (rows[3] as? Map<*, *>)?.get("bytes"))
     }
     
     @Test
-    fun `default utf8 behavior is true`() {
-        val mockBuffer = object : AsyncBuffer {
-            override val byteLength: Long = 1000
-            override suspend fun slice(start: Long, end: Long?): ByteArray = byteArrayOf()
-        }
+    fun `utf8 equals true`() = runTest {
+        val file = asyncBufferFromFile("test/files/strings.parquet")
+        val rows = parquetReadObjects(BaseParquetReadOptions(file = file, utf8 = true))
         
-        val optionsDefault = BaseParquetReadOptions(
-            file = mockBuffer
-        )
-        
-        // Default should be true or null (which means true)
-        assertTrue(optionsDefault.utf8 == null || optionsDefault.utf8 == true)
+        assertEquals(4, rows.size)
+        assertEquals("alpha", (rows[0] as? Map<*, *>)?.get("bytes"))
+        assertEquals("alpha", (rows[0] as? Map<*, *>)?.get("c_utf8"))
+        assertEquals("bravo", (rows[1] as? Map<*, *>)?.get("bytes"))
+        assertEquals("charlie", (rows[2] as? Map<*, *>)?.get("bytes"))
+        assertEquals("delta", (rows[3] as? Map<*, *>)?.get("bytes"))
     }
     
     @Test
-    fun `column decoder respects utf8 setting`() {
-        val element = SchemaElement(
-            name = "test",
-            type = ParquetType.BYTE_ARRAY,
-            logical_type = null
-        )
+    fun `utf8 equals false`() = runTest {
+        val file = asyncBufferFromFile("test/files/strings.parquet")
+        val rows = parquetReadObjects(BaseParquetReadOptions(file = file, utf8 = false))
         
-        val decoderWithUtf8 = ColumnDecoder(
-            element = element,
-            utf8 = true,
-            parsers = DEFAULT_PARSERS
-        )
+        assertEquals(4, rows.size)
         
-        val decoderWithoutUtf8 = ColumnDecoder(
-            element = element,
-            utf8 = false,
-            parsers = DEFAULT_PARSERS
-        )
+        // bytes column should be ByteArray
+        val bytesValue0 = (rows[0] as? Map<*, *>)?.get("bytes")
+        assertTrue(bytesValue0 is ByteArray, "bytes should be ByteArray when utf8=false")
+        if (bytesValue0 is ByteArray) {
+            assertEquals("alpha", bytesValue0.decodeToString())
+        }
         
-        assertEquals(true, decoderWithUtf8.utf8)
-        assertEquals(false, decoderWithoutUtf8.utf8)
+        // c_utf8 and l_utf8 should still be strings
+        assertEquals("alpha", (rows[0] as? Map<*, *>)?.get("c_utf8"))
+        assertEquals("alpha", (rows[0] as? Map<*, *>)?.get("l_utf8"))
+        
+        val bytesValue1 = (rows[1] as? Map<*, *>)?.get("bytes")
+        if (bytesValue1 is ByteArray) {
+            assertEquals("bravo", bytesValue1.decodeToString())
+        }
     }
 }
